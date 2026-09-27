@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec54-FTCpartI" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Fundamental Theorem of Calculus, Part I</title>
+
+  <introduction>
+    <p> 
+      In this section, we will investigate the Fundamental Theorem of Calculus (FTC), part I, which states that we could evaluate the definite integral (aka the signed area under the curve) using indefinite integral (aka the general antiderivative).  
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            state and explain the Fundamental Theorem of Calculus, part I.
+          </p>
+        </li>
+        <li>
+          <p>
+            evaluate definite integrals using FTC. 
+          </p>
+        </li>
+        <li>
+          <p>
+            evaluate definite integrals of piecewise functions using FTC. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+  </introduction>
+
+  <p>
+    <alert>P.S.:</alert> We will cover <xref ref="sec55-FTCpartII"/> before this section. 
+    Some of the results in this section will be built upon the concepts covered in <xref ref="sec55-FTCpartII"/>. 
+  </p>
+
+  <subsection xml:id="subsec-541-FTC-Corollary">
+    <title>A Corollary of the Fundamental Theorem of Calculus</title>
+
+    <p>
+      Well the Fundamental Theorem of Calculus, Part II, in <xref ref="sec55-FTCpartII"/>, isn't the theorem we use a lot. 
+      Instead, we use the Fundamental Theorem of Calculus, Part I, a lot to help us evaluate definite integrals. 
+      This is actually a (most useful) corollary of the Fundamental Theorem of Calculus. 
+      The theorem is presented in your textbook page 318. 
+      I also included it below: 
+    </p>
+
+    <corollary xml:id="cor-FTC">
+      <statement>
+        <p>
+          Assume that <m>a &lt; b</m> and that <m>f</m> is continuous on <m>[a,b]</m>. 
+          If <m>F</m> is an antiderivative of <m>f</m> on <m>[a,b]</m>, then
+          <men xml:id="eqn-cor-FTC">
+            \int_a^b f(x)\, dx = F(b) - F(a)
+          </men>
+        </p>
+      </statement>
+    </corollary>
+
+    <p>
+      <term>Corollary</term>, in math, means a result that follows immediately from a big theorem. 
+      So we should be able to prove this theorem quickly if we know how the Fundamental Theorem of Calculus works. 
+    </p>
+
+    <p>
+      Let <m>f</m> be a continuous function. 
+      By the Fundamental Theorem of Calculus, we know that its accumulation function, <m>A</m>, is an antiderivative of <m>f</m> (since <m>A'(x) = f(x)</m>). 
+      Furthermore, we know that <alert>ALL</alert> antiderivatives of a function should only differ by a constant. 
+      That is, if <m>F</m> is an arbitrary antiderivative of <m>f</m>, then <m>A(x) = F(x) + C</m>. 
+    </p>
+
+    <p>
+      We will prove this corollary through the accumulation function. 
+      Your textbook approaches the proof using the Mean Value Theorem, which is a different approach. 
+      Feel free to read through it if you want a different perspective of why this corollary is true. 
+    </p>
+
+    <p>
+      Let's define the accumulation function 
+      <me>
+        A(x) = \int_c^x f(t)\, dt
+      </me>
+      The reason why we used <m>c</m> as the lower limit here is because <m>a</m> is taken for something else. 
+      In math, we don't want to label two different thing using the same letter to avoid confusion. 
+      I, again, coded a pretty picture to help you visualize the situation. 
+      <figure xml:id="fig-Proof-FTC-Cor">
+      <image width="60%">
+    
+        <latex-image >
+          \begin{tikzpicture}
+            \begin{axis}[
+              axis lines=middle,
+              xlabel={$t$},
+              ylabel={$y$},
+              xtick=\empty,
+              ytick=\empty,
+              xmin=-0.5, xmax=3,
+              ymin=-0.5, ymax=3,
+              domain=-1.5:3,
+              samples=200,
+            ]
+
+              % Green shaded region: [0.5, 1]
+              \addplot [
+                draw=none,
+                fill=green!70,
+                opacity=0.7,
+              ]
+              coordinates {
+                (0.5,0)
+                (0.5,{(1/5)*(0.5+1)^2*(0.5-2) + 2})
+                (0.75,{(1/5)*(0.75+1)^2*(0.75-2) + 2})
+                (1.0,{(1/5)*(1.0+1)^2*(1.0-2) + 2})
+                (1.0,0)
+              } -- cycle;
+
+              % Orange shaded region: [1, 2]
+              \addplot [
+                draw=none,
+                fill=orange!80,
+                opacity=0.7,
+              ]
+              coordinates {
+                (1.0,0)
+                (1.0,{(1/5)*(1.0+1)^2*(1.0-2) + 2})
+                (1.5,{(1/5)*(1.5+1)^2*(1.5-2) + 2})
+                (2.0,{(1/5)*(2.0+1)^2*(2.0-2) + 2})
+                (2.0,0)
+              } -- cycle;
+
+              % Vertical dashed lines
+              \draw[dashed] (axis cs:0.5,-0.2) -- (axis cs:0.5,1.325);
+              \draw[dashed] (axis cs:1.0,-0.2) -- (axis cs:1.0,1.2);
+              \draw[dashed] (axis cs:2.0,-0.2) -- (axis cs:2.0,2);
+
+              % Labels
+              \node at (axis cs:0.5,-0.4) {$c$};
+              \node at (axis cs:1.0,-0.4) {$a$};
+              \node at (axis cs:2.2,-0.37) {$b$};
+              \node at (axis cs:2,2.8) {$y = f(t)$};
+
+              % Function f(t) = (1/5)*(t+1)^2*(t-2) + 2
+              \addplot[blue, ultra thick, domain=-1.2:2.7] {(1/5)*(x+1)^2*(x-2) + 2};
+
+            \end{axis}
+          \end{tikzpicture}
+        </latex-image>
+
+      </image>
+      </figure>
+    </p>
+
+    <p>
+      Using colors, we know that <m>A(b)</m> represents the area of the region on <m>[c,b]</m>, which is the area of the green and orange regions combined. 
+      <m>A(a)</m> represents the area of the region on <m>[c,a]</m>, which is the area of the green region. 
+    </p>
+
+    <p>
+      We know that <m>\int_a^b f(x)\, dx</m> represents the area of the region on <m>[a,b]</m>, which is the area of the orange region. 
+      A simple subtraction tells us that
+      <me>
+        \int_a^b f(x)\, dx = A(b) - A(a)
+      </me>
+      This result is super close to the corollary already! 
+    </p>
+
+    <p>
+      Recall <m>F(x) = A(x) + C</m>. 
+      Then we obtain
+      <md>
+        <mrow>\int_a^b f(x)\, dx \amp= A(b) - A(a) </mrow>
+        <mrow> \amp= \left(F(b) + C\right) - \left(F(a) + C\right) </mrow>
+        <mrow> \amp= F(b) + C - F(a) - C </mrow>
+        <mrow> \amp= F(b) - F(a) </mrow>
+      </md>
+      We proved another big result in calculus! 
+    </p>
+
+    <p>
+      The last step in our proof is another reason why we don't need a <m>+C</m> when evaluating definite integral. 
+      The <m>+C</m> will be canceled! 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-542-Importance-FTC-Corollary">
+    <title>Why is this corollary important? </title>
+
+    <p>
+      Note that the definite integrals allow us to compute the area under the curve. 
+      But finding the Riemann sum is a painful process, especially without the help of the technology. 
+    </p>
+
+    <p>
+      Whereas we can find the indefinite integral (or the general antiderivative) of a function. 
+      But it has nothing to do with the area. 
+    </p>
+
+    <p>
+      This corollary gives us a practical way to connect these two ideas together! 
+      We can evaluate the definite integral by (1) find the antiderivative of the integrand, and (2) plug in the limits of integration and do the subtraction. 
+      In fact, some textbooks call this result the <alert>evaluation theorem</alert> to emphasize the fact that we can <em>evaluate</em> definite integral using this result. 
+    </p>
+
+    <p>
+      In notation, we have
+      <me>
+        \int_a^b f(x)\, dx = F(x)\bigg|_a^b = F(b) - F(a)\qquad \text{where}\quad \int f(x)\, dx = F(x) + C
+      </me>
+      We will be using this idea to evaluate the definite integrals mostly in this class. 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-543-Examples-FTC-Corollary">
+    <title>Examples on Applying FTC Corollary</title>
+    
+    <p>
+      We will work through many examples to evaluate definite integrals using the corollary of FTC. 
+      Make sure you are comfortable with this way of evaluating definite integrals! 
+    </p>
+
+    <p>
+      In the following examples, I will show all the steps. 
+      Make sure you understand why each step is being done (either using properties of definite integral, FTC, purely algebra, or purely arithmetic). 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^2 \left(x^4 - \frac{3}{4}x^2 + \frac{2}{3}x - 1\right)\, dx </m>
+      </p>
+
+      <hint>
+        <p>
+          By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction. 
+        </p>
+
+        <p>
+          So what is an antiderivative of the integrand <m>y = x^4 - \dfrac{3}{4}x^2 + \dfrac{2}{3}x - 1</m>? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          <md>
+            <mrow> \int_0^2 \left(x^4 - \frac{3}{4}x^2 + \frac{2}{3}x - 1\right)\, dx\amp = \int_0^2 x^4\, dx - \frac{3}{4}\int_0^2 x^2\, dx + \frac{2}{3}\int_0^2 x\, dx - \int\, dx </mrow>
+            <mrow> \amp= \frac{x^5}{5}\bigg|_0^2 - \frac{3}{4}\cdot \frac{x^3}{3}\bigg|_0^2 + \frac{2}{3}\cdot \frac{x^2}{2}\bigg|_0^2 - x\bigg|_0^2 </mrow>
+            <mrow> \amp= \left(\frac{2^5}{5} - \frac{0^5}{5}\right) - \frac{3}{4}\left(\frac{2^3}{3} - \frac{0^3}{3}\right) + \frac{2}{3}\left(\frac{2^2}{2} - \frac{0^2}{2}\right) - (2 - 0) </mrow>
+            <mrow> \amp= \frac{32}{5} - 2 + \frac{4}{3} - 2 </mrow>
+            <mrow> \amp= \frac{56}{15} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_1^2 \frac{1}{x^2}\, dx </m>
+      </p>
+
+      <hint>
+        <p>
+          By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction. 
+        </p>
+
+        <p>
+          So what is an antiderivative of the integrand <m>y = \dfrac{1}{x^2}</m>? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          <md>
+            <mrow>\int_1^2\frac{1}{x^2}\, dx \amp= \int_1^2 x^{-2}\, dx </mrow>
+            <mrow> \amp= -x^{-1}\bigg|_1^2 </mrow>
+            <mrow> \amp= \left(-2^{-1}\right) - \left(-1^{-1}\right) </mrow>
+            <mrow> \amp= -\frac{1}{2} + 1 </mrow>
+            <mrow> \amp= \frac{1}{2} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^1 x\left(\sqrt[3]{x} + \sqrt[4]{x}\right)\, dx </m>
+      </p>
+
+      <hint>
+        <p>
+          By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction. 
+        </p>
+
+        <p>
+          So what is an antiderivative of the integrand <m>y = x\left(\sqrt[3]{x} + \sqrt[4]{x}\right)</m>? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          <md>
+            <mrow>\int_0^1 x\left(\sqrt[3]{x} + \sqrt[4]{x}\right)\, dx \amp= \int_0^1  x\left(x^\frac{1}{3} + x^\frac{1}{4}\right)\, dx</mrow>
+            <mrow> \amp= \int_0^1 \left(x^\frac{4}{3} + x^\frac{5}{4}\right)\, dx </mrow>
+            <mrow> \amp= \left[\frac{3}{7}x^\frac{7}{3} + \frac{4}{9}x^\frac{9}{4}\right]_0^1 </mrow>
+            <mrow> \amp= \left(\frac{3}{7}(1)^\frac{7}{3} + \frac{4}{9}(1)^\frac{9}{4}\right) - \left(\frac{3}{7}(0)^\frac{7}{3} + \frac{4}{9}(0)^\frac{9}{4}\right) </mrow>
+            <mrow> \amp= \frac{3}{7} + \frac{4}{9} </mrow>
+            <mrow> \amp= \frac{55}{63} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_{-1}^1 t\left(1 - t\right)^2\, dt </m>
+      </p>
+
+       <hint>
+        <p>
+          By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction. 
+        </p>
+
+        <p>
+          So what is an antiderivative of the integrand <m>y = t\left(1 - t\right)^2</m>? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          <md>
+            <mrow> \int_{-1}^1 t\left(1 - t\right)^2\, dt \amp= \int_{-1}^1 t\left(1 - 2t + t^2\right)\, dt </mrow>
+            <mrow> \amp= \int_{-1}^1 \left(t - 2t^2 + t^3\right)\, dt </mrow>
+            <mrow> \amp= \left[\frac{t^2}{2} - \frac{2t^3}{3} + \frac{t^4}{4}\right]_{-1}^1 </mrow>
+            <mrow> \amp= \left(\frac{1^2}{2} - \frac{2(1)^3}{3} + \frac{1^4}{4}\right) - \left(\frac{(-1)^2}{2} - \frac{2(-1)^3}{3} + \frac{(-1)^4}{4}\right) </mrow>
+            <mrow> \amp= \frac{1}{2} - \frac{2}{3} + \frac{1}{4} - \frac{1}{2} - \frac{2}{3} - \frac{1}{4} </mrow>
+            <mrow> \amp= -\frac{4}{3} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <note>
+      <title>What if I forgot the <m>\boldsymbol{dx}</m>... Is it a big deal? </title>
+      
+      <p>
+        Observe that the <m>dx</m> didn't contribute to the work at all... Is it okay to drop the <m>dx</m>? 
+      </p>
+
+      <p>
+        The short answer is no... Dropping the <m>dx</m> will make the answer <m>\pm\infty</m> (ish...). 
+      </p>
+
+      <p>
+        Remember the definite integral is defined using the limit of Riemann sum, where the <m>dx</m> is the infinitesimally small width of the rectangles. 
+        Without multiplying the <m>dx</m> with the function value (aka the height of the rectangle), we don't get the area of the rectangles out of it. 
+        We would be just adding up infinite number of function values together, resulting in <m>\pm \infty</m>. 
+      </p>
+
+      <p>
+        Make sure you have the <m>dx</m> in all the definite integrals to make sure you are indeed finding the area under the curve, rather than simply adding all the functions values together. 
+      </p>
+    </note>
+
+    <p>
+      Now that we have an idea on how to evaluate definite integrals with the integrand being a single-piece functions. 
+      What about evaluating definite integrals with the integrand being a piecewise function? 
+      Let's try two of them! 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_{-2}^3 f(x)\, dx</m>, where
+        <me>
+          f(x) = 
+          \begin{cases}
+            12 - x^2 &amp; \text{when } x \leq 2 \\
+            x^3 &amp; \text{when } x &gt; 2
+          \end{cases}
+        </me>
+      </p>
+
+      <hint>
+        <p>
+          Observe that we have a different function formulas before <m>x</m> hits <m>2</m> and after <m>x</m> hits <m>2</m>. 
+          So we don't know which formula to use to represent the function on the entire interval of <m>[-2,3]</m>. 
+        </p>
+
+        <p>
+          It would be so nice if we could split up the region at this transition point of <m>x = 2</m> so we can use the first formula on <m>[-2,2]</m> and the second formula on <m>(2,3]</m>... 
+          Is there a property of definite integral that will allow us to split up the definite integral? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          One of the properties of definite integral <xref ref="thm-Property_DefiniteIntegral"/> allows us to split up the definite integrals at <m>x = 2</m> as follows: 
+          <me>
+            \int_{-2}^3 f(x)\, dx = \int_{-2}^2 f(x)\, dx + \int_2^3 f(x)\, dx 
+          </me>
+          Ha! We know that <m>f(x) = 12-x^2</m> on the interval <m>[-2,2]</m> and <m>f(x) = x^3</m> on the interval <m>(2,3]</m>! 
+          Then we can plug in the corresponding function formulas and let FTC to do the rest of the work! 
+          <md>
+            <mrow> \int_{-2}^3 f(x)\, dx \amp= \int_{-2}^2 f(x)\, dx + \int_2^3 f(x)\, dx </mrow>
+            <mrow> \amp= \int_{-2}^2 \left(12 - x^2\right) \, dx + \int_2^3 x^3\, dx </mrow>
+            <mrow> \amp= \left[12x - \frac{x^3}{3}\right]_{-2}^2 + \frac{x^4}{4}\bigg|_2^3 </mrow>
+            <mrow> \amp= \left(12(2) - \frac{2^3}{3}\right) - \left(12(-2) - \frac{(-2)^3}{3}\right) + \frac{3^4}{4} - \frac{2^4}{4} </mrow>
+            <mrow> \amp= \frac{64}{3} - \left(-\frac{64}{3}\right) + \frac{81}{4} - 4 </mrow>
+            <mrow> \amp= \frac{707}{12} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^\frac{3\pi}{2} \left|\sin(x)\right|\, dx </m>
+      </p>
+
+      <hint>
+        <p>
+          What makes this problem difficult is the absolute value... 
+          We don't have any integral formula to help us find the antiderivative of the absolute value function. 
+        </p>
+        
+        <p>
+          It would be so nice if there is a way to remove the absolute value... 
+        </p>
+
+        <p>
+          There is actually a way to do so! Remember absolute value function is essentially a piecewise function as follows: 
+          <me>
+            |x| = 
+            \begin{cases}
+              x &amp; \text{when } x \geq 0 \\
+              -x &amp; \text{when } x &lt; 0
+            \end{cases}
+          </me>
+          In other words, the absolute value turns all the negative values to positive. 
+        </p>
+
+        <p>
+          So do we know where, within <m>[0,\frac{3\pi}{2}]</m>, the sine function takes on negative value? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Recall that the value of the sine function is positive on <m>(0,\pi)</m> and negative on <m>\left(\pi,\frac{3\pi}{2}\right)</m> 
+          (if this fact doesn't click instantly, graphing out the sine function on <m>\left[0,\frac{3\pi}{2}\right]</m> and observe the graph). 
+          Then we can remove the absolute value by rewriting the integrand as a piecewise function as follows: 
+          <me>
+            \left|\sin(x)\right| = 
+            \begin{cases}
+              \sin(x) &amp; \text{when }  0 \leq x \leq \pi \\
+              -\sin(x) &amp; \text{when } \pi &lt; x &lt; \frac{3\pi}{2}
+            \end{cases}
+          </me>
+          Then we can split up the integral at this transition point of <m>x = \pi</m> and plug in the corresponding function formulas. 
+          The FTC will do the rest! 
+          <md>
+            <mrow> \int_0^\frac{3\pi}{2} \left|\sin(x)\right|\, dx \amp= \int_0^\pi \left|\sin(x)\right|\, dx + \int_\pi^\frac{3\pi}{2} \left|\sin(x)\right|\, dx</mrow>
+            <mrow> \amp= \int_0^\pi \sin(x)\, dx + \int_\pi^\frac{3\pi}{2} -\sin(x)\, dx </mrow>
+            <mrow> \amp= -\cos(x)\bigg|_0^\pi + \cos(x)\bigg|_\pi^\frac{3\pi}{2} </mrow>
+            <mrow> \amp= -\cos(\pi) - \left(-\cos(0)\right) + \cos\left(\frac{3\pi}{2}\right) - \cos(\pi) </mrow>
+            <mrow> \amp= 1 + 1 + 0 + 1 </mrow>
+            <mrow> \amp= 3 </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Again, make sure you are comfortable with evaluating definite integrals in this way. 
+      We will be developing more and more fancy methods to evaluate definite integrals using FTC. 
+      A good basic understanding and fluency in this way will make the later sections easier! 
+    </p>
+
+    <p>
+      There is a saying "practice makes perfect". 
+      A good way of practicing the FTC is to go back to all the examples we did and see if you can solve them without looking at my solution. 
+      I will also include some practice problems at the end you can work on. 
+    </p>
+
+  </subsection>
+
+  <subsection>
+    <title>Something to ponder on... </title>
+    
+    <p>
+      Notice that the FTC, part I, has an assumption that says <m>f</m> is <alert>continuous</alert> on some <alert>closed</alert> interval <m>[a,b]</m>. 
+      Later in the class (likely towards the end of chapter 7), Richard will make a BIG deal of this assumption (so he is cool if you don't pay attention to it now). 
+      But why is this assumption necessary? 
+    </p>
+
+    <p>
+      To give you an actual problem to think about, is it correct to evaluate the integral as follows? 
+      <me>
+        \int_{-1}^3 \frac{1}{x^2}\, dx = -\frac{1}{x}\bigg|_{-1}^3 = \left(-\frac{1}{3}\right) - \left(-\frac{1}{-1}\right) = -\frac{4}{3}
+      </me>
+      We will revisit this problem in section 7.7 and point out what's wrong with this line of work. 
+    </p>
+
+  </subsection>
+
+  <worksheet xml:id="ws-sec54">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following definite integrals using the FTC. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^9 2\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_4^1 t^\frac{5}{2}\, dt</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_1^4 \left(\frac{5t^2 + 4}{3t}\right)\, dt</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_1^{27} \frac{t + 1}{\sqrt{t}}\, dt</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_2^6 \left(x + \frac{1}{x}\right)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^{-1} \left(2x - e^x\right)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle\int_2^3 e^{4x}\, dx </m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^\frac{\pi}{6} \sec(\theta)\tan(\theta)\, d\theta</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercise>
+      <statement>
+        <p>
+          Evaluate the definite integral <m>\displaystyle \int_0^{2\pi} f(x)\, dx</m> where
+          <me>
+            f(x) = 
+            \begin{cases}
+              \sin(x) &amp; \text{when } x \leq \pi \\
+              -2\sin(x) &amp; \text{when } x &gt; \pi
+            \end{cases}
+          </me>
+          
+        </p>
+      </statement>
+    </exercise>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Rewrite the definite integral as a sum of integrals without the absolute value and evaluate it. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^3 \left|x^2 - 1\right|\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^\pi \left|\cos(x)\right|\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+    
+  </worksheet>
+
+</section>

@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec52-DefiniteIntegral" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Definite Integral</title>
+
+  <introduction>
+    <p>
+      In this section, we will formalize the three approximation methods and investigate a new concept called <term>definite integral</term>. 
+      We will explore some basic properties of definite integrals. 
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            understand the concept of Riemann sum, including the construction of rectangles using the given partition and sample points. 
+          </p>
+        </li>
+        <li>
+          <p>
+            understand the concept of definite integrals, including each component of it and its meaning. 
+          </p>
+        </li>
+        <li>
+          <p>
+            evaluate basic definite integrals using either geometry or basic formulas. 
+          </p>
+        </li>
+        <li>
+          <p>
+            apply linearity and basic properties to break apart and evaluate definite integral. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+    
+  </introduction>
+
+  <investigation>
+    <introduction>
+      <p>
+        Recall the big goal in <xref ref="sec51-ApproximatingArea"/> is to compute the area under the curve. 
+        Let's see if we can come up with some basic formulas we can use directly. 
+      </p>
+
+      <p>
+        Let <m>a</m> and <m>b</m> be positive real numbers such that <m>a &lt; b</m>. 
+        Find the area of the following function over the indicated interval. 
+      </p>
+    </introduction>
+
+    <task>
+      <p>
+        <m>f(x) = K</m> over <m>[a,b]</m> for any positive real number <m>K</m>. 
+      </p>
+
+      <hint>
+        <p>
+          Graph it out! Label the region of interest! What shape is it? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest. 
+        </p>
+
+        <figure>
+          <caption>The graph of <m>y = K</m> with the region under the curve on <m>[a,b]</m> shaded.</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xmin=0, xmax=4.5,
+                  ymin=0, ymax=3.5,
+                  xtick={1,4},
+                  xticklabels={$a$,$b$},
+                  ytick={2},
+                  yticklabels={$K$},
+                  samples=200
+                ]
+                  % --- Shaded region
+                  \addplot [
+                    domain=1:4,
+                    samples=2,
+                    fill=green!30,
+                    draw=none
+                  ] {2} \closedcycle;
+
+                  % --- Function line
+                  \addplot [thick, blue] {2};
+
+                  % --- Dashed boundaries at x=a and x=b
+                  \addplot[dashed] coordinates {(1,0) (1,2)};
+                  \addplot[dashed] coordinates {(4,0) (4,2)};
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the region is a <alert>rectangle</alert> with the width of <m>b - a</m> and height of <m>K</m>. 
+          Hence, the area under the curve is 
+          <me>
+            \text{Area} = K(b - a)
+          </me>
+        </p>
+      </solution>
+    </task>
+
+    <task>
+      <p>
+        <m>g(x) = x</m> over <m>[0,b]</m>
+      </p>
+
+      <hint>
+        <p>
+          Graph it out! Label the region of interest! What shape is it? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest. 
+        </p>
+
+        <figure>
+          <caption>The graph of <m>y = x</m> with the region under the curve on <m>[0,b]</m> shaded.</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xmin=0, xmax=4.5,
+                  ymin=0, ymax=4.5,
+                  xtick={4},
+                  xticklabels={$b$},
+                  ytick={4},
+                  yticklabels={$b$},
+                  samples=200
+                ]
+                  % --- Shaded region: triangle under y=x from 0 to b
+                  \addplot[fill=green!30, draw=none] coordinates {(0,0) (4,0) (4,4)} -- cycle;
+
+                  % --- Function line
+                  \addplot[thick, blue, domain=0:4] {x};
+
+                  % --- Dashed vertical at x=b
+                  \addplot[dashed] coordinates {(4,0) (4,4)};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the region is a <alert>triangle</alert> with the width of <m>b</m> and height of <m>b</m>. 
+          Hence, the area under the curve is 
+          <me>
+            \text{Area} = \frac{1}{2}\cdot b\cdot b = \frac{b^2}{2}
+          </me>
+        </p>
+      </solution>
+    </task>
+
+    <task>
+      <p>
+        <m>h(x) = x^2</m> over <m>[0,b]</m>
+      </p>
+
+       <hint>
+        <p>
+          Graph it out! Label the region of interest! What shape is it? 
+        </p>
+
+        <p>
+          <alert>P.S.:</alert> It is fine if we can't match the shape up with a known geometric shape. 
+          Richard actually solved this problem in the previous section with some fancy symbol-pushing algebra. 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest. 
+        </p>
+
+        <figure>
+          <caption>The graph of <m>y = x^2</m> with the region under the curve on <m>[0,b]</m> shaded.</caption>
+          <image width="55%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xmin=0, xmax=2.5,
+                  ymin=0, ymax=5,
+                  xtick={2},
+                  xticklabels={$b$},
+                  ytick={4},
+                  yticklabels={$b^2$},
+                  samples=200
+                ]
+                  % --- Shaded region under y = x^2 on [0,b]
+                  \addplot[fill=green!30, draw=none, domain=0:2, samples=50] {x^2} 
+                    -- (axis cs:2,0) -- (axis cs:0,0) -- cycle;
+
+                  % --- Function line
+                  \addplot[thick, blue, domain=0:2] {x^2};
+
+                  % --- Dashed vertical at x=b
+                  \addplot[dashed] coordinates {(2,0) (2,4)};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the highlighted region isn't a known geometric shape with an area formula. 
+          So we can't find the area geometrically... 
+        </p>
+
+        <p>
+          Richard worked out the problem using <m>\displaystyle \lim_{N\to\infty} R_N</m> in the previous section. 
+        </p>
+
+        <p>
+          Feel free to expand <xref ref="exp-Riemann_Square"/> to see what the answer is. 
+        </p>
+      </solution>
+    </task>
+  </investigation>
+
+  <subsection xml:id="subsec-521-RiemannSum">
+    <title>Riemann Sum and Definite Integral</title>
+
+    <p>
+      Recall the approximation methods we learned in <xref ref="sec51-ApproximatingArea"/>: we partitioned some closed interval on the <m>x</m>-axis to equal parts and construct rectangles on them. 
+      This is a special case of the <term>Riemann Sum</term>. 
+    </p>
+
+    <p>
+      Riemann sum is a more relaxing (and generalized) version of the three approximation methods we learned. 
+      We don't require equal width of the rectangles and we don't have to pick the same point on each interval to compute the height. 
+    </p>
+
+    <p>
+      To specify a Riemann sum, we choose a <em>partition</em> and a set of <em>sample points</em>: 
+      <ul>
+        <li>
+          <p>
+            <alert>Partition</alert> <m>P</m> of size <m>N</m>: a choice of points that divides <m>[a,b]</m> into <m>N</m> subintervals (not necessarily of equal width). 
+            <me>
+              P: a = x_0 &lt; x_1 &lt; x_2 &lt; \cdots &lt; x_N = b
+            </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            <alert>Sample points</alert> <m>C = \left\{c_1, c_2, \ldots, c_N\right\}</m>: <m>c_i</m> belongs to the subinterval <m>\left[x_{i-1}, x_i\right]</m> for all <m>i = 1, \ldots, N</m> (and could be <em>
+            any</em> point in the subinterval). 
+          </p>
+        </li>
+      </ul>
+      The lenth of the <m>i</m>th subinterval is <m>\Delta x_i = x_i - x_{i-1}</m>. 
+      The <alert>Riemann sum</alert> in the <em>sum</em> of the <m>f\left(c_i\right)\Delta x_i</m> terms that are determined by <m>P</m> and <m>C</m>. 
+      This is denoted by 
+      <me>
+        R(f,P,C) = \sum_{i = 1}^N f\left(c_i\right)\Delta x_i
+      </me>
+    </p>
+
+    <figure xml:id="Construction_RiemannSum">
+      <caption>Construction of <m>R(f,P,C)</m></caption>
+      <interactive iframe="pdfs/Construction_Riemann_Sum.pdf" width="120%" aspect="16:4.2" />
+    </figure>
+
+    <example>
+      <p>
+        Find the Riemann sum <m>R(f,P,C)</m> for the function <m>f(x) = x^2 + x</m>, the partition 
+        <me>
+          P = \left\{0,1,2.5,3.2,5\right\}
+        </me>
+        and the choice of sample points 
+        <me>
+          C = \left\{0.5,2,3,4.5\right\}
+        </me>
+      </p>
+
+      <hint>
+        <p>
+          Let's graph the function first. The label each subinterval and locate the sample point in each of them. 
+          Based on this, you should be able to construct <em>four</em> rectangles. 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Below is the diagram of the <em>four</em> rectangles: 
+        </p>
+
+        <figure>
+          <caption>Construction of <m>R(f,P,C)</m> for <m>f(x)=x^2+x</m>, with <m>P=\{0,1,2.5,3.2,5\}</m> and <m>C=\{0.5,2,3,4.5\}</m>.</caption>
+          <image width="70%">
+            <latex-image>
+              \begin{tikzpicture}[x=1.2cm,y=0.18cm, font=\scriptsize]
+                % Axes
+                \draw[->] (-0.3,0) -- (5.4,0);
+                \draw[->] (0,-0.5) -- (0,31); % up to slightly above f(5)=30
+
+                % Heights f(c_i)
+                \def\hA{0.75}   % f(0.5) = 0.25 + 0.5
+                \def\hB{6}      % f(2)   = 4 + 2
+                \def\hC{12}     % f(3)   = 9 + 3
+                \def\hD{24.75}  % f(4.5) = 20.25 + 4.5
+
+                % Rectangles (green)
+                \definecolor{rectfill}{RGB}{180,220,180}
+                \draw[fill=rectfill, draw=green!50!black] (0,0) -- (0,\hA) -- (1,\hA) -- (1,0) -- cycle;
+                \draw[fill=rectfill, draw=green!50!black] (1,0) -- (1,\hB) -- (2.5,\hB) -- (2.5,0) -- cycle;
+                \draw[fill=rectfill, draw=green!50!black] (2.5,0) -- (2.5,\hC) -- (3.2,\hC) -- (3.2,0) -- cycle;
+                \draw[fill=rectfill, draw=green!50!black] (3.2,0) -- (3.2,\hD) -- (5,\hD) -- (5,0) -- cycle;
+
+                % Dashed partition lines up to rectangle tops
+                \foreach \xx/\hh in {0/\hA,1/\hB,2.5/\hC,3.2/\hD,5/\hD}{
+                  \draw[dashed] (\xx,0) -- (\xx,\hh);
+                }
+
+                % Labels for partition points
+                \node[below] at (0,-0.2) {$0$};
+                \node[below] at (1,-0.2) {$1$};
+                \node[below] at (2.5,-0.2) {$2.5$};
+                \node[below] at (3.2,-0.2) {$3.2$};
+                \node[below] at (5,-0.2) {$5$};
+
+                % Sample point markers and labels on x-axis
+                \foreach \c in {0.5,2,3,4.5} \fill[red] (\c,0) circle (1.2pt);
+                \node[below] at (0.5,-1) {$c_1$};
+                \node[below] at (2,-1)   {$c_2$};
+                \node[below] at (3,-1)   {$c_3$};
+                \node[below] at (4.5,-1) {$c_4$};
+
+                % Curve (blue) drawn last so it’s in front
+                \draw[very thick, blue, domain=0:5, smooth, variable=\x]
+                  plot (\x, {\x*\x + \x});
+
+                % Intersection dots (c_i, f(c_i)) and dotted drops to c_i on x-axis
+                \fill[red] (0.5,\hA) circle (1.6pt);
+                \draw[dashed,red] (0.5,0) -- (0.5,\hA);
+
+                \fill[red] (2,\hB) circle (1.6pt);
+                \draw[dashed,red] (2,0) -- (2,\hB);
+
+                \fill[red] (3,\hC) circle (1.6pt);
+                \draw[dashed,red] (3,0) -- (3,\hC);
+
+                \fill[red] (4.5,\hD) circle (1.6pt);
+                \draw[dashed,red] (4.5,0) -- (4.5,\hD);
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          From the diagram, we can determine the area of each rectangles. 
+          <ul>
+            <li>
+              <p>
+                <alert>1st rectangle</alert>: the width is <m>1 - 0 = 1</m> and the height is <m>f(0.5) = 0.75</m>. 
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>2nd rectangle</alert>: the width is <m>2.5 - 1 = 1.5</m> and the height is <m>f(2) = 6</m>. 
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>3rd rectangle</alert>: the width is <m>3.2 - 2.5 = 0.7</m> and the height is <m>f(3) = 12</m>. 
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>4th rectangle</alert>: the width is <m>5 - 3.2 = 1.8</m> and the height is <m>f(4.5) = 24.75</m>. 
+              </p>
+            </li>
+          </ul>
+          Hence, the Riemann sum is
+          <md>
+            <mrow>R(f,P,C) \amp= 1\cdot 0.75 + 1.5\cdot 6 + 0.7\cdot 12 + 1.8\cdot 24.75 </mrow>
+            <mrow> \amp= 0.75 + 9 + 8.4 + 44.55 </mrow>
+            <mrow> \amp= 62.7 </mrow>
+          </md>
+        </p>
+
+        <p>
+          The Riemann sum of <m>62.7</m> is an approximation of the area under the curve. 
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      As discussed in <xref ref="sec51-ApproximatingArea"/>, the more rectangles we use to approximate the area under the curve, the more accurate our approximation is. 
+      Similarly, with smaller and smaller of each of the width of the rectangle (which forces us to use more and more rectangles to approximate the area), the more accurate the area is. 
+    </p>
+
+    <p>
+      The difference here is that the width are not necessarily equal. 
+      To make sure each rectangle has really really really small width, we want to make sure the <em>maximum</em> width, denoted as <m>||P||</m>, is very very very small. 
+      Then we can say that the area under the curve is 
+      <me>
+        \text{Area} = \lim_{||P||\to 0} R(f,P,C) = \lim_{||P||\to 0} \sum_{i = 1}^N f\left(c_i\right)\Delta x_i
+      </me>
+    </p>
+
+    <p>
+      As mentioned, again in <xref ref="sec51-ApproximatingArea"/>, it is impossible to find the area of <em>infinite</em> rectangle strips. 
+      But you know how to find the area of an <em>arbitrary</em> rectangle strip. 
+      This is called a <em>representative rectangle</em>. 
+    </p>
+    
+    <figure>
+      <caption>Representative Rectangle with width of <m>\Delta x</m> and the height of <m>f(x)</m>.</caption>
+      <image width="65%">
+        <latex-image>
+          \begin{tikzpicture}[x=1.1cm,y=1.0cm, font=\scriptsize]
+            % Axes
+            \draw[->] (-0.2,0) -- (6.4,0);
+            \draw[->] (0,-0.2) -- (0,3.4);
+
+            % Parameters for the skinny rectangle centered at c
+            \def\c{3}          % x-location of the center point
+            \def\yC{2.1}       % curve height at x=c (matches coordinate above)
+            \def\w{0.35}       % total rectangle width (skinny)
+
+            % Skinny rectangle under the point (green)
+            \draw[fill=green!30, draw=green!50!black]
+              (\c-\w/2,0) rectangle (\c+\w/2,\yC);
+
+            % Optional guides at rectangle edges
+            \draw[dashed] (\c-\w/2,0) -- (\c-\w/2,\yC);
+            \draw[dashed] (\c+\w/2,0) -- (\c+\w/2,\yC);
+
+            % Point on the curve and vertical drop
+            \fill[red] (\c,\yC) circle (1.6pt);
+            \draw[red,dashed] (\c,0) -- (\c,\yC);
+
+            % Optional label for c
+            \node[below] at (\c,-0.08) {$x$};
+
+            % Smooth curve (choose any shape you like)
+            \draw[very thick, blue]
+              plot[smooth] coordinates {(0,0.8) (1,1.5) (2,2.1) (3,2.1) (4,1.6) (5,2.0) (6,2.8)};
+
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </figure>
+
+    <p>
+      Imagine each representative rectangle will have the width <m>\Delta x \to 0</m>. 
+      Then the area under the curve will <em>equal</em> to the sum of the area of all representative rectangles. 
+      Mathematically speaking, we call it the <term>definite integral</term>. 
+    </p>
+
+    <theorem xml:id="thm-DefiniteIntegral">
+      <title>Definite Integral</title>
+      <statement>
+        <p>
+          The definite integral of <m>f</m> over <m>[a,b]</m>, denoted by the integral sign, is the limit of the Riemann sum
+          <me>
+            \int_a^b f(x)\, dx = \lim_{||P||\to 0} R(f,P,C) = \lim_{||P||\to 0} \sum_{i = 1}^N f\left(c_i\right)\Delta x_i
+          </me>
+          When the limit exists, we say that <m>f</m> is <term>integrable</term> over <m>[a,b]</m>. 
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+      To break down each component, 
+      <ul>
+        <li>
+          <p>
+            the integral sign, <m>\int</m>, means summation (a cursive S).  
+          </p>
+        </li>
+        <li>
+          <p>
+            the <m>f(x)</m> is the function value at some random point <m>x</m>, which works like the height of the representative rectangle. 
+            This is also called the <term>integrand</term>. 
+          </p>
+        </li>
+        <li>
+          <p>
+            the <m>dx</m> is the width of the representative rectangle (<m>dx</m> means <m>\Delta x</m> when the change is really really really small). 
+            This is also called the <term>differential</term>. 
+          </p>
+        </li>
+        <li>
+          <p>
+            the <m>a</m> and the <m>b</m> tells us about the interval. They are called the <term>limits of integration</term>. 
+            <m>a</m> is the <term>lower limit</term> and <m>b</m> is the <term>upper limit</term>. 
+          </p>
+        </li>
+      </ul>
+      Unlike in MTH 251 where I made a big deal on the concept of <em>differentiability</em>, I will not ask you any question on whether or not a function is <em>integrable</em>. 
+      This is an analysis concept. 
+      For the purpose of this class, just remember that <m>f</m> is integrable over <m>[a,b]</m> if <m>f</m> is <alert>continuous</alert> on a <alert>closed</alert> interval <m>[a,b]</m>.   
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-522-SignedArea">
+    <title>Definite Integral and Signed Area</title>
+
+    <p>
+      Now we will investigate the relationship between the area and the definite integral. 
+    </p>
+
+    <example>
+      <p>
+        Find the value of <m>\displaystyle \int_1^3 2\, dx</m>. 
+      </p>
+
+      <hint>
+        <p>
+          The integrand is <m>f(x) = 2</m> and the interval we care about here is <m>[1,3]</m>. 
+          Recall we defined the definite integrals using Riemann sum, which is a method to approximate the <em>area</em> under the curve. 
+        </p>
+          
+        <p>
+          To help you visualize the problem, I graphed the function and labeled the interval for you. 
+          What does the definite integral represent in this graph? 
+        </p>
+
+        <figure>
+          <caption>The graph of <m>f(x) = 2</m>.</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xmin=0, xmax=3.5,
+                  ymin=0, ymax=2.5,
+                  xtick={0,1,2,3},
+                  ytick={0,1,2,3},
+                  samples=200
+                ]
+
+                  % --- Function line y=2
+                  \addplot[ultra thick, blue, domain=0:3.5] {2};
+
+                  % --- Optional dashed boundaries
+                  \addplot[dashed] coordinates {(1,0) (1,2)};
+                  \addplot[dashed] coordinates {(3,0) (3,2)};
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+      </hint>
+
+      <solution>
+        <p>
+          Remember the definite integral is the limit of the Riemann sum, where we obtain the area of the rectangles by multiplying the width by some function values that acts as the height. 
+        </p>
+
+        <p>
+          You can imagine that the height of <em>any</em> representative rectangle is <m>2</m>. 
+        </p>
+
+        <p>
+          The combined width of all rectangles is <m>3 - 1 = 2</m>. 
+        </p>
+
+        <p>
+          Hence, <m>\displaystyle \int_1^3 2\, dx = 2\cdot(3 - 1) = 2\cdot 2 = 4</m>
+        </p>
+
+        <p>
+          You can see that the definite integral represents the area of the enclosed region (how surprising... ). 
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Find the value of <m>\displaystyle \int_1^3 -2\, dx</m>. 
+      </p>
+
+      <hint>
+        <p>
+          The integrand is <m>g(x) = -2</m> and the interval we care about here is <m>[1,3]</m>. 
+          Recall we defined the definite integrals using Riemann sum, which is a method to approximate the <em>area</em> under the curve. 
+        </p>
+          
+        <p>
+          To help you visualize the problem, I graphed the function and labeled the interval for you. 
+          What does the definite integral represent in this graph? 
+        </p>
+
+        <figure>
+          <caption>The graph of <m>g(x) = -2</m></caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xmin=0, xmax=3.5,
+                  ymin=-3, ymax=0.5,
+                  xtick={0,1,2,3},
+                  ytick={-2,-1,0,1},
+                  samples=200
+                ]
+
+                  % --- Function line y = -2
+                  \addplot[ultra thick, blue, domain=0:3.5] {-2};
+
+                  % --- Optional dashed boundaries at x=1 and x=3
+                  \addplot[dashed] coordinates {(1,-2) (1,0)};
+                  \addplot[dashed] coordinates {(3,-2) (3,0)};
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+      </hint>
+
+      <solution>
+        <p>
+          Remember the definite integral is the limit of the Riemann sum, where we obtain the area of the rectangles by multiplying the width by some function values that acts as the height. 
+        </p>
+
+        <p>
+          But the issue here is that the function value is <m>-2</m>... This can't be the height (since height, geometrically speaking, cannot be negative). 
+        </p>
+
+        <p>
+          This is a place in math that we have to follow the definition if a conflict arise. 
+          Since the definition of the definite integral emphasizes the function value, we will need to use <m>-2</m> in our computation. 
+        </p>
+
+        <p>
+          Similarly, the width of all rectangles is <m>3 - 1 = 2</m>. 
+        </p>
+
+        <p>
+          Hence, <m>\displaystyle \int_1^3 -2\cdot (3 -1) = -2 \cdot 2 = -4</m>
+        </p>
+
+        <p>
+          Hmm... <m>-4</m> can't be the area of the enclosed region. 
+          This is what we called the <alert>signed area</alert> (it kind of look like the area of the enclosed region but this is negative). 
+        </p>
+      </solution>
+    </example>
+
+    <definition xml:id="def-SignedArea">
+      <title>Signed Area</title>
+      <statement>
+        <p>
+          The <alert>signed area</alert> is the area above the <m>x</m>-axis <em>minus</em> the area below the <m>x</m>-axis. 
+          That is, we treat the area above the <m>x</m>-axis as positive area and the area below the <m>x</m>-axis as negative area. 
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      It turns out that the definite integral <m> \int_a^b f(x)\, dx</m> computes the <alert>signed area</alert> of the region between the graph of <m>f</m> and the <m>x</m>-axis over the interval <m>[a,b]</m>. 
+    </p>
+
+    <example>
+      <p>
+        Find the value of <m>\displaystyle \int_0^{12} f(x)\, dx</m>, where the graph of <m>y = f(x)</m> is shown below: 
+      </p>
+
+      <figure>
+        <caption>The graph of <m>y = f(x)</m></caption>
+        <image width="65%">
+          <latex-image>
+            \begin{tikzpicture}
+              \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-0.5, xmax=12.5,
+                ymin=-3.5, ymax=5.5,
+                xtick={0,2,4,6,8,10,12},
+                minor xtick={1,3,5,7,9,11},
+                ytick={-3,-2,...,5},
+                samples=200
+              ]
+                % Segment 1: sqrt(2x - x^2) on [0,2]
+                \addplot[thick, blue, domain=0:2] {sqrt(2*x - x^2)};
+
+                % Segment 2: |x-4| - 2 on [2,6]
+                \addplot[thick, blue, domain=2:6] {abs(x - 4) - 2};
+
+                % Segment 3: sqrt(-72 + 18x - x^2) on [6,12]
+                \addplot[thick, blue, domain=0:180, samples=200] ({9 + 3*cos(x)}, {3*sin(x)});
+
+                % Endpoints (optional dots)
+                \addplot[only marks, mark=*, mark size=1.2pt,blue] coordinates {(0,0) (2,0) (6,0) (12,0)};
+              \end{axis}
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </figure>
+
+      <hint>
+        <p>
+          Observe that the region has three parts, two semi-circles and a triangle. 
+        </p>
+
+        <p>
+          Do we know how to find their respective <alert>signed area</alert>? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          The first semi-circle occurs in the interval <m>[0,2]</m>. 
+          Since the region is above the <m>x</m>-axis, the integral equals to the area. 
+          <me>
+            \int_0^2 f(x)\, dx = \frac{1}{2}\pi(1)^2 = \frac{\pi}{2}
+          </me>
+        </p>
+
+        <p>
+          Next, there is a triangle in the interval <m>[2,6]</m>. 
+          Observe that this region is <em>below</em> the <m>x</m>-axis, the integral equals to the negative of the area. 
+          <me>
+            \int_2^6 f(x) = -\frac{1}{2}\cdot 4\cdot 2 = -4
+          </me>
+          <em>Alternatively</em>, you can see that the "height" of the triangle, using the function value, is <m>-2</m>. 
+        </p>
+
+        <p>
+          The last region is another semi-circle in the interval <m>[6,12]</m>. 
+          This region is above the <m>x</m>-axis so the integral equals to its area. 
+          <me>
+            \int_6^{12} f(x)\, dx = \frac{1}{2}\pi (3)^2 = \frac{9\pi}{2}
+          </me>
+        </p>
+
+        <p>
+          Putting all these three pieces together, we obtain
+          <me>
+            \int_0^{12} f(x)\, dx = \frac{\pi}{2} - 4 + \frac{9\pi}{2} \approx 11.7079632679
+          </me>
+          
+        </p>
+      </solution>
+    </example>
+
+  </subsection>
+
+  <subsection xml:id="subsec-523-Properties_DefiniteIntegral">
+    <title>Properties of Definite Integral</title>
+
+    <p>
+      There are various properties of definite integrals. 
+      I will put these properties down and let's see if you can make sense of them. 
+      Feel free to use them as you see fit. 
+    </p>
+
+    <theorem xml:id="thm-Property_DefiniteIntegral">
+      <title>Properties of Definite Integrals</title>
+      <statement>
+        <p>
+          Let <m>f</m> and <m>g</m> be integrable over <m>[a,b]</m> and <m>c</m> is within <m>[a,b]</m>. 
+          Then the following properties hold: 
+          <ul>
+            <li>
+              <p>
+                <alert>Sum Rule</alert> <m>\qquad \displaystyle \int_a^b \big(f(x) + g(x)\big)\, dx = \int_a^b f(x)\, dx + \int_a^b g(x)\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Constant Multiple Rule</alert> <m>\qquad \displaystyle \int_a^b C\cdot f(x)\, dx = C\int_a^b f(x)\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Zero Length Rule</alert> <m>\qquad \displaystyle \int_a^a f(x)\, dx = 0</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Additivity for Adjacent Intervals</alert> <m>\qquad \displaystyle \int_a^b f(x) \, dx = \int_a^c f(x)\, dx + \int_c^b f(x)\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Reversing the Limits of Integration</alert> <m>\qquad \displaystyle \int_a^b f(x)\, dx = -\int_b^a f(x)\, dx</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+      We called the <em>sum rule</em> and the <em>constant multiple rule</em> combined as the <alert>linearity</alert> of definite integral. 
+    </p>
+
+    <p>
+      Furthermore, we can summarize three more formulas to help us <em>evaluate</em> definite integral from the investigation tasks in the beginning of this section. 
+      <ul>
+        <li>
+          <p>
+            <m>\displaystyle \int_a^b K\, dx = K(b - a)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int_0^b x\, dx = \frac{b^2}{2}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int_0^b x^2\, dx = \frac{b^3}{3}</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      With these formulas in our toolkit, we can actually evaluate some definite integrals <em>without relying on the graph</em>. 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^1 \left(2x^2 - x + 4\right)\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          Remember that we want to find the signed area of the function <m>f(x) = 2x^2 - x + 4</m> on the interval <m>[0,1]</m>. 
+          This will be difficult to solve it <em>geometrically</em> or using Riemann sum. 
+          One of the reasons is because the function is too complicated... 
+        </p>
+
+        <p>
+          So can we split up the definite integral into smaller pieces so we can tackle one piece at a time? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          <md>
+            <mrow> \int_0^1 \left(2x^2 - x + 4\right)\, dx \amp= 2\int_0^1 x^2\, dx - \int_0^1 x\, dx + \int_0^1 4\, dx \amp\amp\text{by linearity} </mrow>
+            <mrow> \amp= 2\cdot \frac{1^3}{3} - \frac{1^2}{2} + 4(1-0) </mrow>
+            <mrow> \amp= \frac{25}{6} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      We will develop a lot of formulas (and a big theorem) to help us evaluate definite integrals. 
+      Make sure you keep a list of formulas so you have all the formulas in one sheet you can look up. 
+    </p>
+    
+  </subsection>
+
+  <worksheet xml:id="ws-sec52">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          The graph of <m>y = f(x)</m> is shown below. Evaluate each integral using this graph. 
+          <figure>
+            <caption>The graph of <m>y = f(x)</m></caption>
+            <image width="70%">
+              <latex-image>
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    axis lines=middle,
+                    xlabel={$x$},
+                    ylabel={$y$},
+                    xmin=0, xmax=9.5,
+                    ymin=-3, ymax=4,
+                    xtick={0,2,4,6,8},
+                    ytick={-2,0,2,4},
+                    minor xtick={1,3,5,7,9},
+                    minor ytick={-3,-1,1,3},
+                    grid=both,
+                    width=10cm,
+                    height=6cm
+                  ]
+
+                    % plot the piecewise linear function
+                    \addplot[ultra thick, color=blue] coordinates {
+                      (0,1) (2,3) (3,3) (7,-2) (9,-1)
+                    };
+
+                    % label y = f(x)
+                    \node at (axis cs:4.5,3) {$y=f(x)$};
+
+                  \end{axis}
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+          </figure>
+
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^2 f(x)\, dx\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^5 f(x)\, dx\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_5^7 f(x)\, dx\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^9 f(x)\, dx\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercise>
+      <statement>
+        <p>
+          Find the Rieman sum <m>R(f,P,C)</m> for <m>f(x) = 2x + 3</m>, <m>P = \left\{-4, -1, 1, 4, 8\right\}</m>, and <m>C = \left\{-3, 0, 2, 5\right\}</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Evaluate the definite integral <m>\displaystyle \int_\pi^\pi \sin^2(x)\cos^4(x)\, dx</m>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Given that 
+          <me>
+            \int_0^1 f(x)\, dx = 1, \qquad \int_0^2 f(x)\, dx = 4, \qquad \int_1^4 f(x)\, dx = 7
+          </me>
+          evaluate the following definite integrals. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^4 f(x)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_1^2 f(x)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_4^1 f(x)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_2^4 f(x)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercise>
+      <statement>
+        <p>
+          Justify grapically, with pretty pictures and explanation that
+          <ol marker="(a)">
+            <li>
+              <p>
+                If <m>f</m> is a continuous <alert>odd</alert> function, then <m>\displaystyle \int_{-a}^a f(x)\, dx = 0</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>g</m> is a continuous <alert>even</alert> function, then <m>\displaystyle \int_{-a}^a g(x)\, dx = 2\int_0^a g(x)\, dx</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </worksheet>
+
+</section>

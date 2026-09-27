@@ -1,0 +1,1306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec53-IndefiniteIntegral" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Indefinite Integral</title>
+
+  <introduction>
+    <p>
+      In this section, you will learn a concept called "antiderivative". 
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            understand the concept of indefinite integral as the general antiderivative of a function. 
+          </p>
+        </li>
+        <li>
+          <p>
+            rewrite the derivative formulas from calculus 1 using indefinite integrals. 
+          </p>
+        </li>
+        <li>
+          <p>
+            evaluate indefinite integrals using algebraic manipulation and formulas. 
+          </p>
+        </li>
+        <li>
+          <p>
+            solve basic differential equations and IVP. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+    
+  </introduction>
+
+  <investigation>
+    
+    <introduction>
+      <p>
+        Recall we learned a lot of derivative formulas back in calculus 1. 
+      </p>
+
+    </introduction>
+
+    <task>
+      <statement>
+        <p>
+          Find the following derivatives with respect to <m>x</m>.
+          <md>
+            <mrow>\frac{d}{dx}(c)\amp= \amp \qquad \frac{d}{dx}(kx)\amp= \amp \qquad \frac{d}{dx}(x^n)\amp= \qquad\qquad </mrow>
+            <mrow>\frac{d}{dx}(\sin x)\amp= \amp \qquad \frac{d}{dx}(\cos x) \amp= \amp \qquad \frac{d}{dx}(\tan x)\amp= \qquad\qquad </mrow>
+            <mrow>\frac{d}{dx}(\cot x)\amp= \amp \qquad \frac{d}{dx}(\sec x) \amp= \amp \qquad \frac{d}{dx}(\csc x)\amp= \qquad\qquad </mrow>
+            <mrow>\frac{d}{dx}(e^x)\amp= \amp \qquad \frac{d}{dx}(e^{kx}) \amp= \amp \qquad \frac{d}{dx}(\ln x)\amp= \qquad\qquad </mrow>
+          </md>
+        </p>
+
+        <p>
+          <em>You should be able to find all these formulas in your calculus 1 notes. </em>
+        </p>
+      </statement>
+
+    </task>
+
+    <task>
+
+      <p>
+        What function will give a derivative of <m>\sin(x)</m>? 
+      </p>
+
+      <hint>
+        <p>
+          Recall a derivative formula in part (a) should say
+          <me>
+            \frac{d}{dx}\left(\cos(x)\right) = -\sin(x)
+          </me>
+          But the derivative of <m>\cos(x)</m> is <m>-\sin(x)</m>, not <m>\sin(x)</m>... 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          We can manipulate the derivative formula by multiplying a <m>-1</m> on both sides of the equation. 
+          <md>
+            <mrow>\frac{d}{dx}\left(\cos(x)\right) \amp= -\sin(x) </mrow>
+            <mrow> - \frac{d}{dx}\left(\cos(x)\right) \amp= \sin(x) \amp\amp \text{multiplying $-1$ on both sides} </mrow>
+            <mrow> \frac{d}{dx}\left(-\cos(x)\right) \amp= \sin(x) \amp\amp\text{by linearity}</mrow>
+          </md>
+          See that <m>-\cos(x)</m> will have a derivative of <m>\sin(x)</m>. 
+        </p>
+
+        <p>
+          <alert>But...</alert> Is this the only answer we can get? 
+        </p>
+      </solution>
+
+    </task>
+
+  </investigation>
+
+  <p>
+    We can consider <em>taking the derivative</em> as an operation we can perform on a function. 
+    A natural question to wonder is whether we can undo this operation 
+    (that is, we know the derivative of a function and we want to find the original function by undoing the derivative). 
+    We actually can and this is the main concept we will explore in this section. 
+  </p>
+
+  <subsection xml:id="subsec-531-AntiderivativesANDIndefiniteIntegrals">
+    <title>Antiderivatives and Indefinite Integrals</title>
+    
+    <p>
+      Let's define the term <alert>antiderivative</alert> first (it might be self-explanatory...). 
+    </p>
+
+    <definition xml:id="def-Antiderivatives">
+      <statement>
+        <p>
+          A function <m>F</m> is an <alert>antiderivative</alert> of <m>f</m> on an open interval <m>(a,b)</m> if <m>F'(x) = f(x)</m> for all <m>x</m> in <m>(a,b)</m>. 
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      In other words, antiderivative "undoes" derivative. 
+      Let <m>f</m> be a function and <m>F</m> be its antiderivative, then its relation is captured in the following diagram: 
+    </p>
+
+    <figure xml:id="fig-Derivative-to-Antiderivative" width="50%" align="center">
+    <caption>Relationship between Derivative and Anti-derivative.</caption>
+      <image width="60%">
+        <latex-image>
+          \begin{tikzpicture}[>=stealth, scale=1, every node/.style={font=\small}]
+            \def\R{2.6}
+
+            % ---------- tweakable vertical shifts ----------
+            \def\yBlue{0.4cm}   % shift for blue (integration) group
+            \def\yRed{1.5cm}    % shift for red (differentiation) group
+            \def\yFunc{0.2cm}   % shift for function group (y=f, y=F)
+            % ------------------------------------------------
+
+            % --------- Red group (differentiation) ----------
+            \begin{scope}[yshift=\yRed]
+              \draw[line width=1.6pt, red!80!black, ->]
+                ({\R*cos(340)},{\R*sin(340)}) arc (340:200:\R)
+                node[midway, sloped, below] {\small$\displaystyle \dfrac{d}{dx}(F(x))$};
+              % Differentiation heading (moves with red group)
+              \node[font=\normalsize] at (0,-1.55) {Take the Derivative};
+            \end{scope}
+
+            % --------- Function group (only y labels) ----------
+            \begin{scope}[yshift=\yFunc]
+              % place the function labels closer to the circular path
+              \node at (160:{\R*0.78}) [anchor=east] {$\;y=f(x)\;$};
+              \node at (20:{\R*0.78})  [anchor=west] {$\;y=F(x)\;$};
+            \end{scope}
+
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </figure>
+
+
+    <example>
+      
+      <p>
+        Find an antiderivative of the function <m>f(x) = e^{kx}</m>
+      </p>
+
+      <hint>
+        <p>
+          What we are tasked to find is a mystery function <m>y = F(x)</m> whose derivative is <m>f(x) = e^{kx}</m>. 
+          In other words, what is a function <m>y = F(x)</m> such that
+          <me>
+            F'(x) = e^{kx}
+          </me>
+          Well a derivative formula looks relevant to this problem, which is
+          <me>
+            \frac{d}{dx}\left(e^{kx}\right) = ke^{kx}
+          </me>
+          But the derivative of <m>e^{kx}</m> is <m>ke^{kx}</m>, not <m>e^{kx}</m>... 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          We can manipulate the derivative formula by dividing both sides of the equation by <m>k</m> to obtain <m>e^{kx}</m> on the right-hand side of the equation. 
+          <md>
+            <mrow> \frac{d}{dx}\left(e^{kx}\right) \amp ke^{kx}</mrow>
+            <mrow> \frac{1}{k}\cdot \frac{d}{dx}\left(e^{kx}\right) \amp e^{kx} </mrow>
+            <mrow> \frac{d}{dx}\left(\frac{1}{k}e^{kx}\right) \amp= e^{kx} </mrow>
+          </md>
+          See that <m>\dfrac{1}{k}e^{kx}</m> will have the derivative of <m>e^{kx}</m>. 
+        </p>
+
+        <p>
+          <alert>But... is this the only right answer we can get? </alert> 
+        </p>
+
+        <solution>
+          <p>
+            Not necessarily. 
+            Let's say someone in your class claimed that the answer should be 
+            <me>
+              F(x) = \frac{1}{k}e^{kx} + 5
+            </me>
+            Well we can verify that this is a right answer since
+            <me>
+              F'(x) = \frac{d}{dx}\left(\frac{1}{k}e^{kx} + 5\right) = e^{kx}
+            </me>
+          </p>
+
+          <p>
+            Later someone else in your class said that the answer should be
+            <me>
+              F(x) = \frac{1}{k}e^{kx} - 584
+            </me>
+            Technically this is also a right answer because 
+            <me>
+              F'(x) = \frac{d}{dx}\left(\frac{1}{k}e^{kx} - 584\right) = e^{kx}
+            </me>
+          </p>
+
+          <p>
+            It seems like there are more than one right answer to this problem. 
+            That is, there are more than one antiderivative of <m>f(x) = e^{kx}</m>... 
+          </p>
+        </solution>
+      </solution>
+      
+    </example>
+
+    <p>
+      Observe that the antiderivative of a function is NOT unique. 
+      We are free to change the constant term of the antiderivative and the function is still an antiderivative (because the derivative of a constant is zero, so changing the constant term of a function doesn't affect its derivative). 
+    </p>
+
+    <p>
+      Symbolically speaking, if <m>y = F(x)</m> is an antiderivative of <m>y = f(x)</m> (which means <m>F'(x) = f(x)</m>), then <m>y = F(x) + C</m> is also an antiderivative of <m>y = f(x)</m>. 
+      Let's make it a nice theorem. 
+    </p>
+
+    <theorem xml:id="thm-GeneralAntiderivative">
+      <statement>
+        <p>
+          Let <m>y = F(x)</m> be an antiderivative of <m>y = f(x)</m> on <m>(a,b)</m>. 
+          Then every antiderivative on <m>(a,b)</m> is of the form <m>y = F(x) + C</m> for some constant <m></m>. 
+        </p>
+
+        <p>
+          We call this <m>y = F(x) + C</m> the <em>general</em> antiderivative of <m>y = f(x)</m>. 
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+      What this theorem tells us is that <alert>all the antiderivatives of a function should only differ by a constant</alert>. 
+      If we can't determine what this constant is, then we will need to put a <m>+C</m> to suggest the existence of such a constant. 
+    </p>
+
+    <p>
+      The argument of this theorem relies on the fact that the derivative of a constant is <m>0</m> (so adding a constant to a function doesn't change its derivative). 
+      I also include a formal proof of this theorem below (formal as in the argument is more rigorous) if you wonder about how to prove this theorem. 
+    </p>
+
+    <proof>
+      <title>Proof of <xref ref="thm-GeneralAntiderivative"/></title>
+      
+      <p>
+        The whole idea of this argument relies on the fact that only constants will give the derivative of 0. 
+      </p>
+
+      <p>
+        To make the argument more rigorous, we will let <m>F</m> and <m>G</m> be some antiderivative of the same function <m>f</m>. 
+        That is, <m>F'(x) = f(x)</m> and <m>G'(x) = f(x)</m>. 
+      </p>
+
+      <p>
+        Since we care about the difference of them, let's define their difference to be <m>H</m> where <m>H(x) = F(x) - G(x)</m>. 
+      </p>
+
+      <p>
+        We can certainly take the derivative of <m>H</m>! By the linearity, we have
+        <md>
+          <mrow> H'(x) \amp = \big(F(x) - G(x)\big)' </mrow>
+          <mrow> \amp = F'(x) - G'(x) </mrow>
+          <mrow> \amp = f(x) - f(x) </mrow>
+          <mrow> \amp = 0 </mrow>
+        </md>
+        So we know the derivative of the difference is 0. 
+      </p>
+
+      <p>
+        What do we know about the type of function whose derivative is 0... Well from calculus 1, we know that (only) constant functions will have the derivative of 0. 
+        That is, <m>H(x) = C</m> for some random constant <m>C</m>. 
+      </p>
+
+      <p>
+        Putting everything together, we know that <m>F(x) - G(x) = C</m>, which implies that <m>F(x) = G(x) + C</m>. 
+      </p>
+      
+      <p>
+        Now you see where the <m>+ C</m> comes from! 
+      </p>
+    </proof>
+
+    <p>
+      Recall we have multiple notations back in calculus 1 to denote the concept of derivatives. 
+      Of course we will also need a notation to denote the concept of the (general) antiderivatives. 
+      We will be using <alert>indefinite integral</alert> to denote the general antiderivative of a function as follows: 
+    </p>
+
+    <definition xml:id="def-IndefiniteIntegrals">
+      <statement>
+        <p>
+          The notation 
+          <me>
+            \int f(x)\, dx = F(x) + C
+          </me>
+          means that <m>F'(x) = f(x)</m>. We say that <m>y = F(x) + C</m> is the general antiderivative or the <alert>indefinite integral</alert> of <m>y = f(x)</m>. 
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Now we can capture the relationship between derivatives and anti-derivatives using indefinite integrals. 
+    </p>
+
+    <figure xml:id="fig-Derivative-Antiderivative-cycle" width="50%" align="center">
+    <caption>Relationship between Derivative and Anti-derivative.</caption>
+      <image width="70%">
+        <latex-image>
+          \begin{tikzpicture}[>=stealth, scale=1, every node/.style={font=\small}]
+            \def\R{2.6}
+
+            % ---------- tweakable vertical shifts ----------
+            \def\yBlue{0.4cm}   % shift for blue (integration) group
+            \def\yRed{1.5cm}    % shift for red (differentiation) group
+            \def\yFunc{0.2cm}   % shift for function group (y=f, y=F)
+            % ------------------------------------------------
+
+            % --------- Blue group (integration) ----------
+            \begin{scope}[yshift=\yBlue]
+              \draw[line width=2.6pt, cyan!70!black, ->]
+                ({\R*cos(160)},{\R*sin(160)}) arc (160:20:\R)
+                node[midway, sloped, above] {\small$\displaystyle \int f(x)\, dx$};
+              % Integration heading (moves with blue group)
+              \node[font=\normalsize] at (0,1.35) {Find the Anti-derivative};
+            \end{scope}
+
+            % --------- Red group (differentiation) ----------
+            \begin{scope}[yshift=\yRed]
+              \draw[line width=1.6pt, red!80!black, ->]
+                ({\R*cos(340)},{\R*sin(340)}) arc (340:200:\R)
+                node[midway, sloped, below] {\small$\displaystyle \dfrac{d}{dx}(F(x))$};
+              % Differentiation heading (moves with red group)
+              \node[font=\normalsize] at (0,-1.55) {Take the Derivative};
+            \end{scope}
+
+            % --------- Function group (only y labels) ----------
+            \begin{scope}[yshift=\yFunc]
+              % place the function labels closer to the circular path
+              \node at (160:{\R*0.78}) [anchor=east] {$\;y=f(x)\;$};
+              \node at (20:{\R*0.78})  [anchor=west] {$\;y=F(x) + C\;$};
+            \end{scope}
+
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </figure>
+
+
+    <p>
+      <alert>But Richard...</alert>
+      Isn't integral some sort of area under the curve? Why on earth are we using the same(ish) notation to represent the general antiderivative?
+    </p>
+
+    <p>
+      Well we will not be able to answer this question in this section. 
+      What we can do in this section is to forget about the area and interpret indefinite integrals as some general antiderivatives. 
+    </p>
+
+    <example>  
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int 4x^2\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          Recall the notation of indefinite integral means that we want to find the general antiderivative of the function in the integrand. 
+          So what function will give the derivative of <m>4x^2</m>? 
+        </p>
+      </hint>
+
+      <solution>
+          <p>
+            You are more than welcome to guess-and-check your answer since we don't yet have any tool to help us find the general antiderivative. 
+          </p>
+
+          <p>
+            But we can rely on our knowledge of derivatives to make an educated guess. 
+          </p>
+
+          <p>
+            Let <m>f(x) = 4x^2</m>, which is a power function. 
+            Then an antiderivative of <m>f</m> must also be a power function because only the derivative of power functions will give us back power functions. 
+            So <m>F(x) = kx^n</m>. 
+          </p>
+
+          <p>
+            We know that the power rule of derivatives will take away one from the exponent. 
+            To undo this move, the power of <m>x</m> on an antiderivative must be <m>2 + 1 = 3</m>. 
+          </p>
+
+          <p>
+            In addition, the exponent needs to be multiplied to the power function when using the power rule of derivatives. 
+            To undo this move, we must divide the <m>3x^2</m> by the power of an antiderivative, which is <m>3</m>. 
+          </p>
+
+          <p>
+            Now we have an educated guess, which is 
+            <me>
+              F(x) = \dfrac{4x^{2 + 1}}{3} = \frac{4}{3}x^3
+            </me>
+            To check our answer, we will just need to take the derivative of it and see if it matches with <m>3x^2</m>. 
+          </p>
+
+          <p>
+            Notice that <m>\dfrac{d}{dx}\left(\dfrac{4}{3}x^3\right) = 4x^2</m>. 
+            This implies that the general antiderivative is <m>F(x) = \frac{4}{3}x^3 + C</m>, and hence 
+            <me>
+              \int 4x^2\, dx = \frac{4}{3}x^3 + C
+            </me>
+            
+          </p>
+        </solution>
+
+    </example>
+
+    <p>
+      Guess-and-check-ing isn't the most efficient method. 
+      Just like we have a lot of formulas to help us take the derivative of a function, it will be so nice if we have some formulas to help us find the indefinite integral (aka the general antiderivative) of a function. 
+    </p>
+
+  </subsection>
+
+  <subsection xml:id="subsec-532-IndefiniteIntegralFormulas-Basic">
+    <title>Some (basic) Indefinite Integral Formulas</title>
+    
+    <p>
+      Recall the indefinite integral (aka the general antiderivative) <em>undoes</em> the derivative, which means we can come up with some indefinite integral formulas by rewriting the derivative formulas (along with some basic manipulations). 
+    </p>
+
+    <p>
+      A famous property you used a lot when taking the derivative is the linearity (meaning you can split up the addition/subtraction and take out the scalar multiple). 
+      This property also holds for integrals. 
+    </p>
+
+    <theorem xml:id="thm-Linearity-IndefiniteIntegrals">
+      <title>Linearity of the Indefinite Integrals</title>
+      <statement>
+        <p>
+          <ul>
+            <li>
+              <p>
+                <alert>Sum Rule:</alert> <m>\displaystyle \int \left(f(x) + g(x)\right)\, dx = \int f(x)\, dx + \int g(x)\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Constant Multiple Rule:</alert> <m>\displaystyle \int c f(x)\, dx = c\int f(x)\, dx</m> for any constant <m>c</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+
+    <p>
+      We will next look at the <alert>power rule</alert> since this is the mostly commonly used rule back in calculus 1.  
+    </p>
+
+    <theorem xml:id="thm-PowerRule-Integrals">
+      <title>Power Rule for Integrals</title>
+      <statement>
+        <p></p>
+        <p>
+          <me>
+            \int x^n\, dx = \frac{x^{n+1}}{n + 1} + C
+          </me>
+          for <m>n\neq -1</m>. 
+        </p>
+      </statement>
+    </theorem>
+
+    <p>
+      Recall the power rule for derivatives works like this: 
+      <ol>
+        <li>
+          <p>
+            <em>Multiply</em> the power function by the exponent, and then
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Subtract</em> one from the exponent. 
+          </p>
+        </li>
+      </ol>
+      Since the indefinite integral undoes the derivative, then you can imagine we will need to undo the multiplication (by division) and the subtraction (by addition). 
+      But here is a small catch - when undoing the power rule for derivatives, not only we need to undo each of the step, but also <alert>the order of the steps</alert>. 
+      That is, the power rule for integrals should work like this: 
+      <ol>
+        <li>
+          <p>
+            <em>Add</em> one to the exponent, and then
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Divide</em> the power function by the exponent. 
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <proof>
+      <title>Proof of <xref ref="thm-PowerRule-Integrals"/></title>
+      <p>
+        To make sure our formula is correct, all we need to do is to verify that the derivative of the indefinite integral (aka. the general antiderivative) is indeed the integrand. 
+      </p>
+
+      <p>
+        Let <m>F(x) = \dfrac{x^{n + 1}}{n + 1} + C</m> for <m>n\neq -1</m>. 
+        Observe that
+        <md>
+          <mrow> F'(x) \amp= \frac{d}{dx}\left(\frac{x^{n+1}}{n + 1} + C\right) </mrow>
+          <mrow> \amp= \frac{1}{n + 1}\cdot \frac{d}{dx}\left(x^{n+1}\right) </mrow>
+          <mrow> \amp= \frac{1}{n + 1}\cdot (n + 1)x^{(n + 1) - 1} </mrow>
+          <mrow> \amp= x^n </mrow>
+        </md>
+        We proved it! 
+      </p>
+    </proof>
+
+    <note xml:id="note-findingVSverifying">
+      <title>Finding/Evaluating versus Verifying</title>
+      <p>
+        There is a big difference between <alert>finding</alert> an answer and <alert>verifying</alert> the answer. 
+      </p>
+      
+      <p>
+        The general method to <em>verify</em> an integral formula is to take the derivative of the answer and see if it matches up with the integrand, whereas <em>finding</em> (or <em>evaluate</em>) an expression means you do all the math work to obtain the answer. 
+      </p>
+
+      <p>
+        Be sure you read the prompt of the problem and see which one you are asked to do.  
+      </p>
+
+      <p>
+        <em>Later in the class, Richard may ask you to <alert>derive</alert> a formula. He will address his expectation later when it comes to it</em>.
+      </p>
+
+      <p>
+        A rule of thumb here is that you should always be <alert>finding</alert> your answer as your formal work, not <em>verifying</em> (unless Richard asks you to do so specifically). 
+        You will do a lot of <em>verifying</em> as your formal work in proof classes but this is an introductory integral calculus class. 
+        Being familiar with the concept of integration and various techniques of integration are the important goals in this class. 
+      </p>
+
+      <p>
+        The example below includes two solutions in different approaches, with one being an acceptable solution in this class, and the other one being an acceptable solution in a proof class but not in this class. 
+        Hopefully this illustrate the difference between these two approaches and you can get an idea of which one Richard expects to see. 
+      </p>
+    </note>
+
+    <example>
+      
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int \left(4x - 18x^2\right)\, dx </m>
+      </p>
+
+      <hint>
+        <p>
+          The function <m>y = 4x - 18x^2</m> seems complicated and it is not a power function (so we can't use the power rule on this function as a whole). 
+          Is there any property we can use to break down the integral a bit? 
+        </p>
+
+        <p>
+          Richard is feeling generous today (when I wrote this example) and he will give you the answer so that you can check your answer yourself. 
+          The correct final answer is <m>2x^2 - 6x^3 + C</m>. 
+        </p>
+      </hint>
+
+      <solution>
+        <title>An acceptable solution in an integral calculus class</title>
+        <p>
+          <md>
+            <mrow>\int \left(4x - 18x^2\right)\, dx \amp = 4\int x\, dx - 18\int x^2\, dx \amp\amp \text{By linearity}</mrow>
+            <mrow> \amp= 4\left(\frac{x^2}{2}\right) - 18\left(\frac{x^3}{3}\right) + C \amp\amp \text{By the power rule} </mrow>
+            <mrow> \amp= 2x^2 - 6x^3 + C </mrow>
+          </md>
+        </p>
+      </solution>
+
+      <solution>
+        <title>An acceptable solution in a proof class but NOT in an integral calculus class</title>
+        <p>
+          <alert>The solution below is technically correct but Richard will not accept it since he teaches integral calculus, not a proof class</alert>
+        </p>
+
+        <p>
+          Let <m>F(x) = 2x^2 - 6x^3 + C</m>. 
+          Observe that
+          <md>
+            <mrow> F'(x) \amp = \frac{d}{dx}\left(2x^2 - 6x^3 + C\right)</mrow>
+            <mrow> \amp= 2\cdot 2x - 6\cdot 3x^2 </mrow>
+            <mrow> \amp= 4x - 18x^3 </mrow>
+          </md>
+          This shows that <m>F'(x) = 4x - 18x^3</m>, and hence
+          <me>
+            \int\left(4x - 18x^3\right)\, dx = 2x^2 - 6x^3 + C
+          </me>
+        </p>
+
+        <p>
+          <alert>Richard will only give the credit of presenting the correct answer for this but not the credit to show the work since this line of work didn't tell him where the <m>\boldsymbol{F(x) = 2x^2 - 6x^3 + C}</m> came from. 
+          All it showed here is that the <m>\boldsymbol{F(x)}</m>, wherever it came from, is indeed the general antiderivative</alert>. 
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      A big assumption in the power rule is that the power itself cannot be <m>-1</m> (this should be clear). 
+      The what should we do when the power is <m>-1</m>? 
+    </p>
+
+    <p>
+      We have another formula to deal with this special case. 
+      Recall we learned the following derivative formula back in calculus 1: 
+      <me>
+        \frac{d}{dx}\left(\ln(x)\right) = \frac{1}{x} \qquad\text{ if } x &gt; 0
+      </me>
+      If we rewrite this formula (with a bit of an adjustment to take care of a domain issue), then we can obtain a formula to find the indefinite integral of <m>x^{-1}</m>! 
+    </p>
+
+    <theorem xml:id="thm-Antiderivative-Reciprocal">
+      <title>Antiderivative of <m>\boldsymbol{y = \dfrac{1}{x}}</m> </title>
+      <statement>
+        <p>
+          <me>
+            \int \frac{1}{x}\, dx = \ln|x| + C \qquad \text{ if } x\neq 0
+          </me>
+        </p>
+      </statement>
+    </theorem>
+
+    <p>
+      Now that we have two formulas to find the indefinite integral of a power function, depending on their power. 
+      Make sure you pay extra attention to which formula to use when the power function has a power of <m>-1</m>. 
+    </p>
+    
+    <example>
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int \frac{x^3 + 3x - 4}{x^2}\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          Observe that the integrand is not a power function, but a fraction. 
+          We don't have any tool to find the indefinite integral of a fraction yet. 
+          Can we simplify this fraction to make it not a fraction and maybe make it a couple of power functions? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          We can rewrite the integrand as follows: 
+          <me>
+            \frac{x^3 + 3x - 4}{x^2} = x^{-2}\left(x^3 + 3x - 4\right) = x + 3x^{-1} - 4x^{-2}
+          </me>
+           Now we have three little power functions that we know how to integrate! 
+           <md>
+            <mrow> \int \frac{x^3 + 3x - 4}{x^2}\, dx\amp= \int\left(x + 3x^{-1} - 4x^{-2} \right)\, dx</mrow>
+            <mrow> \amp= \int x\, dx + 3\int x^{-1}\, dx - 4\int x^{-2}\, dx \amp\amp\text{by linearity} </mrow>
+           </md>
+           It seems like we can use the power rule on the first and the last integrals as follows: 
+           <md>
+            <mrow>\int x\, dx \amp= \frac{x^2}{2} + C_1 </mrow>
+            <mrow>-4\int x^{-2} \amp= -4\cdot \frac{x^{-1}}{-1} + C_3 = 4x^{-1} + C_3 </mrow>
+           </md>
+           But what about the integral in the middle... if we were to use the power rule on it, we would obtain
+           <me>
+            3\int x^{-1}\, dx = 3\cdot \frac{x^0}{0} + C_2
+           </me>
+           But this is bad since there is a zero in the denominator. 
+        </p>
+
+        <p>
+          This is why we needed the <xref ref="thm-Antiderivative-Reciprocal"/> to evaluate this integral since the integrand is a reciprocal function. 
+          Then
+          <me>
+            3\int x^{-1}\, dx = 3\ln|x| + C_2
+          </me>
+        </p>
+
+        <p>
+          <em>Notice that I used <m>C_1</m>, <m>C_2</m>, and <m>C_3</m> to represent three arbitrary constants since we should get one out from each integral. 
+          Imagine if we add all these arbitrary constants together, the sum is also an arbitrary(ish) constant. 
+          In practice, we will just put a big capital <m>+C</m> to denote the arbitrary constant for the entire integral</em>. 
+        </p>
+
+        <p>
+          To put everything together, the work should go like this: 
+          <md>
+            <mrow> \int \frac{x^3 + 3x - 4}{x^2}\, dx\amp= \int\left(x + 3x^{-1} - 4x^{-2} \right)\, dx</mrow>
+            <mrow> \amp= \int x\, dx + 3\int x^{-1}\, dx - 4\int x^{-2}\, dx </mrow>
+            <mrow> \amp= \frac{x^2}{2} + 3\ln|x| + 4x^{-2} + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int \frac{12 - z}{\sqrt{z}}\, dz</m>
+      </p>
+
+      <hint>
+        <p>
+          Notice that there is a radical (square root) expression in the denominator. 
+          We don't have a formula to integrate radical expressions...
+          So is there a way to rewrite the radical expression to something we do know how to integrate (like a power function maybe)?  
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Recall radical expressions are essentially exponential expression (we define radical expressions as fractional exponents). 
+          Notice that
+          <me>
+            \frac{12 - z}{\sqrt{z}} = z^{-\frac{1}{2}}\left(12 - z\right) = 12z^{-\frac{1}{2}} - z^{\frac{1}{2}}
+          </me>
+          Now we have power functions that we know how to integrate! 
+          <md>
+            <mrow>\int \frac{12 - z}{\sqrt{z}}\, dz \amp= \int\left(12z^{-\frac{1}{2}} - z^{\frac{1}{2}}\right)\, dz </mrow>
+            <mrow> \amp= 12\int z^{-\frac{1}{2}}\, dz - \int z^{\frac{1}{2}} \, dz \amp\amp\text{by linearity} </mrow>
+            <mrow> \amp= 12\cdot \frac{z^{-\frac{1}{2} + 1}}{-\frac{1}{2} + 1} - \frac{z^{\frac{1}{2} + 1}}{\frac{1}{2} + 1} + C\amp\amp\text{by power rule} </mrow>
+            <mrow> \amp= 24z^{\frac{1}{2}} - \frac{2}{3}z^{\frac{3}{2}} + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      You may get an idea by now that <alert>simplifying</alert> the integrand is a good first step to evaluate an indefinite integral. 
+      That is, you want to distribute as much as you can and split up the <em>terms</em> of the integrand, guaranteed by the linearity, and integrate each term separately. 
+    </p>
+
+    <p>
+      We also learned about the derivative of the six trigonometric functions. 
+      Of course we can rewrite them to obtain the following batch of the integral formulas. 
+    </p>
+
+    <theorem xml:id="thm-BasicTrigIntegrals">
+      <title>Basic Trigonometric Integrals</title>
+      <statement>
+        <p> </p>
+        <p>
+          <md>
+            <mrow>\amp \int \sin(x) dx = -\cos(x) + C \amp\amp \int\cos(x)\, dx = \sin(x) + C </mrow>
+            <mrow>\amp \int \sec^2(x)\, dx = \tan(x) + C \amp\amp \int\csc^2(x)\, dx = -\cot(x) + C </mrow>
+            <mrow>\amp \int \sec(x)\tan(x)\, dx = \sec(x) + C \amp\amp \int \csc(x)\cot(x)\, dx = -\csc(x) + C</mrow>
+          </md>
+        </p>
+      </statement>
+    </theorem>
+
+    <p>
+      <alert>But Richard... </alert> some of the integrands seem complicated in the formulas above. 
+      How do I know when I need to use these formula? 
+    </p>
+
+    <p>
+      The short answer is that... you don't really know when you encounter a problem... 
+      While the integral formula for sine and cosine are really common and widely used, you will need to pay special attention to when you obtain the integrand in those special forms. 
+      So having those formulas handy is a great idea and you can always check in to see if these formulas will be useful for a problem. 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int \sec(\theta)\left(\sec(\theta) + \tan(\theta)\right)\, d\theta</m>
+      </p>
+
+      <hint>
+        <p>
+          Recall a good first step is to <alert>simplify</alert> the integrand first by doing distribution (so we can split up the terms using linearity). 
+          Sure, let's start with the distribution and see if any of the formula can be applied afterwards. 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          By distribution and linearity of integrals, we obtain
+          <md>
+            <mrow> \int \sec(\theta)\left(\sec(\theta) + \tan(\theta)\right)\, d\theta \amp= \int \left(\sec^2(\theta) + \sec(\theta)\tan(\theta)\right)\, d\theta </mrow>
+            <mrow> \amp= \int \sec^2(\theta)\, d\theta + \int \sec(\theta)\tan(\theta)\, d\theta </mrow>
+          </md>
+        </p>
+
+        <p>
+          Okay... the two integrands now are <m>\sec^2(\theta)</m> and <m>\sec(\theta)\tan(\theta)</m>. 
+          They seem complicated to deal with...  
+        </p>
+
+        <p>
+          But the good news is that there are some formulas we can use here! By <xref ref="thm-BasicTrigIntegrals"/>, we obtain
+          <md>
+            <mrow> \int \sec(\theta)\left(\sec(\theta) + \tan(\theta)\right)\, d\theta \amp= \int \sec^2(\theta)\, d\theta + \int \sec(\theta)\tan(\theta)\, d\theta </mrow>
+            <mrow> \amp= \tan(\theta) + \sec(\theta) + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Later in the term, we will develop more strategies to integrate trigonometric integrals (mainly in section 7.2) so stay tuned! 
+    </p>
+
+    <p>
+      There are two more integral formulas in this section, which are the integral formulas involving <m>e^x</m>. 
+    </p>
+
+    <theorem xml:id="thm-IntegralInvolvingExponential">
+      <title>Integrals Involving <m>\boldsymbol{e^x}</m></title>
+      <statement>
+        <p> </p>
+        <p>
+          <me>
+            \int e^x\, dx = e^x + C
+            \qquad\qquad
+            \int e^{kx} \, dx = \frac{1}{k}e^{kx} + C
+          </me>
+        </p>
+      </statement>
+    </theorem>
+    
+    <example>
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int \left(3e^{5x} + 3x^5\right) \, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          We of course can split up the terms by the linearity, so we obtain
+          <md>
+            <mrow>\int \left(3e^{5x} + 3x^5\right) \amp= 3\int e^{5x}\, dx + 3\int x^5\, dx </mrow>
+          </md>
+          There are two little integrals we need to evaluate... which formula(s) do we need to use <alert>and why</alert>? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Observe that <m>y = x^5</m> is a power function so we can apply the power rule to integrate it. 
+        </p>
+
+        <p>
+          Yet, <m>y = e^{5x}</m> is NOT a power function since the power isn't a constant (there is an <m>x</m> on the power). 
+          We do have a formula in <xref ref="thm-IntegralInvolvingExponential"/> to deal with this integral. 
+          Hence, we obtain
+          <md>
+            <mrow>\int \left(3e^{5x} + 3x^5\right) \amp= 3\int e^{5x}\, dx + 3\int x^5\, dx </mrow>
+            <mrow> \amp= 3\cdot \frac{1}{5}e^{5x} + 3\cdot \frac{x^6}{6} + C</mrow>
+            <mrow> \amp= \frac{3}{5}e^{5x} + \frac{1}{2}x^6 + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      We will be developing more and more integral formulas throughout the term. 
+      It is a good strategy to organize all the formulas in an <alert>integral formula sheet</alert> since you will be using some of the formulas again and again and again and again in this class. 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-533-DifferentialEquationsANDIVP">
+    <title>Differential Equations and IVP</title>
+    
+    <p>
+      We know what an equation is. We dealt with equations where two sides of the equal sign are quantities (or numbers). 
+      We will briefly discuss <alert>differential equations</alert>, a type of equation that involves an unknown function and its first or higher derivatives. 
+      As you can imagine, the solution is, instead of number(s), function(s). 
+    </p>
+
+    <example>
+      <p>
+        Solve the differential equation <m>\dfrac{dy}{dx} = 8x^3 + 3x^2</m>. 
+      </p>
+
+      <hint>
+        <p>
+          While there are a lot of the letters in this equation, the true variable is <m>y</m>, as a function of <m>x</m>. 
+
+          So what does the <m>\dfrac{d}{dx}</m> stands for and how can we undo it? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          What this equation tells us here is that a function has a derivative of <m>8x^3 + 3x^2</m> and the goal is to find this function. 
+          Hence, we can undo the derivative by finding its indefinite integral. 
+        </p>
+
+        <md>
+          <mrow>y \amp= \int\left(8x^3 + 3x^2\right)\, dx </mrow>
+          <mrow> \amp= 8\int x^3\, dx + 3\int x^2\, dx \amp\amp\text{by linearity}</mrow>
+          <mrow> \amp= 8\cdot \frac{x^{3 + 1}}{3 + 1} + 3\cdot \frac{x^{2 + 1}}{2 + 1} + C \amp\amp\text{by the power rule}</mrow>
+          <mrow> \amp= 2x^4 + x^3 + C </mrow>
+        </md>
+
+      </solution>
+    </example>
+
+    <p>
+      Your solution, if you play your cards right, is not unique. 
+      That is, your solution is NOT one single function. 
+      This is because we only found the indefinite integral of the right-hand side of the equation, which will result in an arbitrary constant, <m>C</m>. 
+      But there is no way in the above example for us to figure out what this <m>C</m> is... 
+      All we knew here is that <m>C</m> is a mysterious constant here... 
+    </p>
+
+    <p>
+      It would be great if we were told one more information that we can used to find this mysterious constant <m>C</m>...  
+    </p>
+    
+    <example>
+      <p>
+        Solve the differential equation <m>\dfrac{dy}{dx} = 8x^3 + 3x^2</m> with <m>y(2) = 0</m>. 
+      </p>
+
+      <solution>
+        <p>
+          Recall we "solved" the differential equation in the previous example and obtain the solution of 
+          <me>
+            y = 2x^4 + x^3 + C
+          </me>
+          We are given one more piece of information that says <m>y(2) = 0</m>. 
+          That is, with an input of <m>2</m>, the output of the function is <m>0</m>. 
+          If we plug in <m>x = 2</m> and <m>y = 0</m> to our solution, we obtain
+          <me>
+            0 = 2(2)^4 + 2^3 + C
+          </me>
+          Solving this equation, we obtain <m>C = -40</m>. 
+          We found this mysterious constant with the additional information given! 
+        </p>
+
+        <p>
+          Therefore, the solution to this differential equation is <m>y = 2x^4 + x^3 - 40</m>. 
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The above example is called an <alert>Initial Value Problem</alert> (or IVP for short). 
+      The initial condition, <m>y\left(x_0\right) = y_0</m> for some fixed values of <m>x_0</m> and <m>y_0</m>, allows us to obtain a particular solution to the equation rather than a general solution. 
+    </p>
+
+    <p>
+      We will finish this section by deriving the formula of the projectile motion as an investigation. 
+    </p>
+
+    <investigation>
+      <introduction>
+        <p>
+          Recall the formula to model the height of an object over time in a projectile motion you learned in the past is
+          <me>
+            h(t) = -16t^2 + v_0t + h_0
+          </me>
+          where 
+          <ul>
+            <li>
+              <p>
+                <m>h(t)</m> denotes the height of the object (in feet) after <m>t</m> seconds; 
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>16</m> is half of the gravitational acceleration (<m>g = 32</m> in the unit of <m>\text{ft/sec}^2</m>); 
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>v_0</m> denotes the initial velocity (in ft/sec); 
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>h_0</m> denotes the initial height of the object (in feet). 
+              </p>
+            </li>
+          </ul>
+          See that this is a quadratic function. 
+          But why on earth can we model the projectile motion using a quadratic function? 
+          We will derive this model in this investigation. 
+          We will formalize this idea more in section 5.6. 
+        </p>
+      </introduction>
+      
+      <task>
+        <p>
+          Consider the differential equation <m>h''(t) = -32</m>. 
+          Briefly explain what this equation represents in the context of a projectile motion. 
+        </p>
+
+        <hint>
+          <p>
+            Recall <m>h(t)</m> represents the height of the object, which can be thought of as some vertical displacement. 
+            Now put on your calculus 1 thinking hat, what physical quantity do you get if you take the second derivative of the displacement? 
+          </p>
+
+          <p>
+            Also, notice that there is a negative sign in front of the <m>32</m>... Why is this <m>h''(t)</m> negative? 
+          </p>
+        </hint>
+
+        <solution>
+          <p>
+            Since <m>h''(t)</m> represents the height of the object, its second derivative represents the <alert>acceleration</alert>, which is always <m>32 \text{ ft/sec}^2</m> on earth. 
+          </p>
+
+          <p>
+            Also, we consider going downwards the negative direction vertically, so <m>h''(t) = -32</m> tells us that the acceleration of the object is <m>32 \text{ ft/sec}^2</m> going downwards. 
+          </p>
+        </solution>
+      </task>
+
+      <task>
+        <p>
+          Solve this differential equation <me>h''(t) = -32</me> using the initial conditions <m>h'(0) = v_0</m> and <m>h(0) = h_0</m>. 
+        </p>
+        
+        <p>
+          Remember that <m>v_0</m> and <m>h_0</m> are two constants denoting the initial velocity and the initial height of the object, respectively. 
+        </p>
+
+        <hint>
+          <p>
+            Observe that the differential equation contains the second derivative, which is obtained by taking the derivative of a function twice in a row. 
+          </p>
+
+          <p>
+            The solution should be the original function before taking the derivative, which is <m>h(t)</m> here. 
+            So what operation will undo the derivative and how many times we should apply this operation to cancel the second derivative? 
+          </p>
+        </hint>
+
+        <solution>
+        <p>
+          The solution to this equation is the height function. 
+          To obtain this function, we will need to undo the second derivative. 
+          We can do so by finding the indefinite integral of <m>h''(t)</m>, which gives us <m>h'(t)</m>, and then find its indefinite integral again to obtain <m>h(t)</m>. 
+        </p>
+
+        <p>
+          <md>
+            <mrow>h'(t)= \int h''(t)\, dt \amp= \int -32\, dt </mrow>
+            <mrow> \amp= -32t + C_1 </mrow>
+          </md>
+          We know that <m>h'(0) = v_0</m>, where <m>v_0</m> denotes the initial velocity of the object. 
+          This implies that
+          <me>
+            v_0 = h'(0) = -32(0) + C_1
+          </me>
+          and hence <m>C_1 = v_0</m>. 
+          Therefore, we obtain
+          <me>
+            h'(t) = -32t + v_0
+          </me> 
+        </p>
+
+        <p>
+          To find <m>h(t)</m>, we will need to find the indefinite integral of <m>h'(t)</m> we just got earlier. 
+          <md>
+            <mrow>h(t) = \int h'(t)\, dt \amp= \int\left(-32t + v_0\right)\, dt </mrow>
+            <mrow> \amp= -32\int t\, dt + \int v_0\, dt </mrow>
+            <mrow> \amp= -32\cdot \frac{t^2}{2} + v_0t + C_2 </mrow>
+            <mrow> \amp= -16t^2 + v_0t + C_2 </mrow>
+          </md>
+          We also know that <m>h(0) = h_0</m>, where <m>h_0</m> denotes the initial height of the object. 
+          This implies that
+          <me>
+            h_0 = h(0) = -16(0)^2 + v_0(0) + C_2
+          </me>
+          and hence <m>C_2 = h_0</m>
+          Therefore, we can conclude that
+          <me>
+            h(t) = -16t^2 + v_0t + h_0
+          </me>
+        </p>
+
+      </solution>
+
+      </task>
+
+    </investigation>
+
+  </subsection>
+
+  <subsection>
+    <title>Something to ponder on... </title>
+    
+    <p>
+      There are actually two unanswered questions in this section, and they are
+      <ol>
+        <li>
+          <p>
+            Why can we denote the general antiderivative using indefinite integrals? Isn't the concept of integral about some sort of area under the curve? 
+          </p>
+        </li>
+        <li>
+          <p>
+            How are indefinite integrals (aka general antiderivative) related to definite integrals (aka signed area). 
+            Or are they even related? 
+          </p>
+        </li>
+      </ol>
+      These are both very good questions to ponder on! This is one of the reasons why calculus symbols are confusing, that the integral notation (<m>\int</m>) is being used to denote two <em>different</em> concepts here. 
+      You will find the answer to the first question in Section 5.5 and the answer to the second question in Section 5.4. 
+    </p>
+
+    <p>
+      <alert>P.S.:</alert> Yes we will cover Section 5.5 first and then Section 5.4. 
+    </p>
+  </subsection>
+
+  <worksheet xml:id="ws-sec53">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          <em>Verify</em> the following indefinite integrals by differentiation. 
+        </p>
+
+        <p>
+          <alert>P.S.:</alert> You will learn how to evaluate these integrals in later chapters/sections. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int\frac{\cos\left(\sqrt{x}\right)}{\sqrt{x}}\, dx = 2\sin\left(\sqrt{x}\right) + C</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int\frac{x}{\sqrt{x^2 + 1}}\, dx = \sqrt{x^2 + 1} + C</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int x^2\cos\left(x^3\right)\, dx = \frac{1}{3}\sin\left(x^3\right) + C</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int\frac{x}{\left(x^2 - 1\right)^2}\, dx = -\frac{1}{2\left(x^2 - 1\right)} + C</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following indefinite integral. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \left(1 - t\right)\left(2 + t^2\right)\, dt</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \left(8x - 4e^{-2x}\right)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\sin(x)}{1 - \sin^2(x)}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\sin(2x)}{\sin(x)}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \left(1 + \tan^2(\theta)\right)\, d\theta</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \sqrt{\frac{3}{x}}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \left(\sqrt[3]{x^2} + \sqrt{x^3}\right)\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\sqrt{2x} + \sqrt[3]{8x}}{x}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Solve the following IVP. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>f''(x) = x^3 - 2x</m> given that <m>f'(1) = 0</m> and <m>f(1) = 2</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>g''(\theta) = \cos(\theta)</m> given that <m>g'\left(\frac{\pi}{2}\right) = 1</m> and <m>g\left(\frac{\pi}{2}\right) = 6</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+  </worksheet>
+
+</section>

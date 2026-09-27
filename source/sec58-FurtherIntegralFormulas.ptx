@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec58-FurtherIntegralFormulas" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Further Integral Formulas</title>
+
+  <introduction>
+    <p>
+      In this section, you will undo even more derivative formulas you learned back in calculus 1 in terms of integrations. 
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            integrate using integral formulas involving inverse trigonometric functions. 
+          </p>
+        </li>
+        <li>
+          <p>
+            integrate using integral formulas involving exponential functions. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+    
+  </introduction>
+
+  <investigation>
+    
+    <introduction>
+      <p>
+        Evaluate the indefinite integral <m> \displaystyle \int \frac{1}{2\sqrt{1 - x^2}}\, dx </m>
+      </p>
+    </introduction>
+
+    <task>
+      <p>
+        Can we evaluate this integral using <m>u</m>-sub? 
+      </p>
+
+      <hint>
+        <p>
+          We can certainly try using <m>u</m>-sub and see if it will work out. 
+          Recall <m>u</m>-sub undoes the chain rule for derivative, which is a method to differentiate a composite function. 
+          Typically, <m>u</m> is some inside function in some composite function. 
+        </p>
+
+        <p>
+          There are two choices of <m>u</m> as an inside function you can pick. Try them! Will they work out? If not, what seems to be the issue? 
+        </p>
+      </hint>
+
+      <solution>
+        <title>Choice #1: Let <m>u = 1 - x^2</m></title>
+
+        <p>
+          We cannot use <m>u</m>-sub here. There are many issues that needs to be resolved in order to make progress... 
+          And
+        
+        </p>
+
+        <p>
+          If we pick <m>u = 1 - x^2</m>. Then <m>du = -2x\, dx</m>, which implies that <m>x\, dx = -\frac{du}{2}</m>. 
+          But there is no factor of <m>x</m> in the integrand that allows us substitute <m>x\, dx</m> with <m>-\frac{du}{2}</m>. 
+          So we will get stuck here... 
+        </p>
+
+        <p>
+          A possible way to resolve this issue is to isolate the <m>dx</m> entirely by dividing the <m>x</m> to the other side (and pretending <m>x</m> can never be zero). 
+          This implies that <m>dx = \frac{du}{-2x}</m>. 
+          By this substitution, we obtain
+          <me>
+            \int \frac{1}{2\sqrt{1 - x^2}}\, dx = \int \frac{1}{2\sqrt{u}}\cdot \frac{du}{-2x}
+          </me>
+          Okay... but there is still an <m>x</m> in the integrand. 
+          This is super confusing since the variable we are dealing with now is <m>u</m>, not <m>x</m>. 
+          Given our substitution that <m>u = 1 - x^2</m>, we see that <m>x = \sqrt{1 - u}</m>. 
+          Then the integral becomes
+          <md>
+            <mrow> \int \frac{1}{2\sqrt{1 - x^2}}\, dx \amp= \int \frac{1}{2\sqrt{u}}\cdot \frac{du}{-2\sqrt{1 - u}} </mrow>
+            <mrow> \amp= -\frac{1}{4}\int \frac{du}{\sqrt{u}\sqrt{1 - u}} </mrow>
+          </md>
+          Wow... the integral doesn't get easier after all this hard work... 
+          <alert> This should be an indicator to search for another method to evaluate this integral</alert>. 
+          <m>u</m>-sub should make the integral <em>easier</em> to deal with, not harder. 
+        </p>
+
+        <p>
+          If you are feeling a bit adventurous and want to continue with this line of work (to see if it will work out eventually), the next step will be to make another substitution by letting <m>w = \sqrt{u}</m>. 
+          Then <m>dw = \frac{1}{2\sqrt{u}}</m> and <m>u = w^2 </m>. 
+          Then we obtain
+          <md>
+            <mrow> -\frac{1}{4}\int \frac{du}{\sqrt{u}\sqrt{1 - u}} \amp= -\frac{1}{4}\int \frac{2\, dw}{\sqrt{1 - w^2}} </mrow>
+            <mrow> \amp= -\frac{1}{2}\int \frac{dw}{\sqrt{1 - w^2}} </mrow>
+          </md>
+          Observe that this integral is almost the same as the integral given in the prompt, which means we looped back to the problem after all the hard work... 
+          Another way of saying this is that this method is inconclusive... 
+        </p>
+
+      </solution>
+
+      <solution>
+        <title>Choice #2: Let <m>u = \sqrt{1 - x^2}</m></title>
+        
+        <p>
+          Richard can tell right ahead that this choice of <m>u</m> is also inconclusive (it will loop you back to the problem as well) due to his awesome math skills. 
+          But just in case he didn't lose his mind, he will present the work (and also convince himself that he is still young and he can do the math in his head). 
+        </p>
+
+        <p>
+          Let <m>u = \sqrt{1 - x^2}</m>. 
+          Then <m>du = \dfrac{-x}{\sqrt{1 - x^2}}\, dx</m>, which implies that
+          <me>
+            dx = \frac{\sqrt{1 - x^2}}{-x}\, du = \frac{u}{-\sqrt{1 - u^2}}\, du
+          </me>
+          We obtain
+          <md>
+            <mrow> \int \frac{1}{2\sqrt{1 - x^2}}\, dx \amp= \int \frac{1}{2u}\cdot \frac{u}{-\sqrt{1 - u^2}}\, du </mrow>
+            <mrow> \amp= -\int \frac{1}{2\sqrt{1 - u^2}}\, du </mrow>
+          </md>
+          Observe that this integral is (again) almost the same as the integral given in the prompt.
+          We (again) looped back back to the problem after the hard work...  
+        </p>
+      </solution>
+      
+    </task>
+
+    <task>
+      <p>
+        Evaluate this integral <em>not</em> using <m>u</m>-sub, but using the hint given below. 
+      </p>
+
+      <hint>
+        <p>
+          This may seem like a totally irrelevant hint but what is the derivative of <me>y = \arcsin(x)</me> 
+          You learned this back in calculus 1 so feel free to look up your notes. 
+        </p>
+
+        <note>
+          <title>Clarifying the notation</title>
+          <p>
+            The function <m>y = \arcsin(x)</m> means the <alert>inverse</alert> sine of <m>x</m>. 
+          </p>
+
+          <p>
+            Another famous notation for inverse sine is <m>y = \sin^{-1}(x)</m>. 
+            Be careful with this exponent of <m>-1</m>. 
+            This doesn't mean the reciprocal of <m>\sin(x)</m>. 
+          </p>
+
+          <p>
+            I will use both notations interchangeably. 
+          </p>
+        </note>
+      </hint>
+
+      <solution>
+        <p>
+          Recall back in calculus 1, we learned about the derivative of inverse trigonometric function. 
+          One of the formulas is
+          <me>
+            \frac{d}{dx}\left(\arcsin(x)\right) = \frac{1}{\sqrt{1 - x^2}}
+          </me>
+          In other words, we can rewrite the above formula using integration as follows: 
+          <me>
+            \int \frac{1}{\sqrt{1 - x^2}}\, dx = \arcsin(x) + C
+          </me>
+          Hence, we can evaluate this integral as follows: 
+          <md>
+            <mrow> \int \frac{1}{2\sqrt{1 - x^2}}\, dx \amp= \int \frac{1}{2}\cdot \frac{1}{\sqrt{1 - x^2}}\, dx </mrow>
+            <mrow> \amp= \frac{1}{2}\int \frac{1}{\sqrt{1 - x^2}}\, dx </mrow>
+            <mrow> \amp= \frac{1}{2}\arcsin(x) + C </mrow>
+          </md>
+          
+        </p>
+      </solution>
+    </task>
+  </investigation>
+
+  <p>
+    Recall we learned a couple formulas about taking the derivative of the inverse trigonometric functions back in calculus 1. 
+    If we rewrite these formulas, we will obtain more formulas to help us evaluate integrals. 
+  </p>
+
+  <subsection xml:id="subsec-581-Integral-InverseTrig">
+    <title>Integral formulas involving inverse trigonometric functions</title>
+
+    <p>
+      Back in calculus 1, you learned the derivative of the six inverse trigonometric functions. 
+      Of course we can rewrite the six derivative formulas into the <alert>three</alert> integrals formulas in the following theorem. 
+    </p>
+
+    <theorem xml:id="thm-IntegralInvolvingInverseTrig">
+      <title>Integrals Involving Inverse Trigonometric Functions</title>
+      
+      <p></p>
+      
+      <statement>
+        <p>
+          <md>
+            <mrow> \amp \frac{d}{dx}\left(\sin^{-1}(x)\right) = \frac{1}{\sqrt{1 - x^2}} \amp\amp\implies \qquad \int \frac{dx}{\sqrt{1 - x^2}} = \sin^{-1}(x) + C </mrow>
+            <mrow> \amp </mrow>
+            <mrow> \amp \frac{d}{dx}\left(\tan^{-1}(x)\right) = \frac{1}{1 + x^2} \amp\amp\implies \qquad \int \frac{dx}{1 + x^2} = \tan^{-1}(x) + C </mrow>
+            <mrow> \amp </mrow>
+            <mrow> \amp \frac{d}{dx}\left(\sec^{-1}(x)\right) = \frac{1}{|x|\sqrt{x^2 - 1}} \amp\amp\implies \qquad \int \frac{dx}{|x|\sqrt{x^2 - 1}} = \sec^{-1}(x) + C </mrow>
+          </md>
+        </p>
+      </statement>
+    </theorem>
+
+    <note>
+      <title>Why do we only rewrite three of the six derivative formulas? </title>
+      
+      <p>
+        Recall we have six inverse trigonometric functions. 
+        Why do we only have three integral formulas in the above theorem? 
+      </p>
+
+      <p>
+        That is because of the "co-" in cosine, cotangent, and cosecant. 
+      </p>
+
+      <p>
+        Recall the prefix "co-" in trigonometry means "complementary angles", meaning angles that add up to <m>90^\circ</m> (or <m>\frac{\pi}{2}</m> in radian). 
+        That is, given a ratio <m>x</m>, we have the following identities: 
+        <md>
+          <mrow>\sin^{-1}(x) + \cos^{-1}(x) = \frac{\pi}{2} \qquad\amp\implies\qquad \cos^{-1}(x) = \frac{\pi}{2} - \sin^{-1}(x) </mrow>
+          <mrow>\tan^{-1}(x) + \cot^{-1}(x) = \frac{\pi}{2} \qquad\amp\implies\qquad \cot^{-1}(x) = \frac{\pi}{2} - \tan^{-1}(x) </mrow>
+          <mrow>\sec^{-1}(x) + \csc^{-1}(x) = \frac{\pi}{2} \qquad\amp\implies\qquad \csc^{-1}(x) = \frac{\pi}{2} - \sec^{-1}(x) </mrow>
+        </md> 
+        See that the three inverse trigonometric functions that has the "co-" in their names can be converted to the other three trigonometric functions. 
+        So that is why we only focus on three of the six inverse trigonometric functions when undoing the integral formulas (the other three are only differ by the signs). 
+      </p>
+    </note>
+
+    <example>  
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int \frac{1 + x}{1 + x^2}\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          The bad news here is that we cannot simplify the fraction (there is nothing we can cancel here)...  
+        </p>
+
+        <p>
+          You may try using <m>u</m>-sub and it will work out if you use it smartly. 
+        </p>
+
+        <p>
+          Here is Richard's hint: before using <m>u</m>-sub, try splitting up the fraction as follows: 
+          <me>
+            \frac{1 + x}{1 + x^2} = \frac{1}{1 + x^2} + \frac{x}{1 + x^2}
+          </me>
+          Do we know how to integrate each term? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Using Richard's hint and linearity, we know that
+          <md>
+            <mrow> \int \frac{1 + x}{1 + x^2}\, dx \amp= \int\left(\frac{1}{1 + x^2} + \frac{x}{1 + x^2}\right)\, dx</mrow>
+            <mrow> \amp= \int \frac{1}{1 + x^2}\, dx + \int \frac{x}{1 + x^2}\, dx </mrow>
+          </md>
+        </p>
+
+        <p>
+          Observe that there is a formula in <xref ref="thm-IntegralInvolvingInverseTrig"/> we can use directly to evaluate the first integral. 
+          Hence, the first integral can be evaluated as follows: 
+          <md>
+            <mrow>\int \frac{1}{1 + x^2}\, dx \amp= \arctan(x) + C_1 </mrow>
+          </md>
+        </p>
+
+        <p>
+          For the second integral, we can evaluate it using <m>u</m>-sub. 
+          Let <m>u = 1 + x^2</m>. Then <m>du = 2x\, dx</m>, and hence <m>x\, dx = \frac{du}{2}</m>. 
+          This implies that
+          <md>
+            <mrow>\int \frac{x}{1 + x^2}\, dx \amp= \int\frac{\frac{du}{2}}{u} </mrow>
+            <mrow> \amp= \frac{1}{2}\int \frac{du}{u} </mrow>
+            <mrow> \amp= \frac{1}{2}\ln|u| + C_2 </mrow>
+            <mrow> \amp= \frac{1}{2}\ln\left(1 + x^2\right) + C_2 </mrow>
+          </md>
+        </p>
+
+        <p>
+          Putting these two pieces together, we obtain
+          <md>
+            <mrow> \int \frac{1 + x}{1 + x^2}\, dx \amp= \int \frac{1}{1 + x^2}\, dx + \int \frac{x}{1 + x^2}\, dx </mrow>
+            <mrow> \amp= \arctan(x) + \frac{1}{2}\ln\left(1 + x^2\right) + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      One thing you may notice from the previous example is that similar integrals can lead to very different result. 
+      Then how do we know which method, <m>u</m>-sub or applying the integral formulas involving inverse trigonometric function, should I use? 
+    </p>
+
+    <p>
+      Richard would suggest you always try <m>u</m>-sub first. 
+      If <m>u</m>-sub works out, then great! 
+      If <m>u</m>-sub doesn't work out, then we can consider using a more complicated integral formula. 
+    </p>
+
+    <p>
+      Also, we will develop a more fancy method (a special type of substitution) to evaluate more complicated integrals instead of using the complicated formulas. 
+      If you don't like to use the integral formulas involving inverse trigonometric functions. 
+      Hang tight, and we will approach these types of integral differently. 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^\frac{3}{2} \frac{dx}{\sqrt{9 - 4x^2}}</m>
+      </p>
+      
+      <hint>
+        <p>
+          Observe that there are some inside functions in the integrand, so <m>u</m>-sub may be a good way to go. 
+        </p>
+
+        <p>
+          Let's try <m>u</m>-sub first! Does <m>u</m>-sub work out? Why or why not? 
+        </p>
+        
+        <p>
+          If you are open to another route to evaluate this integral, Richard will give a hint that the following formula may be helpful because of the resemblance.
+          <me>
+            \int \frac{dx}{\sqrt{1 - x^2}} = \sin^{-1}(x) + C
+          </me>
+           
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          You can verify it quickly that <m>u</m>-sub doesn't work here. So Richard will try using the formula he gave in the hint. 
+        </p>
+
+        <p>
+          To use the formula in the hint, observe that the constant term in the square root must be a <m>1</m>. 
+          To make it happen, the trick to do here is factoring. 
+          <md>
+            <mrow>\int_0^\frac{3}{2}\frac{dx}{\sqrt{9 - 4x^2}} \amp= \int_0^\frac{3}{2} \frac{dx}{\sqrt{9\left(1 - \frac{4}{9}x^2\right)}} </mrow>
+            <mrow> \amp= \int_0^\frac{3}{2} \frac{dx}{3\sqrt{1 - \frac{4}{9}x^2}} </mrow>
+            <mrow> \amp= \frac{1}{3} \int_0^\frac{3}{2} \frac{dx}{\sqrt{1 - \frac{4}{9}x^2}} </mrow>
+          </md>
+        </p>
+
+        <p>
+          Now we made the constant term in the square root to be <m>1</m>! 
+          In order to use the formula, we need a perfect square after the subtraction in the square root. 
+          This is an easy fix since <m>\frac{4}{9}x^2 = \left(\frac{2}{3}x\right)^2</m> is a perfect square (a simple <m>u</m>-sub here will make the problem matching up even more with the formula). 
+        </p>
+
+        <p>
+          Let <m>u = \frac{2}{3}x</m>. 
+          Then <m>du = \frac{2}{3}\, dx</m>, which implies that <m>dx = \frac{3}{2}\, du</m>. 
+          Furthermore, when <m>x = 0</m>, <m>u = \frac{2}{3}\cdot 0 = 0</m>; when <m>x = \frac{3}{2}</m>, <m>u = \frac{2}{3}\cdot \frac{3}{2} = 1</m>
+          Now we obtain
+          <md>
+            <mrow>\int_0^\frac{3}{2} \frac{dx}{\sqrt{9 - 4x^2}} \amp= \frac{1}{3} \int_0^\frac{3}{2} \frac{dx}{\sqrt{1 - \frac{4}{9}x^2}} </mrow>
+            <mrow> \amp= \frac{1}{3} \int_0^\frac{3}{2} \frac{dx}{\sqrt{1 - \left(\frac{2}{3}x\right)^2}} </mrow>
+            <mrow> \amp= \frac{1}{3} \int_0^1 \frac{\frac{3}{2}\, du}{\sqrt{1 - u^2}} </mrow>
+            <mrow> \amp= \frac{1}{2} \int_0^1 \frac{du}{1 - u^2} </mrow>
+          </md>
+        </p>
+
+        <p>
+          Observe that the integral now matches up perfectly with the formula! We can now evaluate this integral using FTC. 
+        </p>
+
+        <md>
+          <mrow> \frac{1}{2} \int_0^1 \frac{du}{1 - u^2} \amp= \frac{1}{2}\cdot \sin^{-1}(u)\bigg|_0^1 </mrow>
+          <mrow> \amp= \frac{1}{2}\left(\sin^{-1}(1) - \sin^{-1}(0) \right) </mrow>
+          <mrow> \amp= \frac{1}{2}\left(\frac{\pi}{2} - 0\right) </mrow>
+          <mrow> \amp= \frac{\pi}{4} </mrow>
+        </md>
+      </solution>
+    </example>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-582-IntegralExponential">
+    <title>Integrals Involving Exponential Functions</title>
+
+    <p>
+      This section also mentioned the integral formula involving exponential functions. 
+      Recall back in calculus 1, we learned about the derivative of the exponential functions as follows: 
+      <me>
+        \frac{d}{dx}\left(b^x\right) = \ln(b)\cdot b^x
+      </me>
+      Now we can rewrite this formula using integrals! 
+    </p>
+
+    <theorem xml:id="thm-IntegralInvolvingGeneralExponential">
+      <title>Integrals Involving Exponential Functions</title>
+      
+      <statement>
+        <p>
+          <me>
+            \int b^x\, dx = \frac{b^x}{\ln(b)} + C
+          </me>
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+      Now that we have learned a lot of the integral formulas. 
+      Make sure to write them down on one sheet of paper so you can always look up the formulas in one place. 
+    </p>
+
+    <p>
+      We will finish this section by looking at one more example. 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^1 t\, 5^{t^2}\, dt</m>
+      </p>
+
+      <hint>
+        <p>
+          There is clearly a composite function in the integrand. 
+        What method can we consider trying? 
+        </p>
+      </hint>
+      
+      <solution>
+        <p>
+          There is an inside function of <m>y = t^2</m> in the integrand. 
+          This is a cue that <m>u</m>-sub may work. 
+        </p>
+
+        <p>
+          Let <m>u = t^2</m>. 
+          Then <m>du = 2t\, dt</m>, and hence <m>t\, dt = \frac{du}{2}</m>. 
+          This implies that
+          <md>
+            <mrow>\int_0^1 t\, 5^{t^2}\, dt \amp= \int_0^1 5^u \, \frac{du}{2} </mrow>
+            <mrow> \amp= \frac{1}{2}\int_0^1 5^u\, du </mrow>
+            <mrow> \amp= \frac{1}{2} \cdot \ln(5)\cdot 5^u\bigg|_0^1 </mrow>
+            <mrow> \amp= \frac{\ln(5)}{2}\left(5^1 - 5^0\right) </mrow>
+            <mrow> \amp= \frac{\ln(5)}{2}\cdot 4 </mrow>
+            <mrow> \amp= 2\ln(5) </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+    
+  </subsection>
+
+  <worksheet xml:id="ws-sec58">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following integral using methods covered in class so far.  
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{x\, dx}{x^4 + 1}</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_{-\frac{1}{5}}^\frac{1}{5} \frac{dx}{\sqrt{4 - 25x^2}}</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_{-\frac{1}{2}}^0 \frac{(x + 1) \, dx}{\sqrt{1 - x^2}}</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \cos(x)\cdot 5^{-2\sin(x)}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following indefinite integral using methods covered in class so far. 
+          Note that the two problems are similar. 
+          Are the answer also similar? 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{4}{4x^2 + 1}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{4x}{4 x^2 + 1}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following indefinite integral using methods covered in class so far. 
+          Note that the two problems are similar. 
+          Are the answer also similar? 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\sin(2x)}{1 + \cos^2(x)}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\sin(x)}{1 + \cos^2(x)}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+  </worksheet>
+
+</section>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch5-Integration" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Integration</title>
+
+  <!-- include sections -->
+  <xi:include href="sec51-ApproximatingArea.ptx" />
+  <xi:include href="sec52-DefiniteIntegral.ptx" />
+  <xi:include href="sec53-IndefiniteIntegral.ptx" />
+  <xi:include href="sec54-FTCpartI.ptx" />
+  <xi:include href="sec55-FTCpartII.ptx" />
+  <xi:include href="sec56-NetChange.ptx" />
+  <xi:include href="sec57-uSub.ptx" />
+  <xi:include href="sec58-FurtherIntegralFormulas.ptx" />
+
+</chapter>

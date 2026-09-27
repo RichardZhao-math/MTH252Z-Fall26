@@ -1,0 +1,1422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec51-ApproximatingArea" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Approximating and Computing Area</title>
+
+  <introduction>
+    <p>
+      The big question in this section is <alert>how to approximate the area under the curve of a function</alert>. 
+      We will learn some methods to approximate the area and also how to make the approximation more and more precise. 
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            approximate the area under the curve using left-endpoint approximation
+          </p>
+        </li>
+        <li>
+          <p>
+            approximate the area under the curve using right-endpoint approximation
+          </p>
+        </li>
+        <li>
+          <p>
+            approximate the area under the curve using midpoint approximation
+          </p>
+        </li>
+        <li>
+          <p>
+            interpret the summation (sigma) notation
+          </p>
+        </li>
+      </ul>
+    </objectives>
+    
+  </introduction>
+
+  <investigation>
+    <introduction>
+      <p>
+        Let's find the area under the curve of some simple-looking functions! 
+      </p>
+    </introduction>
+
+    <task>
+      <p>
+        Find the area of the function <m>y = 2</m> on the interval <m>[1,3]</m>. 
+      </p>
+
+      <hint>
+        <p>
+          Graph it out! Label the region of interest! What shape is it? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest
+        </p>
+
+        <figure>
+          <caption>The graph of <m>y = 2</m> with the region under the curve on <m>[1,3]</m> shaded.</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=0, xmax=4.5,
+                  ymin=0, ymax=3.5,
+                  xtick={0,1,2,3,4},
+                  ytick={0,1,2,3},
+                  samples=200
+                ]
+                  % --- Shaded region
+                  \addplot [
+                    domain=1:4,
+                    samples=2,
+                    fill=green!30,
+                    draw=none
+                  ] {2} \closedcycle;
+
+                  % --- Function line
+                  \addplot [thick, blue] {2};
+
+                  % --- Optional dashed boundary at x=1 and x=4
+                  \addplot[dashed] coordinates {(1,0) (1,2)};
+                  \addplot[dashed] coordinates {(4,0) (4,2)};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the region is a <alert>rectangle</alert> with the width of <m>3</m> and height of <m>2</m>. 
+          Hence, the area under the curve is 
+          <me>
+            \text{Area} = 3\cdot 2 = 6
+          </me>
+        </p>
+      </solution>
+    </task>
+
+    <task>
+      <p>
+        Find the area of the function <m>y = 2x</m> on the interval <m>[0,3]</m>. 
+      </p>
+
+      <hint>
+        <p>
+          Graph it out! Label the region of interest! What shape is it? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest
+        </p>
+        
+        <figure>
+          <caption>The graph of <m>y = 2x</m> with the region under the curve on <m>[0,3]</m> shaded.</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=0, xmax=3.5,
+                  ymin=0, ymax=7,
+                  xtick={0,1,2,3},
+                  ytick={0,2,4,6},
+                  samples=200
+                ]
+                  % --- Shaded region: triangle under y=2x on [0,3]
+                  \addplot[fill=green!30, draw=none] coordinates {(0,0) (3,0) (3,6)} -- cycle;
+
+                  % --- Function line
+                  \addplot[thick, blue, domain=0:3] {2*x};
+
+                  % --- Optional dashed boundary at x=3
+                  \addplot[dashed] coordinates {(3,0) (3,6)};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the region is a <alert>triangle</alert> with the base of <m>3</m> and height of <m>6</m>. 
+          Hence, the area under the curve is 
+          <me>
+            \text{Area} = \frac{1}{2}\cdot 3 \cdot 6 = 9
+          </me>
+        </p>
+
+      </solution>
+    </task>
+
+    <task>
+      <p>
+        Find the area of the function <m>y = 2x</m> on the interval <m>[1,3]</m>. 
+      </p>
+
+      <hint>
+        <p>
+          Graph it out! Label the region of interest! What shape is it? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest
+        </p>
+        
+        <figure>
+          <caption>The graph of <m>y = 2x</m> with the region under the curve on <m>[1,3]</m> shaded.</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=0, xmax=3.5,
+                  ymin=0, ymax=7,
+                  xtick={0,1,2,3},
+                  ytick={0,2,4,6},
+                  samples=200
+                ]
+                  % --- Shaded region: triangle under y=2x on [1,3]
+                  \addplot[fill=green!30, draw=none] coordinates {(1,0) (3,0) (3,6) (1,2)} -- cycle;
+
+                  % --- Function line
+                  \addplot[thick, blue, domain=0:3] {2*x};
+
+                  % --- Optional dashed boundary at x=1 and x=3
+                  \addplot[dashed] coordinates {(1,0) (1,2)};
+                  \addplot[dashed] coordinates {(3,0) (3,6)};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the region is a <alert>trapezoid</alert>. 
+          Hence, the area under the curve is 
+          <me>
+            \text{Area} = \frac{2(2 + 6)}{2} = 8
+          </me>
+        </p>
+
+      </solution>
+    </task>
+  </investigation>
+
+  <p>
+    These problems are easy if the region of interest is a known geometric figure... But things are not always so nice... 
+    We will need a way to find (or at least approximate) the area under the graph of any function. 
+  </p>
+
+  <subsection xml:id="subsec-511-Approximate_Rectangle">
+    <title>Approximating Area by Rectangles</title>
+
+    <p>
+      If the region under the curve doesn't look like a known geometric figure, then we can't find the area by searching an area formula we learned before. 
+      Before thinking about finding the <em>precise</em> area under the curve, let's come up with a method to <alert>approximate</alert> the area. 
+    </p>
+
+    <p>
+      One tool we have in our toolkit is to split the region into a bunch of rectangle strips and we can approximate the area by summing the area of these rectangle strips.  
+    </p>
+
+    <example>
+      <p>
+        Approximate the area under the graph of <m>f(x) = x^2 + 1</m> on the interval <m>[0,3]</m> using <em>three</em> rectangles in the following steps: 
+        <ol>
+          <li>
+            <p>
+              Graph the function <m>y = f(x)</m> and highlight the region of interest. 
+            </p>
+          </li>
+          <li>
+            <p>
+              Partition the interval <m>[0,3]</m> into <alert>three equal parts</alert>. 
+            </p>
+          </li>
+          <li>
+            <p>
+              Construct three rectangles using these parts as the width of the rectangles. 
+            </p>
+          </li>
+        </ol>
+      </p>
+
+      <hint>
+        <p>
+          The first two steps should be straightforward. 
+          But how do we determine what the height of each rectangle is... (or does it matter?)
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's first graph the function and highlight the region of interest in green. 
+        </p>
+
+        <figure>
+        <caption>The Graph of <m>y = x^2 + 1</m></caption>
+        <image width="50%">
+        
+          <latex-image >
+            \begin{tikzpicture}
+              \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-0.5, xmax=3.5,
+                ymin=-0.5, ymax=10.5,
+                xtick={0,1,2,3},
+                ytick={2,4,6,8,10},
+                minor xtick={0.5,1.5,2.5},
+                minor ytick={1,3,5,7,9},
+                samples=100, 
+              ]
+
+              % Shaded region under curve y = x^2+1 from 0 to 3
+                \addplot [
+                  draw=none,
+                  fill=green!30,
+                  opacity=0.6,
+                  domain=0:3
+                ] {x^2 + 1} \closedcycle;
+
+              % Graph of the function
+                \addplot[blue, ultra thick, smooth, domain=0:3.5] {x^2 + 1};
+
+              % Vertical dashed lines
+                \draw[dashed] (axis cs:0, 0) -- (axis cs:0, 1);
+                \draw[dashed] (axis cs:3, 0) -- (axis cs:3, 10);
+
+              \end{axis}
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </figure>
+
+
+        <p>
+          Now we want to partition <m>[0,3]</m> into <alert>three equal parts</alert>. 
+          This implies that the three parts are: <m>[0,1]</m>, <m>[1,2]</m>, and <m>[2,3]</m>. 
+          Observe that the length of each part is <m>1</m>. 
+        </p>
+
+        <p>
+          We will next construct three rectangles using these parts as the width. 
+          <alert>Then what about the height of each rectangle?</alert> 
+        </p>
+
+        <p>
+          You can actually pick the height of each rectangle that makes sense. 
+          For demonstration purposes, Richard constructed his three rectangles by <em>aligning the upper left corner of each rectangle on the graph</em>. 
+        </p>
+
+        <figure>
+          <caption>The Graph of <m>y = x^2 + 1</m> with the region under the curve on <m>[0,3]</m> shaded and three left-endpoint rectangles (upper-left corners marked).</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=3.5,
+                  ymin=-0.5, ymax=10.5,
+                  xtick={0,1,2,3},
+                  ytick={2,4,6,8,10},
+                  minor xtick={0.5,1.5,2.5},
+                  minor ytick={1,3,5,7,9},
+                  samples=200
+                ]
+
+                  % --- Shaded region under y = x^2 + 1 on [0,3]
+                  \addplot [
+                    draw=none,
+                    fill=green!50,
+                    opacity=0.6,
+                    domain=0:3
+                  ] {x^2 + 1} \closedcycle;
+
+                  % --- Left-endpoint rectangles (Δx = 1)
+                  % On [0,1] with height f(0)=1
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(0,0) (0,1) (1,1) (1,0)} -- cycle;
+                  % On [1,2] with height f(1)=2
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(1,0) (1,2) (2,2) (2,0)} -- cycle;
+                  % On [2,3] with height f(2)=5
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(2,0) (2,5) (3,5) (3,0)} -- cycle;
+
+                  % --- Mark the upper-left endpoints
+                  \addplot[only marks, mark=* , mark size=2.5pt, color=red] coordinates {(0,1)};
+                  \addplot[only marks, mark=* , mark size=2.5pt, color=red] coordinates {(1,2)};
+                  \addplot[only marks, mark=* , mark size=2.5pt, color=red] coordinates {(2,5)};
+
+                  % Curve
+                  \addplot[blue, ultra thick, smooth, domain=0:3.5] {x^2 + 1};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the area of the orange region is an <em>approximation</em> of the area of the region of interest (the green region). 
+          We can actually find the height of each of the three rectangles, which allows us to compute the area of the rectangles. 
+        </p>
+
+        <p>
+          The height of each rectangle is the <alert>function value</alert> of the left-endpoint of each partition. 
+        </p>
+
+        <p>
+          Hence, an approximation of the area under the curve, using these three rectangles, is
+          <md>
+            <mrow>\text{Area} \amp\approx 1\cdot f(0) + 1\cdot f(1) + 1\cdot f(2) </mrow>
+            <mrow> \amp= 1\cdot(0^2 + 1) + 1\cdot (1^2 + 1) + 1\cdot (2^2 + 1) </mrow>
+            <mrow> \amp= 1 + 2 + 5 </mrow>
+            <mrow> \amp= 8 </mrow>
+          </md>
+        </p>
+
+        <p>
+          <alert>Observe that this is just an approximation of the area under the curve. This is not the actual area under the curve.</alert>
+          We can observe, from the diagram above, that <m>8</m> is an <alert>under-estimate</alert> of the actual area. 
+        </p>
+
+      </solution>
+    </example>
+
+    <p>
+      Observe that Richard made a choice of aligning the <alert>upper left</alert> corner of each rectangle on the curve when he constructed his three rectangles. 
+      Let's give this method of approximation a fancy name! 
+      This is called the <alert>left-endpoint approximation</alert>. 
+      Notationally speaking, we can represent this approximation by <m>L_3</m> (left-endpoint approximation using three rectangles). 
+    </p>
+
+    <p>
+      You may be wondering if we can align the <em>upper right</em> corner of each rectangle on the curve when you construct the rectangle...
+      We certainly can! 
+      Let's try the same problem but with a slightly different way of constructing the rectangles! 
+    </p>
+
+    <example>
+      <p>
+        Approximate the area under the graph of <m>f(x) = x^2 + 1</m> on the interval <m>[0,3]</m> using <em>three</em> rectangles with equal-width and the <alert>upper right</alert> corner of each rectangle is on the curve. 
+      </p>
+
+      <hint>
+        <p>
+          Diagrams are our friend! 
+          Let's graph <m>f(x) = x^2 + 1</m> and construct these three rectangles! 
+        </p>
+
+        <p>
+          What is the <em>height</em> of each rectangle? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Below is the diagram of three equal-width rectangles and each of the <alert>upper right</alert> corner is on the curve. 
+        </p>
+
+        <figure>
+          <caption>The Graph of <m>y = x^2 + 1</m> with the region under the curve on <m>[0,3]</m> shaded and three right-endpoint rectangles (upper-right corners marked).</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=3.5,
+                  ymin=-0.5, ymax=10.5,
+                  xtick={0,1,2,3},
+                  ytick={2,4,6,8,10},
+                  minor xtick={0.5,1.5,2.5},
+                  minor ytick={1,3,5,7,9},
+                  samples=200
+                ]
+
+                  % --- Shaded region under y = x^2 + 1 on [0,3]
+                  \addplot [
+                    draw=none,
+                    fill=green!50,
+                    opacity=0.6,
+                    domain=0:3
+                  ] {x^2 + 1} \closedcycle;
+
+                  % --- Right-endpoint rectangles (Δx = 1)
+                  % Heights: f(1)=2, f(2)=5, f(3)=10
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(0,0) (0,2) (1,2) (1,0)} -- cycle;
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(1,0) (1,5) (2,5) (2,0)} -- cycle;
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(2,0) (2,10) (3,10) (3,0)} -- cycle;
+
+                  % --- Mark the upper-right endpoints (dots only)
+                  \addplot[only marks, mark=* , mark size=2.5pt, color=red]
+                    coordinates {(1,2) (2,5) (3,10)};
+
+                  % Curve
+                  \addplot[blue, ultra thick, smooth, domain=0:3.5] {x^2 + 1};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the height of each rectangle is the <alert>function value</alert> of the right-endpoint of each partition. 
+        </p>
+
+        <p>
+          Hence, an approximation of the area under the curve, using these three rectangles, is
+          <md>
+            <mrow>\text{Area} \amp\approx 1\cdot f(1) + 1\cdot f(2) + 1\cdot f(3) </mrow>
+            <mrow> \amp= 1\cdot (1^2 + 1) + 1\cdot (2^2 + 1) + 1\cdot (3^2 + 1) </mrow>
+            <mrow> \amp= 2 + 5 + 10 </mrow>
+            <mrow> \amp= 17 </mrow>
+          </md>
+        </p>
+
+        <p>
+          <alert>Remember that this is just another approximation of the area under the curve. This is not the actual area under the curve.</alert>
+          We can observe, from the diagram above, that <m>17</m> is an <alert>over-estimate</alert> of the actual area. 
+        </p>
+
+      </solution>
+    </example>
+
+    <p>
+      Similarly, we can name this method the <alert>right-endpoint approximation</alert>! 
+      Notationally speaking, we can represent this approximation by <m>R_3</m> (right-endpoint approximation using three rectangles). 
+    </p>
+
+    <p>
+      We can actually make it even more fancier by aligning the <em>midpoint</em> of each rectangle on the curve when you construct the rectangle! 
+      There are pros and cons to make the method fancier. 
+      Let's try the same problem with this slightly fancier method and see what the pros and cons are! 
+    </p>
+
+    <example>
+      <p>
+        Approximate the area under the graph of <m>f(x) = x^2 + 1</m> on the interval <m>[0,3]</m> using <em>three</em> rectangles with equal-width and the <alert>midpoint</alert> of each rectangle is on the curve.
+      </p>
+
+      <hint>
+        <p>
+          Again, diagrams are our friend! Making a pretty diagram will help you determine what the height of each rectangle is so we can compute the area of the rectangles!
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Below is the diagram of three equal-width rectangles and each of the <alert>midpoint</alert> is on the curve. 
+        </p>
+
+        <figure>
+          <caption>The Graph of <m>y = x^2 + 1</m> with the region under the curve on <m>[0,3]</m> shaded and three midpoint rectangles (midpoints marked).</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=3.5,
+                  ymin=-0.5, ymax=10.5,
+                  xtick={0,1,2,3},
+                  ytick={2,4,6,8,10},
+                  minor xtick={0.5,1.5,2.5},
+                  minor ytick={1,3,5,7,9},
+                  samples=200
+                ]
+
+                  % --- Shaded region under y = x^2 + 1 on [0,3]
+                  \addplot [draw=none, fill=green!50, opacity=0.6, domain=0:3] {x^2 + 1} \closedcycle;
+
+                  % --- Midpoint rectangles (Δx = 1)
+                  % Midpoints: 0.5 -> f=1.25 ; 1.5 -> f=3.25 ; 2.5 -> f=7.25
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(0,0) (0,1.25) (1,1.25) (1,0)} -- cycle;
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(1,0) (1,3.25) (2,3.25) (2,0)} -- cycle;
+                  \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                    coordinates {(2,0) (2,7.25) (3,7.25) (3,0)} -- cycle;
+
+                  % --- Mark the sample points (top midpoints of each rectangle)
+                  \addplot[only marks, mark=*, mark size=2.5pt, color=red]
+                    coordinates {(0.5,1.25) (1.5,3.25) (2.5,7.25)};
+
+                  % --- Red dashed verticals marking rectangle heights
+                  \draw[red, dashed, thick] (axis cs:0.5,0) -- (axis cs:0.5,1.25);
+                  \draw[red, dashed, thick] (axis cs:1.5,0) -- (axis cs:1.5,3.25);
+                  \draw[red, dashed, thick] (axis cs:2.5,0) -- (axis cs:2.5,7.25);
+
+                  % Curve
+                  \addplot[blue, ultra thick, smooth, domain=0:3.5] {x^2 + 1};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          Observe that the height of each rectangle is the <alert>function value</alert> of the midpoint of each partition. 
+        </p>
+
+        <p>
+          Hence, an approximation of the area under the curve, using these three rectangles, is
+          <md>
+            <mrow>\text{Area} \amp\approx 1\cdot f\left(\frac{0 + 1}{2}\right) + 1\cdot f\left(\frac{1 + 2}{2}\right) + 1\cdot f\left(\frac{2 + 3}{2}\right)</mrow>
+            <mrow> \amp= 1\cdot (0.5^2 + 1) + 1\cdot (1.5^2 + 1) + 1\cdot (2.5^2 + 1) </mrow>
+            <mrow> \amp= 1.25 + 3.25 + 7.25 </mrow>
+            <mrow> \amp= 11.75 </mrow>
+          </md>
+        </p>
+
+        <p>
+          <alert>Again, this is just one more approximation of the area under the curve. This is not the actual area under the curve.</alert>
+          We actually don't know if this is an under- or over-estimate. 
+          Yet, we can observe, from the diagram above, that <m>11.75</m> is a <em>better</em> approximation compared to <m>L_3</m> and <m>R_3</m>. 
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Again, we can name this even fancier method the <alert>midpoint</alert> approximation! 
+      You can imagine that we can represent this approximation by <m>M_3</m> (midpoint approximation using three rectangles). 
+    </p>
+
+    <p>
+      You can observe that the midpoint approximation will give a <em>better</em> approximation compared to the left- and the right- endpoint approximation (this is a pro). 
+      But the tradeoff here is that the height of each rectangle is a bit more complicated to obtain (this is a con). 
+    </p>
+
+    <p>
+      When you are approximating something, you usually will need to make a choice between <em>computational power</em> and the <em>accuracy of the approximation</em>. 
+      Easier methods will give a less-accurate approximation and more-complicated methods will give a more-accurate approximation. 
+    </p>
+    
+    <note>
+      <title>Why do I have to approximate the area using rectangles?</title>
+      
+      <p>
+        You may have an even better way of approximating the area if you are not using rectangles. 
+        As an example, you may want to approximate the area using <em>trapezoids</em> as follows: 
+      </p>
+
+      <figure>
+        <caption>The Graph of <m>y = x^2 + 1</m> with the region under the curve on <m>[0,3]</m> shaded and three trapezoids.</caption>
+        <image width="50%">
+          <latex-image>
+            \begin{tikzpicture}
+              \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-0.5, xmax=3.5,
+                ymin=-0.5, ymax=10.5,
+                xtick={0,1,2,3},
+                ytick={2,4,6,8,10},
+                minor xtick={0.5,1.5,2.5},
+                minor ytick={1,3,5,7,9},
+                samples=200
+              ]
+
+                % --- Shaded region under y = x^2 + 1 on [0,3]
+                \addplot [draw=none, fill=green!50, opacity=0.6, domain=0:3] {x^2 + 1} \closedcycle;
+
+                % --- Trapezoids (Δx = 1) with endpoints: f(0)=1, f(1)=2, f(2)=5, f(3)=10
+                \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                  coordinates {(0,0) (0,1) (1,2) (1,0)} -- cycle;
+                \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                  coordinates {(1,0) (1,2) (2,5) (2,0)} -- cycle;
+                \addplot[draw=orange!80, fill=orange!40, opacity=0.7]
+                  coordinates {(2,0) (2,5) (3,10) (3,0)} -- cycle;
+
+                % --- Mark endpoints used by the trapezoids
+                \addplot[only marks, mark=*, mark size=2.5pt, color=red]
+                  coordinates {(0,1) (1,2) (2,5) (3,10)};
+
+                % Curve
+                \addplot[blue, ultra thick, smooth, domain=0:3.5] {x^2 + 1};
+
+              \end{axis}
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </figure>
+
+      <p>
+        This approximation seems to give us an even better approximation... 
+        So <alert>why using rectangles at all</alert>? 
+      </p>
+
+      <p>
+        This goes back to the idea of choosing between <em>computational power</em> and <em>accuracy of the approximation</em>.
+        The reason why Richard wanted you to approximate the area using rectangles in this section is because <alert>we can find the area of a rectangle easily</alert> 
+        (so Richard picked the <em>computational power</em> over the <em>accuracy of approximation</em> so far, of course, for a good reason).
+      </p>
+
+      <p>
+        You are more than welcome to approximate the area using other shapes other than rectangles. 
+        This is just a preview that we will approximate the area using <em>trapezoids</em> and even <em>parabolas</em> in section 7.8. 
+      </p>
+
+    </note>
+
+    <example>
+      <p>
+        Approximate the area under the graph of <m>g(x) = \sqrt{6x + 2}</m> on the interval <m>[1,3]</m> using <m>L_6</m>, <m>R_6</m>, and <m>M_6</m>. 
+      </p>
+
+      <hint>
+        <p>
+          Symbolically speaking, 
+          <ul>
+            <li>
+              <p>
+                <m>L_6</m> means we want to approximate the area under the curve using <em>six</em> equal-width rectangles whose <em>upper left</em> corners are on the curve. 
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>R_6</m> means we want to approximate the area under the curve using <em>six</em> equal-width rectangles whose <em>upper right</em> corners are on the curve. 
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>M_6</m> means we want to approximate the area under the curve using <em>six</em> equal-width rectangles whose <em>midpoint</em> are on the curve. 
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Remember that diagrams are our friends! 
+          In addition, let's see if we can come up with some formulas to compute these approximations so we don't have to graph the function each time. 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let's graph the function and highlight the region of interest first. 
+          <figure>
+            <caption>The Graph of <m>g(x) = \sqrt{6x+2}</m> with the area under the curve on <m>[1,3]</m> shaded.</caption>
+            <image width="50%">
+              <latex-image>
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    axis lines=middle,
+                    xlabel={$x$},
+                    ylabel={$y$},
+                    xmin=0.5, xmax=3.5,
+                    ymin=-0.5, ymax=5.5,
+                    xtick={1,2,3},
+                    ytick={1,2,3,4,5},
+                    minor xtick={1.333,1.666,2.333,2.666},
+                    minor ytick={0.5,1.5,2.5,3.5,4.5},
+                    samples=200
+                  ]
+
+                    % --- Shaded region under g(x) = sqrt(6x+2) on [1,3]
+                    \addplot [
+                      draw=none,
+                      fill=green!50,
+                      opacity=0.6,
+                      domain=1:3
+                    ] {sqrt(6*x+2)} \closedcycle;
+
+                    % --- Graph of g(x)
+                    \addplot[blue, ultra thick, smooth, domain=0:3.2] {sqrt(6*x+2)};
+
+                    % Vertical dashed lines at x=1 and x=3
+                    \draw[dashed] (axis cs:1,0) -- (axis cs:1,{sqrt(6*1+2)});
+                    \draw[dashed] (axis cs:3,0) -- (axis cs:3,{sqrt(6*3+2)});
+
+                  \end{axis}
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+          </figure>
+        </p>
+
+        <p>
+          We want six rectangles with equal widths so we want to split <m>[1,3]</m> into six equal parts. 
+          If we call the number of rectangles <m>N</m>, then we know that
+          <me>
+            N = 6
+          </me>
+        </p>
+
+        <p>
+          Next, we want to find out the length of each part, aka the width of each rectangle. 
+          If we call this number <m>\Delta x</m>, then we know that
+          <me>
+            \Delta x = \frac{3 - 1}{6} = \frac{1}{3}
+          </me>
+        </p>
+
+        <p>
+          This will allow us to figure out exactly each parts of the partitions. 
+          They are
+          <me>
+            \left[1, \frac{4}{3}\right], \quad \quad \left[\frac{4}{3}, \frac{5}{3}\right], \quad \quad \left[\frac{5}{3}, 2\right], \quad \quad \left[2, \frac{7}{3}\right], \quad \quad \left[\frac{7}{3}, \frac{8}{3}\right], \quad \quad \left[\frac{8}{3}, 3\right]
+          </me>
+        </p>
+
+        <p>
+          Recall that the height of each rectangles are the <alert>function value</alert> of some points in each parts. 
+          For demonstration purposes, the graph below shows the <m>L_6</m>, <m>R_6</m>, and <m>M_6</m>. 
+        </p>
+
+        <interactive iframe="https://www.desmos.com/calculator/xp9yyktr1r?embed&amp;lang=en&amp;noexpressions=1"
+             width="108.5%" aspect="16:9">
+        </interactive>
+
+        <p>
+          Let's compute the <m>L_6</m> first. 
+          The height of each rectangle is the <alert>function value</alert> of the <em>left-endpoint</em> of each partition. 
+          That is, 
+          <md>
+            <mrow>L_6 \amp= \frac{1}{3}\cdot g\left(1\right) + \frac{1}{3}\cdot g\left(\frac{4}{3}\right) + \frac{1}{3}\cdot g\left(\frac{5}{3}\right) + \frac{1}{3}\cdot g\left(2\right) + \frac{1}{3}\cdot g\left(\frac{7}{3}\right) + \frac{1}{3}\cdot g\left(\frac{8}{3}\right)</mrow>
+            <mrow> \amp= \frac{1}{3}\left(g\left(1\right) + g\left(\frac{4}{3}\right) + g\left(\frac{5}{3}\right) + g\left(2\right) + g\left(\frac{7}{3}\right) + g\left(\frac{8}{3}\right) \right) </mrow>
+            <mrow> \amp= \frac{1}{3}\left(\sqrt{8} + \sqrt{10} + \sqrt{12} + \sqrt{14} + \sqrt{16} + \sqrt{18} \right) </mrow>
+            <mrow> \amp\approx 7.14636815798 </mrow>
+          </md>
+        </p>
+
+        <p>
+          Next, let's compute <m>R_6</m>. 
+          The height of each rectangle is the <alert>function value</alert> of the <em>right-endpoint</em> of each partition. 
+          That is, 
+          <md>
+            <mrow>R_6 \amp= \frac{1}{3}\cdot g\left(\frac{4}{3}\right) + \frac{1}{3}\cdot g\left(\frac{5}{3}\right) + \frac{1}{3}\cdot g\left(2\right) + \frac{1}{3}\cdot g\left(\frac{7}{3}\right) + \frac{1}{3}\cdot g\left(\frac{8}{3}\right) + \frac{1}{3}\cdot g\left(3\right)</mrow>
+            <mrow> \amp= \frac{1}{3}\left(g\left(\frac{4}{3}\right) + g\left(\frac{5}{3}\right) + g\left(2\right) + g\left(\frac{7}{3}\right) + g\left(\frac{8}{3}\right) + g\left(3\right) \right) </mrow>
+            <mrow> \amp= \frac{1}{3}\left(\sqrt{10} + \sqrt{12} + \sqrt{14} + \sqrt{16} + \sqrt{18} + \sqrt{20} \right) </mrow>
+            <mrow> \amp\approx 7.6942711014 </mrow>
+          </md>
+        </p>
+
+        <p>
+          Last but not least, let's compute <m>M_6</m>. The height of each rectangle is the <alert>function value</alert> of the <em>midpoint</em> of each partition. 
+          That is, 
+          <md>
+            <mrow>M_6 \amp= \frac{1}{3}\cdot g\left(\frac{1 + \frac{4}{3}}{2}\right) + \frac{1}{3}\cdot g\left(\frac{\frac{4}{3} + \frac{5}{3}}{2}\right) + \frac{1}{3}\cdot g\left(\frac{\frac{5}{3} + 2}{2}\right) + \frac{1}{3}\cdot g\left(\frac{2 + \frac{7}{3}}{2}\right) + \frac{1}{3}\cdot g\left(\frac{\frac{7}{2} + \frac{8}{3}}{2}\right) + \frac{1}{3}\cdot g\left(\frac{\frac{8}{2} + 3}{2}\right)</mrow>
+            <mrow> \amp= \frac{1}{3}\left(g\left(\frac{1 + \frac{4}{3}}{2}\right) + g\left(\frac{\frac{4}{3} + \frac{5}{3}}{2}\right) + g\left(\frac{\frac{5}{3} + 2}{2}\right) + g\left(\frac{2 + \frac{7}{3}}{2}\right) + g\left(\frac{\frac{7}{2} + \frac{8}{3}}{2}\right) + g\left(\frac{\frac{8}{2} + 3}{2}\right)\right) </mrow>
+            <mrow> \amp= \frac{1}{3}\left(g\left(\frac{7}{6}\right) + g\left(\frac{9}{6}\right) + g\left(\frac{11}{6}\right) + g\left(\frac{13}{6}\right) + g\left(\frac{15}{6}\right) + g\left(\frac{17}{6}\right) \right) </mrow>
+            <mrow> \amp= \frac{1}{3}\left(\sqrt{9} + \sqrt{11} + \sqrt{13} + \sqrt{15} + \sqrt{17} + \sqrt{19} \right) </mrow>
+            <mrow> \amp\approx 7.42572132706 </mrow>
+          </md>
+        </p>
+
+      </solution>
+    </example>
+
+    <p>
+      Let's generalize the process! 
+      Let's say we want to approximate the area under the graph of <m>y= f(x)</m> on the interval <m>[a,b]</m> using <m>N</m> equal-width rectangles. 
+      Then the width of each rectangle is 
+      <me>
+        \Delta x = \frac{b - a}{N}
+      </me>
+      Furthermore, let's index our <m>x</m>'s such that <m>a = x_0</m> and <m>b = x_N</m>. 
+      Then we can approximate the area under the curve as follows: 
+      <me>
+        L_N = \Delta x\bigg(f\left(x_0\right) + f\left(x_1\right) + f\left(x_2\right) + \cdots + f\left(x_{N-1}\right)\bigg)
+      </me>
+      <me>
+        R_N = \Delta x\bigg(f\left(x_1\right) + f\left(x_2\right) + f\left(x_3\right) + \cdots + f\left(x_N\right)\bigg)
+      </me>
+      <me>
+        M_N = \Delta x\bigg(f\left(\frac{x_0 + x_1}{2}\right) + f\left(\frac{x_1 + x_2}{2}\right) + \cdots + f\left(\frac{x_{N-1} +x_N}{2}\right)\bigg)
+      </me>
+      We can approximate the area once we can partition the interval and figure out the values of all the <m>x_i</m>'s, where <m>i</m> is the index. 
+      Then we don't have to graph the functions and construct all the rectangles.  
+    </p>
+  </subsection>
+
+  <subsection xml:id="subsec-512-SummationNotation">
+    <title>Summation Notation</title>
+
+    <p>
+      You may get the feeling that there is a pattern in the formulas above.  
+      We are adding similar things together. 
+      Sometimes it is kind of tedious to write out all the -- addends when the addends are similar with a pattern. 
+      Actually we have a special notation in math we can use to add things up with a pattern. 
+    </p>
+
+    <p>
+      <definition xml:id="def-SummationNotation">
+        <statement>
+          <p>
+            The <term>sum</term> of numbers <m>a_m, \ldots, a_n</m> (<m>m\leq n</m>) is denoted 
+            <me>
+              \sum_{i = m}^n a_i = a_m + a_{m + 1} + a_{m + 2} + \cdots + a_n
+            </me>
+            where the greek letter <m>\Sigma</m> (capital sigma) stands for the <term>sum</term>. 
+            <m>i</m> denotes the index, the <m>i = m</m> below the <m>\Sigma</m> denotes the starting value of <m>m</m>, and the <m>n</m> above the <m>\Sigma</m> denotes the index ends at <m>n</m>. 
+          </p>
+        </statement>
+      </definition>
+    </p>
+
+    <example>
+      <p>
+        Expand the summation notation <m>\displaystyle \sum_{i = 0}^5 i(i - 1)</m>. 
+        Then evaluate this expression. 
+      </p>
+
+      <hint>
+        <p>
+          Recall the <m>\Sigma</m> notation represents the sum. 
+          So we are adding things together that looks like <m>i(i -1)</m>. 
+        </p>
+
+        <p>
+          Furthermore, we know the value of <m>i</m> is the index that starts at <m>0</m> and ends at <m>5</m>... 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          We will add all the <m>i(i - 1)</m>'s together where <m>i</m> starts at <m>0</m> and ends at <m>5</m>. 
+          Hence, we obtain
+          <md>
+            <mrow>\sum_{i = 0}^5 i(i - 1) \amp= 0(0-1) + 1(1-1) + 2(2-1) + 3(3-1) + 4(4-1) + 5(5-1) </mrow>
+            <mrow> \amp= 0 + 0 + 2 + 6 + 12 + 20 </mrow>
+            <mrow> \amp= 40 </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Using the summation notation, we can rewrite the formulas for <m>L_N</m>, <m>R_N</m>, and <m>M_N</m> more briefly. 
+      <md>
+        <mrow>L_N \amp= \Delta x\bigg(f\left(x_0\right) + f\left(x_1\right) + f\left(x_2\right) + \cdots + f\left(x_{N-1}\right)\bigg)</mrow>
+        <mrow> \amp= \Delta x \sum_{i = 0}^{N - 1} f\left(x_i\right)</mrow>
+        <mrow> \amp = \Delta x \sum_{i = 0}^{N-1} f(a + i\cdot \Delta x)</mrow>
+      </md>
+    </p>
+    <p>
+      <md>
+        <mrow>R_N \amp= \Delta x\bigg(f\left(x_1\right) + f\left(x_2\right) + f\left(x_3\right) + \cdots + f\left(x_N\right)\bigg)</mrow>
+        <mrow> \amp= \Delta x \sum_{i = 1}^N f\left(x_i\right)</mrow>
+        <mrow> \amp = \Delta x \sum_{i = 1}^{N} f(a + i\cdot \Delta x)</mrow>
+      </md>
+    </p>
+    <p>
+      <md>
+        <mrow>M_N \amp= \Delta x\bigg(f\left(\frac{x_0 + x_1}{2}\right) + f\left(\frac{x_1 + x_2}{2}\right) + \cdots + f\left(\frac{x_{N-1} +x_N}{2}\right)\bigg)</mrow>
+        <mrow> \amp= \Delta x \sum_{i = 0}^{N-1} f\left(\frac{x_i + x_{i + 1}}{2}\right)</mrow>
+        <mrow> \amp = \Delta x \sum_{i = 0}^{N-1} f\left(a + \left(\frac{1}{2} + i\right)\cdot \Delta x\right)</mrow>
+      </md>
+    </p>
+
+    <p>
+      <alert>But Richard...</alert> why introducing another fancy symbol of <m>\Sigma</m> to make the formulas even more fancier-looking? 
+      Well there are several reasons... One of the reasons we care about in this section is that we can actually insert this <m>\Sigma</m> to Desmos calculator and let it do the work for you (as opposed to you figuring out all the area of the rectangle stripes... not that you can't do it this way). 
+    </p>
+
+    <p>
+      Another reason is that we can actually do some manipulation with it (e.g., find the limit of it when we have infinitely many rectangles!) if we want to increase the precision of our apprpoximation. 
+      This is <alert> A BIG IDEA</alert> in integral calculus that we will discuss in the next section! 
+    </p>
+
+    <p>
+      This is just a quick preview. For those of you who are thinking about taking MTH 253Z Sequences and Series. Guess what a series is! Series, roughly speaking, is the <em>sum</em> of a bunch of things so you will definitely see the <m>\Sigma</m> all over the place in MTH 253Z. 
+    </p>
+
+    <example>
+      <p>
+        Using <url href="https://www.desmos.com/calculator">Desmos</url>, 
+        approximate the area under the graph of <m>g(x) = \sqrt{6x + 2}</m> on the intevral <m>[1,3]</m> using <m>L_6</m>, <m>R_6</m>, and <m>M_6</m>. 
+      </p>
+
+      <hint>
+        <p>
+          I will help out with the set up! 
+        </p>
+
+        <p>
+          We will first need a function, so let's type "g(x)=sqrt(6x+2)" in the first line. 
+        </p>
+
+        <p>
+          We will also need to know the value of <m>a</m>, <m>N</m>, and <m>\Delta x</m> in order to use the formula... So what are they? 
+        </p>
+
+        <p>
+          If we want to find <m>L_6</m>, then, in the next line, type "L_6=sum". Then you should see a <m>\Sigma</m> popping out on the screen. 
+        </p>
+
+        <p>
+          Now you can put in the result of the formula (of course, with the actual value of <m>a</m>, <m>N</m>, and <m>\Delta x</m>) in this line. 
+        </p>
+
+        <p>
+          <em>Quick Note:</em> You also want to change the index to <m>i</m> instead of <m>n</m> since this is what the formulas say (or you can replace all the <m>i</m>'s with <m>n</m>'s in the formulas). 
+          Just make sure that the index notation is consistent. 
+        </p>
+      </hint>
+
+      <solution>
+        <figure>
+          <caption>Desmos Demo</caption>
+          <image source="external/images/desmos_calculation_demo.png" width="60%" />
+        </figure>
+
+        <p>
+          Direct link: <url href="https://drive.google.com/uc?export=view&amp;id=1lJpdp9AEgrROGBeZQ6lIvEkcsWu3fo54">open image</url>
+        </p>
+      </solution>
+    </example>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-513-Compute_Limit_Approximation">
+    <title>Computing Area as the Limit of Approximation</title>
+    
+    <p>
+      Now that we know how to approximate the area under the curve using rectangles. 
+      Then the next natural question here is how to make our approximation better and better. 
+    </p>
+
+    <p>
+      One thing we can do is to <alert>increase the number of rectangle strips</alert>.  
+      That is, we want to increase the value of <m>N</m> in the approximation methods. 
+      As <m>N</m> is getting larger, this will force the width of each rectangle, <m>Delta x</m>, to be smaller and smaller. 
+      In other words, 
+      <me>
+        \Delta x\to 0 \qquad\text{ as } \qquad N\to \infty
+      </me>
+    </p>
+
+    <p>
+      In the following applet, you can see that the apprpoximation is closer and closer to the actual area if we increase the <m>N</m> values, <em>regarless of which approximation methods we used</em>. 
+    </p>
+
+    <interactive iframe="https://www.desmos.com/calculator/hm6zunlaa2?embed&amp;lang=en&amp;noexpressions=1"
+              width="108.5%" aspect="4:3">
+      <caption>
+        <p>Desmos Demonstration on Approximation as N is larger</p>
+      </caption>
+    </interactive>
+
+    <p>
+      That is, the actual area can be computed using the <alert>limit</alert> of our approximation. 
+      Let's make it a cool theorem! 
+    </p>
+
+    <p>
+      <theorem xml:id="thm-Area-LimitofApproximation">
+        <statement>
+          <p>
+            If <m>f</m> is continuous on <m>[a,b]</m>, then the left-endpoint, right-endpoint, and the midpoint approximation approches the same limit as <m>N\to \infty</m>. 
+            In other words, there is a value of <m>L</m> such that
+            <me>
+              \lim_{N\to\infty} L_N = \lim_{N\to\infty} R_N = \lim_{N\to\infty} M_N = L
+            </me>
+            If <m>f(x) \geq 0</m> on <m>[a,b]</m>, then <m>L</m> is the area under the graph of <m>y = f(x)</m> on <m>[a,b]</m>. 
+          </p>
+        </statement>
+      </theorem>
+    </p>
+
+    <p>
+      <alert>But Richard...</alert> how can we actually split up the region into <em>infinite</em> number of rectangle strips and find the area of all the strips... 
+      This seems impossible to do in practice... 
+    </p>
+
+    <p>
+      You are correct that this is impossible to achieve in practice... 
+      The best we can do is to make our approximation better and better until we are happy about the value (life isn't perfect. how surprising...). 
+    </p>
+
+    <p>
+      But this is a math class (so we are living in an ideal world where we can assume a lot of things!). 
+      If we are given the function, then we actually can compute the actual value of the area under the curve within some interval. 
+      This is a central idea of this class. 
+    </p>
+
+    <p>
+      <alert>We are actually ready to formalize these approximation methods in the next section.</alert>
+      But if you are feeling a bit of adventurous and devoted to figuring out this limit idea <em>algebraically</em>, feel free to keep reading the next part. 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-514-LimitSummation">
+    <title>Limit of the approximation algebraically</title>
+    
+    <p>
+      Recall we can express the sum using the <term>summation notation</term>. 
+      Let's do some quick practice to remind us of how it works. 
+    </p>
+    
+    <example>
+      <p>
+        Write out the following summation notation and evaluate it. 
+      </p>
+
+      <ol marker="(a)">
+        <li>
+          <p>
+            <m>\displaystyle \sum_{i = 1}^5 (i + 1)</m>
+          </p>
+          <solution>
+            <p>
+              <md>
+                <mrow> \sum_{i = 1}^5 (i + 1) \amp= (1 + 1) + (2 + 1) + (3 + 1) + (4 + 1) + (5 + 1)</mrow>
+                <mrow> \amp= (1 + 2 + 3 + 4 + 5) + (1 + 1 + 1 + 1 + 1) </mrow>
+                <mrow> \amp= 15 + 5 </mrow>
+                <mrow> \amp= 20 </mrow>
+              </md>
+            </p>
+          </solution>
+        </li>
+
+        <li>
+          <p>
+            <m>\displaystyle \sum_{j = 1}^5 3j</m>
+          </p>
+          <solution>
+            <p>
+              <md>
+                <mrow> \sum_{j = 1}^5 3j \amp= 3\cdot 1 + 3\cdot 2 + 3\cdot 3 + 3\cdot 4 + 3\cdot 5 </mrow>
+                <mrow> \amp= 3\left(1 + 2 + 3 + 4 + 5\right) </mrow>
+                <mrow> \amp= 3(15) </mrow>
+                <mrow> \amp= 45</mrow>
+              </md>
+            </p>
+          </solution>
+        </li>
+
+        <li>
+          <p>
+            <m>\displaystyle \sum_{k = 1}^5 10</m>
+          </p>
+          <solution>
+            <p>
+              <md>
+                <mrow> \sum_{k = 1}^5 10 \amp= 10 + 10 + 10 + 10 + 10 </mrow>
+                <mrow> \amp= 5\cdot 10 </mrow>
+                <mrow> \amp= 50 </mrow>
+              </md>
+            </p>
+          </solution>
+        </li>
+      </ol>
+    </example>
+
+    <p>
+      There are some properties of the summation notation we can use to make our computation easier. 
+    </p>
+
+    <p>
+      <theorem xml:id="thm-Property-SummationNotation">
+        <title>Properties of Summation Notation</title>
+        <statement>
+          <p>
+            <ol marker="(a)">
+              <li>
+                <p>
+                  <m>\displaystyle \sum_{i = m}^n \left(a_i + b_i\right) = \sum_{i = m}^n a_i + \sum_{i = m}^n b_i</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\displaystyle \sum_{i = m}^n C\cdot a_i = C\cdot \sum_{i = m}^n</m> for any constant <m>C</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\displaystyle \sum_{i = 1}^n C = nC</m> for any constant <m>C</m>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </theorem>
+    </p>
+
+    <p>
+      Using these above properties, we can break down a complicated summation notation into smaller pieces (so we can deal with one piece at a time). 
+    </p>
+
+    <p>
+      There are also three well-known formulas, called the <term>power sums</term> formulas, that tells us the summation of the first <m>N</m> integers with powers. 
+    </p>
+
+    <p>
+      <theorem xml:id="thm-PowerSum">
+        <title>Power Sum Formulas</title>
+        <statement>
+          <p>
+            Let <m>N</m> be a natural number. Then
+            <ol marker="(a)">
+              <li>
+                <p>
+                  <m>\displaystyle \sum_{k = 1}^N k = 1 + 2 + \cdots + N = \frac{N(N+1)}{2} = \frac{N^2}{2} + \frac{N}{2}</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\displaystyle \sum_{k = 1}^N k^2 = 1^2 + 2^2 + \cdots + N^2 = \frac{N(N+1)(2N+1)}{6} = \frac{N^3}{3} + \frac{N^2}{2} + \frac{N}{6}</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\displaystyle \sum_{k = 1}^N k^3 = 1^3 + 2^3 + \cdots + N^3 = \frac{N^2(N+1)^2}{4} = \frac{N^4}{4} + \frac{N^3}{2} + \frac{N^2}{4}</m>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </theorem>
+    </p>
+
+    <p>
+      There are more <url href="https://mathworld.wolfram.com/PowerSum.html">power sum formulas</url> but they are the most famous three. 
+      Rather than actually adding up the numbers, these formulas allow us to compute the sum by plugging in <m>N</m> directly. 
+    </p>
+
+    <p>
+      Let's compute the actual area of some functions <em>algebraically</em> using the summation notation! 
+    </p>
+
+    <example xml:id="exp-Riemann_Square">
+      <p>
+        Let <m>f(x) = x^2</m>. 
+        Find the actual area under the graph of <m>y = f(x)</m> over the interval <m>[0,b]</m>, where <m>b > 0</m> algebraically. 
+      </p>
+
+      <hint>
+        <p>
+          By <xref ref="thm-Area-LimitofApproximation"/>, we know that the actual area can be computed by taking the limit of <m>R_N</m> as <m>N\to \infty</m>. 
+          Then what is <m>R_N</m> using summation notation? 
+        </p>
+
+        <p>
+          After you figure out what <m>R_N</m> is, take the limit of it as <m>N\to \infty</m>.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          We will let <m>N</m> to be the number of rectangle strips. Then the width of each rectangle is 
+          <me>
+            \Delta x = \frac{b - 0}{N} = \frac{b}{N}
+          </me>
+          Using the summation notation formula for <m>R_N</m>, we obtain
+          <md>
+            <mrow> R_N \amp= \frac{b}{N} \sum_{i = 1}^N f\left(0 + i\cdot \frac{b}{N}\right)</mrow>
+            <mrow> \amp= \frac{b}{N} \sum_{i = 1}^N \left(i\cdot \frac{b}{N}\right)^2 </mrow>
+            <mrow> \amp= \frac{b}{N} \sum_{i = 1}^N i^2\cdot \frac{b^2}{N^2} </mrow>
+            <mrow> \amp= \frac{b}{N} \cdot \frac{b^2}{N^2}\sum_{i = 1}^N i^2 \amp\amp\text{Summation Notation Property (b)} </mrow>
+            <mrow> \amp= \frac{b^3}{N^3}\sum_{i = 1}^N i^2 </mrow>
+            <mrow> \amp= \frac{b^3}{N^3}\left(\frac{N^3}{3} + \frac{N^2}{2} + \frac{N}{6}\right) \amp\amp\text{Power Sum Formula (b)}</mrow>
+            <mrow> \amp= \frac{b^3}{3} + \frac{b^3}{2N} + \frac{b^3}{6N^2} </mrow>
+          </md>
+        </p>
+
+        <p>
+          To obtain the actual area, we want to take the limit of <m>R_N</m> as <m>N\to \infty</m>. 
+          Then we obtain
+          <md>
+            <mrow>\lim_{N\to \infty} R_N \amp= \lim_{N\to\infty}\left( \frac{b^3}{3} + \frac{b^3}{2N} + \frac{b^3}{6N^2} \right) </mrow>
+            <mrow> \amp= \frac{b^3}{3} </mrow>
+          </md>
+        </p>
+        
+        <p>
+          What this tells us here is that the area under the graph of <m>f(x) = x^2</m> over the interval <m>[0,b]</m> is <m>\dfrac{b^3}{3}</m>. 
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Later in the term, we will derive these formulas to compute the area more efficiently (thanks to FTC!). 
+    </p>
+  </subsection>
+
+  <worksheet xml:id="ws-sec51">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercise>
+      <statement>
+        <p>
+          Consider the function <m>f(x) = \cos(x)</m> on the interval <m>\left[0,\frac{\pi}{2}\right]</m>. 
+          <ol marker="(a)">
+            <li>
+              <p>
+                Graph the function <m>y = f(x)</m> and highlight the region of interest. 
+              </p>
+            </li>
+            <li>
+              <p>
+                Approximate the area of the region using <m>R_3</m>. Do we know if this is an under-estimate or over-estimate? 
+              </p>
+            </li>
+            <li>
+              <p>
+                Approximate the area of the region using <m>L_3</m>. Do we know if this is an under-estimate or over-estimate?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Approximate the area under the graph of the function <m>f(x) = x - 2\ln(x)</m> from <m>x = 1</m> to <m>x = 5</m> using <m>M_4</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>f(x) = \sqrt{x}</m>. 
+          Find <m>R_4</m>, <m>L_4</m>, and <m>M_4</m> on the interval <m>[3,5]</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Approximate the <alert>area</alert> under the curve on <m>[0,8]</m> using <alert>four</alert> subintervals. 
+          The graph of the curve is given below. 
+        </p>
+
+        <figure>
+          <caption>The graph of the curve</caption>
+          <image width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  axis line style={->},
+                  xlabel={$x$},
+                  ylabel={$y$},
+                  xmin=0, xmax=8.2,
+                  ymin=0, ymax=7.2,
+                  xtick={0,1,2,3,4,5,6,7,8},
+                  ytick={0,1,2,3,4,5,6,7},
+                  minor xtick={0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5},
+                  minor ytick={0.5,1.5,2.5,3.5,4.5,5.5,6.5},
+                  grid=both,
+                  major grid style={draw=gray!60},
+                  minor grid style={draw=gray!30},
+                  axis equal,             % 1 unit in x equals 1 unit in y (square cells)
+                  width=10cm, height=10cm % keep it visually square
+                ]
+
+                  % Smooth curve through the key points seen in the picture
+                  \addplot[ultra thick, smooth, blue]
+                    coordinates{
+                      (0,0)
+                      (0.5,0.2) (1,1)
+                      (2,2)
+                      (2.5,1.3) (3,1)
+                      (3.5,2.2) (4,3)
+                      (4.5,2.3) (5,2)
+                      (5.5,2.8) (6,4)
+                      (6.5,4.6) (7,5)
+                      (7.5,6)   (8,7)
+                    };
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <ol marker="(a)">
+          <li>
+            <p>
+              What is the <m>N</m> and <m>\Delta x</m> in this problem? 
+            </p>
+          </li>
+          <li>
+            <p>
+              Approximate the area using the right-endpoint approximation. 
+            </p>
+          </li>
+          <li>
+            <p>
+              Approximate the area using the left-endpoint approximation. 
+            </p>
+          </li>
+          <li>
+            <p>
+              Approximate the area using the midpoint approximation. 
+            </p>
+          </li>
+        </ol>
+
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Explain <alert>graphically</alert> that if <m>f</m> is linear on the interval <m>[a,b]</m>, then the area under the graph <m>y = f(x)</m> on <m>[a,b]</m> is 
+          <me>
+            A = \frac{1}{2}\left(R_N + L_N\right)
+          </me>
+          for all <m>N</m>. Don't forget to explain in words what your diagram tells us. 
+        </p>
+      </statement>
+    </exercise>
+  </worksheet>
+
+</section>

@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec56-NetChange" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Net Change as the Integral of a Rate of Change</title>
+
+  <p> </p>
+
+  <introduction>
+    <p> 
+      In this section, we will learn our first type of application of integration --- Net Change!   
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            interpret integral as Adding-up-Pieces. 
+          </p>
+        </li>
+        <li>
+          <p>
+            find the displacement and total distance traveled of an object given the velocity function.  
+          </p>
+        </li>
+        <li>
+          <p>
+            find the net change of some quantity given the rate function. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+  </introduction>
+
+  <investigation>
+    <introduction>
+      <p>
+        Imagine this: a gorilla, suited up with a parachute, climbs to the top of a tall city building as part of a special wildlife training experiment. 
+        After a brief moment of hesitation, the gorilla bravely leaps off the edge. 
+        As the parachute deploys and air resistance kicks in, you, as one of the researchers on the ground, begin recording data to study how the gorilla's velocity changes over time.
+        Using high-speed sensors, the team records the gorilla’s downward velocity every half-second as it falls. 
+        Note that the gorilla touched the ground just after 5 seconds. 
+        The recorded data is shown below.
+        <table>
+          <tabular halign="center" frame="all" rules="all">
+              <row header="yes" bottom="medium" >
+              <cell>Time (in seconds)</cell>
+              <cell>Velocity (in feet per second)</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>0</cell>
+              <cell>0</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>0.5</cell>
+              <cell>5</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>1.0</cell>
+              <cell>7</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>1.5</cell>
+              <cell>8</cell>
+              </row>
+
+              <row bottom="minor">
+              <cell>2.0</cell>
+              <cell>11</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>2.5</cell>
+              <cell>11.5</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>3.0</cell>
+              <cell>12</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>3.5</cell>
+              <cell>13</cell>
+              </row>
+
+              <row bottom="minor">
+              <cell>4.0</cell>
+              <cell>15.5</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>4.5</cell>
+              <cell>18</cell>
+              </row>
+              
+              <row bottom="minor">
+              <cell>5.0</cell>
+              <cell>19</cell>
+              </row>
+          </tabular>
+
+        </table>
+      </p>
+    </introduction>
+
+    <task>
+      <p>
+        Approximate the <alert>total</alert> distance the gorilla fell from the time he jumped off the building until the time he landed on the ground.
+      </p>
+
+      <hint>
+        <p>
+          Rather than approximating the total distance, we can look at how far the gorilla fell during each half-second interval. 
+          The table below should help you track the distance. 
+        </p>
+        <p>
+        <table>
+            <tabular halign="center" frame="all" rules="all">
+                <row header="yes" bottom="medium" >
+                <cell>Time (in seconds)</cell>
+                <cell>Approximate distance traveled (in feet)</cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>0 -- 0.5</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>0.5 -- 1.0</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>1.0 -- 1.5</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>1.5 -- 2.0</cell>
+                <cell></cell>
+                </row>
+
+                <row bottom="minor">
+                <cell>2.0 -- 2.5</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>2.5 -- 3.0</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>3.0 -- 3.5</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>3.5 -- 4.0</cell>
+                <cell></cell>
+                </row>
+
+                <row bottom="minor">
+                <cell>4.0 -- 4.5</cell>
+                <cell></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>4.5 -- 5.0</cell>
+                <cell></cell>
+                </row>
+                            
+            </tabular>
+        </table>
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          There are multiple ways to approximate the distance as long as you can make an argument that the velocity you picked for each time interval is reasonable. 
+        For demonstration purposes, Richard will approximate the distance using the <alert>left-endpoint approximation</alert>. 
+      </p>
+      <p>
+        <table>
+            <tabular halign="center" frame="all" rules="all">
+                <row header="yes" bottom="medium" >
+                <cell>Time </cell>
+                <cell>Approximate distance </cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>0 -- 0.5</cell>
+                <cell><m>0.5\times 0 = 0</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>0.5 -- 1.0</cell>
+                <cell><m>0.5\times 5 = 2.5</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>1.0 -- 1.5</cell>
+                <cell><m>0.5\times 7 = 3.5</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>1.5 -- 2.0</cell>
+                <cell><m>0.5\times 8 = 4</m></cell>
+                </row>
+
+                <row bottom="minor">
+                <cell>2.0 -- 2.5</cell>
+                <cell><m>0.5\times 0 = 5.5</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>2.5 -- 3.0</cell>
+                <cell><m>0.5\times 11.5 = 5.75</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>3.0 -- 3.5</cell>
+                <cell><m>0.5\times 12 = 6</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>3.5 -- 4.0</cell>
+                <cell><m>0.5\times 13 = 6.5</m></cell>
+                </row>
+
+                <row bottom="minor">
+                <cell>4.0 -- 4.5</cell>
+                <cell><m>0.5\times 15.5 = 7.75</m></cell>
+                </row>
+                            
+                <row bottom="minor">
+                <cell>4.5 -- 5.0</cell>
+                <cell><m>0.5\times 18 = 9</m></cell>
+                </row>
+                            
+            </tabular>
+
+        </table>
+      </p>
+      <p>
+        To find the <alert>total</alert> distance traveled, we just add up all the pieces of distance we found in the above table. 
+        <me>
+          0 + 2.5 + 3.5 + 4 + 5.5 + 5.75 + 6 + 6.5 + 7.75 + 9 = 50.5
+        </me>
+      </p>
+
+      <p>
+        <alert>There is no "right" answer to an approximation. The only difference between answers are how good the approximation is. </alert>
+      </p>
+      </solution>
+    </task>
+
+    <task>
+      <p>
+        We know that the total distance traveled we found in part (a) is an approximation, not the <em>exact</em> value (this should be obvious). 
+        How can we make the approximation better? 
+        What changes could we make to the way we collect the data to make the approximation better? 
+      </p>
+
+      <solution>
+        <p>
+          While it is (highly) unlikely for the velocity to remain constant within a fixed interval of time, it is more and more likely for the velocity to stay constant when the elapsed time is smaller and smaller. 
+          That is, to make our approximation better, we want to record more and more data on the velocity, which forces the elapsed time to be smaller and smaller 
+          (for example, as opposed to recording the velocity every 0.5 seconds, recording the velocity every 0.1 seconds will make our approximation better). 
+        </p>
+      </solution>
+    </task>
+  </investigation>
+
+  <subsection xml:id="subsec-561-DistanceVelocity">
+    <title>Relationship between Displacement and Velocity</title>
+
+    <p>
+      Recall back in calculus 1, we learned that the derivative of the displacement function gives us the velocity function. 
+      To rephrase it using integrals, we know that the antiderivative (or indefinite integral) of the velocity function should give us the displacement function. 
+    </p>
+
+    <p>
+      But this argument relies on differential calculus (we can't make sense of why the integral of the velocity function gives us the displacement function if we didn't learn about what derivative is). 
+      There is a way to make sense of it without relying on derivatives. 
+    </p>
+
+    <p>
+      Let's call <m>\Delta t</m> the elapsed time (and it is typically 0.5 seconds) and <m>v(t_i)</m> the velocity of the gorilla at a certain point, where <m>i</m> is the index to indicate which piece we are referring to. 
+      If we call each piece of the distance <m>d_i</m>, then it can be obtained by 
+      <me>
+        d_i = v(t_i)\Delta t
+      </me>
+      We also found out that we can find the total distance by adding up the pieces together. 
+      By using the fancy sigma notation you learned before, the total distance traveled is 
+      <me>
+        d \approx \sum_{i = 1}^N d_i = \sum_{i = 1}^N v(t_i)\, \Delta t
+      </me>
+      where <m>N</m> denotes the number of pieces. 
+    </p>
+
+    <p>
+      We know that the approximation is better and better if we recorded more and more velocity as that will force the elapsed time to become smaller and smaller. 
+      Symbolically speaking, the total distance travel can be computed by
+      <me>
+        d = \lim_{N\to \infty} \sum_{i = 1}^N v(t_i)\, \Delta t
+      </me>
+    </p>
+
+    <p>
+      Ha! This looks super familiar! This is exactly how we define the definite integral back in <xref ref="sec52-DefiniteIntegral"/>! 
+      Then we have 
+      <me>
+        \int_0^5 v(t)\, dt = \lim_{N\to \infty} \sum_{i = 1}^N v(t_i)\, \Delta t
+      </me>
+      If we are matching components, then
+      <ul marker="">
+        <li>
+          <p>
+            The symbol "<m>\int</m>" is just a fancy cursive S that represents <alert>Summation</alert>. 
+            The <m>0</m> and the <m>5</m> are the initial and the final value of the time in this context. 
+          </p>
+        </li>
+        <li>
+          <p>
+            The <m>v(t)</m> here denotes the velocity of the gorilla at a certain timestamp <m>t</m>. 
+          </p>
+        </li>
+        <li>
+          <p>
+            The <m>dt</m> here represents the elapsed time where the gap is infinitesimal small (so <m>dt</m> is just a fancy way of representing <m>\Delta t</m> as the gap approaches <m>0</m>). 
+          </p>
+        </li>
+        <li>
+          <p>
+            The <m>v(t)\, dt</m> is a representative of one piece of the distance (we multiplied the velocity at time <m>t</m> with the elapsed time <m>dt</m>), 
+            and the <m>\int</m> symbol tells us to add all the pieces of distance together to obtain the <alert>total</alert> distance traveled. 
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      This is why the displacement function can be obtained by integrating the velocity function. 
+      The integral of velocity function implies that we are adding up pieces of the product of the velocity and the infinitesimally small change in time. 
+      This idea of the integral is called the <alert>Adding up Pieces</alert>. 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-562-DisplacementDistance">
+    <title>Displacement vs. Distance Traveled</title>
+    
+    <p>
+      Given the velocity function <m>v</m>, then the <alert>net change</alert> in position, which is defined as the <alert>displacement</alert> of an object, over the time interval <m>[t_1, t_2]</m>, is denoted as 
+      <me>
+        s(t_2) - s(s_1) = \int_{t_1}^{t_2}s'(t)\, dt = \int_{t_1}^{t_2}v(t)\, dt
+      </me>
+      What about the distance? 
+      The terms "distance" and "displacement" are not necessarily the same concepts...  
+    </p>
+
+    <example>
+      <p>
+        A particle moves in a straight line with the velocity modeled by the function
+        <me>
+          v(t) = 12 - 4t , \qquad \text{ where } 0\leq t\leq 5
+        </me>
+      </p>
+
+      <ol marker="(a)">
+        <li>
+          <p>
+            Graph the velocity function <m>y = v(t)</m>. 
+            Then describe the motion. 
+          </p>
+
+          <solution>
+            <p>
+              See below the graph of <m>y = v(t)</m>
+            </p>
+            <figure>
+              <caption>The Graph of <m>v(t) = 12 - 4t</m></caption>
+              <image width="50%">
+              
+                <latex-image >
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      axis lines=middle,
+                      xlabel={$t$},
+                      ylabel={$y$},
+                      xmin=-0.5, xmax=5.5,
+                      ymin=-10.5, ymax=12.5,
+                      xtick={0,1,2,3,4,5},
+                      ytick={-10,-8,...,12},
+                      minor xtick={1,3},
+                      minor ytick={1,3,5,7},
+                      samples=100, 
+                    ]
+
+                      % Graph of the function
+                      \addplot[blue, ultra thick, smooth, domain=0:5.5] {12 - 4*x};
+
+                    \end{axis}
+                  \end{tikzpicture}
+                </latex-image>
+              </image>
+            </figure>
+            <p>
+              Observe that the graph is positive in <m>[0,3)</m>, meaning the particle is moving forward; 
+              the graph hit zero at <m>t = 3</m>, meaning the particle stopped <m>3</m> seconds after; 
+              and the graph is negative in <m>(3,5]</m>, meaning the particle is moving backward. 
+            </p>
+          </solution>
+        </li>
+        <li>
+          <p>
+            Find the <alert>displacement</alert> over the first <m>5</m> seconds. 
+          </p>
+
+          <solution>
+            <p>
+              For <alert>displacement</alert>, we don't care what is going on in the middle of the motion, but only the initial and final position. 
+              If we call the displacement function <m>s</m>, then displacement is simply <m>s(5) - s(0)</m>. 
+              FTC is telling us that
+              <md>
+                <mrow>\text{displacement} \amp= \int_0^5 v(t)\, dt </mrow>
+                <mrow> \amp= \int_0^5 \left(12 - 4t\right)\, dt </mrow>
+                <mrow> \amp= \left(12t - 2t^2\right)\bigg|_0^5 </mrow>
+                <mrow> \amp= 12(5) - 2(5)^2 </mrow>
+                <mrow> \amp= 10 </mrow>
+              </md>
+            </p>
+          </solution>
+        </li>
+        <li>
+          <p>
+            Find the <alert>total distance traveled</alert> over the first <m>5</m> seconds. 
+          </p>
+
+          <solution>
+            <p>
+              When finding the <alert>total distance traveled</alert>, the "distance" is always positive, regardless of the direction. 
+              But this idea doesn't match up with the integral since the integral of the velocity function on <m>[3,5]</m> will return a "negative" distance. 
+              The easiest way to fix the sign is to put on the absolute value to make the "negative" distance positive. 
+              <md>
+                <mrow>\text{distance} \amp= \int_0^5 \left|v(t)\right|\, dt </mrow>
+                <mrow> \amp= \int_0^3 \left|v(t)\right|\, dt + \int_3^5 \left|v(t)\right|\, dt </mrow>
+                <mrow> \amp= \int_0^3 v(t)\, dt + \int_3^5 -v(t)\, dt </mrow>
+                <mrow> \amp= \int_0^3 \left(12 - 4t\right) \, dt - \int_3^5 \left(12 - 4t\right)\, dt </mrow>
+                <mrow> \amp= \left(12t - 2t^2\right)\bigg|_0^3 - \left(12t - 2t^2\right)\bigg|_3^5 </mrow>
+                <mrow> \amp= 18 - (-8) </mrow>
+                <mrow> \amp= 26 </mrow>
+              </md>
+            </p>
+          </solution>
+        </li>
+      </ol>
+    </example>
+
+    <theorem xml:id="thm-IntegralVelocity">
+      <title>Integral of Velocity</title>
+      
+      <statement>
+        <p>
+          For an object in linear motion with velocity <m>v(t)</m>, 
+          <md>
+            <mrow>\text{displacement during } [t_1,t_2] \amp= \int_{t_1}^{t_2} v(t)\, dt </mrow>
+            <mrow>\text{total distance traveled during } [t_1,t_2] \amp= \int_{t_1}^{t_2} \left|v(t)\right| \, dt </mrow>
+          </md>
+          
+        </p>
+      </statement>
+    </theorem>
+
+    <example>
+      <p>
+        A cat falls from a tree (with zero initial velocity) at time <m>t = 0</m>. 
+        How far does the cat fall between <m>t = 0.5</m> seconds and <m>t = 1</m> second? 
+        The velocity function is <m>v(t) = -9.8t</m> m/s. 
+      </p>
+
+      <solution>
+        <p>
+          By saying "how far", it usually means the total distance traveled. 
+          <md>
+            <mrow> \text{total distance traveled} \amp= \int_{0.5}^1 \left|v(t)\right|\, dt </mrow>
+            <mrow> \amp= \int_{0.5}^1 \left|-9.8t\right|\, dt </mrow>
+            <mrow> \amp= \int_{0.5}^1 9.8t\, dt </mrow>
+            <mrow> \amp= 4.9t^2\bigg|_{0.5}^1 </mrow>
+            <mrow> \amp= 4.9(1)^2 - 4.9(0.5)^2 </mrow>
+            <mrow> \amp= 3.675 \qquad \text{meters} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-563-NetChange">
+    <title>General Net Change</title>
+
+    <p>
+      In general, we can use this trick to compute the net change of some quantity if the rate of change is given. 
+    </p>
+
+    <example>
+      <p>
+        The traffic flow <em>rate</em> past a certain point on a highway is 
+        <me>
+          q(t) = 3000 + 2000t - 300t^2, \qquad t\text{ in hours}
+        </me>
+        where <m>t = 0</m> is at <m>8</m>AM. 
+        How many cars pass by from <m>8</m> to <m>10</m>AM? 
+      </p>
+
+      <solution>
+        <p>
+          <md>
+            <mrow>\text{number of cars} \amp= \int_0^2 \left(3000 + 2000t - 300t^2\right)\, dt </mrow>
+            <mrow> \amp= \left(3000t + 1000t^2 - 100t^3\right)\bigg|_0^2 </mrow>
+            <mrow> \amp= 3000(2) + 1000(2)^2 - 100(2)^3 </mrow>
+            <mrow> \amp= 9200 </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Water flows into an <em>empty</em> reservoir at a rate of <m>3000 + 20t</m> L per hour (<m>t</m> in hours). 
+        What is the quantity of water in the reservoir in the first <m>5</m> hours? 
+      </p>
+
+      <solution>
+        <p>
+          <md>
+            <mrow>\text{quantity of water} \amp= \int_0^5\left(3000 + 20t\right)\, dt </mrow>
+            <mrow> \amp= \left(3000t + 10t^2\right)\bigg|_0^5 </mrow>
+            <mrow> \amp= 3000(5) + 10(5)^2 </mrow>
+            <mrow> \amp= 15250 \qquad \text{ L} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The last type of the example is about the <alert>marginal cost</alert>. 
+      Let <m>C(x)</m> represent a manufacturer's cost to product <m>x</m> units of a particular product or commodity. 
+      The derivative <m>C'(x)</m> is called the <alert>marginal cost</alert>, the cost of producing one additional unit. 
+      The cost of increasing production from <m>a</m> units to <m>b</m> units is the <em>net change</em> <m>C(b) - C(a)</m>, which is equal to the integral of the marginal cost. 
+      <me>
+        \text{cost of increasing production from <m>a</m> units to <m>b</m> units} = \int_a^b C'(x)\, dx
+      </me>
+    </p>
+
+    <example>
+      <p>
+        The marginal cost of producing <m>x</m> tablet computers is
+        <me>
+          C'(x) = 120 - 0.06x + 0.00001x^2
+        </me>
+        <ol marker="(a)">
+          <li>
+            <p>
+              What is the <em>production cost</em> of producing <m>3000</m> units? 
+            </p>
+            <solution>
+              <p>
+                <md>
+                  <mrow>\text{production cost} \amp= \int_0^{3000}\left(120 - 0.06x + 0.00001x^2\right)\, dx </mrow>
+                  <mrow> \amp= \left(120x - 0.03x^2 + \frac{0.00001}{3}x^3\right)\bigg|_0^{3000} </mrow>
+                  <mrow> \amp= 120(3000) - 0.03(3000)^2 + \frac{0.00001}{3}(3000)^3 </mrow>
+                  <mrow> \amp= 180000\qquad \text{dollars} </mrow>
+                </md>
+              </p>
+            </solution>
+          </li>
+          <li>
+            <p>
+              What is the <em>additional cost</em> of producing <m>200</m> additional units? 
+            </p>
+            <solution>
+              <p>
+                <md>
+                  <mrow>\text{additional cost} \amp= \int_{3000}^{3200}\left(120 - 0.06x + 0.00001x^2\right)\, dx </mrow>
+                  <mrow> \amp= \left(120x - 0.03x^2 + \frac{0.00001}{3}x^3\right)\bigg|_{3000}^{3200} </mrow>
+                  <mrow> \amp= \left(120(3200) - 0.03(3200)^2 + \frac{0.00001}{3}(3200)^3\right) - \left(120(3000) - 0.03(3000)^2 + \frac{0.00001}{3}(3000)^3\right) </mrow>
+                  <mrow> \amp= 6026.67\qquad \text{dollars} </mrow>
+                </md>
+              </p>
+            </solution>
+          </li>
+        </ol>
+      </p>
+    </example>
+    
+  </subsection>
+
+  <worksheet xml:id="ws-sec56">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercise>
+      <statement>
+        <p>
+          A particle moves in a straight line with the velocity 
+          <me>
+            v(t) = \cos(t) \qquad \text {in m/s}
+          </me>
+          Find the <alert>displacement</alert> and the <alert>total distance traveled</alert> over the time interval <m>[0,3\pi]</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Find the net change in velocity over <m>[1,4]</m> of an object with <m>a(t) = 8t - t^2\,\, \text{m/s}^2</m> 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Show that a particle, located at the origin at <m>t = 1</m> and moving along the <m>x</m>-axis with velocity <m>v(t) = t^{-2}</m> will never pass the point <m>x = 2</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          A population of insects increases at a rate of <m>200 + 10t + 0.25t^2</m> insects per day. 
+          Find the insect population after <m>3</m> days, assuming that there are <m>35</m> insects at <m>t = 0</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+  </worksheet>
+
+
+</section>

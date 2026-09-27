@@ -1,0 +1,1061 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec55-FTCpartII" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Fundamental Theorem of Calculus, Part II</title>
+
+  <introduction>
+    <p> 
+      In this section, we will learn the Fundamental Theorem of Calculus (FTC), part II, which states that integration and differentiation are inverse process (so they cancel each other).  
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            understand the concept of accumulation function. 
+          </p>
+        </li>
+        <li>
+          <p>
+            understand the Fundamental Theorem of Calculus, part II and apply it to relevant problems. 
+          </p>
+        </li>
+        <li>
+          <p>
+            analyze the graph of the accumulation function. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+  </introduction>
+
+  <p>
+    <alert>P.S.:</alert> We will cover this section before <xref ref="sec54-FTCpartI"/>. Some of the results in <xref ref="sec54-FTCpartI"/> will be built upon the concepts covered in this section. 
+  </p>
+
+  <subsection xml:id="subsec-551-AccumulationFunction">
+    <title>Accumulation Functions</title>
+
+    <p>
+      Let's first define what the accumulation function is! 
+    </p>
+
+    <definition xml:id="def-AccumulationFunction">
+      <statement>
+        <p>
+          Let <m>f</m> be a continuous function on an open interval <m>I</m> and let <m>a</m> be in <m>I</m>. We define the <alert>accumulation function</alert> as 
+          <men xml:id="eqn-def-AccumulationFunction">
+            A(x) = \int_a^x f(t)\, dt
+          </men>
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Using our knowledge of function notation, we know that the name of the accumulation function is <m>A</m>, with the input of <m>x</m> and the output of <m>A(x)</m>. 
+    </p>
+
+    <p>
+      This function takes in a complicated formula, so let's work on an example to see what it does! 
+    </p>
+
+    <example>
+      <p>
+        Let <m>f(t) = 2t - 1</m> and <m>a = 1</m>. 
+        Then we can define the accumulation function here to be
+        <me>
+          A(x) = \int_1^x \left(2t - 1\right)\, dt
+        </me>
+        Find the value of <m>A(1)</m>, <m>A(2)</m>, <m>A(3)</m>, and <m>A(4)</m>. 
+        Then graph the function <m>y = f(t)</m> and indicate what these values represent on the graph. 
+      </p>
+
+      <hint>
+        <p>
+          Let's plug in the <m>x</m> values to the function. 
+          Then the output is some sort of definite integral. 
+        </p>
+
+        <p>
+          Recall definite integral represents some sort of signed area of the region under the curve. 
+          Can we find the (signed) area of the region under the curve geometrically? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Below is the graph of <m>f(t) = 2t - 1</m>. 
+        </p>
+
+        <figure>
+          <caption>The Graph of <m>f(t) = 2t - 1</m></caption>
+          <image width="50%">
+          
+            <latex-image >
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=4.5,
+                  ymin=-0.5, ymax=7.5,
+                  xtick={0,1,2,3,4},
+                  ytick={0,2,4,6},
+                  minor xtick={1,3},
+                  minor ytick={1,3,5,7},
+                  samples=100, 
+                ]
+
+                  % Graph of the function
+                  \addplot[blue, ultra thick, smooth, domain=-0.15:4.15] {2*x - 1};
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          <m>A(1)</m> represents the area under the line <m>y = f(t)</m> from <m>t = 1</m> to <m>t = 1</m>. 
+          Graphically speaking, the area is 0, shown in the diagram below. 
+        </p>
+
+        <figure>
+          <caption>The Diagram of <m>A(1)</m></caption>
+          <image width="50%">
+          
+            <latex-image >
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=4.5,
+                  ymin=-0.5, ymax=7.5,
+                  xtick={0,1,2,3,4},
+                  ytick={0,2,4,6},
+                  minor xtick={1,3},
+                  minor ytick={1,3,5,7},
+                  samples=100, 
+                ]
+
+                  % Graph of the function
+                  \addplot[blue, ultra thick, smooth, domain=-0.15:4.15] {2*x - 1};
+
+                  % Vertical dashed lines
+                  \draw[dashed] (axis cs:1, -0.15) -- (axis cs:1, 1);
+                  \draw[dashed] (axis cs:1, -0.15) -- (axis cs:1, 1);
+
+                  % Shaded region between t=1 and t=1
+                  \addplot [
+                    draw=none,
+                    fill=green!70,
+                    opacity=0.7,
+                  ]
+                  coordinates {
+                    (1,0)
+                    (1, {2*1 - 1})
+                    (1, {2*1.5 - 1})
+                    (1, {2*2 - 1})
+                    (1,0)
+                  } -- cycle;
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          <m>A(2)</m> represents the area under the line <m>y = f(t)</m> from <m>t = 1</m> to <m>t = 2</m>. 
+          Graphically speaking, the enclosed region is a trapezoid, with the area of 
+          <me>
+            A(2) = \frac{1(f(1) + f(2))}{2} = \frac{1 + 3}{2} = 2
+          </me>
+          The diagram is shown below. 
+        </p>
+
+        <figure>
+          <caption>The Diagram of <m>A(2)</m></caption>
+          <image width="50%">
+          
+            <latex-image >
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=4.5,
+                  ymin=-0.5, ymax=7.5,
+                  xtick={0,1,2,3,4},
+                  ytick={0,2,4,6},
+                  minor xtick={1,3},
+                  minor ytick={1,3,5,7},
+                  domain=-1.5:3.5,
+                  samples=100, 
+                ]
+
+                  % Graph of the function
+                  \addplot[blue, ultra thick, smooth, domain=-0.15:4.15] {2*x - 1};
+
+                  % Vertical dashed lines
+                  \draw[dashed] (axis cs:1, -0.15) -- (axis cs:1, 1);
+                  \draw[dashed] (axis cs:2, -0.15) -- (axis cs:2, 3);
+
+                  % Shaded region between t=1 and t=2
+                  \addplot [
+                    draw=none,
+                    fill=green!70,
+                    opacity=0.7,
+                  ]
+                  coordinates {
+                    (1,0)
+                    (1, {2*1 - 1})
+                    (1.5, {2*1.5 - 1})
+                    (2, {2*2 - 1})
+                    (2,0)
+                  } -- cycle;
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          <m>A(3)</m> represents the area under the line <m>y = f(t)</m> from <m>t = 1</m> to <m>t = 3</m>. 
+          Graphically speaking, the enclosed region is a trapezoid, with the area of 
+          <me>
+            A(3) = \frac{2(f(1) + f(3))}{2} = \frac{2(1 + 5)}{2} = 6
+          </me>
+          The diagram is shown below. 
+        </p>
+
+        <figure>
+          <caption>The Diagram of <m>A(3)</m></caption>
+          <image width="50%">
+          
+            <latex-image >
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=4.5,
+                  ymin=-0.5, ymax=7.5,
+                  xtick={0,1,2,3,4},
+                  ytick={0,2,4,6},
+                  minor xtick={1,3},
+                  minor ytick={1,3,5,7},
+                  domain=-1.5:3.5,
+                  samples=100, 
+                ]
+
+                  % Graph of the function
+                  \addplot[blue, ultra thick, smooth, domain=-0.15:4.15] {2*x - 1};
+
+                  % Vertical dashed lines
+                  \draw[dashed] (axis cs:1, -0.15) -- (axis cs:1, 1);
+                  \draw[dashed] (axis cs:3, -0.15) -- (axis cs:3, 5);
+
+                  % Shaded region between t=1 and t=3
+                  \addplot [
+                    draw=none,
+                    fill=green!70,
+                    opacity=0.7,
+                  ]
+                  coordinates {
+                    (1,0)
+                    (1, {2*1 - 1})
+                    (1.5, {2*1.5 - 1})
+                    (2, {2*2 - 1})
+                    (2.5, {2*2.5 - 1})
+                    (3, {2*3 - 1})
+                    (3,0)
+                  } -- cycle;
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          <m>A(4)</m> represents the area under the line <m>y = f(t)</m> from <m>t = 1</m> to <m>t = 4</m>. 
+          Graphically speaking, the enclosed region is a trapezoid, with the area of 
+          <me>
+            A(4) = \frac{3(f(1) + f(4))}{2} = \frac{3(1 + 7)}{2} = 12
+          </me>
+          The diagram is shown below. 
+        </p>
+
+        <figure>
+          <caption>The Diagram of <m>A(4)</m></caption>
+          <image width="50%">
+          
+            <latex-image >
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=4.5,
+                  ymin=-0.5, ymax=7.5,
+                  xtick={0,1,2,3,4},
+                  ytick={0,2,4,6},
+                  minor xtick={1,3},
+                  minor ytick={1,3,5,7},
+                  domain=-1.5:3.5,
+                  samples=100, 
+                ]
+
+                  % Graph of the function
+                  \addplot[blue, ultra thick, smooth, domain=-0.15:4.15] {2*x - 1};
+
+                  % Vertical dashed lines
+                  \draw[dashed] (axis cs:1, -0.15) -- (axis cs:1, 1);
+                  \draw[dashed] (axis cs:4, -0.15) -- (axis cs:4, 7);
+
+                  % Shaded region between t=1 and t=3
+                  \addplot [
+                    draw=none,
+                    fill=green!70,
+                    opacity=0.7,
+                  ]
+                  coordinates {
+                    (1,0)
+                    (1, {2*1 - 1})
+                    (1.5, {2*1.5 - 1})
+                    (2, {2*2 - 1})
+                    (2.5, {2*2.5 - 1})
+                    (3, {2*3 - 1})
+                    (3.5, {2*3.5 - 1})
+                    (4, {2*4 - 1})
+                    (4,0)
+                  } -- cycle;
+
+                \end{axis}
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </figure>
+      </solution>
+    </example>
+
+    <p>
+      Notice that the variable <m>x</m> appears to be in the place of the upper limit of integration in the integral. 
+      This implies that the input of the accumulation function, <m>x</m>, represents the <alert>upper limit of integration</alert>. 
+      It tells us how "far" we are integrating from the starting point of <m>t = a</m>. 
+    </p>
+
+    <p>
+      The outout of the accumulation function, <m>A(x)</m>, represents the <alert>signed area</alert> under the curve of <m>y = f(t)</m> from <m>t = a</m> to <m>t = x</m>. 
+    </p>
+
+    <p>
+      We call <m>A</m> the accumulation function because it <em>accumulates</em> the signed area under the curve as we move from the starting point of <m>t = a</m> to some later point <m>t = x</m>. 
+      Your textbook actually call it the area function but this idea of area can be generalized. 
+      The accumulation function <em>accumulates</em> some quantity (and it doesn't have to be some area) between two points. 
+    </p>
+
+    <note>
+      <title>Why are there two variables in the function...</title>
+      
+      <p>
+        Notice that there are two variables in the accumulation function, <m>x</m> and <m>t</m>. 
+        Why do we need both the <m>x</m> and the <m>t</m> to define the accumulation function... 
+      </p>
+
+      <p>
+        Well long story short, these two variables are doing two <em>different</em> jobs since there are two types of functions here: 
+        <ul>
+          <li>
+            <p>
+              <m>x</m> is the input variable of the accumulation function, which represents the upper limit of integration of the integral. 
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>t</m> is what we called the <em>dummy variable</em> we use to represent the input of the function <m>f</m>. 
+            </p>
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        Then the next natural question to ask here is <em>why wouldn't it make sense to use ONLY one variable to do both jobs</em> (like only using <m>x</m> as the variable)? 
+        Wouldn't it make the function easier? 
+      </p>
+
+      <p>
+        Well we can do a quick experiment to see if it works to use only <m>x</m> as the variable in the accumulation function. 
+        Let's define the accumulation function like this: 
+        <me>
+          A(x) = \int_a^x f(x)\, dx
+        </me>
+        Let's say we want to evaluate <m>A(2)</m>, then we will need to replace <em>ALL</em> the <m>x</m>'s with <m>2</m>. 
+        Then we obtain
+        <me>
+          A(2) = \int_a^2 f(2)\, d2
+        </me>
+      </p>
+
+      <p>
+        Wel... <m>f(2)</m> is a constant (the output of the function with an input of <m>2</m>), so we are really integrating a number here (boring). 
+        Also, what is <m>d2</m>... Well we know that the symbol <m>d</m> here represents the infinitesimally small amount of change. 
+        But <m>2</m> is a constant and the value of <m>2</m> will never change... 
+        So <m>d2</m> doesn't really make sense mathematically... 
+      </p>
+    </note>
+
+    <p>
+      Now that we know what the <em>accumulation function</em> is, we can investigate the <alert>Fundamental Theorem of Calculus</alert> in the next section! 
+      As the name of the theorem suggested, this theorem is really fundamental in the study of calculus. 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-552-FTC">
+    <title>THE Fundamental Theorem of Calculus</title>
+
+    <p>
+      It turns out that THE fundamental theorem of calculus says the integration and differentiation are inverse processes. 
+      That is, they will cancel each other. 
+      This relation (at least half of it) is captured in the Fundamental Theorem of Calculus, Part II, in your textbook page 326. 
+      I also included it below: 
+    </p>
+
+    <theorem xml:id="thm-FTC">
+      <title>The Fundamental Theorem of Calculus</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a continuous function on an open interval <m>I</m> and let <m>a</m> be in <m>I</m>. 
+          Then the definite integral of <m>f</m> from <m>a</m> to <m>x</m>, aka the accumulation function, is an <em>antiderivative</em> of <m>f</m> on <m>I</m>. 
+          That is, 
+          <men xml:id="eqn-thm-FTC-A">
+            A'(x) = f(x)
+          </men>
+          Equivalently, 
+          <men xml:id="eqn-thm-FTC-I">
+            \frac{d}{dx}\int_a^x f(t)\, dt = f(x)
+          </men>
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+      You may be wondering <alert>why</alert> differentiation will cancel the integration. 
+      Well your textbook provided a technical proof in this section using the fancy Squeeze Theorem. 
+      We will come up with the (same-ish) argument but in a more intuitive sense. 
+    </p>
+
+    <p>
+      Observe that we need to take the derivative of the accumulation function. 
+      Then using the <em>definition</em> of derivative (the one with the limits), we obtain
+      <me>
+        A'(x) = \lim_{h\to 0}\frac{A(x + h) - A(x)}{h}
+      </me>
+    </p>
+
+    <p>
+      Hmm let's simplify the <em>average rate of change</em> of the accumulation function from <m>x</m> to <m>x + h</m> first (the fraction without the limit). 
+      I made a pretty picture below to help you visualize the situation. 
+    </p>
+
+    <figure xml:id="fig-Proof-FTC">
+      <caption>Average Rate of Change of <m>A(x)</m></caption>
+      <image width="60%">
+    
+        <latex-image>
+          \begin{tikzpicture}
+            \begin{axis}[
+              axis lines=middle,
+              xlabel={$t$},
+              ylabel={$y$},
+              xmin=-2, xmax=4,
+              ymin=-2, ymax=5,
+              xtick=\empty,
+              ytick=\empty,
+              domain=-1.7:3.6,
+              samples=100, 
+              ]
+
+              % Shade the Regins
+              \addplot [
+                draw=none,
+                fill=green!70,
+                opacity=0.7,
+              ]
+              coordinates {
+                (0.5,0)
+                (0.5,{1/5*(0.5+1)*(2*0.5-3)*(0.5-3) + 2})
+                (1, {1/5*(1+1)*(2*1-3)*(1-3) + 2})
+                (1.5, {1/5*(1.5+1)*(2*1.5-3)*(1.5-3) + 2})
+                (2, {1/5*(2+1)*(2*2-3)*(2-3) + 2})
+                (2,0)
+              } -- cycle;
+
+              \addplot [
+                draw=none,
+                fill=orange!80,
+                opacity=0.7,
+              ]
+              coordinates {
+                (2,0)
+                (2, {1/5*(2+1)*(2*2-3)*(2-3) + 2})
+                (2.25, {1/5*(2.25+1)*(2*2.25-3)*(2.25-3) + 2})
+                (2.5, {1/5*(2.5+1)*(2*2.5-3)*(2.5-3) + 2})
+                (2.5,0)
+              } -- cycle;
+              
+              % Vertical dashed lines
+              \draw[dashed] (axis cs:0.5,-0.15) -- (axis cs:0.5,3.5);
+              \draw[dashed] (axis cs:2,-0.15) -- (axis cs:2,1.4);
+              \draw[dashed] (axis cs:2.5,-0.15) -- (axis cs:2.5,1.3);
+
+              % Labels
+              \node at (axis cs:0.5,-0.4) {$a$};
+              \node at (axis cs:2,-0.4) {$x$};
+              \node at (axis cs:2.8,-0.37) {$x+h$};
+              \node at (axis cs:2.8,3.6) {$y = f(t)$};
+
+              % Graph of the function
+              \addplot[blue, ultra thick, smooth] {1/5*(x+1)*(2*x-3)*(x-3)+2};
+        
+            \end{axis}
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </figure>
+
+    <p>
+      In this pretty picture, observe that 
+      <ul>
+        <li>
+          <p>
+            <m>A(x + h)</m> represents the area on <m>[a,x + h]</m>, which is the area of the green and the orange regions combined. 
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>A(x)</m> represents the area on <m>[a,x]</m>, which is the area of the green region.
+          </p>
+        </li>
+      </ul>
+      This implies that <m>A(x + h) - A(x)</m> should give us the area on <m>[x,x + h]</m>, which is the area of the orange region. 
+      Hence, we know that the <em>average rate of change</em> is the area of the orange region over <m>h</m>. 
+    </p>
+
+    <p>
+      To obtain the derivative, aka the <em>instantaneous rate of change</em>, we want <m>h</m> to be a super very really small number, so the orange region should be a super skinny region whose area can be approximated using <alert>one</alert> skinny rectangle strip. 
+    </p>
+
+    <p>
+      We learned about approximating the area using rectangles in <xref ref="sec51-ApproximatingArea"/>! 
+      The two easier approximation methods are the left-endpoint approximation and the right endpoint approximation. 
+      Then which method should we use to approximate the area of the orange region? 
+    </p>
+
+    <p>
+      It turns out that it doesn't matter (because of the Squeeze theorem... if you want a more rigorous argument, ask Richard or read the proof in the textbook). 
+      For demonstration purposes, let's use the right-endpoint approximation to approximate the area of the orange region. 
+      Then the height of the skinny rectangle strip is <m>f(x + h)</m>. 
+      So we know 
+      <me>
+        A(x + h) - A(x) \approx h\cdot f(x + h)
+      </me>
+    </p>
+
+    <p>
+      Putting all these pieces to the definition of the derivative (the one with the limit), we obtain
+      <md>
+        <mrow>A'(x) \amp= \lim_{h\to 0} \frac{A(x + h) - A(x)}{h} </mrow>
+        <mrow> \amp= \lim_{h\to 0} \frac{h\cdot f(x + h)}{h} </mrow>
+        <mrow> \amp= \lim_{h\to 0} f(x + h) </mrow>
+        <mrow> \amp= f(x) </mrow>
+      </md>
+      Ha! We did it! We proved the Fundamental Theorem of Calculus! 
+    </p>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-553-UsingFTC">
+    <title>To apply the FTC... </title>
+
+    <p>
+      To apply the Fundamental Theorem of Calculus, make sure the format of the question will match the left-hand side of the equation in the theorem. 
+      Let's start with the easy ones where we can simply apply the Fundamental Theorem of Calculus without any slick tricks! 
+    </p>
+
+    <example>
+      <p>
+        Calculate the following derivative <m>\displaystyle \frac{d}{dx} \int_0^x \left(t^5 - 9t^3\right)\, dt </m>
+      </p>
+
+      <hint>
+        <p>
+          Does the expression match up with the left-hand side of the equation <xref ref="eqn-thm-FTC-I"/> in the Fundamental Theorem of Calculus? 
+          If so, then what does the Fundamental Theorem of Calculus tell us? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Observe that format matches up perfectly! 
+          So we are taking the derivative of the accumulation function with <m>f(t) = t^5 - 9t^3</m>. 
+          By the Fundamental Theorem of Calculus, we obtain
+          <me>
+            \frac{d}{dx} \int_0^x \left(t^5 - 9t^3\right)\, dt = x^5 - 9x^3
+          </me>
+          
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <p>
+        Calculate the following derivative <m>\displaystyle \frac{d}{ds} \int_s^{-2} \tan\left(\frac{1}{1 + u^2}\right)\, du </m>
+      </p>
+
+      <hint>
+        <p>
+          Does the expression match up with the left-hand side of the equation <xref ref="eqn-thm-FTC-I"/> in the Fundamental Theorem of Calculus? 
+          If not, how can we manipulate the definite integral to make it match up with the equation? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Observe that the expression doesn't quite match up... 
+          We want the variable of the accumulation function to be on the upper limit and the number to be on the lower limit. 
+          It would be so nice if there is a way for us to reverse the upper and the lower limits... 
+        </p>
+
+        <p>
+          There is actually a way to do so! Richard came to our rescue and direct us to the <xref ref="thm-Property_DefiniteIntegral"/>! 
+        </p>
+
+        <p>
+          By a property of definite integral, we obtain
+          <me>
+            \int_s^{-2} \tan\left(\frac{1}{1 + u^2}\right)\, du = - \int_{-2}^s \tan\left(\frac{1}{1 + u^2}\right)\, du
+          </me>
+          Ha! we can now calculate the derivative using the Fundamental Theorem of Calculus! 
+          <md>
+            <mrow>\frac{d}{ds} \int_s^{-2} \tan\left(\frac{1}{1 + u^2}\right)\, du \amp= \frac{d}{ds} \left( -\int_{-2}^2 \tan\left(\frac{1}{1 + u^2}\right)\, du\right) </mrow>
+            <mrow> \amp= -\frac{d}{ds} \int_{-2}^s \tan\left(\frac{1}{1 + u^2}\right)\, du </mrow>
+            <mrow> \amp= -\tan\left(\frac{1}{1 + s^2}\right) </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Let's kick things up a notch and see how the Fundamental Theorem of Theorem can be applied to more tricky problems. 
+    </p>
+
+    <example>
+      <p>
+        Calculate the following derivative <m>\displaystyle \frac{d}{dx} \int_0^{x^2} \frac{t\, dt}{t + 1} </m>
+      </p>
+
+      <hint>
+        <p>
+          Does the expression match up with the left-hand side of the equation <xref ref="eqn-thm-FTC-I"/> in the Fundamental Theorem of Calculus? 
+          What seems to be the mismatch? 
+        </p>
+
+        <p>
+          A good advice is to find out what the accumulation function is in this case... 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          The integrand is <m>f(t) = \dfrac{t}{t + 1}</m>. 
+          Then we can define its accumulation function to be
+          <me>
+            A(x) = \int_0^x \frac{t}{t + 1}\, dt
+          </me>
+          Well we are not really tasked to take the derivative of <m>A(x)</m>, but more like <m>A\left(x^2\right)</m>... 
+          This is a composite function with the outside function of <m>A</m> and inside function of <m>f</m>. 
+          Do we know how to take the derivative of a composite function? 
+        </p>
+
+        <p>
+          We do! We can take the derivative of a composite function using the chain rule back in calculus 1! 
+          By the chain rule, we know that
+          <md>
+            <mrow>\frac{d}{dx}\left(A\left(x^2\right)\right) \amp= A'\left(x^2\right)\cdot \frac{d}{dx}\left(x^2\right)</mrow>
+            <mrow> \amp= A'\left(x^2\right)\cdot 2x </mrow>
+          </md>
+        </p>
+
+        <p>
+          The last question to resolve here is about the derivative of the accumulation function. 
+          By the Fundamental Theorem of Calculus, <m>A'(x) = f(x)</m>. 
+        </p>
+
+        <p>
+          Putting these two pieces together, we obtain
+          <md>
+            <mrow> \frac{d}{dx} \int_0^{x^2} \frac{t\, dt}{t + 1} \amp= A'\left(x^2\right)\cdot \frac{d}{dx}\left(x^2\right) </mrow>
+            <mrow> \amp= A'\left(x^2\right)\cdot 2x </mrow>
+            <mrow> \amp= f\left(x^2\right)\cdot 2x </mrow>
+            <mrow> \amp= \frac{x^2}{x^2 + 1}\cdot 2x </mrow>
+            <mrow> \amp= \frac{2x^3}{x^2 + 1} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Now we know how to deal with the case where one of the limits of integration contains a variable. 
+      What about the case where both the limits of integration contain a variable? 
+      Let's look at an example of this. 
+    </p>
+
+    <example>
+      <p>
+        Calculate the following derivative <m>\displaystyle \frac{d}{dx} \int_{x^2}^{x^4} \sqrt{t}\, dt </m>
+      </p>
+
+      <hint>
+        <p>
+          Obviously, we can't use the Fundamental Theorem of Calculus directly since the lower limit of this integral is not a constant. 
+        </p>
+
+        <p>
+          Dealing with non-constant upper and lower limits are kind of a lot at once... 
+          It would be so nice if there is a property of definite integral that allows us to split the integral into two pieces, so we can deal with one of the non-constant limit of integration at a time... 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          We can actually split the integral into two pieces by one of the properties in <xref ref="thm-Property_DefiniteIntegral"/>. 
+          <md>
+            <mrow>\int_{x^2}^{x^4} \sqrt{t}\, dt \amp= \int_a^{x^4} \sqrt{t}\, dt + \int_{x^2}^a \sqrt{t}\, dt </mrow>
+            <mrow> \amp= \int_a^{x^4} \sqrt{t}\, dt - \int_a^{x^2} \sqrt{t}\, dt </mrow>
+          </md>
+          where <m>a</m> is a constant within the domain of <m>y = \sqrt{t}</m>. 
+        </p>
+
+        <p>
+          Ha! We know how to deal with the two pieces of the integrals! 
+          We will need the chain rule for both pieces of the integrals! 
+        </p>
+
+        <p>
+          Let's again define the accumulation function to be
+          <me>
+            A(x) = \int_a^x \sqrt{t}\, dt
+          </me>
+          Then we obtain
+          <md>
+            <mrow> \frac{d}{dx}\int_{x^2}^{x^4} \sqrt{t}\, dt \amp= \frac{d}{dx}\left(A\left(x^4\right) - A\left(x^2\right)\right) </mrow>
+            <mrow> \amp= \frac{d}{dx}\left(A\left(x^4\right)\right) - \frac{d}{dx}\left(A\left(x^2\right)\right) </mrow>
+            <mrow> \amp=  A'\left(x^4\right)\cdot \frac{d}{dx}\left(x^4\right) - A'\left(x^2\right)\cdot \frac{d}{dx}\left(x^2\right) \amp\amp \text{by Chain Rule}</mrow>
+            <mrow> \amp=  A'\left(x^4\right)\cdot 4x^3 -  A'\left(x^2\right)\cdot 2x</mrow>
+            <mrow> \amp= \sqrt{x^4}\cdot 4x^3 - \sqrt{x^2}\cdot 2x \amp\amp \text{by FTC} </mrow>
+            <mrow> \amp= 4x^5 - 2x|x| </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Observe that the two tricks that we are using are: 
+      <ul>
+        <li>
+          <p>
+            Properties of definite integral to split up the integral AND put the non-constant part to the upper limit; and
+          </p>
+        </li>
+        <li>
+          <p>
+            Chain rule to find the derivative. 
+          </p>
+        </li>
+      </ul>
+      In fact, we can generalize this to obtain a fancy formula we can use to solve similar problems once and for all! 
+    </p>
+
+      <theorem xml:id="thm-Generalized-FTC">
+        <statement>
+          <p>
+            <me>
+              \frac{d}{dx}\int_{u(x)}^{v(x)} f(t)\, dt = f\left(v(x)\right)\cdot v'(x) - f\left(u(x)\right)\cdot u'(x)
+            </me>
+          </p>
+        </statement>
+      </theorem>
+      
+  </subsection>
+
+  <subsection xml:id="subsec-554-Graph-AccumulationFunction">
+    <title>The Graph of the Accumulation Function</title>
+
+    <p>
+      We investigated the accumulation function earlier in this section. 
+      Recall the accumulation function takes the input of the upper limit of the definite integral and spits out the output of the area under the curve. 
+      We are now investigating the <em>graph</em> of the accumulation function. 
+    </p>
+
+    <p>
+      One characteristics of a graph, as you learned back in calculus 1, are the local extrema (peaks and valleys on the graph). 
+      Can we predict where the peaks and valleys of the accumulation function are at given a graph of a function? 
+    </p>
+
+    <example>
+      <p>
+        Let <m>A</m> be the accumulation function defined as
+        <me>
+          A(x) = \int_0^x f(t)\, dt
+        </me>
+        where <m>y = f(t)</m> is a function whose graph is shown below. 
+      </p>
+
+      <figure>
+        <caption>The graph of <m>y = f(t)</m></caption>
+        <image width="50%">
+          <latex-image>
+            \begin{tikzpicture}
+              \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-0.5, xmax=12.5,
+                ymin=-1.5, ymax=3.5,
+                xtick={0,2,4,6,8,10,12},
+                minor xtick={1,3,5,7,9,11},
+                ytick=\empty,
+                samples=200
+              ]
+                % Segment 1: -0.75*x(x-4) on [0,4]
+                \addplot[ultra thick, blue, domain=0:4] {-0.75*x*(x - 4)};
+
+                % Segment 2: -sin(pi/4*x - pi) on [4,12]
+                \addplot[ultra thick, blue, domain=4:12.5] {-sin(45*x - 180)};
+
+                % Label
+                \node at (axis cs:4,3) {$y = f(t)$}; 
+
+              \end{axis}
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </figure>
+
+      <p>
+        <ol marker="(a)">
+          <li>
+            <p>
+              Determine the intervals on which the accumulation function, <m>A</m> is increasing (and decreasing)
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine the value of <m>x</m> where the accumulation function, <m>A</m>, has a peak (and valley). 
+            </p>
+          </li>
+        </ol>
+      </p>
+
+      <hint>
+        <p>
+          Recall that the accumulation function <em>accumulates</em> the signed area under the curve starting from <m>x = 0</m>. 
+          The region above the <m>x</m>-axis should have a positive signed area and the region below the <m>x</m>-axis should have a negative signed area. 
+        </p>
+
+        <p>
+          So do we know at which point(s) we starts <em>accumulating</em> positive area (which makes the overall area greater) and negative area (which makes the overall area smaller)? 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Observe that the enclosed region is above the <m>x</m>-axis on <m>(0,4)</m> and <m>(8,12)</m>. 
+          This implies that we are <em>accumulating</em> positive area in these two regions, making the value of the accumulation function <m>A</m> increasing. 
+        </p>
+
+        <p>
+          Similarly, the region on <m>(4,8)</m> is below the <m>x</m>-axis, so we are <em>accumulating</em> negative area in this region, making the value of the accumulation function <m>A</m> decreasing. 
+        </p>
+
+        <p>
+          Hence, <m>A</m> is increasing in the interval <m>(0,4)\cup (8,12)</m> and decreasing in the interval <m>(4,8)</m>. 
+        </p>
+
+        <p>
+          Now let's think about the peaks and valleys. 
+          At the point of <m>x = 4</m>, we start to <em>accumulate</em> negative area, which makes the overall area smaller. 
+          This implies that there is a peak at <m>x = 4</m>.  
+        </p>
+
+        <p>
+          Similarly, at the point of <m>x = 8</m>, we start to <em>accumulate</em> positive area, which makes the overall area greater. 
+          This implies that there is a valley at <m>x = 8</m>. 
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The above example shows an intuitive sense of reasoning about the graph of the accumulation function by imagining how the overall area is changing. 
+    </p>
+
+    <p>
+      If you want to be fancier, recall the accumulation function, <m>A</m>, is an antiderivative of the function <m>f</m>, guaranteed by FTC. 
+      We can reverse-engineer the first derivative test you learned back in calculus 1. 
+      That is, the critical points (in this problem, peaks and valley) of the accumulation function will occur at the point where the derivative of the accumulation function, aka <m>f</m> is <m>0</m>. 
+      The accumulation function is increasing if its derivative, aka <m>f</m>, is positive, and decreasing if its derivative, <m>f</m>, is negative. 
+    </p>
+    
+  </subsection>
+
+  <worksheet xml:id="ws-sec55">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Calculate the following derivative. 
+        </p>
+      </introduction>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \frac{d}{dx}\int_4^x e^{3t}\, dt</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \frac{d}{dx}\int_x^{-\frac{\pi}{4}} \sec^2\left(\theta\right)\, d\theta</m>
+          </p>
+        </statement>
+      </exercise>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \frac{d}{dx}\int_1^\frac{1}{x} \cos^3(t)\, dt</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \frac{d}{du}\int_{-u}^{3u} \sqrt{x^2 + 1} \, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove the formula
+          <me>
+            \frac{d}{dx}\int_{u(x)}^{v(x)} f(t)\, dt = f\left(v(x)\right)\cdot v'(x) - f\left(u(x)\right)\cdot u'(x)
+          </me>
+        </p>
+
+        <p>
+          <em>Note:</em> By saying "prove", Richard means to justify this formula informally. 
+          The goal here is to make sure you know how the formula is derived and why each component is necessary. 
+          Richard will never look for a technical mathematical proof in this class, but you are certainly more than welcome to try coming up with a proof-y proof and Richard is always happy to chat about it. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A</m> be the accumulation function defined as 
+          <me>
+            A(x) = \int_0^x t\sin(t)\, dt
+          </me>
+          Below is the graph of <m>f(t) = t\sin(t)</m> on <m>[0,3\pi]</m>. 
+        </p>
+
+        <figure xml:id="fig-xsin-x-0-3pi">
+          <caption>The graph of <m>f(t) = t\sin(t)</m></caption>
+
+          <image width="70%">
+            <latex-image><![CDATA[
+              \pgfplotsset{compat=1.18}
+              \begin{tikzpicture}
+                \begin{axis}[
+                  axis lines=middle,
+                  axis line style={->},
+                  xlabel={$t$},
+                  ylabel={$y$},
+                  xmin=-0.5, xmax=10,
+                  ymin=-5.5, ymax=8.5,
+                  samples=400,
+                  domain=0:9.425, % 3*pi ≈ 9.425
+                  width=13cm, height=6cm,
+                  xtick={0,1.571,3.142,4.712,6.283,7.854,9.425},
+                  xticklabels={$0$,$\tfrac{\pi}{2}$,$\pi$,$\tfrac{3\pi}{2}$,$2\pi$,$\tfrac{5\pi}{2}$,$3\pi$},
+                  ytick={-8,-4,0,4,8},
+                  every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west},
+                  every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south}
+                ]
+                  % Graph of y = x*sin(x)
+                  \addplot[blue, ultra thick, smooth] {x*sin(deg(x))};
+
+                  % label
+                  \node[anchor=west] at (axis cs:5,7) {\(f(t) = t\sin(t)\)};
+                \end{axis}
+              \end{tikzpicture}
+            ]]></latex-image>
+          </image>
+        </figure>
+
+        <p>
+        <ol marker="(a)">
+          <li>
+            <p>
+              Determine the intervals on which the accumulation function, <m>A</m> is increasing (and decreasing)
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine the value of <m>x</m> where the accumulation function, <m>A</m>, has a peak (and valley). 
+            </p>
+          </li>
+        </ol>
+      </p>
+      </statement>
+    </exercise>
+
+
+  </worksheet>
+
+</section>

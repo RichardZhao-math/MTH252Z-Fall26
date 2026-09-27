@@ -1,0 +1,1255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec57-uSub" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Substitution Method</title>
+
+  <introduction>
+    <p>
+      In this section, you will learn one technique of evaluating integrals, called the substitution method (also known as the <m>u</m>-sub). 
+      This is one of the most important and widely used methods in this class.
+    </p>
+
+    <objectives>
+      <introduction>
+        <p>
+          After this section, students will be able to:
+        </p>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            evaluate indefinite integrals using <m>u</m>-sub and rewrite the final answer in terms of <m>x</m>.  
+          </p>
+        </li>
+        <li>
+          <p>
+            recognize which integrals can be evaluated using <m>u</m>-sub and which ones cannot be evaluated using <m>u</m>-sub. 
+          </p>
+        </li>
+        <li>
+          <p>
+            apply <m>u</m>-sub in definite integrals by changing the limits of integration to match the new variable. 
+          </p>
+        </li>
+      </ul>
+    </objectives>
+    
+  </introduction>
+
+  <investigation>
+    <introduction>
+      <p>
+        Recall we learned the <em>chain rule</em> back in calculus 1, which is a method to differentiate <em>composite</em> functions. 
+      </p>
+
+      <p>
+        Let <m>y = F(u(x))</m> be a composite function. 
+        We can see that <m>y = F(x)</m> is the outside function and <m>y = u(x)</m> is the inside function. 
+        The chain rule says that
+        <me>
+          \frac{d}{dx}\left(F(u(x))\right) = F'(u(x))\cdot u'(x)
+        </me>
+      </p>
+
+      <p>
+        <em>
+          Note: I know that this notation is different from the typical <m>f</m> and <m>g</m> you saw back in calculus 1. 
+          I am using <m>F</m> and <m>u</m> to match up the typical calculus 2 notation but the idea is the same. 
+        </em>
+      </p>
+    </introduction>
+
+    <task>
+      <p>
+        What is the derivative of of the function <m>y = \sin\left(x^2\right)</m>? 
+      </p>
+
+      <solution>
+        <p>
+          Observe that the outside function is <m>F(x) = \sin(x)</m> and the inside function is <m>u(x) = x^2</m>. 
+          Using the chain rule, we obtain
+          <md>
+            <mrow>y' = \frac{d}{dx}\left(\left( u(x)\right)\right) \amp = F'\left(u(x)\right)\cdot u'(x) \amp\amp\text{by Chain Rule}</mrow>
+            <mrow> \amp = \cos\left(x^2\right)\cdot 2x</mrow>
+            <mrow> \amp= 2x\cos\left(x^2\right)</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+
+    <task>
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int 2x\cos\left(x^2\right)\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          Recall that this expression tells us to find the <em>general antiderivative</em> of the function <m>y = 2x\cos\left(x^2\right)</m>. 
+          So what functions will give the derivative of <m>y = \sin\left(x^2\right)</m>? 
+        </p>
+
+        <p>
+          Maybe part (a) in this investigation will give you an idea...
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Observing from part (a) of the investigation, we know that
+          <me>
+            \frac{d}{dx}\left(\sin\left(x^2\right)\right) = 2x\cos\left(x^2\right)
+          </me>
+          This implies that
+          <me>
+            \int 2x\cos\left(x^2\right)\, dx = \sin\left(x^2\right) + C
+          </me>
+        </p>
+
+        <p>
+          <alert>Observe that we don't simply integrate each factor of the integrand and multiply the results... </alert>
+        </p>
+      </solution>
+    </task>
+
+  </investigation>
+
+  <p>
+    See that we can’t just simply integrate each factor of the integrand when integrating a factor of two functions, especially when one of the factors is a composite function. 
+    Rather than guessing and checking (and relying on Richard providing the answers occasionally), it will be so nice for us to learn how to integrate product of functions when one of the factors is a composite function. 
+  </p>
+
+  <p>
+    You can kind of get a feeling that chain rule is probably important in this section. 
+    It turns out that we can come up with a new fancy method of integration by undoing the chain rule. 
+  </p>
+
+  <subsection xml:id="subsec-571-Indefinite">
+    <title>Substitution Method for Indefinite Integrals</title>
+
+    <p>
+      Suppose we have a composite function <m>y = F(u(x))</m> where <m>F</m> is the outside function and <m>u</m> is the inside function. 
+      By the chain rule, we know that
+      <md>
+        <mrow> \frac{d}{dx}\left(F(u(x))\right) \amp= F'(u(x))\cdot u'(x) </mrow>
+        <mrow> \amp= f(u(x))\cdot u'(x) </mrow>
+      </md>
+      if we are assuming the derivative of <m>F</m> is <m>f</m>. 
+      Recall we can rewrite a derivative formula using integration so we can rewrite the chain rule using integration. 
+    </p>
+
+    <theorem xml:id="thm-usub-indefinite">
+      <title>Substitution Method for Indefinite Integrals</title>
+      <statement>
+        <p>
+          If <m>F'(x) = f(x)</m>, and <m>u</m> is a differentiable function whose range includes the domain of <m>f</m>, then
+          <me>
+            \int f\left(u(x)\right) u'(x)\, dx = F\left(u(x)\right) + C
+          </me>
+        </p>
+      </statement>
+    </theorem>
+
+    <p>
+      We can use this formula <alert>IF</alert> the format of the integrand stays exactly the same as the one in the formula. 
+      That is, the formula is useful when we are integrating the product of a composite function and the derivative of the inside function. 
+    </p>
+
+    <example>
+      
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int 5x^4\sin\left(x^5\right)\, dx</m> using the formula in the above theorem. 
+      </p>
+
+      <hint>
+        <p>
+          To use the formula, we need a <em>composite</em> function and the derivative of the <em>inside</em> function being multiplied as the integrand. 
+          So the two questions to consider here are:
+          <ol>
+            <li>
+              <p>
+                What is a <em>composite</em> function that stood out to you? 
+                After you have identified a composite function, what is the outside function and the <em>inside</em> function? 
+              </p>
+              <p>
+                Label the outside function as <m>y = f(x)</m> and the inside function as <m>y = u(x)</m>. 
+              </p>
+            </li>
+            <p></p>
+            <li>
+              <p>
+                What is the derivative of the inside function, <m>y = u(x)</m>? Can we find <m>u'(x)</m> as a factor in the integrand? 
+              </p>
+            </li>
+          </ol>
+          After you found the components of the integrand and checked off the second question, try figuring out what <m>y = F(x)</m> is and obtaining the answer by plugging in each component to the formula. 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          There is only one <em>composite</em> function in the integrand, which is <m>y = \sin\left(x^5\right)</m>. 
+          Then we can label
+          <me>
+            f(x) = \sin(x) \qquad\text{ and }\qquad u(x) = x^5
+          </me>
+          Observe that <m>u'(x) = 5x^4</m>, which is a factor in the integrand. 
+          Then this integral matches up with the left-hand side of the formula in <xref ref="thm-usub-indefinite"/>. 
+        </p>
+
+        <p>
+          We know that
+          <me>
+            F(x) = \int f(x)\, dx = \int \sin(x)\, dx = -\cos(x) + C
+          </me>
+          Then we can plug in all these components to the formula and obtain the answer: 
+          <md>
+            <mrow>\int 5x^4\sin\left(x^5\right)\, dx \amp= F\left(u(x)\right) + C</mrow>
+            <mrow> \amp= -\cos\left(x^5\right) + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      A common question here is where the <m>5x^4</m> went in the process since we only integrated the sine function. 
+      This is a great question that leads us to develop a less-confusing notation presentation for <m>u</m>-sub (using differentials). 
+    </p>
+
+    <p>
+      Richard can for sure answer this question now! 
+      Recall <m>5x^4</m> is the derivative of the inside function, which appears out of no where in the chain rule for derivative. 
+      Of course this part should be disappearing if we undoes the derivative. 
+    </p>
+
+    <p>
+      We will next discuss another presentation of <m>u</m>-sub using differentials. 
+      This presentation is also the reason why we call this method the <alert><m>\boldsymbol{u}</m>-sub</alert>. 
+    </p>
+    
+    <subsubsection xml:id="subsubsec-5711-sub-usingDifferential">
+      <title>Substitution Using Differentials</title>
+      <p>
+        As the name of <m>u</m>-sub suggested, we should be substituting <m>u</m> for something. 
+        Let's forget about the formula we learned above and try a problem using <em>only</em> substitution 
+        (so you can forget about the above formula for a while)!  
+      </p>
+
+      <example>
+        <p>
+          Evaluate the indefinite integral <m>\displaystyle \int \sin^5(x)\cos(x)\, dx</m> 
+        </p>
+
+        <hint>
+          <p>
+            Recall <m>u</m> should be some inside function in a <em>composite</em> function. 
+            Then what is a <em>composite</em> function that stood out to you and what should the <m>u</m> be? 
+          </p>
+
+          <p>
+            After you determine what the <m>u</m> is, try substituting <alert>ALL</alert> the <m>x</m>'s in the indefinite integral with <m>u</m>, including the differential <m>dx</m>. 
+            The resulting integral should be <em>easier</em> than the original integral in the prompt. 
+          </p>
+        </hint>
+
+        <solution>
+          <p>
+            The <em>composite</em> function in the integrand is <m>y = \sin^5(x)</m>, with the inside function of <m>u(x) = \sin(x)</m>. 
+            So let's pick <m>u = \sin(x)</m>. 
+            If we substitute <m>u</m> for <m>\sin(x)</m>, then the integral becomes
+            <me>
+              \int \sin^5(x)\cos(x)\, dx = \int u^5\cos(x)\, dx
+            </me>
+            Sure the integral becomes a bit easier. 
+            But this is also a super confusing integral since it includes <alert>TWO</alert> different variables, <m>x</m> and <m>u</m>. 
+          </p>
+
+          <p>
+            One way to resolve this confusion is to replace ALL the <m>x</m>'s in terms of <m>u</m>'s. 
+            The hardest substitution here is the differential, <m>dx</m>... 
+            How do we replace the <m>dx</m> in terms of <m>u</m>... 
+          </p>
+
+          <p>
+            One expression that contains both <m>dx</m> and <m>u</m> is the <alert>derivative</alert> of <m>u</m> with respect to <m>x</m>. 
+            Recall we defined <m>u = \sin(x)</m>. 
+            Then 
+            <me>
+              \frac{du}{dx} = \cos(x)
+            </me>
+            If we abuse the notation a bit by treating the derivative notation <m>\frac{dy}{dx}</m> as a fraction, we can multiply the <m>dx</m> on both sides of this equation. 
+            Then we obtain
+            <me>
+              du = \cos(x)\, dx
+            </me>
+            Hmm the <m>\cos(x)\, dx</m> looks super familiar... 
+            They are also part of the integral! 
+            Hence, we can substitute <m>\cos(x)\, dx</m> with <m>du</m> as follows: 
+            <md>
+              <mrow>\int \sin^5(x)\cos(x)\, dx \amp= \int u^5 \cos(x)\, dx </mrow>
+              <mrow> \amp= \int u^5\, du </mrow>
+            </md>
+            Now there is only one variable, <m>u</m>, in the integral and we for sure know how to evaluate this integral! 
+            Using the power rule, we know that
+            <me>
+              \int u^5\, du = \frac{u^6}{6} + C
+            </me>
+            Don't forget that <m>u</m> is essentially <m>\sin(x)</m>. 
+            We can obtain the final answer by replacing back <m>\sin(x)</m> for <m>u</m>. 
+            <md>
+              <mrow>\int \sin^5(x)\cos(x)\, dx \amp= \int u^5\, du </mrow>
+              <mrow> \amp= \frac{u^6}{6} + C </mrow>
+              <mrow> \amp= \frac{\sin^6(x)}{6} + C </mrow>
+            </md>
+          </p>
+        </solution>
+      </example>
+
+      <p>
+        Observe that the derivative of the inside function, <m>u'(x)</m>, is being absorbed as part of the differential, <m>du</m>. 
+        This is essentially the <alert>change of variable</alert> trick by treating <m>u</m> as the new variable. 
+        Symbolically, we can adjust the formula in the above theorem as follows: 
+        <men xml:id="eqn-usub-differential">
+          \int \underbrace{f\big(u(x)\big)}_{f(u)} \hspace{4px}\underbrace{u'(x) \, dx}_{du} = \int f(u)\, du
+        </men>
+      </p>
+
+      <p>
+        There is certainly an advantage of using this method. 
+        We don't need to worry about matching up each component with the formula in the above theorem in order to use the formula. 
+        But the tradeoff here is that we need to substitute ALL the <m>x</m>'s (or whatever the previous variable is) with <m>u</m>'s (or whatever we call the new variable), including the differentials. 
+        Sometimes this is not an easy job (or sometimes it is just impossible). 
+      </p>
+
+      <p>
+        Richard doesn't like to memorize one more formula so he likes to do all of his <m>u</m>-sub problems using the differential approach (there is one more reason why Richard likes this approach). 
+      </p>
+
+      <example>
+        <p>
+          Evaluate the indefinite integral <m>\displaystyle \int \frac{t^3}{\left(4 - 2t^4\right)^{11}}\, dt</m>
+        </p>
+
+        <hint>
+          <p>
+            We are learning <m>u</m>-sub so we probably can evaluate this integral using <m>u</m>-sub. 
+            Recall we pick <m>u</m> to be some inside function of a composite function. 
+            What is a <m>u</m> we can pick here? 
+          </p>
+        </hint>
+
+        <solution>
+          <p>
+            There are more than one composite functions so there are more than one choice of <m>u</m> we can pick.  
+          </p>
+
+          <p>
+            Richard will pick <m>u = 4 - 2t^4</m> (and he has a good reason). 
+            He will work through the problem and let's see if you can figure out what this good reason is. 
+          </p>
+
+          <p>
+            Let <m>u = 4 - 2t^4</m>. 
+            To find the <m>du</m>, we will need to take the derivative of <m>u</m> with respect to <m>t</m>. 
+            Then we obtain
+            <me>
+              \frac{du}{dt} = -8t^3
+              \qquad \implies \qquad 
+              du = -8t^3\, dt
+            </me>
+            Observe that we can find <m>t^3\, dt</m> in the integral, which equals to <m>\frac{du}{-8}</m> by the above equation. 
+            Substituting <m>u = 4 - 2t^4</m> and <m>t^3\, dt = \frac{du}{-8}</m> in the integral, we obtain
+            <md>
+              <mrow> \int \frac{t^3}{\left(4 - 2t^4\right)^{11}}\, dt \amp= \int \frac{1}{u^{11}}\cdot \frac{du}{-8}</mrow>
+              <mrow> \amp= -\frac{1}{8}\int u^{-11}\, du </mrow>
+              <mrow> \amp= -\frac{1}{8}\cdot \frac{u^{-10}}{-10} + C </mrow>
+              <mrow> \amp= \frac{1}{80}\left(4 - 2t^4\right)^{-10} + C </mrow>
+            </md>
+          </p>
+        </solution>
+      </example>
+
+      <p>
+        The reason why Richard knows picking <m>u = 4 - 2t^4</m> will work out in the above example is because he noticed that <m>t^3</m>, which is <m>u'(x)</m> if we neglect the constant multiple, is a factor in the integrand. 
+        Observe that he can instantly replace <m>t^3\, dt</m> by <m>\frac{du}{-8}</m> quickly. 
+      </p>
+
+      <p>
+        In general, whatever <m>u</m> we pick, we know this choice of <m>u</m> will likely to work out if we can find <m>u'</m> as a factor of the integrand (and we can neglect the constant multiple of <m>u'</m>). 
+        We will elaborate this idea more in the section of the limitation of <m>u</m>-sub. 
+      </p>
+
+      <note xml:id="note-isolate-dx-usub">
+        <title>Can I isolate <m>\boldsymbol{dt}</m> in the above example? </title>
+        
+        <p>
+          Recall the substitution Richard used in the previous example is to replace <m>t^3\, dt</m> by <m>\frac{du}{-8}</m> based on the equation 
+          <me>
+            \frac{du}{dt} = -8t^3
+              \qquad \implies \qquad 
+              du = -8t^3\, dt
+              \qquad \implies \qquad
+              \frac{du}{-8} = t^3\, dt
+          </me>
+          A natural follow-up question here is whether we can isolate the <m>dt</m> entirely and replace <m>dt</m> to the integral as follows: 
+          <me>
+            dt = \frac{du}{-8t^3}
+            \qquad\implies\qquad 
+            \int \frac{t^3}{u^{11}}\cdot \frac{du}{-8t^3} = -\frac{1}{8}\int u^{-11}\, du
+          </me>
+          It seems like this "divide-and-cancel" method will lead us to the same answer anyways, so is this a valid method?  
+        </p>
+
+        <p>
+          Well I guess it all depends on how much you care about the rigor in math. 
+          If all you care about is to obtain an answer, then by all means. 
+          This method will work 90% of the time (I know it sounds sarcastic but it is really not...). 
+        </p>
+
+        <p>
+          But if you do care about the rigor in math (like Richard), then this method should be bugging you because <alert>the divisor, <m>\boldsymbol{-8t^3}</m>, could potentially be zero here</alert> since <m>0</m> is in the domain of the integrand. 
+          In math, we never want to divide something that could potentially be zero. 
+          So dividing a variable before verifying it can never be zero is a bad idea. 
+        </p>
+
+        <p>
+          An example I always use if I am teaching algebra and precalculus at PCC is to solve the equation <m>x(1 - x) = 0</m> by dividing an <m>x</m> on both sides of the equation. 
+          <me>
+            \frac{x(1 - x)}{x} = \frac{0}{x}
+            \qquad \implies \qquad 
+            1 - x = 0
+            \qquad \implies \qquad 
+            x = 1
+          </me>
+          While we obtain a solution indeed through the division of <m>x</m>, we also miss the solution of <m>x = 0</m>. 
+        </p>
+
+        <p>
+          I probably won't give you any questions in this extreme that the "divide-and-cancel" method will lead to the loss of some solution (because this isn't a differential equation class). 
+          So I will leave it up to you if you want to use this "divide-and-cancel" method. 
+          At least there is no harm in this class (I think...). 
+        </p>
+      </note>
+
+      <example>
+        <p>
+          Evaluate the indefinite integral <m>\displaystyle \int \sin\left(4\theta - 7\right)\, d\theta</m>
+        </p>
+
+        <hint>
+          <p>
+            Let's evaluate this integral using <m>u</m>-sub. 
+            Recall a good choice of <m>u</m> is the ones that you can find its derivative as a factor of the integrand. 
+            So what is a good choice of <m>u</m>? 
+          </p>
+        </hint>
+
+        <solution>
+          <p>
+            There is only one composite function in the integrand, which implies that the <m>u</m>, aka the only inside function, should be <m>4\theta - 7</m>. 
+          </p>
+
+          <p>
+            Let <m>u = 4\theta - 7</m>. 
+            To replace <m>d\theta</m> in terms of <m>u</m>, we will differentiate <m>u</m> with respect to <m>\theta</m>. 
+            <me>
+              \frac{du}{d\theta} = 4 
+              \qquad\implies\qquad 
+              du = 4\, d\theta
+              \qquad\implies\qquad
+              \frac{du}{4} = d\theta
+            </me>
+            Then we obtain
+            <md>
+              <mrow> \int\sin\left(4\theta - 7\right)\, d\theta \amp= \int \sin(u)\cdot \frac{du}{4} </mrow>
+              <mrow> \amp= \frac{1}{4}\int \sin(u)\, du </mrow>
+              <mrow> \amp= \frac{1}{4}\cdot -\cos(u) + C </mrow>
+              <mrow> \amp= -\frac{1}{4}\cos\left(4\theta - 7\right) + C </mrow>
+            </md>
+          </p>
+        </solution>
+
+        <note xml:id="Linear-usub">
+          <title>Linear <m>\boldsymbol{u}</m>-sub</title>
+          
+          <p>
+            Back in calculus 1, recall that we can simply multiply the slope of the inside function when taking the derivative <em>if the inside function is a linear function</em>. 
+            This skill transfers to <m>u</m>-sub too if the inside function, <m>u</m>, is a linear function. 
+            Instead of multiplying the slope, we will divide the slope. 
+          </p>
+
+          <p>
+            To justify this division process, we can assume that <m>u = mx + b</m>, a typical linear function. 
+            Then we obtain
+            <me>
+              \frac{du}{dx} = k
+              \qquad\implies\qquad
+              dx = \frac{du}{k}
+            </me>
+            See that if we replace the <m>dx</m> with the <m>\dfrac{du}{k}</m>, we essentially divide the answer by <m>k</m>. 
+          </p>
+
+          <p>
+            This is a quick little shortcut you can take to boost up the proficiency of <m>u</m>-sub, especially since this is one of the most widely-used methods among the other methods we will talk about in this class. 
+          </p>
+
+          <p>
+            Now let's try the following problem and see if you can obtain the answer <em>quickly</em>. 
+          </p>
+
+          <example>
+            <p>
+              Evaluate the indefinite integral <m>\displaystyle \int \sec^2\left(5 - 15x\right)\, dx</m>
+            </p>
+
+            <hint>
+              <p>
+                Observe that the inside function, which we can for sure call it <m>u</m>, is a linear function. 
+                Then what is the slope and how can we obtain the answer quickly without going through all the work for <m>u</m>-sub? 
+              </p>
+            </hint>
+
+            <solution>
+              <p>
+                Observe that the inside function, <m>5 - 15x</m>, is a <alert>linear</alert> function with the slope of <m>-15</m>. 
+                Then we can divide the slope, integrate the outside function, and plug in the inside function (and don't forget the <m>+C</m>). 
+                <md>
+                  <mrow> \int \sec^2\left(5 - 15x\right)\, dx \amp= -\frac{1}{15}\tan\left(5 - 15x\right) + C </mrow>
+                </md>
+              </p>
+
+              <p>
+                <alert>If this line of work doesn't convince you, then I would suggest you working out this problem using <m>\boldsymbol{u}</m>-sub and observe how the answer can be obtained quickly. </alert>
+              </p>
+            </solution>
+          </example>
+        </note>
+      </example>
+
+      <p>
+        Hmm but does <m>u</m> have to be some inside function? 
+        The answer is no... 
+        Essentially we can pick whatever we want in the integrand to be <m>u</m>, but you want to make sure you are able to replace all the <m>x</m>'s with <m>u</m>'s. 
+      </p>
+
+      <example>
+        <p>
+          Evaluate the indefinite integral <m>\displaystyle \int \cot(x)\cdot \ln\left(\sin(x)\right)\, dx</m>
+        </p>
+
+        <hint>
+          <p>
+            Observe that there is a composite function in the integrand with the inside function of <m>u(x) = \sin(x)</m>. 
+            Based on our previous strategy, we should be calling it <m>u</m>. 
+          </p>
+
+          <p>
+            Let's try picking <m>u</m> to be the inside function <m>\sin(x)</m> and see what will happen. 
+          </p>
+
+          <p>
+            If you are ready to give up or open to another method, try picking <m>u = \ln\left(\sin(x)\right)</m> and see if it will work out nicely. 
+          </p>
+        </hint>
+
+        <solution>
+          <title>Choice #1: Let <m>u = \sin(x)</m></title>
+          <p>
+            <alert>This will work out but the work is a bit more complicated since you will need to <m>\boldsymbol{u}</m>-sub it twice.</alert> 
+          </p>
+
+          <p>
+            Let <m>u = \sin(x)</m>. 
+            Then we have
+            <me>
+              \frac{du}{dx} = \cos(x)
+              \qquad \implies \qquad
+              du = \cos(x)\, dx
+            </me>
+            This implies that
+            <md>
+              <mrow> \int \cot(x)\cdot \ln\left(\sin(x)\right)\, dx \amp= \int \frac{\cos(x)}{\sin(x)} \cdot \ln\left(\sin(x)\right) \, dx </mrow>
+              <mrow> \amp= \int \frac{1}{u}\cdot \ln(u)\, du </mrow>
+            </md>
+            Okay... we are able to replace all the <m>x</m>'s with <m>u</m>'s and the integral is a bit easier (see that there is no more trigonometric functions in the integrand). 
+            But this is kind of discouraging since there is no formula to help us integrate this function... 
+          </p>
+
+          <p>
+            To proceed, we will need to do another <m>u</m>-sub by letting <m>w = \ln(u)</m>. 
+            Then 
+            <me>
+              \frac{dw}{du} = \frac{1}{u}
+              \qquad \implies \qquad
+              du = u\, dw
+            </me>
+            This implies that
+            <md>
+              <mrow> \int \frac{1}{u}\cdot \ln(u)\, du \amp= \int w\, dw </mrow>
+              <mrow> \amp= \frac{w^2}{2} + C </mrow>
+            </md>
+            Ha! We evaluated the integral! 
+            We will just need to put everything together and replace back the variable to <m>x</m>. 
+            <md>
+              <mrow> \int \cot(x)\cdot \ln\left(\sin(x)\right)\, dx \amp= \int \frac{1}{u}\cdot \ln(u)\, du </mrow>
+              <mrow> \amp= \int w\, dw </mrow>
+              <mrow> \amp= \frac{w^2}{2} + C </mrow>
+              <mrow> \amp= \frac{\left(\ln(u)\right)^2}{2} + C </mrow>
+              <mrow> \amp= \frac{\left(\ln\left(\sin(x)\right)\right)^2}{2} + C </mrow>
+            </md>
+          </p>
+        </solution>
+
+        <solution>
+          <title>Choice #2: Let <m>u = \ln\left(\sin(x)\right)</m></title>
+          <p>
+            Let's follow Richard's hint and let <m>u = \ln\left(\sin(x)\right)</m>. 
+            Then we have
+            <me>
+              \frac{du}{dx} = \frac{1}{\sin(x)}\cdot \cos(x) = \cot(x)
+              \qquad \implies \qquad 
+              du = \cot(x) \, dx
+            </me>
+            This implies that
+            <md>
+              <mrow> \int \cot(x)\cdot \ln\left(\sin(x)\right)\, dx \amp= \int u\, du </mrow>
+              <mrow> \amp= \frac{u^2}{2} + C </mrow>
+              <mrow> \amp= \frac{\left(\ln\left(\sin(x)\right)\right)^2}{2} + C </mrow>
+            </md>
+          </p>
+
+          <p>
+            <alert>Observe that this choice of <m>\boldsymbol{u}</m> made the process a lot easier</alert>. 
+          </p>
+        </solution>
+      </example>
+
+      <note xml:id="Strategy-Pick-u">
+        <title>How do I know what is the <m>\boldsymbol{u}</m> I should pick? </title>
+        
+        <p>
+          For starters, we can pick whatever in the integrand to be the <m>u</m>. 
+          But whatever <m>u</m> you pick, you want to make sure two things: 
+          <ol>
+            <li>
+              <p>
+                All the variables should be turned to <m>u</m> (or whatever the new variable is), including the differential, and 
+              </p>
+            </li>
+            <li>
+              <p>
+                the new integral after the substitution should be <alert>easier</alert> to evaluate compared to the original integral. 
+              </p>
+            </li>
+          </ol>
+          If your choice of <m>u</m> doesn't do the above two things, then this is a bad <m>u</m> and you should either pick another <m>u</m> or try a different method. 
+        </p>
+
+        <p>
+          <alert>But there is a difference between picking a good <m>\boldsymbol{u}</m> and picking the best <m>\boldsymbol{u}</m></alert>... 
+        </p>
+
+        <p>
+          The above example should demonstrate the difference. 
+          The first choice of <m>u = \sin(x)</m> is a good <m>u</m> but is not the most efficient option, while the second choice of <m>u = \ln\left(\sin(x)\right)</m> is the best <m>u</m> since we were able to evaluate the integral right after the substitution. 
+        </p>
+
+        <p>
+          So I guess the next question here is <alert>how to pick the best <m>\boldsymbol{u}</m></alert>... 
+          Well it actually takes a bit guess-and-check-ing and experience. 
+          I will encourage you to first practice on how to pick a <alert>good</alert> <m>u</m> to make sure at least you can solve the problem. 
+          Once you are comfortable and proficient at using <m>u</m>-sub, then knowing what the best <m>u</m> may be will come naturally. 
+        </p>
+      </note>
+
+    </subsubsection>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-572-limitation">
+    <title>Limitation of <m>\boldsymbol{u}</m>-sub</title>
+
+    <p>
+      Recall we can take the derivative of <em>ALL</em> composite functions using the chain rule. 
+      Since we derived the <m>u</m>-sub formula from the chain rule, does it mean we can integrate <alert>ALL</alert> the composite functions using this method of <m>u</m>-sub? 
+      Let's think about this question in the following example: 
+    </p>
+
+    <example>
+      <introduction>
+        <p>
+          Determine whether we can evaluate the following integral using <m>u</m>-sub. 
+          If so, do it. 
+          If not, why not? 
+        </p>
+      </introduction>
+
+      <task>
+        <p>
+          <m>\displaystyle \int e^{-t}\, dt</m>
+        </p>
+
+        <hint>
+          <p>
+            A good strategy is to pick the <m>u</m> to be some inside function of a composite function. 
+            The outside function here is for sure <m>y = e^t</m>, then what is the inside function we can pick for <m>u</m>? 
+          </p>
+        </hint>
+
+        <solution>
+          <p>
+            We <alert>can</alert> evaluate this integral using <m>u</m>-sub (or even easier if you can observe that the inside function is a linear function). 
+          </p>
+
+          <p>
+            Let <m>u = -t</m>.
+            Then we have
+            <me>
+              \frac{du}{dt} = -1
+              \qquad\implies\qquad
+              dt = -du
+            </me>
+            This implies that
+            <md>
+              <mrow>\int e^{-t}\, dt \amp= -\int e^u\, du </mrow>
+              <mrow> \amp= -e^u + C </mrow>
+              <mrow> \amp= -e^{-t} + C </mrow>
+            </md>
+          </p>
+        </solution>
+
+      </task>
+
+      <task>
+        <p>
+          <m>\displaystyle \int e^{-t^2}\, dt</m>
+        </p>
+
+        <hint>
+          <p>
+            A good strategy is to pick the <m>u</m> to be some inside function of a composite function. 
+            The outside function here is for sure <m>y = e^t</m>, then what is the inside function we can pick for <m>u</m>? 
+          </p>
+        </hint>
+
+        <solution>
+          <p>
+            We <alert>cannot</alert> evaluate this integral using <m>u</m>-sub because we won't be able to group the <m>du = u'(x)\, dx</m> out of it. 
+            But let's try using <m>u</m>-sub nevertheless and see where we will get stuck. 
+          </p>
+
+          <p>
+            Let <m>u = -t^2</m>. 
+            Then we have
+            <me>
+              \frac{du}{dt} = -2t
+              \qquad\implies\qquad
+              \frac{du}{-2} = t\, dt
+            </me>
+            Yet there is no extra factor of <m>t</m> in the integrand that we can group together with <m>dt</m> to give us a <m>du</m> out of it. 
+            So we are stuck... 
+          </p>
+
+          <note>
+            <title>if you are thinking of using the "divide-and-cancel" method...</title>
+            
+            <p>
+              You may consider isolating the <m>dt</m> as follows (the hidden assumption here is that <m>t\neq 0</m>...)
+              <me>
+                \frac{du}{dt} = -2t
+                \qquad\implies\qquad
+                dt = \frac{du}{-2t}
+              </me>
+              and substitute as follows: 
+              <me>
+                \int e^{-t^2}\, dt = \int e^u\, \frac{du}{-2t} = -\frac{1}{2} \int\frac{e^u}{t}\, du
+              </me>
+              Well the resulting integral after the substitution still contains two variables 
+              (since there is not a factor of <m>t</m> in the integrand to cancel the <m>t</m> in the denominator with). 
+            </p>
+
+            <p>
+              Well one way to resolve this issue is to figure out what <m>t</m> is in terms of <m>u</m> (by isolating <m>t</m> in the equation of <m>u = -t^2</m>). 
+            </p>
+
+            <p>
+              Observe that <m>t = \pm \sqrt{-u}</m>. 
+              Then the resulting integral becomes
+              <me>
+                -\frac{1}{2} \int \frac{e^u}{t}\, dt = -\frac{1}{2} \int \frac{e^u}{\pm \sqrt{-u}}\, du
+              </me>
+              See that the integral doesn't become easier... 
+              This should be a cue that <m>u</m>-sub doesn't work. 
+              We should give up and try something else. 
+            </p>
+          </note>
+        </solution>
+
+      <!--
+        <note xml:id="Intro-ErrorFunction">
+          <title>Fun fact about this integral</title>
+          
+          <p>
+            It turns out that there is no elementary function we can use to express the general antiderivative of <m>y = e^{-t^2}</m>.
+            Yet we often need to deal with this integral in many applications of probability and statistics (we will look at an example in section 8.1) so we defined a whole function based on it, called the <term>error function</term>.  
+          </p>
+          <p>
+            <definition xml:id="def-ErrorFunction">
+              <title>Error Functions</title>
+              <statement>
+                <p>
+                  The <term>error function</term> is defined as 
+                  <men xml:id="eqn-def-ErrorFunction">
+                    \operatorname{erf}(x) := \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2}\, dt
+                  </men>
+                </p>
+              </statement>
+            </definition>
+          </p>
+
+          <p>
+            The graph of <m>y=\operatorname{erf}(x)</m> is shown below.
+          </p>
+          
+
+          <p>
+            There are a couple properties we can observe directly from the graph: 
+            <ul>
+              <li>
+                <p>
+                  <m>\operatorname{erf}(0) = 0</m> since the graph passes the origin. 
+                </p>
+              </li>
+              <li>
+                <p>
+                  The error function is an <alert>odd</alert> function, which means the graph is symmetric about the origin. 
+                </p>
+              </li>
+              <li>
+                <p>
+                  There are two horizontal asymptotes at <m>y = \pm 1</m>. 
+                  In other words, 
+                  <me>
+                    \lim_{x\to -\infty} \operatorname{erf}(x) = -1
+                    \quad\text{ and }\quad
+                    \lim_{x\to \infty} \operatorname{erf}(x) = 1
+                  </me>
+                </p>
+              </li>
+            </ul>
+          </p>
+
+          <p>
+            The error function is closely related to the normal distribution as it is obtained by integrating the Gaussian distribution of mean <m>0</m> and variance <m>\frac{1}{2}</m>. 
+            We will briefly elaborate it a bit in section 8.1 when we talk about the normal distribution. 
+          </p>
+            
+        </note>
+      -->
+
+      </task>
+    </example>
+
+    <p>
+      We can make an observation from the above example about the <m>u</m>-sub-ability of an integral. 
+      <alert>If part of the <m>\boldsymbol{u'(x)}</m> is missing in the integrand, and it is more than just a constant, then <m>\boldsymbol{u}</m>-sub won't work in general. </alert>
+    </p>
+
+    <p>
+      We know <m>u</m>-sub won't work if part of <m>u'(x)</m> is missing, and the missing part is a non-constant. 
+      But what if we go the other way. 
+      What if the integrand has an <em>extra</em> non-constant piece? 
+      Can we still <m>u</m>-sub the integral?
+    </p>
+
+    <example>
+      <p>
+        Evaluate the indefinite integral <m>\displaystyle \int x\sqrt{x - 1}\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          There is an inside function screaming to us, which is <m>x - 1</m>. 
+          Let's pick this as our <m>u</m>. 
+          But what about the extra factor of <m>x</m>... 
+          We for sure don't want to have more than one variable in the integral... 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let <m>u = x - 1</m>. 
+          Then we know that <m>du = dx</m>. 
+          This implies that
+          <md>
+            <mrow> \int x\sqrt{x - 1}\, dx \amp= \int x\sqrt{u}\, du </mrow>
+          </md>
+          Hmm... there is an extra factor of <m>x</m> in the integrand... 
+          This is not good... 
+          Is there anyway that we can replace it in terms of <m>u</m>? 
+        </p>
+
+        <p>
+          <alert>Yes there is!</alert> 
+          Recall we define <m>u = x - 1</m>. 
+          This implies that <m>x = u + 1</m> .
+          We can now substitute <m>x</m> with <m>u + 1</m>! 
+          <md>
+            <mrow> \int x\sqrt{u}\, du \amp= \int (u + 1)\sqrt{u}\, du </mrow>
+            <mrow> \amp= \int (u + 1)\cdot u^{\frac{1}{2}}\, du </mrow>
+            <mrow> \amp= \int \left(u^{\frac{3}{2}} + u^{\frac{1}{2}}\right)\, du </mrow>
+          </md>
+        </p>
+
+        <p>
+          Ha! We do know how to evaluate this integral! 
+          Hence, we can still evaluate this integral with an extra factor of <m>x</m> in the integrand! 
+          <md>
+            <mrow> \int x\sqrt{x - 1}\, dx \amp= \int (u + 1)\sqrt{u}\, du </mrow>
+            <mrow> \amp= \int \left(u^{\frac{3}{2}} + u^{\frac{1}{2}}\right)\, du </mrow>
+            <mrow> \amp= \frac{2}{5}u^{\frac{5}{2}} + \frac{2}{3}u^{\frac{3}{2}} + C </mrow>
+            <mrow> \amp= \frac{2}{5}(x - 1)^{\frac{5}{2}} + \frac{2}{3}(x - 1)^{\frac{3}{2}} + C </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+    
+  </subsection>
+
+  <subsection xml:id="subsec-573-Definite">
+    <title>Substitution Method for Definite Integrals</title>
+
+    <p>
+      After we are fluent at finding the indefinite integral using <m>u</m>-sub, then evaluating the definite integral using <m>u</m>-sub should be straightforward since the only additional steps are plugging in the upper and lower limits to some antiderivative and do the subtraction, guaranteed by the Fundamental Theorem of calculus. 
+      Yet things are a little bit more complicated as it appears. 
+      The process of changing the variable complicates the notation. 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_{-1}^2 \sqrt{5x + 6}\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          There are actually two ways of approaching this problem and we will try both methods! 
+        </p>
+
+        <p>
+          <alert>Method #1:</alert> Observe that this is a linear <m>u</m>-sub so we can find an antiderivative of the integrand quickly. 
+          Let's use the FTC (find an antiderivative, plug in the limits of integration, and do the subtraction) and obtain the answer. 
+        </p>
+
+        <p>
+          <alert>Method #2:</alert> Let's try using <m>u</m>-sub formally! 
+          Obviously, <m>u = 5x + 6</m> here. 
+          The next step in <m>u</m>-sub is to replace all the <m>x</m>'s in terms of <m>u</m>. 
+          So let's do it! 
+          In addition to the inside function <m>5x + 6</m> and the differential <m>dx</m> that we need to replace in terms of <m>u</m>, what else do we need to adjust? 
+        </p>
+      </hint>
+
+      <solution>
+        <title>Method #1: Using FTC <em>directly</em></title>
+        <p>
+          Observe that the inside function is a linear function with the slope of <m>5</m>. 
+          Then we can find an antiderivative of the integrand quickly: 
+          <md>
+            <mrow> \int \sqrt{5x + 6}\, dx \amp= \frac{1}{5}\cdot \frac{2}{3}\left(5x + 6\right)^{\frac{3}{2}} + C </mrow>
+            <mrow> \amp= \frac{2}{15}\left(5x + 6\right)^{\frac{3}{2}} + C</mrow>
+          </md>
+          Then by the Fundamental Theorem of Calculus, we obtain
+          <md>
+            <mrow> \int_{-1}^2 \sqrt{5x + 6}\, dx \amp= \frac{2}{15}\left(5x + 6\right)^{\frac{3}{2}}\bigg|_{-1}^2 </mrow>
+            <mrow> \amp= \frac{2}{15}\left((5\cdot 2 + 6)^{\frac{3}{2}} - (5\cdot -1 + 6)^{\frac{3}{2}} \right) </mrow>
+            <mrow> \amp= \frac{2}{15}\left(16^{\frac{3}{2}} - 1^{\frac{3}{2}} \right) </mrow>
+            <mrow> \amp= \frac{2}{15}(64 - 1) </mrow>
+            <mrow> \amp= \frac{42}{5} </mrow>
+          </md>
+        </p>
+      </solution>
+
+      <solution>
+        <title>Method #2: Using <m>u</m>-sub (and then FTC)</title>
+        <p>
+          If we want to use <m>u</m>-sub, then obviously we should pick <m>u = 5x + 6</m>. 
+          This implies that
+          <me>
+            \frac{du}{dx} = 5
+            \qquad\implies\qquad
+            dx = \frac{du}{5}
+          </me>
+          Then after substitution, the integral will become <m>\displaystyle \int_{-1}^2 \sqrt{u} \, \frac{du}{5}</m>. 
+          Did we successfully replace <alert>all</alert> the <m>x</m>'s in terms of <m>u</m>? 
+        </p>
+
+        <p>
+          The answer is no! 
+          There is one part that we forgot to adjust, which is the <em>limits of integration</em>! 
+          Remember the limits of integration, <m>-1</m> and <m>2</m>, are some <m>x</m> values! 
+          Since our job now is to replace <alert>ALL</alert> the <m>x</m>'s in terms of <m>u</m>, this includes the limits of integration as well!
+          <ul marker="">
+            <li>
+              <p>
+                When <m>x = 2</m>, <m>u = 5(2) + 6 = 16</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                When <m>x = -1</m>, <m>u = 5(-1) + 6 = 1</m>
+              </p>
+            </li>
+          </ul>
+          Hence, the correct integral we should obtain after <m>u</m>-sub is
+          <me>
+            \int_{-1}^2 \sqrt{5x + 6}\, dx = \int_{u(-1)}^{u(2)} \sqrt{u}\, \frac{du}{5} = \frac{1}{5}\int_1^{16} \sqrt{u}\, du
+          </me>
+        </p>
+
+        <p>
+          The resulting integral looks like something we can evaluate directly! 
+          <md>
+            <mrow>\int_{-1}^2 \sqrt{5x + 6}\, dx \amp= \frac{1}{5}\int_1^{16} \sqrt{u}\, du </mrow>
+            <mrow> \amp= \frac{1}{5}\cdot \frac{2}{3}u^{\frac{3}{2}}\bigg|_{u = 1}^{16} </mrow>
+            <mrow> \amp= \frac{2}{15}\left(16^{\frac{3}{2}} - 1^{\frac{3}{2}}\right) </mrow>
+            <mrow> \amp= \frac{2}{15}(64 - 1) </mrow>
+            <mrow> \amp= \frac{42}{5} </mrow>
+          </md>
+        </p>
+      </solution>
+
+      <note>
+        <title>Why splitting hairs and calling them two different methods?</title>
+        
+        <p>
+          You may be wondering about this: <alert>aren't the two methods essentially the same? </alert>
+          Why making this distinction on the limits of integration... 
+        </p>
+
+        <p>
+          The answer is to avoid confusion and ambiguity of the work. 
+          Imagine someone mixed up the notation of the two methods in this example by writing the work like this: 
+          <md>
+            <mrow>\int_{-1}^2 \sqrt{5x + 6}\, dx \amp= \frac{1}{5} \int_{-1}^2 \sqrt{u}\, du </mrow>
+            <mrow> \amp= \frac{1}{5} \cdot\frac{2}{3}u^{\frac{3}{2}}\bigg|_{-1}^2</mrow>
+            <mrow> \amp= \frac{2}{15}\left((5x + 6)^{\frac{3}{2}}\right)\bigg|_{-1}^2 </mrow>
+            <mrow> \amp= \frac{2}{15}\left(16^{\frac{3}{2}} - 1^{\frac{3}{2}} \right) </mrow>
+            <mrow> \amp= \frac{42}{5} </mrow>
+          </md>
+        </p>
+
+        <p>
+          Well the limits of integration isn't consistent going across the first equal sign. 
+          What we think the first line should be is really
+          <me>
+            \int_{x = -1}^{x = 2} \sqrt{5x + 6}\, dx = \frac{1}{5} \int_{x = -1}^{x = 2} \sqrt{u}\, du
+          </me>
+          Observe that we didn't fully replace all the <m>x</m>'s in terms of <m>u</m>'s n step 1. 
+          This is bad. 
+        </p>
+
+        <p>
+          Even if you can try to remember to replace all the <m>u</m>'s back with <m>x</m>'s before you plug in the limits of integration (a lot of the students can't, by the way), not everything are equal in the work... 
+        </p>
+
+        <p>
+          We don't interpret <m>\displaystyle \frac{1}{5} \int_{-1}^2 \sqrt{u}\, du</m> as <m>\displaystyle \frac{1}{5} \int_{x = -1}^{x = 2} \sqrt{u}\, du</m> in general... 
+        </p>
+
+        <p>
+          If you put <m>\frac{1}{5} \int_{-1}^2 \sqrt{u}\, du</m> to Desmos and let it do the calculation for you, then the answer returned is <em>undefined</em>, not <m>\frac{42}{5}</m>. 
+          The reason is because most calculators (and we should too!) will directly plug in the limits of integrations to the specific variable used in the integral (so Desmos interpreted the limits of integration as some <m>u</m> values). 
+          This implies that our work suggests <em>underfine</em><m> = \frac{42}{5}</m>... Hmm but this is wrong. 
+        </p>
+
+        <p>
+          <alert>Keeping a clear and correct notation will not only help you keep track of the work in writing, but also to make sure the work you produced is mathematically correct. </alert>
+          This is why Richard emphasizes the different notations as two different methods. 
+        </p>
+      </note>
+    </example>
+
+    <theorem xml:id="thm-usub-definite">
+      <statement>
+        <p>
+          If <m>u'(x)</m> is continuous on <m>[a,b]</m>, and <m>f</m> is continuous on the range of <m>u</m>, then
+          <me>
+            \int_a^b f\left(u(x)\right)u'(x)\, dx = \int_{u(a)}^{u(b)} f(u)\, du
+          </me>
+          
+        </p>
+      </statement>
+    </theorem>
+
+    <p>
+      What the theorem emphasizes is <alert>to adjust the limits of integration when changing the variable</alert>. 
+      Observe in the above example that we don't need to plug back <m>x</m> if you adjust the limits of integration along with your <m>u</m>-sub. 
+    </p>
+
+    <example>
+      <p>
+        Evaluate the definite integral <m>\displaystyle \int_0^1 \frac{x}{\left(x^2 + 1\right)^3}\, dx</m>
+      </p>
+
+      <hint>
+        <p>
+          We are in the <m>u</m>-sub section so we probably can evaluate this integral using <m>u</m>-sub. 
+          Then we will need to pick a <m>u</m> first. 
+        </p>
+
+        <p>
+          Observe that the numerator of the integrand is <m>x</m>, which seems like the derivative of the inside function in the denominator, which is <m>x^2 + 1</m>, if we neglect the constant multiple. 
+          So what is a good <m>u</m> we can pick? 
+        </p>
+
+        <p>
+          Once you pick your <m>u</m>, make sure you replace all the <m>x</m>'s in terms of <m>u</m> and don't forget to adjust the limits of integration if you want to carry the <m>u</m> in your computation. 
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          Let <m>u = x^2 + 1</m>. 
+          Then we have
+          <me>
+            \frac{du}{dx} = 2x
+            \qquad \implies \qquad
+            x\, dx = \frac{du}{2}
+          </me>
+          In addition, we also know that
+          <ul marker="">
+            <li>
+              <p>
+                when <m>x = 1</m>, <m>u = 1^2 + 1 = 2</m>;  
+              </p>
+            </li>
+            <li>
+              <p>
+                when <m>x = 0</m>, <m>u = 0^2 + 1 = 1</m>. 
+              </p>
+            </li>
+          </ul>
+          This implies that
+          <md>
+            <mrow> \int_0^1 \frac{x}{\left(x^2 + 1\right)^3}\, dx \amp= \int_{u(0)}^{u(1)} \frac{1}{u^3}\cdot \frac{du}{2} </mrow>
+            <mrow> \amp= \frac{1}{2}\int_1^2 u^{-3}\, du </mrow>
+            <mrow> \amp= \frac{1}{2} \cdot \frac{u^{-2}}{-2}\bigg|_{u = 1}^2 </mrow>
+            <mrow> \amp= -\frac{1}{4}\left(2^{-2} - 1^{-2}\right) </mrow>
+            <mrow> \amp= \frac{3}{16} </mrow>
+          </md>
+        </p>
+      </solution>
+    </example>
+    
+  </subsection>
+
+  <p>
+    Later in the term, we will be dealing with integrals with trig in it (trigonometric integrals). 
+    We can evaluate a lot of trigonometric integrals using <m>u</m>-sub since the derivative or sine and cosine are just each other (if we neglect the coefficient). 
+    If you need more practice of <m>u</m>-sub, jumping to section 7.2 is a good idea. 
+  </p>
+
+  <worksheet xml:id="ws-sec57">
+    <title>Some Exercises for this section</title>
+    
+    <introduction>
+      <p>
+        I included some practice problems that cover some main concepts in this section. 
+        You don't need to turn it in, but I highly encourage you to work on this with your classmates. 
+        I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. 
+        Reach out to Richard for help if you get stuck or have any questions. 
+      </p>
+
+      <p>
+        I will only include the final answer to some of the problems for you to check your result. 
+        If you want to check your work, talk to Richard and he is happy to discuss the process with you. 
+      </p>
+    </introduction>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following indefinite integral using methods covered in class so far. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\left(\ln(x)\right)^2}{x}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \left(x^2 + 1\right)\left(x^3 + 3x\right)^4 \, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{a + bx^2}{\sqrt{3ax + bx^3}}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \sec^2(x) e^{\tan(x)} \, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int \frac{\sec^2\left(\sqrt{x}\right)}{\sqrt{x}}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int x^2\sqrt{2 + x} \, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+    <exercisegroup>
+    
+      <introduction>
+        <p>
+          Evaluate the following definite integral. 
+          Pay attention to the limits of integration if necessary. 
+        </p>
+      </introduction>
+    
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_0^1 \sqrt[3]{1 + 7x}\, dx</m>
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            <m>\displaystyle \int_{-1}^1 x^2\left(1 + 2x^3\right)^5 \, dx</m>
+          </p>
+        </statement>
+      </exercise>
+    
+    </exercisegroup>
+
+  </worksheet>
+
+</section>
