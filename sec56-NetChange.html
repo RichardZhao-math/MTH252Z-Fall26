@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: salem                          *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Net Change as the Integral of a Rate of Change</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<style>
+@counter-style ptx-marker-1 { system: extends lower-alpha; prefix: '('; suffix: ') '; }
+</style>
+<script type="module">import { startMathJax } from './_static/pretext/js/dist/mathjax_startup.js';
+startMathJax({
+hasWebworkReps: false,
+hasSage: false,
+isReact: false,
+htmlPresentation: false,
+lang: "en-US",
+});
+</script><script defer data-pretext-mathjax="true" onerror="this.dataset.loadFailed = 'true';" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta name="twitter:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="og:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="book:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta name="twitter:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta property="og:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta name="twitter:card" content="summary">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/dist/pretext-core.js?v=2.54"></script><script src="_static/pretext/js/dist/pretext-read-aloud.js?v=2.54"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.6ad113829064d43a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.02090e9f6a81e70e.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/pretext/js/dist/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/dist/pretext_search.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="changeme" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead" role="banner"><div class="ptx-banner"><div class="title-container">
+<div class="heading ptx-banner-heading"><a href="MTH252Z_Fall26.html"><span class="title">MTH 252Z Integral Calculus</span> <span class="subtitle">Fall 2026</span></a></div>
+<p class="byline">Richard Zhao</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button id="ptx-toc-toggle" type="button" aria-controls="ptx-sidebar" class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="ptx-search-box">
+<div class="ptx-search-widget"><button id="ptx-search-button" type="button" class="ptx-search-button button" title="Search Book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<dialog id="ptx-search-dialog" class="ptx-dialog ptx-search-dialog"><div class="ptx-search-dialog-controls">
+<input aria-label="Search term" id="ptx-search-terms" class="ptx-search-terms" type="text" name="terms" placeholder="Search terms"><button aria-label="Close" id="ptx-search-close" class="ptx-search-close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div id="ptx-search-status" class="ptx-search-status" aria-live="polite" aria-atomic="true"></div>
+<h2 class="heading ptx-search-results-heading">Search Results: </h2>
+<div id="ptx-search-empty" class="ptx-search-empty"><span>No results.</span></div>
+<ol id="ptx-search-results" class="ptx-search-results"></ol></dialog>
+</div>
+<span class="nav-other-controls"><button id="ptx-read-aloud-button" class="ptx-read-aloud-button button" title="Read aloud" aria-expanded="false"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf1bc;</span><span class="name">Read aloud</span></button><div id="ptx-read-aloud-player" class="ptx-read-aloud-player" hidden="hidden" role="group" aria-label="Read aloud">
+<button id="ptx-read-aloud-prev" class="button" title="Previous sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe045;</span></button><button id="ptx-read-aloud-toggle" class="ptx-read-aloud-toggle button" title="Play"><span class="ptx-read-aloud-icon-play"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></span><span class="ptx-read-aloud-icon-pause"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe034;</span></span></button><button id="ptx-read-aloud-next" class="button" title="Next sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe044;</span></button><a id="ptx-read-aloud-continue" class="ptx-read-aloud-continue button" hidden="hidden">Continue<span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></a><button id="ptx-read-aloud-settings-button" class="ptx-read-aloud-settings-button button" title="Reading settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe429;</span></button>
+</div>
+<dialog class="ptx-dialog ptx-read-aloud-settings-popup" id="ptx-read-aloud-settings-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Read aloud settings</h2>
+<button class="ptx-read-aloud-settings-close-button button" id="ptx-read-aloud-settings-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label for="ptx-read-aloud-voice"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe91f;</span><span>Voice</span></label><select id="ptx-read-aloud-voice"></select><label class="ptx-readability-slider-label" for="ptx-read-aloud-rate"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe9e4;</span><span>Reading speed</span><output id="ptx-read-aloud-rate-value" for="ptx-read-aloud-rate">1×</output></label><input type="range" id="ptx-read-aloud-rate" min="0.5" max="2" step="0.1" value="1"><label for="ptx-read-aloud-asides"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d7;</span><span>Collapsed content</span></label><select id="ptx-read-aloud-asides"><option value="skip">Announce, do not read</option>
+<option value="read">Read automatically</option></select><label for="ptx-read-aloud-autoscroll"><input type="checkbox" id="ptx-read-aloud-autoscroll" checked><span>Follow along (auto-scroll)</span></label><label for="ptx-read-aloud-autocontinue"><input type="checkbox" id="ptx-read-aloud-autocontinue"><span>Continue to the next page automatically</span></label>
+</div></dialog><button id="ptx-readability-options-button" class="ptx-readability-options-button button" title="Readability settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf6f1;</span><span class="name">Readability settings</span></button><dialog class="ptx-dialog ptx-readability-options-popup" id="ptx-readability-options-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Readability settings</h2>
+<button class="ptx-readability-options-close-button button" id="ptx-readability-options-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-line-height"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe240;</span><span>Line height</span><output id="ptx-readability-line-height-value" for="ptx-readability-line-height">1.35</output></label><input type="range" id="ptx-readability-line-height" min="1.10" max="3" step="0.05" value="1.35">
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-font-size"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe245;</span><span>Content font size</span><output id="ptx-readability-font-size-value" for="ptx-readability-font-size">100%</output></label><input type="range" id="ptx-readability-font-size" min="0.8" max="1.5" step="0.05" value="1">
+</div>
+<fieldset class="ptx-readability-options-group ptx-readability-options-group-theme">
+<legend>Theme</legend>
+<label for="ptx-readability-theme-system"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-system" value="system"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe1ab;</span><span>System</span></label><label for="ptx-readability-theme-light"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-light" value="light"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe518;</span><span>Light</span></label><label for="ptx-readability-theme-dark"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-dark" value="dark"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span>Dark</span></label>
+</fieldset>
+<fieldset class="ptx-readability-options-group">
+<legend>Assistive technologies</legend>
+<label for="ptx-readability-accessible-permalinks"><input type="checkbox" id="ptx-readability-accessible-permalinks"><span>🔗</span><span>Expose permalinks</span></label>
+</fieldset>
+<div class="ptx-readability-options-group"><button type="button" class="ptx-readability-reset-button button" id="ptx-readability-reset-button"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf053;</span><span class="name">Reset All</span></button></div></dialog></span><span class="treebuttons"><a class="previous-button button" href="sec55-FTCpartII.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch5-Integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec57-uSub.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" role="complementary" class="ptx-sidebar"><nav id="ptx-toc" tabindex="-1" aria-label="Contents" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch5-Integration.html" class="internal"><span class="codenumber">5</span> <span class="title">Integration</span></a></div>
+<ul class="structural toc-item-list contains-active" id="ptx-toc-group-ch5-Integration">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec51-ApproximatingArea.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Approximating and Computing Area</span></a></div>
+<ul id="ptx-toc-group-sec51-ApproximatingArea" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-511-Approximate_Rectangle" class="internal"><span class="title">Approximating Area by Rectangles</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-512-SummationNotation" class="internal"><span class="title">Summation Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-513-Compute_Limit_Approximation" class="internal"><span class="title">Computing Area as the Limit of Approximation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-514-LimitSummation" class="internal"><span class="title">Limit of the approximation algebraically</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#ws-sec51" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec52-DefiniteIntegral.html" class="internal"><span class="codenumber">5.2</span> <span class="title">The Definite Integral</span></a></div>
+<ul id="ptx-toc-group-sec52-DefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-521-RiemannSum" class="internal"><span class="title">Riemann Sum and Definite Integral</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-522-SignedArea" class="internal"><span class="title">Definite Integral and Signed Area</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-523-Properties_DefiniteIntegral" class="internal"><span class="title">Properties of Definite Integral</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#ws-sec52" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html" class="internal"><span class="codenumber">5.3</span> <span class="title">The Indefinite Integral</span></a></div>
+<ul id="ptx-toc-group-sec53-IndefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-531-AntiderivativesANDIndefiniteIntegrals" class="internal"><span class="title">Antiderivatives and Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-532-IndefiniteIntegralFormulas-Basic" class="internal"><span class="title">Some (basic) Indefinite Integral Formulas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-533-DifferentialEquationsANDIVP" class="internal"><span class="title">Differential Equations and IVP</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#sec53-IndefiniteIntegral-8" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#ws-sec53" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec54-FTCpartI.html" class="internal"><span class="codenumber">5.4</span> <span class="title">The Fundamental Theorem of Calculus, Part I</span></a></div>
+<ul id="ptx-toc-group-sec54-FTCpartI" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-541-FTC-Corollary" class="internal"><span class="title">A Corollary of the Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-542-Importance-FTC-Corollary" class="internal"><span class="title">Why is this corollary important?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-543-Examples-FTC-Corollary" class="internal"><span class="title">Examples on Applying FTC Corollary</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#sec54-FTCpartI-7" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec54-FTCpartI.html#ws-sec54" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec55-FTCpartII.html" class="internal"><span class="codenumber">5.5</span> <span class="title">The Fundamental Theorem of Calculus, Part II</span></a></div>
+<ul id="ptx-toc-group-sec55-FTCpartII" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-551-AccumulationFunction" class="internal"><span class="title">Accumulation Functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-552-FTC" class="internal"><span class="title">THE Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-553-UsingFTC" class="internal"><span class="title">To apply the FTC...</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-554-Graph-AccumulationFunction" class="internal"><span class="title">The Graph of the Accumulation Function</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec55-FTCpartII.html#ws-sec55" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec56-NetChange.html" class="internal"><span class="codenumber">5.6</span> <span class="title">Net Change as the Integral of a Rate of Change</span></a></div>
+<ul class="structural toc-item-list active" id="ptx-toc-group-sec56-NetChange">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-561-DistanceVelocity" class="internal"><span class="title">Relationship between Displacement and Velocity</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-562-DisplacementDistance" class="internal"><span class="title">Displacement vs. Distance Traveled</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-563-NetChange" class="internal"><span class="title">General Net Change</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec56-NetChange.html#ws-sec56" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec57-uSub.html" class="internal"><span class="codenumber">5.7</span> <span class="title">The Substitution Method</span></a></div>
+<ul id="ptx-toc-group-sec57-uSub" class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sec57-uSub.html#subsec-571-Indefinite" class="internal"><span class="title">Substitution Method for Indefinite Integrals</span></a></div>
+<ul id="ptx-toc-group-subsec-571-Indefinite" class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsubsec-5711-sub-usingDifferential" class="internal"><span class="title">Substitution Using Differentials</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-572-limitation" class="internal"><span class="title">Limitation of <span class="process-math">\(\boldsymbol{u}\)</span>-sub</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-573-Definite" class="internal"><span class="title">Substitution Method for Definite Integrals</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec57-uSub.html#ws-sec57" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html" class="internal"><span class="codenumber">5.8</span> <span class="title">Further Integral Formulas</span></a></div>
+<ul id="ptx-toc-group-sec58-FurtherIntegralFormulas" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-581-Integral-InverseTrig" class="internal"><span class="title">Integral formulas involving inverse trigonometric functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-582-IntegralExponential" class="internal"><span class="title">Integrals Involving Exponential Functions</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#ws-sec58" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content">
+<div class="print-preview-header">
+<h2 class="print-preview">Print preview</h2>
+<div class="print-controls">
+<div class="print-controls-toggles">
+<form class="papersize-select" id="papersize-select">
+<span class="name">Paper size</span><label><input type="radio" name="papersize" value="a4">A4
+        </label><label><input type="radio" name="papersize" value="letter">Letter
+        </label>
+</form>
+<details class="print-options"><summary>Additional printing options</summary><div class="hide-solutions-options">
+<div class="hide-option">
+<label for="hide-hint-checkbox">Hide hints</label><input type="checkbox" id="hide-hint-checkbox">
+</div>
+<div class="hide-option">
+<label for="hide-solution-checkbox">Hide solutions</label><input type="checkbox" id="hide-solution-checkbox">
+</div>
+</div>
+<div class="header-footer-options">
+<div class="header-option">
+<span class="title">Print headers</span><label>First page<input type="checkbox" id="print-first-page-header-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-header-checkbox" checked></label>
+</div>
+<div class="footer-option">
+<span class="title">Print footers</span><label>First page<input type="checkbox" id="print-first-page-footer-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-footer-checkbox" checked></label>
+</div>
+</div>
+<div class="highlight-workspace-option">
+<label for="highlight-workspace-checkbox">Highlight workspace</label><input type="checkbox" id="highlight-workspace-checkbox">
+</div></details>
+</div>
+<button class="print-button" title="Print" onClick="window.print()"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span><span class="name">Print</span></button>
+</div>
+</div>
+<section class="section" id="sec56-NetChange">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Net Change as the Integral of a Rate of Change</span>
+</h1>
+<div class="para" id="sec56-NetChange-2"><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
+<section class="introduction" id="sec56-NetChange-3">
+<div class="para" id="sec56-NetChange-3-1">In this section, we will learn our first type of application of integration --- Net Change!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="objectives goal-like" id="sec56-NetChange-3-2"><h2 class="heading"><span class="type">Objectives</span></h2>
+<div class="introduction" id="sec56-NetChange-3-2-1">
+<div class="para" id="sec56-NetChange-3-2-1-1">After this section, students will be able to:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<ul class="disc" id="sec56-NetChange-3-2-2">
+<li id="sec56-NetChange-3-2-2-1">
+<div class="para" id="sec56-NetChange-3-2-2-1-1">interpret integral as Adding-up-Pieces.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-3-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec56-NetChange-3-2-2-1" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec56-NetChange-3-2-2-2">
+<div class="para" id="sec56-NetChange-3-2-2-2-1">find the displacement and total distance traveled of an object given the velocity function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-3-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec56-NetChange-3-2-2-2" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec56-NetChange-3-2-2-3">
+<div class="para" id="sec56-NetChange-3-2-2-3-1">find the net change of some quantity given the rate function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-3-2-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec56-NetChange-3-2-2-3" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Objectives 5.6"><a tabindex="-1" href="#sec56-NetChange-3-2" title="Copy heading and permalink for Objectives 5.6" aria-label="Copy heading and permalink for Objectives 5.6">🔗</a></div>
+</article></section>
+<article class="investigation project-like" id="sec56-NetChange-4"><h2 class="heading">
+<span class="type">Investigation</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h2>
+<div class="introduction" id="sec56-NetChange-4-1">
+<div class="para" id="sec56-NetChange-4-1-1">Imagine this: a gorilla, suited up with a parachute, climbs to the top of a tall city building as part of a special wildlife training experiment. After a brief moment of hesitation, the gorilla bravely leaps off the edge. As the parachute deploys and air resistance kicks in, you, as one of the researchers on the ground, begin recording data to study how the gorilla’s velocity changes over time. Using high-speed sensors, the team records the gorilla’s downward velocity every half-second as it falls. Note that the gorilla touched the ground just after 5 seconds. The recorded data is shown below. 
+<figure class="table table-like" id="sec56-NetChange-4-1-1-1"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><div class="autopermalink" aria-hidden="true" data-description="Table 5.6.2"><a tabindex="-1" href="#sec56-NetChange-4-1-1-1" title="Copy heading and permalink for Table 5.6.2" aria-label="Copy heading and permalink for Table 5.6.2">🔗</a></div></figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr class="header-horizontal">
+<th scope="col" class="c m b2 r0 l0 t0 lines">Time (in seconds)</th>
+<th scope="col" class="c m b2 r0 l0 t0 lines">Velocity (in feet per second)</th>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">0</td>
+<td class="c m b1 r0 l0 t0 lines">0</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">0.5</td>
+<td class="c m b1 r0 l0 t0 lines">5</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">1.0</td>
+<td class="c m b1 r0 l0 t0 lines">7</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">1.5</td>
+<td class="c m b1 r0 l0 t0 lines">8</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">2.0</td>
+<td class="c m b1 r0 l0 t0 lines">11</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">2.5</td>
+<td class="c m b1 r0 l0 t0 lines">11.5</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">3.0</td>
+<td class="c m b1 r0 l0 t0 lines">12</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">3.5</td>
+<td class="c m b1 r0 l0 t0 lines">13</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">4.0</td>
+<td class="c m b1 r0 l0 t0 lines">15.5</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">4.5</td>
+<td class="c m b1 r0 l0 t0 lines">18</td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">5.0</td>
+<td class="c m b1 r0 l0 t0 lines">19</td>
+</tr>
+</table></div>
+</figure><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<article class="task exercise-like" id="sec56-NetChange-4-2"><h3 class="heading"><span class="codenumber">(a)</span></h3>
+<div class="para" id="sec56-NetChange-4-2-1">Approximate the <em class="alert">total</em> distance the gorilla fell from the time he jumped off the building until the time he landed on the ground.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="sec56-NetChange-4-2-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="sec56-NetChange-4-2-2-1">Rather than approximating the total distance, we can look at how far the gorilla fell during each half-second interval. The table below should help you track the distance.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec56-NetChange-4-2-2-2">
+<figure class="table table-like" id="sec56-NetChange-4-2-2-2-1"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><div class="autopermalink" aria-hidden="true" data-description="Table 5.6.3"><a tabindex="-1" href="#sec56-NetChange-4-2-2-2-1" title="Copy heading and permalink for Table 5.6.3" aria-label="Copy heading and permalink for Table 5.6.3">🔗</a></div></figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr class="header-horizontal">
+<th scope="col" class="c m b2 r0 l0 t0 lines">Time (in seconds)</th>
+<th scope="col" class="c m b2 r0 l0 t0 lines">Approximate distance traveled (in feet)</th>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">0 -- 0.5</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">0.5 -- 1.0</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">1.0 -- 1.5</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">1.5 -- 2.0</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">2.0 -- 2.5</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">2.5 -- 3.0</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">3.0 -- 3.5</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">3.5 -- 4.0</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">4.0 -- 4.5</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">4.5 -- 5.0</td>
+<td class="c m b1 r0 l0 t0 lines"></td>
+</tr>
+</table></div>
+</figure><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.6.1.a.1"><a tabindex="-1" href="#sec56-NetChange-4-2-2" title="Copy heading and permalink for Hint 5.6.1.a.1" aria-label="Copy heading and permalink for Hint 5.6.1.a.1">🔗</a></div>
+</div></details>
+<details id="sec56-NetChange-4-2-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="sec56-NetChange-4-2-3-1">There are multiple ways to approximate the distance as long as you can make an argument that the velocity you picked for each time interval is reasonable. For demonstration purposes, Richard will approximate the distance using the <em class="alert">left-endpoint approximation</em>.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec56-NetChange-4-2-3-2">
+<figure class="table table-like" id="sec56-NetChange-4-2-3-2-1"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><div class="autopermalink" aria-hidden="true" data-description="Table 5.6.4"><a tabindex="-1" href="#sec56-NetChange-4-2-3-2-1" title="Copy heading and permalink for Table 5.6.4" aria-label="Copy heading and permalink for Table 5.6.4">🔗</a></div></figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr class="header-horizontal">
+<th scope="col" class="c m b2 r0 l0 t0 lines">Time</th>
+<th scope="col" class="c m b2 r0 l0 t0 lines">Approximate distance</th>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">0 -- 0.5</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 0 = 0\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">0.5 -- 1.0</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 5 = 2.5\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">1.0 -- 1.5</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 7 = 3.5\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">1.5 -- 2.0</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 8 = 4\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">2.0 -- 2.5</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 0 = 5.5\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">2.5 -- 3.0</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 11.5 = 5.75\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">3.0 -- 3.5</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 12 = 6\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">3.5 -- 4.0</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 13 = 6.5\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">4.0 -- 4.5</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 15.5 = 7.75\)</span></td>
+</tr>
+<tr>
+<td class="c m b1 r0 l0 t0 lines">4.5 -- 5.0</td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(0.5\times 18 = 9\)</span></td>
+</tr>
+</table></div>
+</figure><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec56-NetChange-4-2-3-3">
+<div class="para">To find the <em class="alert">total</em> distance traveled, we just add up all the pieces of distance we found in the above table.</div>
+<div class="displaymath process-math" id="sec56-NetChange-4-2-3-3-2">
+\begin{equation*}
+0 + 2.5 + 3.5 + 4 + 5.5 + 5.75 + 6 + 6.5 + 7.75 + 9 = 50.5
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec56-NetChange-4-2-3-4">
+<em class="alert">There is no "right" answer to an approximation. The only difference between answers are how good the approximation is.</em><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-2-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.6.1.a.1"><a tabindex="-1" href="#sec56-NetChange-4-2-3" title="Copy heading and permalink for Solution 5.6.1.a.1" aria-label="Copy heading and permalink for Solution 5.6.1.a.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Task 5.6.1.a"><a tabindex="-1" href="#sec56-NetChange-4-2" title="Copy heading and permalink for Task 5.6.1.a" aria-label="Copy heading and permalink for Task 5.6.1.a">🔗</a></div>
+</article>
+<article class="task exercise-like" id="sec56-NetChange-4-3"><h3 class="heading"><span class="codenumber">(b)</span></h3>
+<div class="para" id="sec56-NetChange-4-3-1">We know that the total distance traveled we found in part (a) is an approximation, not the <em class="emphasis">exact</em> value (this should be obvious). How can we make the approximation better? What changes could we make to the way we collect the data to make the approximation better?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="sec56-NetChange-4-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="sec56-NetChange-4-3-2-1">While it is (highly) unlikely for the velocity to remain constant within a fixed interval of time, it is more and more likely for the velocity to stay constant when the elapsed time is smaller and smaller. That is, to make our approximation better, we want to record more and more data on the velocity, which forces the elapsed time to be smaller and smaller (for example, as opposed to recording the velocity every 0.5 seconds, recording the velocity every 0.1 seconds will make our approximation better).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec56-NetChange-4-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.6.1.b.1"><a tabindex="-1" href="#sec56-NetChange-4-3-2" title="Copy heading and permalink for Solution 5.6.1.b.1" aria-label="Copy heading and permalink for Solution 5.6.1.b.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Task 5.6.1.b"><a tabindex="-1" href="#sec56-NetChange-4-3" title="Copy heading and permalink for Task 5.6.1.b" aria-label="Copy heading and permalink for Task 5.6.1.b">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Investigation 5.6.1"><a tabindex="-1" href="#sec56-NetChange-4" title="Copy heading and permalink for Investigation 5.6.1" aria-label="Copy heading and permalink for Investigation 5.6.1">🔗</a></div>
+</article>
+<section class="subsection" id="subsec-561-DistanceVelocity">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Relationship between Displacement and Velocity</span>
+</h2>
+<div class="para" id="subsec-561-DistanceVelocity-2">Recall back in calculus 1, we learned that the derivative of the displacement function gives us the velocity function. To rephrase it using integrals, we know that the antiderivative (or indefinite integral) of the velocity function should give us the displacement function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-561-DistanceVelocity-3">But this argument relies on differential calculus (we can’t make sense of why the integral of the velocity function gives us the displacement function if we didn’t learn about what derivative is). There is a way to make sense of it without relying on derivatives.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-561-DistanceVelocity-4">
+<div class="para">Let’s call <span class="process-math">\(\Delta t\)</span> the elapsed time (and it is typically 0.5 seconds) and <span class="process-math">\(v(t_i)\)</span> the velocity of the gorilla at a certain point, where <span class="process-math">\(i\)</span> is the index to indicate which piece we are referring to. If we call each piece of the distance <span class="process-math">\(d_i\text{,}\)</span> then it can be obtained by</div>
+<div class="displaymath process-math" id="subsec-561-DistanceVelocity-4-5">
+\begin{equation*}
+d_i = v(t_i)\Delta t
+\end{equation*}
+</div>
+<div class="para">We also found out that we can find the total distance by adding up the pieces together. By using the fancy sigma notation you learned before, the total distance traveled is</div>
+<div class="displaymath process-math" id="subsec-561-DistanceVelocity-4-6">
+\begin{equation*}
+d \approx \sum_{i = 1}^N d_i = \sum_{i = 1}^N v(t_i)\, \Delta t
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(N\)</span> denotes the number of pieces.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-561-DistanceVelocity-5">
+<div class="para">We know that the approximation is better and better if we recorded more and more velocity as that will force the elapsed time to become smaller and smaller. Symbolically speaking, the total distance travel can be computed by</div>
+<div class="displaymath process-math" id="subsec-561-DistanceVelocity-5-1">
+\begin{equation*}
+d = \lim_{N\to \infty} \sum_{i = 1}^N v(t_i)\, \Delta t
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-561-DistanceVelocity-6">
+<div class="para">Ha! This looks super familiar! This is exactly how we define the definite integral back in <a href="sec52-DefiniteIntegral.html" class="internal" title="Section 5.2: The Definite Integral">Section 5.2</a>! Then we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec52-DefiniteIntegral.html" id="subsec-561-DistanceVelocity-6-2">
+\begin{equation*}
+\int_0^5 v(t)\, dt = \lim_{N\to \infty} \sum_{i = 1}^N v(t_i)\, \Delta t
+\end{equation*}
+</div>
+<div class="para">If we are matching components, then</div>
+<ul class="no-marker" id="subsec-561-DistanceVelocity-6-3">
+<li id="subsec-561-DistanceVelocity-6-3-1">
+<div class="para" id="subsec-561-DistanceVelocity-6-3-1-1">The symbol "<span class="process-math">\(\int\)</span>" is just a fancy cursive S that represents <em class="alert">Summation</em>. The <span class="process-math">\(0\)</span> and the <span class="process-math">\(5\)</span> are the initial and the final value of the time in this context.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-561-DistanceVelocity-6-3-2">
+<div class="para" id="subsec-561-DistanceVelocity-6-3-2-1">The <span class="process-math">\(v(t)\)</span> here denotes the velocity of the gorilla at a certain timestamp <span class="process-math">\(t\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-561-DistanceVelocity-6-3-3">
+<div class="para" id="subsec-561-DistanceVelocity-6-3-3-1">The <span class="process-math">\(dt\)</span> here represents the elapsed time where the gap is infinitesimal small (so <span class="process-math">\(dt\)</span> is just a fancy way of representing <span class="process-math">\(\Delta t\)</span> as the gap approaches <span class="process-math">\(0\)</span>).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-561-DistanceVelocity-6-3-4">
+<div class="para" id="subsec-561-DistanceVelocity-6-3-4-1">The <span class="process-math">\(v(t)\, dt\)</span> is a representative of one piece of the distance (we multiplied the velocity at time <span class="process-math">\(t\)</span> with the elapsed time <span class="process-math">\(dt\)</span>), and the <span class="process-math">\(\int\)</span> symbol tells us to add all the pieces of distance together to obtain the <em class="alert">total</em> distance traveled.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6-3-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-561-DistanceVelocity-7">This is why the displacement function can be obtained by integrating the velocity function. The integral of velocity function implies that we are adding up pieces of the product of the velocity and the infinitesimally small change in time. This idea of the integral is called the <em class="alert">Adding up Pieces</em>.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-561-DistanceVelocity-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Relationship between Displacement and Velocity"><a tabindex="-1" href="#subsec-561-DistanceVelocity" title="Copy heading and permalink for Subsection: Relationship between Displacement and Velocity" aria-label="Copy heading and permalink for Subsection: Relationship between Displacement and Velocity">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-562-DisplacementDistance">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Displacement vs. Distance Traveled</span>
+</h2>
+<div class="para logical" id="subsec-562-DisplacementDistance-2">
+<div class="para">Given the velocity function <span class="process-math">\(v\text{,}\)</span> then the <em class="alert">net change</em> in position, which is defined as the <em class="alert">displacement</em> of an object, over the time interval <span class="process-math">\([t_1, t_2]\text{,}\)</span> is denoted as</div>
+<div class="displaymath process-math" id="subsec-562-DisplacementDistance-2-5">
+\begin{equation*}
+s(t_2) - s(s_1) = \int_{t_1}^{t_2}s'(t)\, dt = \int_{t_1}^{t_2}v(t)\, dt
+\end{equation*}
+</div>
+<div class="para">What about the distance? The terms "distance" and "displacement" are not necessarily the same concepts...</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-562-DisplacementDistance-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-562-DisplacementDistance-3-1">
+<div class="para">A particle moves in a straight line with the velocity modeled by the function</div>
+<div class="displaymath process-math" id="subsec-562-DisplacementDistance-3-1-1">
+\begin{equation*}
+v(t) = 12 - 4t , \qquad \text{ where } 0\leq t\leq 5
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<ol class="lower-alpha" style="list-style: ptx-marker-1;" id="subsec-562-DisplacementDistance-3-2">
+<li id="subsec-562-DisplacementDistance-3-2-1">
+<div class="para" id="subsec-562-DisplacementDistance-3-2-1-1">Graph the velocity function <span class="process-math">\(y = v(t)\text{.}\)</span> Then describe the motion.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-562-DisplacementDistance-3-2-1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-562-DisplacementDistance-3-2-1-2-1">See below the graph of <span class="process-math">\(y = v(t)\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-562-DisplacementDistance-3-2-1-2-2"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-562-DisplacementDistance-3-2-1-2-2-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The Graph of <span class="process-math">\(v(t) = 12 - 4t\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.6.6"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-1-2-2" title="Copy heading and permalink for Figure 5.6.6" aria-label="Copy heading and permalink for Figure 5.6.6">🔗</a></div></figcaption>
+</figure>
+<div class="para" id="subsec-562-DisplacementDistance-3-2-1-2-3">Observe that the graph is positive in <span class="process-math">\([0,3)\text{,}\)</span> meaning the particle is moving forward; the graph hit zero at <span class="process-math">\(t = 3\text{,}\)</span> meaning the particle stopped <span class="process-math">\(3\)</span> seconds after; and the graph is negative in <span class="process-math">\((3,5]\text{,}\)</span> meaning the particle is moving backward.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-1-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution a.1"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-1-2" title="Copy heading and permalink for Solution a.1" aria-label="Copy heading and permalink for Solution a.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Item a"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="subsec-562-DisplacementDistance-3-2-2">
+<div class="para" id="subsec-562-DisplacementDistance-3-2-2-1">Find the <em class="alert">displacement</em> over the first <span class="process-math">\(5\)</span> seconds.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-562-DisplacementDistance-3-2-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-562-DisplacementDistance-3-2-2-2-1">
+<div class="para">For <em class="alert">displacement</em>, we don’t care what is going on in the middle of the motion, but only the initial and final position. If we call the displacement function <span class="process-math">\(s\text{,}\)</span> then displacement is simply <span class="process-math">\(s(5) - s(0)\text{.}\)</span> FTC is telling us that</div>
+<div class="displaymath process-math" id="subsec-562-DisplacementDistance-3-2-2-2-1-4">
+\begin{align*}
+\text{displacement} \amp= \int_0^5 v(t)\, dt \\
+\amp= \int_0^5 \left(12 - 4t\right)\, dt \\
+\amp= \left(12t - 2t^2\right)\bigg|_0^5 \\
+\amp= 12(5) - 2(5)^2 \\
+\amp= 10 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution b.1"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-2-2" title="Copy heading and permalink for Solution b.1" aria-label="Copy heading and permalink for Solution b.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Item b"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="subsec-562-DisplacementDistance-3-2-3">
+<div class="para" id="subsec-562-DisplacementDistance-3-2-3-1">Find the <em class="alert">total distance traveled</em> over the first <span class="process-math">\(5\)</span> seconds.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-562-DisplacementDistance-3-2-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-562-DisplacementDistance-3-2-3-2-1">
+<div class="para">When finding the <em class="alert">total distance traveled</em>, the "distance" is always positive, regardless of the direction. But this idea doesn’t match up with the integral since the integral of the velocity function on <span class="process-math">\([3,5]\)</span> will return a "negative" distance. The easiest way to fix the sign is to put on the absolute value to make the "negative" distance positive.</div>
+<div class="displaymath process-math" id="subsec-562-DisplacementDistance-3-2-3-2-1-3">
+\begin{align*}
+\text{distance} \amp= \int_0^5 \left|v(t)\right|\, dt \\
+\amp= \int_0^3 \left|v(t)\right|\, dt + \int_3^5 \left|v(t)\right|\, dt \\
+\amp= \int_0^3 v(t)\, dt + \int_3^5 -v(t)\, dt \\
+\amp= \int_0^3 \left(12 - 4t\right) \, dt - \int_3^5 \left(12 - 4t\right)\, dt \\
+\amp= \left(12t - 2t^2\right)\bigg|_0^3 - \left(12t - 2t^2\right)\bigg|_3^5 \\
+\amp= 18 - (-8) \\
+\amp= 26 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution c.1"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-3-2" title="Copy heading and permalink for Solution c.1" aria-label="Copy heading and permalink for Solution c.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Item c"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3-2-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Example 5.6.5"><a tabindex="-1" href="#subsec-562-DisplacementDistance-3" title="Copy heading and permalink for Example 5.6.5" aria-label="Copy heading and permalink for Example 5.6.5">🔗</a></div>
+</article>
+<article class="theorem theorem-like" id="thm-IntegralVelocity"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Integral of Velocity.</span>
+</h3>
+<div class="para logical" id="thm-IntegralVelocity-2-1">
+<div class="para">For an object in linear motion with velocity <span class="process-math">\(v(t)\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="thm-IntegralVelocity-2-1-2">
+\begin{align*}
+\text{displacement during } [t_1,t_2] \amp= \int_{t_1}^{t_2} v(t)\, dt \\
+\text{total distance traveled during } [t_1,t_2] \amp= \int_{t_1}^{t_2} \left|v(t)\right| \, dt 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-IntegralVelocity-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.6.7: Integral of Velocity"><a tabindex="-1" href="#thm-IntegralVelocity" title="Copy heading and permalink for Theorem 5.6.7: Integral of Velocity" aria-label="Copy heading and permalink for Theorem 5.6.7: Integral of Velocity">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-562-DisplacementDistance-5"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-562-DisplacementDistance-5-1">A cat falls from a tree (with zero initial velocity) at time <span class="process-math">\(t = 0\text{.}\)</span> How far does the cat fall between <span class="process-math">\(t = 0.5\)</span> seconds and <span class="process-math">\(t = 1\)</span> second? The velocity function is <span class="process-math">\(v(t) = -9.8t\)</span> m/s.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-562-DisplacementDistance-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-562-DisplacementDistance-5-2-1">
+<div class="para">By saying "how far", it usually means the total distance traveled.</div>
+<div class="displaymath process-math" id="subsec-562-DisplacementDistance-5-2-1-1">
+\begin{align*}
+\text{total distance traveled} \amp= \int_{0.5}^1 \left|v(t)\right|\, dt \\
+\amp= \int_{0.5}^1 \left|-9.8t\right|\, dt \\
+\amp= \int_{0.5}^1 9.8t\, dt \\
+\amp= 4.9t^2\bigg|_{0.5}^1 \\
+\amp= 4.9(1)^2 - 4.9(0.5)^2 \\
+\amp= 3.675 \qquad \text{meters} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-562-DisplacementDistance-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.6.8.1"><a tabindex="-1" href="#subsec-562-DisplacementDistance-5-2" title="Copy heading and permalink for Solution 5.6.8.1" aria-label="Copy heading and permalink for Solution 5.6.8.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.6.8"><a tabindex="-1" href="#subsec-562-DisplacementDistance-5" title="Copy heading and permalink for Example 5.6.8" aria-label="Copy heading and permalink for Example 5.6.8">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Subsection: Displacement vs. Distance Traveled"><a tabindex="-1" href="#subsec-562-DisplacementDistance" title="Copy heading and permalink for Subsection: Displacement vs. Distance Traveled" aria-label="Copy heading and permalink for Subsection: Displacement vs. Distance Traveled">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-563-NetChange">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">General Net Change</span>
+</h2>
+<div class="para" id="subsec-563-NetChange-2">In general, we can use this trick to compute the net change of some quantity if the rate of change is given.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-563-NetChange-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-563-NetChange-3-1">
+<div class="para">The traffic flow <em class="emphasis">rate</em> past a certain point on a highway is</div>
+<div class="displaymath process-math" id="subsec-563-NetChange-3-1-2">
+\begin{equation*}
+q(t) = 3000 + 2000t - 300t^2, \qquad t\text{ in hours}
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(t = 0\)</span> is at <span class="process-math">\(8\)</span>AM. How many cars pass by from <span class="process-math">\(8\)</span> to <span class="process-math">\(10\)</span>AM?</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-563-NetChange-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-563-NetChange-3-2-1">
+<div class="displaymath process-math" id="subsec-563-NetChange-3-2-1-1">
+\begin{align*}
+\text{number of cars} \amp= \int_0^2 \left(3000 + 2000t - 300t^2\right)\, dt \\
+\amp= \left(3000t + 1000t^2 - 100t^3\right)\bigg|_0^2 \\
+\amp= 3000(2) + 1000(2)^2 - 100(2)^3 \\
+\amp= 9200 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.6.9.1"><a tabindex="-1" href="#subsec-563-NetChange-3-2" title="Copy heading and permalink for Solution 5.6.9.1" aria-label="Copy heading and permalink for Solution 5.6.9.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.6.9"><a tabindex="-1" href="#subsec-563-NetChange-3" title="Copy heading and permalink for Example 5.6.9" aria-label="Copy heading and permalink for Example 5.6.9">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-563-NetChange-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-563-NetChange-4-1">Water flows into an <em class="emphasis">empty</em> reservoir at a rate of <span class="process-math">\(3000 + 20t\)</span> L per hour (<span class="process-math">\(t\)</span> in hours). What is the quantity of water in the reservoir in the first <span class="process-math">\(5\)</span> hours?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-563-NetChange-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-563-NetChange-4-2-1">
+<div class="displaymath process-math" id="subsec-563-NetChange-4-2-1-1">
+\begin{align*}
+\text{quantity of water} \amp= \int_0^5\left(3000 + 20t\right)\, dt \\
+\amp= \left(3000t + 10t^2\right)\bigg|_0^5 \\
+\amp= 3000(5) + 10(5)^2 \\
+\amp= 15250 \qquad \text{ L} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.6.10.1"><a tabindex="-1" href="#subsec-563-NetChange-4-2" title="Copy heading and permalink for Solution 5.6.10.1" aria-label="Copy heading and permalink for Solution 5.6.10.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.6.10"><a tabindex="-1" href="#subsec-563-NetChange-4" title="Copy heading and permalink for Example 5.6.10" aria-label="Copy heading and permalink for Example 5.6.10">🔗</a></div>
+</article>
+<div class="para logical" id="subsec-563-NetChange-5">
+<div class="para">The last type of the example is about the <em class="alert">marginal cost</em>. Let <span class="process-math">\(C(x)\)</span> represent a manufacturer’s cost to product <span class="process-math">\(x\)</span> units of a particular product or commodity. The derivative <span class="process-math">\(C'(x)\)</span> is called the <em class="alert">marginal cost</em>, the cost of producing one additional unit. The cost of increasing production from <span class="process-math">\(a\)</span> units to <span class="process-math">\(b\)</span> units is the <em class="emphasis">net change</em> <span class="process-math">\(C(b) - C(a)\text{,}\)</span> which is equal to the integral of the marginal cost.</div>
+<div class="displaymath process-math" id="subsec-563-NetChange-5-10">
+\begin{equation*}
+\text{cost of increasing production from  units to  units} = \int_a^b C'(x)\, dx
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-563-NetChange-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-563-NetChange-6-1">
+<div class="para">The marginal cost of producing <span class="process-math">\(x\)</span> tablet computers is</div>
+<div class="displaymath process-math" id="subsec-563-NetChange-6-1-2">
+\begin{equation*}
+C'(x) = 120 - 0.06x + 0.00001x^2
+\end{equation*}
+</div>
+<ol class="lower-alpha" style="list-style: ptx-marker-1;" id="subsec-563-NetChange-6-1-3">
+<li id="subsec-563-NetChange-6-1-3-1">
+<div class="para" id="subsec-563-NetChange-6-1-3-1-1">What is the <em class="emphasis">production cost</em> of producing <span class="process-math">\(3000\)</span> units?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-563-NetChange-6-1-3-1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-563-NetChange-6-1-3-1-2-1">
+<div class="displaymath process-math" id="subsec-563-NetChange-6-1-3-1-2-1-1">
+\begin{align*}
+\text{production cost} \amp= \int_0^{3000}\left(120 - 0.06x + 0.00001x^2\right)\, dx \\
+\amp= \left(120x - 0.03x^2 + \frac{0.00001}{3}x^3\right)\bigg|_0^{3000} \\
+\amp= 120(3000) - 0.03(3000)^2 + \frac{0.00001}{3}(3000)^3 \\
+\amp= 180000\qquad \text{dollars} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution a.1"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-1-2" title="Copy heading and permalink for Solution a.1" aria-label="Copy heading and permalink for Solution a.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Item a"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="subsec-563-NetChange-6-1-3-2">
+<div class="para" id="subsec-563-NetChange-6-1-3-2-1">What is the <em class="emphasis">additional cost</em> of producing <span class="process-math">\(200\)</span> additional units?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-563-NetChange-6-1-3-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-563-NetChange-6-1-3-2-2-1">
+<div class="displaymath process-math" id="subsec-563-NetChange-6-1-3-2-2-1-1">
+\begin{align*}
+\text{additional cost} \amp= \int_{3000}^{3200}\left(120 - 0.06x + 0.00001x^2\right)\, dx \\
+\amp= \left(120x - 0.03x^2 + \frac{0.00001}{3}x^3\right)\bigg|_{3000}^{3200} \\
+\amp= \left(120(3200) - 0.03(3200)^2 + \frac{0.00001}{3}(3200)^3\right) - \left(120(3000) - 0.03(3000)^2 + \frac{0.00001}{3}(3000)^3\right) \\
+\amp= 6026.67\qquad \text{dollars} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution b.1"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-2-2" title="Copy heading and permalink for Solution b.1" aria-label="Copy heading and permalink for Solution b.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Item b"><a tabindex="-1" href="#subsec-563-NetChange-6-1-3-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-563-NetChange-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Example 5.6.11"><a tabindex="-1" href="#subsec-563-NetChange-6" title="Copy heading and permalink for Example 5.6.11" aria-label="Copy heading and permalink for Example 5.6.11">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Subsection: General Net Change"><a tabindex="-1" href="#subsec-563-NetChange" title="Copy heading and permalink for Subsection: General Net Change" aria-label="Copy heading and permalink for Subsection: General Net Change">🔗</a></div>
+</section>
+<section class="worksheet" id="ws-sec56" data-margins="0.75in 0.75in 0.75in 0.75in">
+<h2 class="heading hide-type">
+<span class="type">Worksheet</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Some Exercises for this section</span><div class="print-links"><a href="?printpreview=ws-sec56" class="print-link" title="Print preview"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span></a></div>
+</h2>
+<section class="introduction" id="ws-sec56-2">
+<div class="para" id="ws-sec56-2-1">I included some practice problems that cover some main concepts in this section. You don’t need to turn it in, but I highly encourage you to work on this with your classmates. I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. Reach out to Richard for help if you get stuck or have any questions.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec56-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ws-sec56-2-2">I will only include the final answer to some of the problems for you to check your result. If you want to check your work, talk to Richard and he is happy to discuss the process with you.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec56-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section>
+<article class="exercise exercise-like" id="ws-sec56-3"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ws-sec56-3-1-1">
+<div class="para">A particle moves in a straight line with the velocity</div>
+<div class="displaymath process-math" id="ws-sec56-3-1-1-1">
+\begin{equation*}
+v(t) = \cos(t) \qquad \text {in m/s}
+\end{equation*}
+</div>
+<div class="para">Find the <em class="alert">displacement</em> and the <em class="alert">total distance traveled</em> over the time interval <span class="process-math">\([0,3\pi]\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec56-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 1"><a tabindex="-1" href="#ws-sec56-3" title="Copy heading and permalink for Worksheet Exercise 1" aria-label="Copy heading and permalink for Worksheet Exercise 1">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec56-4"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" id="ws-sec56-4-1-1">Find the net change in velocity over <span class="process-math">\([1,4]\)</span> of an object with <span class="process-math">\(a(t) = 8t - t^2\,\, \text{m/s}^2\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec56-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 2"><a tabindex="-1" href="#ws-sec56-4" title="Copy heading and permalink for Worksheet Exercise 2" aria-label="Copy heading and permalink for Worksheet Exercise 2">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec56-5"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" id="ws-sec56-5-1-1">Show that a particle, located at the origin at <span class="process-math">\(t = 1\)</span> and moving along the <span class="process-math">\(x\)</span>-axis with velocity <span class="process-math">\(v(t) = t^{-2}\)</span> will never pass the point <span class="process-math">\(x = 2\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec56-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 3"><a tabindex="-1" href="#ws-sec56-5" title="Copy heading and permalink for Worksheet Exercise 3" aria-label="Copy heading and permalink for Worksheet Exercise 3">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec56-6"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" id="ws-sec56-6-1-1">A population of insects increases at a rate of <span class="process-math">\(200 + 10t + 0.25t^2\)</span> insects per day. Find the insect population after <span class="process-math">\(3\)</span> days, assuming that there are <span class="process-math">\(35\)</span> insects at <span class="process-math">\(t = 0\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec56-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 4"><a tabindex="-1" href="#ws-sec56-6" title="Copy heading and permalink for Worksheet Exercise 4" aria-label="Copy heading and permalink for Worksheet Exercise 4">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Worksheet: Some Exercises for this section"><a tabindex="-1" href="#ws-sec56" title="Copy heading and permalink for Worksheet: Some Exercises for this section" aria-label="Copy heading and permalink for Worksheet: Some Exercises for this section">🔗</a></div>
+</section><div class="autopermalink" aria-hidden="true" data-description="Section 5.6: Net Change as the Integral of a Rate of Change"><a tabindex="-1" href="#sec56-NetChange" title="Copy heading and permalink for Section 5.6: Net Change as the Integral of a Rate of Change" aria-label="Copy heading and permalink for Section 5.6: Net Change as the Integral of a Rate of Change">🔗</a></div>
+</section>
+</div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec55-FTCpartII.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec57-uSub.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

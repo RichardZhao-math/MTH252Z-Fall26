@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: salem                          *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Fundamental Theorem of Calculus, Part I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<style>
+@counter-style ptx-marker-1 { system: extends lower-alpha; prefix: '('; suffix: ') '; }
+</style>
+<script type="module">import { startMathJax } from './_static/pretext/js/dist/mathjax_startup.js';
+startMathJax({
+hasWebworkReps: false,
+hasSage: false,
+isReact: false,
+htmlPresentation: false,
+lang: "en-US",
+});
+</script><script defer data-pretext-mathjax="true" onerror="this.dataset.loadFailed = 'true';" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta name="twitter:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="og:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="book:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta name="twitter:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta property="og:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta name="twitter:card" content="summary">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/dist/pretext-core.js?v=2.54"></script><script src="_static/pretext/js/dist/pretext-read-aloud.js?v=2.54"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.6ad113829064d43a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.02090e9f6a81e70e.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/pretext/js/dist/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/dist/pretext_search.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="changeme" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead" role="banner"><div class="ptx-banner"><div class="title-container">
+<div class="heading ptx-banner-heading"><a href="MTH252Z_Fall26.html"><span class="title">MTH 252Z Integral Calculus</span> <span class="subtitle">Fall 2026</span></a></div>
+<p class="byline">Richard Zhao</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button id="ptx-toc-toggle" type="button" aria-controls="ptx-sidebar" class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="ptx-search-box">
+<div class="ptx-search-widget"><button id="ptx-search-button" type="button" class="ptx-search-button button" title="Search Book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<dialog id="ptx-search-dialog" class="ptx-dialog ptx-search-dialog"><div class="ptx-search-dialog-controls">
+<input aria-label="Search term" id="ptx-search-terms" class="ptx-search-terms" type="text" name="terms" placeholder="Search terms"><button aria-label="Close" id="ptx-search-close" class="ptx-search-close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div id="ptx-search-status" class="ptx-search-status" aria-live="polite" aria-atomic="true"></div>
+<h2 class="heading ptx-search-results-heading">Search Results: </h2>
+<div id="ptx-search-empty" class="ptx-search-empty"><span>No results.</span></div>
+<ol id="ptx-search-results" class="ptx-search-results"></ol></dialog>
+</div>
+<span class="nav-other-controls"><button id="ptx-read-aloud-button" class="ptx-read-aloud-button button" title="Read aloud" aria-expanded="false"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf1bc;</span><span class="name">Read aloud</span></button><div id="ptx-read-aloud-player" class="ptx-read-aloud-player" hidden="hidden" role="group" aria-label="Read aloud">
+<button id="ptx-read-aloud-prev" class="button" title="Previous sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe045;</span></button><button id="ptx-read-aloud-toggle" class="ptx-read-aloud-toggle button" title="Play"><span class="ptx-read-aloud-icon-play"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></span><span class="ptx-read-aloud-icon-pause"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe034;</span></span></button><button id="ptx-read-aloud-next" class="button" title="Next sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe044;</span></button><a id="ptx-read-aloud-continue" class="ptx-read-aloud-continue button" hidden="hidden">Continue<span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></a><button id="ptx-read-aloud-settings-button" class="ptx-read-aloud-settings-button button" title="Reading settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe429;</span></button>
+</div>
+<dialog class="ptx-dialog ptx-read-aloud-settings-popup" id="ptx-read-aloud-settings-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Read aloud settings</h2>
+<button class="ptx-read-aloud-settings-close-button button" id="ptx-read-aloud-settings-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label for="ptx-read-aloud-voice"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe91f;</span><span>Voice</span></label><select id="ptx-read-aloud-voice"></select><label class="ptx-readability-slider-label" for="ptx-read-aloud-rate"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe9e4;</span><span>Reading speed</span><output id="ptx-read-aloud-rate-value" for="ptx-read-aloud-rate">1×</output></label><input type="range" id="ptx-read-aloud-rate" min="0.5" max="2" step="0.1" value="1"><label for="ptx-read-aloud-asides"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d7;</span><span>Collapsed content</span></label><select id="ptx-read-aloud-asides"><option value="skip">Announce, do not read</option>
+<option value="read">Read automatically</option></select><label for="ptx-read-aloud-autoscroll"><input type="checkbox" id="ptx-read-aloud-autoscroll" checked><span>Follow along (auto-scroll)</span></label><label for="ptx-read-aloud-autocontinue"><input type="checkbox" id="ptx-read-aloud-autocontinue"><span>Continue to the next page automatically</span></label>
+</div></dialog><button id="ptx-readability-options-button" class="ptx-readability-options-button button" title="Readability settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf6f1;</span><span class="name">Readability settings</span></button><dialog class="ptx-dialog ptx-readability-options-popup" id="ptx-readability-options-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Readability settings</h2>
+<button class="ptx-readability-options-close-button button" id="ptx-readability-options-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-line-height"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe240;</span><span>Line height</span><output id="ptx-readability-line-height-value" for="ptx-readability-line-height">1.35</output></label><input type="range" id="ptx-readability-line-height" min="1.10" max="3" step="0.05" value="1.35">
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-font-size"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe245;</span><span>Content font size</span><output id="ptx-readability-font-size-value" for="ptx-readability-font-size">100%</output></label><input type="range" id="ptx-readability-font-size" min="0.8" max="1.5" step="0.05" value="1">
+</div>
+<fieldset class="ptx-readability-options-group ptx-readability-options-group-theme">
+<legend>Theme</legend>
+<label for="ptx-readability-theme-system"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-system" value="system"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe1ab;</span><span>System</span></label><label for="ptx-readability-theme-light"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-light" value="light"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe518;</span><span>Light</span></label><label for="ptx-readability-theme-dark"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-dark" value="dark"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span>Dark</span></label>
+</fieldset>
+<fieldset class="ptx-readability-options-group">
+<legend>Assistive technologies</legend>
+<label for="ptx-readability-accessible-permalinks"><input type="checkbox" id="ptx-readability-accessible-permalinks"><span>🔗</span><span>Expose permalinks</span></label>
+</fieldset>
+<div class="ptx-readability-options-group"><button type="button" class="ptx-readability-reset-button button" id="ptx-readability-reset-button"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf053;</span><span class="name">Reset All</span></button></div></dialog></span><span class="treebuttons"><a class="previous-button button" href="sec53-IndefiniteIntegral.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch5-Integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec55-FTCpartII.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" role="complementary" class="ptx-sidebar"><nav id="ptx-toc" tabindex="-1" aria-label="Contents" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch5-Integration.html" class="internal"><span class="codenumber">5</span> <span class="title">Integration</span></a></div>
+<ul class="structural toc-item-list contains-active" id="ptx-toc-group-ch5-Integration">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec51-ApproximatingArea.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Approximating and Computing Area</span></a></div>
+<ul id="ptx-toc-group-sec51-ApproximatingArea" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-511-Approximate_Rectangle" class="internal"><span class="title">Approximating Area by Rectangles</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-512-SummationNotation" class="internal"><span class="title">Summation Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-513-Compute_Limit_Approximation" class="internal"><span class="title">Computing Area as the Limit of Approximation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-514-LimitSummation" class="internal"><span class="title">Limit of the approximation algebraically</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#ws-sec51" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec52-DefiniteIntegral.html" class="internal"><span class="codenumber">5.2</span> <span class="title">The Definite Integral</span></a></div>
+<ul id="ptx-toc-group-sec52-DefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-521-RiemannSum" class="internal"><span class="title">Riemann Sum and Definite Integral</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-522-SignedArea" class="internal"><span class="title">Definite Integral and Signed Area</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-523-Properties_DefiniteIntegral" class="internal"><span class="title">Properties of Definite Integral</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#ws-sec52" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html" class="internal"><span class="codenumber">5.3</span> <span class="title">The Indefinite Integral</span></a></div>
+<ul id="ptx-toc-group-sec53-IndefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-531-AntiderivativesANDIndefiniteIntegrals" class="internal"><span class="title">Antiderivatives and Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-532-IndefiniteIntegralFormulas-Basic" class="internal"><span class="title">Some (basic) Indefinite Integral Formulas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-533-DifferentialEquationsANDIVP" class="internal"><span class="title">Differential Equations and IVP</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#sec53-IndefiniteIntegral-8" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#ws-sec53" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec54-FTCpartI.html" class="internal"><span class="codenumber">5.4</span> <span class="title">The Fundamental Theorem of Calculus, Part I</span></a></div>
+<ul class="structural toc-item-list active" id="ptx-toc-group-sec54-FTCpartI">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-541-FTC-Corollary" class="internal"><span class="title">A Corollary of the Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-542-Importance-FTC-Corollary" class="internal"><span class="title">Why is this corollary important?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-543-Examples-FTC-Corollary" class="internal"><span class="title">Examples on Applying FTC Corollary</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#sec54-FTCpartI-7" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec54-FTCpartI.html#ws-sec54" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec55-FTCpartII.html" class="internal"><span class="codenumber">5.5</span> <span class="title">The Fundamental Theorem of Calculus, Part II</span></a></div>
+<ul id="ptx-toc-group-sec55-FTCpartII" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-551-AccumulationFunction" class="internal"><span class="title">Accumulation Functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-552-FTC" class="internal"><span class="title">THE Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-553-UsingFTC" class="internal"><span class="title">To apply the FTC...</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-554-Graph-AccumulationFunction" class="internal"><span class="title">The Graph of the Accumulation Function</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec55-FTCpartII.html#ws-sec55" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec56-NetChange.html" class="internal"><span class="codenumber">5.6</span> <span class="title">Net Change as the Integral of a Rate of Change</span></a></div>
+<ul id="ptx-toc-group-sec56-NetChange" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-561-DistanceVelocity" class="internal"><span class="title">Relationship between Displacement and Velocity</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-562-DisplacementDistance" class="internal"><span class="title">Displacement vs. Distance Traveled</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-563-NetChange" class="internal"><span class="title">General Net Change</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec56-NetChange.html#ws-sec56" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec57-uSub.html" class="internal"><span class="codenumber">5.7</span> <span class="title">The Substitution Method</span></a></div>
+<ul id="ptx-toc-group-sec57-uSub" class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sec57-uSub.html#subsec-571-Indefinite" class="internal"><span class="title">Substitution Method for Indefinite Integrals</span></a></div>
+<ul id="ptx-toc-group-subsec-571-Indefinite" class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsubsec-5711-sub-usingDifferential" class="internal"><span class="title">Substitution Using Differentials</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-572-limitation" class="internal"><span class="title">Limitation of <span class="process-math">\(\boldsymbol{u}\)</span>-sub</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-573-Definite" class="internal"><span class="title">Substitution Method for Definite Integrals</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec57-uSub.html#ws-sec57" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html" class="internal"><span class="codenumber">5.8</span> <span class="title">Further Integral Formulas</span></a></div>
+<ul id="ptx-toc-group-sec58-FurtherIntegralFormulas" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-581-Integral-InverseTrig" class="internal"><span class="title">Integral formulas involving inverse trigonometric functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-582-IntegralExponential" class="internal"><span class="title">Integrals Involving Exponential Functions</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#ws-sec58" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content">
+<div class="print-preview-header">
+<h2 class="print-preview">Print preview</h2>
+<div class="print-controls">
+<div class="print-controls-toggles">
+<form class="papersize-select" id="papersize-select">
+<span class="name">Paper size</span><label><input type="radio" name="papersize" value="a4">A4
+        </label><label><input type="radio" name="papersize" value="letter">Letter
+        </label>
+</form>
+<details class="print-options"><summary>Additional printing options</summary><div class="hide-solutions-options">
+<div class="hide-option">
+<label for="hide-hint-checkbox">Hide hints</label><input type="checkbox" id="hide-hint-checkbox">
+</div>
+<div class="hide-option">
+<label for="hide-solution-checkbox">Hide solutions</label><input type="checkbox" id="hide-solution-checkbox">
+</div>
+</div>
+<div class="header-footer-options">
+<div class="header-option">
+<span class="title">Print headers</span><label>First page<input type="checkbox" id="print-first-page-header-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-header-checkbox" checked></label>
+</div>
+<div class="footer-option">
+<span class="title">Print footers</span><label>First page<input type="checkbox" id="print-first-page-footer-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-footer-checkbox" checked></label>
+</div>
+</div>
+<div class="highlight-workspace-option">
+<label for="highlight-workspace-checkbox">Highlight workspace</label><input type="checkbox" id="highlight-workspace-checkbox">
+</div></details>
+</div>
+<button class="print-button" title="Print" onClick="window.print()"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span><span class="name">Print</span></button>
+</div>
+</div>
+<section class="section" id="sec54-FTCpartI">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Fundamental Theorem of Calculus, Part I</span>
+</h1>
+<section class="introduction" id="sec54-FTCpartI-2">
+<div class="para" id="sec54-FTCpartI-2-1">In this section, we will investigate the Fundamental Theorem of Calculus (FTC), part I, which states that we could evaluate the definite integral (aka the signed area under the curve) using indefinite integral (aka the general antiderivative).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="objectives goal-like" id="sec54-FTCpartI-2-2"><h2 class="heading"><span class="type">Objectives</span></h2>
+<div class="introduction" id="sec54-FTCpartI-2-2-1">
+<div class="para" id="sec54-FTCpartI-2-2-1-1">After this section, students will be able to:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<ul class="disc" id="sec54-FTCpartI-2-2-2">
+<li id="sec54-FTCpartI-2-2-2-1">
+<div class="para" id="sec54-FTCpartI-2-2-2-1-1">state and explain the Fundamental Theorem of Calculus, part I.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-2-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec54-FTCpartI-2-2-2-1" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec54-FTCpartI-2-2-2-2">
+<div class="para" id="sec54-FTCpartI-2-2-2-2-1">evaluate definite integrals using FTC.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-2-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec54-FTCpartI-2-2-2-2" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec54-FTCpartI-2-2-2-3">
+<div class="para" id="sec54-FTCpartI-2-2-2-3-1">evaluate definite integrals of piecewise functions using FTC.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-2-2-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec54-FTCpartI-2-2-2-3" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Objectives 5.4"><a tabindex="-1" href="#sec54-FTCpartI-2-2" title="Copy heading and permalink for Objectives 5.4" aria-label="Copy heading and permalink for Objectives 5.4">🔗</a></div>
+</article></section>
+<div class="para" id="sec54-FTCpartI-3">
+<em class="alert">P.S.:</em> We will cover <a href="sec55-FTCpartII.html" class="internal" title="Section 5.5: The Fundamental Theorem of Calculus, Part II">Section 5.5</a> before this section. Some of the results in this section will be built upon the concepts covered in <a href="sec55-FTCpartII.html" class="internal" title="Section 5.5: The Fundamental Theorem of Calculus, Part II">Section 5.5</a>.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsection" id="subsec-541-FTC-Corollary">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">A Corollary of the Fundamental Theorem of Calculus</span>
+</h2>
+<div class="para" id="subsec-541-FTC-Corollary-2">Well the Fundamental Theorem of Calculus, Part II, in <a href="sec55-FTCpartII.html" class="internal" title="Section 5.5: The Fundamental Theorem of Calculus, Part II">Section 5.5</a>, isn’t the theorem we use a lot. Instead, we use the Fundamental Theorem of Calculus, Part I, a lot to help us evaluate definite integrals. This is actually a (most useful) corollary of the Fundamental Theorem of Calculus. The theorem is presented in your textbook page 318. I also included it below:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="corollary theorem-like" id="cor-FTC"><h3 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="cor-FTC-1-1">
+<div class="para">Assume that <span class="process-math">\(a &lt; b\)</span> and that <span class="process-math">\(f\)</span> is continuous on <span class="process-math">\([a,b]\text{.}\)</span> If <span class="process-math">\(F\)</span> is an antiderivative of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\text{,}\)</span> then</div>
+<div class="displaymath process-math" id="eqn-cor-FTC">
+\begin{equation}
+\int_a^b f(x)\, dx = F(b) - F(a)\tag{5.4.1}
+\end{equation}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#cor-FTC-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Corollary 5.4.1"><a tabindex="-1" href="#cor-FTC" title="Copy heading and permalink for Corollary 5.4.1" aria-label="Copy heading and permalink for Corollary 5.4.1">🔗</a></div>
+</article>
+<div class="para" id="subsec-541-FTC-Corollary-4">
+<dfn class="terminology">Corollary</dfn>, in math, means a result that follows immediately from a big theorem. So we should be able to prove this theorem quickly if we know how the Fundamental Theorem of Calculus works.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-541-FTC-Corollary-5">Let <span class="process-math">\(f\)</span> be a continuous function. By the Fundamental Theorem of Calculus, we know that its accumulation function, <span class="process-math">\(A\text{,}\)</span> is an antiderivative of <span class="process-math">\(f\)</span> (since <span class="process-math">\(A'(x) = f(x)\)</span>). Furthermore, we know that <em class="alert">ALL</em> antiderivatives of a function should only differ by a constant. That is, if <span class="process-math">\(F\)</span> is an arbitrary antiderivative of <span class="process-math">\(f\text{,}\)</span> then <span class="process-math">\(A(x) = F(x) + C\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-541-FTC-Corollary-6">We will prove this corollary through the accumulation function. Your textbook approaches the proof using the Mean Value Theorem, which is a different approach. Feel free to read through it if you want a different perspective of why this corollary is true.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-541-FTC-Corollary-7">
+<div class="para">Let’s define the accumulation function</div>
+<div class="displaymath process-math" id="subsec-541-FTC-Corollary-7-1">
+\begin{equation*}
+A(x) = \int_c^x f(t)\, dt
+\end{equation*}
+</div>
+<div class="para">The reason why we used <span class="process-math">\(c\)</span> as the lower limit here is because <span class="process-math">\(a\)</span> is taken for something else. In math, we don’t want to label two different thing using the same letter to avoid confusion. I, again, coded a pretty picture to help you visualize the situation. 
+<figure class="figure figure-like" id="fig-Proof-FTC-Cor"><div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="generated/latex-image/fig-Proof-FTC-Cor-1.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.4.2"><a tabindex="-1" href="#fig-Proof-FTC-Cor" title="Copy heading and permalink for Figure 5.4.2" aria-label="Copy heading and permalink for Figure 5.4.2">🔗</a></div></figcaption>
+</figure>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-541-FTC-Corollary-8">Using colors, we know that <span class="process-math">\(A(b)\)</span> represents the area of the region on <span class="process-math">\([c,b]\text{,}\)</span> which is the area of the green and orange regions combined. <span class="process-math">\(A(a)\)</span> represents the area of the region on <span class="process-math">\([c,a]\text{,}\)</span> which is the area of the green region.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-541-FTC-Corollary-9">
+<div class="para">We know that <span class="process-math">\(\int_a^b f(x)\, dx\)</span> represents the area of the region on <span class="process-math">\([a,b]\text{,}\)</span> which is the area of the orange region. A simple subtraction tells us that</div>
+<div class="displaymath process-math" id="subsec-541-FTC-Corollary-9-3">
+\begin{equation*}
+\int_a^b f(x)\, dx = A(b) - A(a)
+\end{equation*}
+</div>
+<div class="para">This result is super close to the corollary already!</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-541-FTC-Corollary-10">
+<div class="para">Recall <span class="process-math">\(F(x) = A(x) + C\text{.}\)</span> Then we obtain</div>
+<div class="displaymath process-math" id="subsec-541-FTC-Corollary-10-2">
+\begin{align*}
+\int_a^b f(x)\, dx \amp= A(b) - A(a) \\
+\amp= \left(F(b) + C\right) - \left(F(a) + C\right) \\
+\amp= F(b) + C - F(a) - C \\
+\amp= F(b) - F(a) 
+\end{align*}
+</div>
+<div class="para">We proved another big result in calculus!</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-541-FTC-Corollary-11">The last step in our proof is another reason why we don’t need a <span class="process-math">\(+C\)</span> when evaluating definite integral. The <span class="process-math">\(+C\)</span> will be canceled!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-541-FTC-Corollary-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: A Corollary of the Fundamental Theorem of Calculus"><a tabindex="-1" href="#subsec-541-FTC-Corollary" title="Copy heading and permalink for Subsection: A Corollary of the Fundamental Theorem of Calculus" aria-label="Copy heading and permalink for Subsection: A Corollary of the Fundamental Theorem of Calculus">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-542-Importance-FTC-Corollary">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Why is this corollary important?</span>
+</h2>
+<div class="para" id="subsec-542-Importance-FTC-Corollary-2">Note that the definite integrals allow us to compute the area under the curve. But finding the Riemann sum is a painful process, especially without the help of the technology.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-542-Importance-FTC-Corollary-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-542-Importance-FTC-Corollary-3">Whereas we can find the indefinite integral (or the general antiderivative) of a function. But it has nothing to do with the area.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-542-Importance-FTC-Corollary-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-542-Importance-FTC-Corollary-4">This corollary gives us a practical way to connect these two ideas together! We can evaluate the definite integral by (1) find the antiderivative of the integrand, and (2) plug in the limits of integration and do the subtraction. In fact, some textbooks call this result the <em class="alert">evaluation theorem</em> to emphasize the fact that we can <em class="emphasis">evaluate</em> definite integral using this result.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-542-Importance-FTC-Corollary-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-542-Importance-FTC-Corollary-5">
+<div class="para">In notation, we have</div>
+<div class="displaymath process-math" id="subsec-542-Importance-FTC-Corollary-5-1">
+\begin{equation*}
+\int_a^b f(x)\, dx = F(x)\bigg|_a^b = F(b) - F(a)\qquad \text{where}\quad \int f(x)\, dx = F(x) + C
+\end{equation*}
+</div>
+<div class="para">We will be using this idea to evaluate the definite integrals mostly in this class.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-542-Importance-FTC-Corollary-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Why is this corollary important?"><a tabindex="-1" href="#subsec-542-Importance-FTC-Corollary" title="Copy heading and permalink for Subsection: Why is this corollary important?" aria-label="Copy heading and permalink for Subsection: Why is this corollary important?">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-543-Examples-FTC-Corollary">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Examples on Applying FTC Corollary</span>
+</h2>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-2">We will work through many examples to evaluate definite integrals using the corollary of FTC. Make sure you are comfortable with this way of evaluating definite integrals!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-3">In the following examples, I will show all the steps. Make sure you understand why each step is being done (either using properties of definite integral, FTC, purely algebra, or purely arithmetic).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-543-Examples-FTC-Corollary-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-4-1">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_0^2 \left(x^4 - \frac{3}{4}x^2 + \frac{2}{3}x - 1\right)\, dx \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-543-Examples-FTC-Corollary-4-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-4-2-1">By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-4-2-2">So what is an antiderivative of the integrand <span class="process-math">\(y = x^4 - \dfrac{3}{4}x^2 + \dfrac{2}{3}x - 1\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.4.3.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4-2" title="Copy heading and permalink for Hint 5.4.3.1" aria-label="Copy heading and permalink for Hint 5.4.3.1">🔗</a></div>
+</div></details>
+<details id="subsec-543-Examples-FTC-Corollary-4-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-4-3-1">
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-4-3-1-1">
+\begin{align*}
+\int_0^2 \left(x^4 - \frac{3}{4}x^2 + \frac{2}{3}x - 1\right)\, dx\amp = \int_0^2 x^4\, dx - \frac{3}{4}\int_0^2 x^2\, dx + \frac{2}{3}\int_0^2 x\, dx - \int\, dx \\
+\amp= \frac{x^5}{5}\bigg|_0^2 - \frac{3}{4}\cdot \frac{x^3}{3}\bigg|_0^2 + \frac{2}{3}\cdot \frac{x^2}{2}\bigg|_0^2 - x\bigg|_0^2 \\
+\amp= \left(\frac{2^5}{5} - \frac{0^5}{5}\right) - \frac{3}{4}\left(\frac{2^3}{3} - \frac{0^3}{3}\right) + \frac{2}{3}\left(\frac{2^2}{2} - \frac{0^2}{2}\right) - (2 - 0) \\
+\amp= \frac{32}{5} - 2 + \frac{4}{3} - 2 \\
+\amp= \frac{56}{15} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.4.3.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4-3" title="Copy heading and permalink for Solution 5.4.3.1" aria-label="Copy heading and permalink for Solution 5.4.3.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.4.3"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-4" title="Copy heading and permalink for Example 5.4.3" aria-label="Copy heading and permalink for Example 5.4.3">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-543-Examples-FTC-Corollary-5"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-5-1">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_1^2 \frac{1}{x^2}\, dx \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-543-Examples-FTC-Corollary-5-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-5-2-1">By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-5-2-2">So what is an antiderivative of the integrand <span class="process-math">\(y = \dfrac{1}{x^2}\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.4.4.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5-2" title="Copy heading and permalink for Hint 5.4.4.1" aria-label="Copy heading and permalink for Hint 5.4.4.1">🔗</a></div>
+</div></details>
+<details id="subsec-543-Examples-FTC-Corollary-5-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-5-3-1">
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-5-3-1-1">
+\begin{align*}
+\int_1^2\frac{1}{x^2}\, dx \amp= \int_1^2 x^{-2}\, dx \\
+\amp= -x^{-1}\bigg|_1^2 \\
+\amp= \left(-2^{-1}\right) - \left(-1^{-1}\right) \\
+\amp= -\frac{1}{2} + 1 \\
+\amp= \frac{1}{2} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.4.4.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5-3" title="Copy heading and permalink for Solution 5.4.4.1" aria-label="Copy heading and permalink for Solution 5.4.4.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.4.4"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-5" title="Copy heading and permalink for Example 5.4.4" aria-label="Copy heading and permalink for Example 5.4.4">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-543-Examples-FTC-Corollary-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-6-1">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_0^1 x\left(\sqrt[3]{x} + \sqrt[4]{x}\right)\, dx \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-543-Examples-FTC-Corollary-6-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-6-2-1">By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-6-2-2">So what is an antiderivative of the integrand <span class="process-math">\(y = x\left(\sqrt[3]{x} + \sqrt[4]{x}\right)\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.4.5.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6-2" title="Copy heading and permalink for Hint 5.4.5.1" aria-label="Copy heading and permalink for Hint 5.4.5.1">🔗</a></div>
+</div></details>
+<details id="subsec-543-Examples-FTC-Corollary-6-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-6-3-1">
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-6-3-1-1">
+\begin{align*}
+\int_0^1 x\left(\sqrt[3]{x} + \sqrt[4]{x}\right)\, dx \amp= \int_0^1  x\left(x^\frac{1}{3} + x^\frac{1}{4}\right)\, dx\\
+\amp= \int_0^1 \left(x^\frac{4}{3} + x^\frac{5}{4}\right)\, dx \\
+\amp= \left[\frac{3}{7}x^\frac{7}{3} + \frac{4}{9}x^\frac{9}{4}\right]_0^1 \\
+\amp= \left(\frac{3}{7}(1)^\frac{7}{3} + \frac{4}{9}(1)^\frac{9}{4}\right) - \left(\frac{3}{7}(0)^\frac{7}{3} + \frac{4}{9}(0)^\frac{9}{4}\right) \\
+\amp= \frac{3}{7} + \frac{4}{9} \\
+\amp= \frac{55}{63} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.4.5.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6-3" title="Copy heading and permalink for Solution 5.4.5.1" aria-label="Copy heading and permalink for Solution 5.4.5.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.4.5"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-6" title="Copy heading and permalink for Example 5.4.5" aria-label="Copy heading and permalink for Example 5.4.5">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-543-Examples-FTC-Corollary-7"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-7-1">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_{-1}^1 t\left(1 - t\right)^2\, dt \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-543-Examples-FTC-Corollary-7-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-7-2-1">By the FTC, we will need to first find an antiderivative of the integrand, and then plug in the limits of integration and do the subtraction.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-7-2-2">So what is an antiderivative of the integrand <span class="process-math">\(y = t\left(1 - t\right)^2\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.4.6.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7-2" title="Copy heading and permalink for Hint 5.4.6.1" aria-label="Copy heading and permalink for Hint 5.4.6.1">🔗</a></div>
+</div></details>
+<details id="subsec-543-Examples-FTC-Corollary-7-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-7-3-1">
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-7-3-1-1">
+\begin{align*}
+\int_{-1}^1 t\left(1 - t\right)^2\, dt \amp= \int_{-1}^1 t\left(1 - 2t + t^2\right)\, dt \\
+\amp= \int_{-1}^1 \left(t - 2t^2 + t^3\right)\, dt \\
+\amp= \left[\frac{t^2}{2} - \frac{2t^3}{3} + \frac{t^4}{4}\right]_{-1}^1 \\
+\amp= \left(\frac{1^2}{2} - \frac{2(1)^3}{3} + \frac{1^4}{4}\right) - \left(\frac{(-1)^2}{2} - \frac{2(-1)^3}{3} + \frac{(-1)^4}{4}\right) \\
+\amp= \frac{1}{2} - \frac{2}{3} + \frac{1}{4} - \frac{1}{2} - \frac{2}{3} - \frac{1}{4} \\
+\amp= -\frac{4}{3} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.4.6.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7-3" title="Copy heading and permalink for Solution 5.4.6.1" aria-label="Copy heading and permalink for Solution 5.4.6.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.4.6"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-7" title="Copy heading and permalink for Example 5.4.6" aria-label="Copy heading and permalink for Example 5.4.6">🔗</a></div>
+</article>
+<details id="subsec-543-Examples-FTC-Corollary-8" class="note remark-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">Note</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">What if I forgot the <span class="process-math">\(\boldsymbol{dx}\text{...}\)</span> Is it a big deal?</span>
+</h3></summary>
+<article class="note remark-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-8-2">Observe that the <span class="process-math">\(dx\)</span> didn’t contribute to the work at all... Is it okay to drop the <span class="process-math">\(dx\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-8-3">The short answer is no... Dropping the <span class="process-math">\(dx\)</span> will make the answer <span class="process-math">\(\pm\infty\)</span> (ish...).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-8-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-8-4">Remember the definite integral is defined using the limit of Riemann sum, where the <span class="process-math">\(dx\)</span> is the infinitesimally small width of the rectangles. Without multiplying the <span class="process-math">\(dx\)</span> with the function value (aka the height of the rectangle), we don’t get the area of the rectangles out of it. We would be just adding up infinite number of function values together, resulting in <span class="process-math">\(\pm \infty\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-8-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-8-5">Make sure you have the <span class="process-math">\(dx\)</span> in all the definite integrals to make sure you are indeed finding the area under the curve, rather than simply adding all the functions values together.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-8-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Note 5.4.7: What if I forgot the \boldsymbol{dx} Is it a big deal?"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-8" title="Copy heading and permalink for Note 5.4.7: What if I forgot the \boldsymbol{dx} Is it a big deal?" aria-label="Copy heading and permalink for Note 5.4.7: What if I forgot the \boldsymbol{dx} Is it a big deal?">🔗</a></div>
+</article></details>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-9">Now that we have an idea on how to evaluate definite integrals with the integrand being a single-piece functions. What about evaluating definite integrals with the integrand being a piecewise function? Let’s try two of them!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-543-Examples-FTC-Corollary-10"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-10-1">
+<div class="para">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_{-2}^3 f(x)\, dx\text{,}\)</span> where</div>
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-10-1-2">
+\begin{equation*}
+f(x) = 
+\begin{cases}
+12 - x^2 &amp; \text{when } x \leq 2 \\
+x^3 &amp; \text{when } x &gt; 2
+\end{cases}
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-543-Examples-FTC-Corollary-10-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-10-2-1">Observe that we have a different function formulas before <span class="process-math">\(x\)</span> hits <span class="process-math">\(2\)</span> and after <span class="process-math">\(x\)</span> hits <span class="process-math">\(2\text{.}\)</span> So we don’t know which formula to use to represent the function on the entire interval of <span class="process-math">\([-2,3]\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-10-2-2">It would be so nice if we could split up the region at this transition point of <span class="process-math">\(x = 2\)</span> so we can use the first formula on <span class="process-math">\([-2,2]\)</span> and the second formula on <span class="process-math">\((2,3]\text{...}\)</span> Is there a property of definite integral that will allow us to split up the definite integral?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.4.8.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10-2" title="Copy heading and permalink for Hint 5.4.8.1" aria-label="Copy heading and permalink for Hint 5.4.8.1">🔗</a></div>
+</div></details>
+<details id="subsec-543-Examples-FTC-Corollary-10-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-10-3-1">
+<div class="para">One of the properties of definite integral <a href="sec52-DefiniteIntegral.html#thm-Property_DefiniteIntegral" class="xref" data-knowl="./knowl/xref/thm-Property_DefiniteIntegral.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 5.2.17: Properties of Definite Integrals">Theorem 5.2.17</a> allows us to split up the definite integrals at <span class="process-math">\(x = 2\)</span> as follows:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-Property_DefiniteIntegral.html" id="subsec-543-Examples-FTC-Corollary-10-3-1-3">
+\begin{equation*}
+\int_{-2}^3 f(x)\, dx = \int_{-2}^2 f(x)\, dx + \int_2^3 f(x)\, dx 
+\end{equation*}
+</div>
+<div class="para">Ha! We know that <span class="process-math">\(f(x) = 12-x^2\)</span> on the interval <span class="process-math">\([-2,2]\)</span> and <span class="process-math">\(f(x) = x^3\)</span> on the interval <span class="process-math">\((2,3]\text{!}\)</span> Then we can plug in the corresponding function formulas and let FTC to do the rest of the work!</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-Property_DefiniteIntegral.html" id="subsec-543-Examples-FTC-Corollary-10-3-1-8">
+\begin{align*}
+\int_{-2}^3 f(x)\, dx \amp= \int_{-2}^2 f(x)\, dx + \int_2^3 f(x)\, dx \\
+\amp= \int_{-2}^2 \left(12 - x^2\right) \, dx + \int_2^3 x^3\, dx \\
+\amp= \left[12x - \frac{x^3}{3}\right]_{-2}^2 + \frac{x^4}{4}\bigg|_2^3 \\
+\amp= \left(12(2) - \frac{2^3}{3}\right) - \left(12(-2) - \frac{(-2)^3}{3}\right) + \frac{3^4}{4} - \frac{2^4}{4} \\
+\amp= \frac{64}{3} - \left(-\frac{64}{3}\right) + \frac{81}{4} - 4 \\
+\amp= \frac{707}{12} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.4.8.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10-3" title="Copy heading and permalink for Solution 5.4.8.1" aria-label="Copy heading and permalink for Solution 5.4.8.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.4.8"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-10" title="Copy heading and permalink for Example 5.4.8" aria-label="Copy heading and permalink for Example 5.4.8">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-543-Examples-FTC-Corollary-11"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.4.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-11-1">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_0^\frac{3\pi}{2} \left|\sin(x)\right|\, dx \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-543-Examples-FTC-Corollary-11-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-543-Examples-FTC-Corollary-11-2-1">What makes this problem difficult is the absolute value... We don’t have any integral formula to help us find the antiderivative of the absolute value function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-11-2-2">It would be so nice if there is a way to remove the absolute value...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-11-2-3">
+<div class="para">There is actually a way to do so! Remember absolute value function is essentially a piecewise function as follows:</div>
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-11-2-3-1">
+\begin{equation*}
+|x| = 
+\begin{cases}
+x &amp; \text{when } x \geq 0 \\
+-x &amp; \text{when } x &lt; 0
+\end{cases}
+\end{equation*}
+</div>
+<div class="para">In other words, the absolute value turns all the negative values to positive.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-11-2-4">So do we know where, within <span class="process-math">\([0,\frac{3\pi}{2}]\text{,}\)</span> the sine function takes on negative value?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.4.9.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-2" title="Copy heading and permalink for Hint 5.4.9.1" aria-label="Copy heading and permalink for Hint 5.4.9.1">🔗</a></div>
+</div></details>
+<details id="subsec-543-Examples-FTC-Corollary-11-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-543-Examples-FTC-Corollary-11-3-1">
+<div class="para">Recall that the value of the sine function is positive on <span class="process-math">\((0,\pi)\)</span> and negative on <span class="process-math">\(\left(\pi,\frac{3\pi}{2}\right)\)</span> (if this fact doesn’t click instantly, graphing out the sine function on <span class="process-math">\(\left[0,\frac{3\pi}{2}\right]\)</span> and observe the graph). Then we can remove the absolute value by rewriting the integrand as a piecewise function as follows:</div>
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-11-3-1-4">
+\begin{equation*}
+\left|\sin(x)\right| = 
+\begin{cases}
+\sin(x) &amp; \text{when }  0 \leq x \leq \pi \\
+-\sin(x) &amp; \text{when } \pi &lt; x &lt; \frac{3\pi}{2}
+\end{cases}
+\end{equation*}
+</div>
+<div class="para">Then we can split up the integral at this transition point of <span class="process-math">\(x = \pi\)</span> and plug in the corresponding function formulas. The FTC will do the rest!</div>
+<div class="displaymath process-math" id="subsec-543-Examples-FTC-Corollary-11-3-1-6">
+\begin{align*}
+\int_0^\frac{3\pi}{2} \left|\sin(x)\right|\, dx \amp= \int_0^\pi \left|\sin(x)\right|\, dx + \int_\pi^\frac{3\pi}{2} \left|\sin(x)\right|\, dx\\
+\amp= \int_0^\pi \sin(x)\, dx + \int_\pi^\frac{3\pi}{2} -\sin(x)\, dx \\
+\amp= -\cos(x)\bigg|_0^\pi + \cos(x)\bigg|_\pi^\frac{3\pi}{2} \\
+\amp= -\cos(\pi) - \left(-\cos(0)\right) + \cos\left(\frac{3\pi}{2}\right) - \cos(\pi) \\
+\amp= 1 + 1 + 0 + 1 \\
+\amp= 3 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.4.9.1"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11-3" title="Copy heading and permalink for Solution 5.4.9.1" aria-label="Copy heading and permalink for Solution 5.4.9.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.4.9"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-11" title="Copy heading and permalink for Example 5.4.9" aria-label="Copy heading and permalink for Example 5.4.9">🔗</a></div>
+</article>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-12">Again, make sure you are comfortable with evaluating definite integrals in this way. We will be developing more and more fancy methods to evaluate definite integrals using FTC. A good basic understanding and fluency in this way will make the later sections easier!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-543-Examples-FTC-Corollary-13">There is a saying "practice makes perfect". A good way of practicing the FTC is to go back to all the examples we did and see if you can solve them without looking at my solution. I will also include some practice problems at the end you can work on.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Examples on Applying FTC Corollary"><a tabindex="-1" href="#subsec-543-Examples-FTC-Corollary" title="Copy heading and permalink for Subsection: Examples on Applying FTC Corollary" aria-label="Copy heading and permalink for Subsection: Examples on Applying FTC Corollary">🔗</a></div>
+</section>
+<section class="subsection" id="sec54-FTCpartI-7">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Something to ponder on...</span>
+</h2>
+<div class="para" id="sec54-FTCpartI-7-2">Notice that the FTC, part I, has an assumption that says <span class="process-math">\(f\)</span> is <em class="alert">continuous</em> on some <em class="alert">closed</em> interval <span class="process-math">\([a,b]\text{.}\)</span> Later in the class (likely towards the end of chapter 7), Richard will make a BIG deal of this assumption (so he is cool if you don’t pay attention to it now). But why is this assumption necessary?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec54-FTCpartI-7-3">
+<div class="para">To give you an actual problem to think about, is it correct to evaluate the integral as follows?</div>
+<div class="displaymath process-math" id="sec54-FTCpartI-7-3-1">
+\begin{equation*}
+\int_{-1}^3 \frac{1}{x^2}\, dx = -\frac{1}{x}\bigg|_{-1}^3 = \left(-\frac{1}{3}\right) - \left(-\frac{1}{-1}\right) = -\frac{4}{3}
+\end{equation*}
+</div>
+<div class="para">We will revisit this problem in section 7.7 and point out what’s wrong with this line of work.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec54-FTCpartI-7-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Something to ponder on..."><a tabindex="-1" href="#sec54-FTCpartI-7" title="Copy heading and permalink for Subsection: Something to ponder on..." aria-label="Copy heading and permalink for Subsection: Something to ponder on...">🔗</a></div>
+</section>
+<section class="worksheet" id="ws-sec54" data-margins="0.75in 0.75in 0.75in 0.75in">
+<h2 class="heading hide-type">
+<span class="type">Worksheet</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Some Exercises for this section</span><div class="print-links"><a href="?printpreview=ws-sec54" class="print-link" title="Print preview"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span></a></div>
+</h2>
+<section class="introduction" id="ws-sec54-2">
+<div class="para" id="ws-sec54-2-1">I included some practice problems that cover some main concepts in this section. You don’t need to turn it in, but I highly encourage you to work on this with your classmates. I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. Reach out to Richard for help if you get stuck or have any questions.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ws-sec54-2-2">I will only include the final answer to some of the problems for you to check your result. If you want to check your work, talk to Richard and he is happy to discuss the process with you.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section>
+<div class="exercisegroup" id="ws-sec54-3">
+<h3 class="heading"><span class="title">Exercise Group.</span></h3>
+<div class="introduction" id="ws-sec54-3-1">
+<div class="para" id="ws-sec54-3-1-1">Evaluate the following definite integrals using the FTC.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="ws-sec54-3-2"><h4 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-2-1-1">
+<span class="process-math">\(\displaystyle \int_0^9 2\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 1"><a tabindex="-1" href="#ws-sec54-3-2" title="Copy heading and permalink for Worksheet Exercise 1" aria-label="Copy heading and permalink for Worksheet Exercise 1">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-3"><h4 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-3-1-1">
+<span class="process-math">\(\displaystyle \int_4^1 t^\frac{5}{2}\, dt\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 2"><a tabindex="-1" href="#ws-sec54-3-3" title="Copy heading and permalink for Worksheet Exercise 2" aria-label="Copy heading and permalink for Worksheet Exercise 2">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-4"><h4 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-4-1-1">
+<span class="process-math">\(\displaystyle \int_1^4 \left(\frac{5t^2 + 4}{3t}\right)\, dt\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 3"><a tabindex="-1" href="#ws-sec54-3-4" title="Copy heading and permalink for Worksheet Exercise 3" aria-label="Copy heading and permalink for Worksheet Exercise 3">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-5"><h4 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-5-1-1">
+<span class="process-math">\(\displaystyle \int_1^{27} \frac{t + 1}{\sqrt{t}}\, dt\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 4"><a tabindex="-1" href="#ws-sec54-3-5" title="Copy heading and permalink for Worksheet Exercise 4" aria-label="Copy heading and permalink for Worksheet Exercise 4">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-6"><h4 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-6-1-1">
+<span class="process-math">\(\displaystyle \int_2^6 \left(x + \frac{1}{x}\right)\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 5"><a tabindex="-1" href="#ws-sec54-3-6" title="Copy heading and permalink for Worksheet Exercise 5" aria-label="Copy heading and permalink for Worksheet Exercise 5">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-7"><h4 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-7-1-1">
+<span class="process-math">\(\displaystyle \int_0^{-1} \left(2x - e^x\right)\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 6"><a tabindex="-1" href="#ws-sec54-3-7" title="Copy heading and permalink for Worksheet Exercise 6" aria-label="Copy heading and permalink for Worksheet Exercise 6">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-8"><h4 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-8-1-1">
+<span class="process-math">\(\displaystyle\int_2^3 e^{4x}\, dx \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 7"><a tabindex="-1" href="#ws-sec54-3-8" title="Copy heading and permalink for Worksheet Exercise 7" aria-label="Copy heading and permalink for Worksheet Exercise 7">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-3-9"><h4 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-3-9-1-1">
+<span class="process-math">\(\displaystyle \int_0^\frac{\pi}{6} \sec(\theta)\tan(\theta)\, d\theta\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-3-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 8"><a tabindex="-1" href="#ws-sec54-3-9" title="Copy heading and permalink for Worksheet Exercise 8" aria-label="Copy heading and permalink for Worksheet Exercise 8">🔗</a></div>
+</article>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Exercise Group 1–8"><a tabindex="-1" href="#ws-sec54-3" title="Copy heading and permalink for Exercise Group 1–8" aria-label="Copy heading and permalink for Exercise Group 1–8">🔗</a></div>
+</div>
+<article class="exercise exercise-like" id="ws-sec54-4"><h3 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ws-sec54-4-1-1">
+<div class="para">Evaluate the definite integral <span class="process-math">\(\displaystyle \int_0^{2\pi} f(x)\, dx\)</span> where</div>
+<div class="displaymath process-math" id="ws-sec54-4-1-1-2">
+\begin{equation*}
+f(x) = 
+\begin{cases}
+\sin(x) &amp; \text{when } x \leq \pi \\
+-2\sin(x) &amp; \text{when } x &gt; \pi
+\end{cases}
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 9"><a tabindex="-1" href="#ws-sec54-4" title="Copy heading and permalink for Worksheet Exercise 9" aria-label="Copy heading and permalink for Worksheet Exercise 9">🔗</a></div>
+</article>
+<div class="exercisegroup" id="ws-sec54-5">
+<h3 class="heading"><span class="title">Exercise Group.</span></h3>
+<div class="introduction" id="ws-sec54-5-1">
+<div class="para" id="ws-sec54-5-1-1">Rewrite the definite integral as a sum of integrals without the absolute value and evaluate it.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="ws-sec54-5-2"><h4 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-5-2-1-1">
+<span class="process-math">\(\displaystyle \int_0^3 \left|x^2 - 1\right|\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-5-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 10"><a tabindex="-1" href="#ws-sec54-5-2" title="Copy heading and permalink for Worksheet Exercise 10" aria-label="Copy heading and permalink for Worksheet Exercise 10">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec54-5-3"><h4 class="heading"><span class="codenumber">11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec54-5-3-1-1">
+<span class="process-math">\(\displaystyle \int_0^\pi \left|\cos(x)\right|\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec54-5-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 11"><a tabindex="-1" href="#ws-sec54-5-3" title="Copy heading and permalink for Worksheet Exercise 11" aria-label="Copy heading and permalink for Worksheet Exercise 11">🔗</a></div>
+</article>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Exercise Group 10–11"><a tabindex="-1" href="#ws-sec54-5" title="Copy heading and permalink for Exercise Group 10–11" aria-label="Copy heading and permalink for Exercise Group 10–11">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet: Some Exercises for this section"><a tabindex="-1" href="#ws-sec54" title="Copy heading and permalink for Worksheet: Some Exercises for this section" aria-label="Copy heading and permalink for Worksheet: Some Exercises for this section">🔗</a></div>
+</section><div class="autopermalink" aria-hidden="true" data-description="Section 5.4: The Fundamental Theorem of Calculus, Part I"><a tabindex="-1" href="#sec54-FTCpartI" title="Copy heading and permalink for Section 5.4: The Fundamental Theorem of Calculus, Part I" aria-label="Copy heading and permalink for Section 5.4: The Fundamental Theorem of Calculus, Part I">🔗</a></div>
+</section>
+</div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec53-IndefiniteIntegral.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec55-FTCpartII.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

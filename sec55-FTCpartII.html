@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: salem                          *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Fundamental Theorem of Calculus, Part II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<style>
+@counter-style ptx-marker-1 { system: extends lower-alpha; prefix: '('; suffix: ') '; }
+</style>
+<script type="module">import { startMathJax } from './_static/pretext/js/dist/mathjax_startup.js';
+startMathJax({
+hasWebworkReps: false,
+hasSage: false,
+isReact: false,
+htmlPresentation: false,
+lang: "en-US",
+});
+</script><script defer data-pretext-mathjax="true" onerror="this.dataset.loadFailed = 'true';" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta name="twitter:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="og:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="book:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta name="twitter:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta property="og:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta name="twitter:card" content="summary">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/dist/pretext-core.js?v=2.54"></script><script src="_static/pretext/js/dist/pretext-read-aloud.js?v=2.54"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.6ad113829064d43a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.02090e9f6a81e70e.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/pretext/js/dist/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/dist/pretext_search.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="changeme" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead" role="banner"><div class="ptx-banner"><div class="title-container">
+<div class="heading ptx-banner-heading"><a href="MTH252Z_Fall26.html"><span class="title">MTH 252Z Integral Calculus</span> <span class="subtitle">Fall 2026</span></a></div>
+<p class="byline">Richard Zhao</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button id="ptx-toc-toggle" type="button" aria-controls="ptx-sidebar" class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="ptx-search-box">
+<div class="ptx-search-widget"><button id="ptx-search-button" type="button" class="ptx-search-button button" title="Search Book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<dialog id="ptx-search-dialog" class="ptx-dialog ptx-search-dialog"><div class="ptx-search-dialog-controls">
+<input aria-label="Search term" id="ptx-search-terms" class="ptx-search-terms" type="text" name="terms" placeholder="Search terms"><button aria-label="Close" id="ptx-search-close" class="ptx-search-close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div id="ptx-search-status" class="ptx-search-status" aria-live="polite" aria-atomic="true"></div>
+<h2 class="heading ptx-search-results-heading">Search Results: </h2>
+<div id="ptx-search-empty" class="ptx-search-empty"><span>No results.</span></div>
+<ol id="ptx-search-results" class="ptx-search-results"></ol></dialog>
+</div>
+<span class="nav-other-controls"><button id="ptx-read-aloud-button" class="ptx-read-aloud-button button" title="Read aloud" aria-expanded="false"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf1bc;</span><span class="name">Read aloud</span></button><div id="ptx-read-aloud-player" class="ptx-read-aloud-player" hidden="hidden" role="group" aria-label="Read aloud">
+<button id="ptx-read-aloud-prev" class="button" title="Previous sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe045;</span></button><button id="ptx-read-aloud-toggle" class="ptx-read-aloud-toggle button" title="Play"><span class="ptx-read-aloud-icon-play"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></span><span class="ptx-read-aloud-icon-pause"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe034;</span></span></button><button id="ptx-read-aloud-next" class="button" title="Next sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe044;</span></button><a id="ptx-read-aloud-continue" class="ptx-read-aloud-continue button" hidden="hidden">Continue<span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></a><button id="ptx-read-aloud-settings-button" class="ptx-read-aloud-settings-button button" title="Reading settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe429;</span></button>
+</div>
+<dialog class="ptx-dialog ptx-read-aloud-settings-popup" id="ptx-read-aloud-settings-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Read aloud settings</h2>
+<button class="ptx-read-aloud-settings-close-button button" id="ptx-read-aloud-settings-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label for="ptx-read-aloud-voice"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe91f;</span><span>Voice</span></label><select id="ptx-read-aloud-voice"></select><label class="ptx-readability-slider-label" for="ptx-read-aloud-rate"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe9e4;</span><span>Reading speed</span><output id="ptx-read-aloud-rate-value" for="ptx-read-aloud-rate">1×</output></label><input type="range" id="ptx-read-aloud-rate" min="0.5" max="2" step="0.1" value="1"><label for="ptx-read-aloud-asides"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d7;</span><span>Collapsed content</span></label><select id="ptx-read-aloud-asides"><option value="skip">Announce, do not read</option>
+<option value="read">Read automatically</option></select><label for="ptx-read-aloud-autoscroll"><input type="checkbox" id="ptx-read-aloud-autoscroll" checked><span>Follow along (auto-scroll)</span></label><label for="ptx-read-aloud-autocontinue"><input type="checkbox" id="ptx-read-aloud-autocontinue"><span>Continue to the next page automatically</span></label>
+</div></dialog><button id="ptx-readability-options-button" class="ptx-readability-options-button button" title="Readability settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf6f1;</span><span class="name">Readability settings</span></button><dialog class="ptx-dialog ptx-readability-options-popup" id="ptx-readability-options-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Readability settings</h2>
+<button class="ptx-readability-options-close-button button" id="ptx-readability-options-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-line-height"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe240;</span><span>Line height</span><output id="ptx-readability-line-height-value" for="ptx-readability-line-height">1.35</output></label><input type="range" id="ptx-readability-line-height" min="1.10" max="3" step="0.05" value="1.35">
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-font-size"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe245;</span><span>Content font size</span><output id="ptx-readability-font-size-value" for="ptx-readability-font-size">100%</output></label><input type="range" id="ptx-readability-font-size" min="0.8" max="1.5" step="0.05" value="1">
+</div>
+<fieldset class="ptx-readability-options-group ptx-readability-options-group-theme">
+<legend>Theme</legend>
+<label for="ptx-readability-theme-system"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-system" value="system"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe1ab;</span><span>System</span></label><label for="ptx-readability-theme-light"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-light" value="light"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe518;</span><span>Light</span></label><label for="ptx-readability-theme-dark"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-dark" value="dark"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span>Dark</span></label>
+</fieldset>
+<fieldset class="ptx-readability-options-group">
+<legend>Assistive technologies</legend>
+<label for="ptx-readability-accessible-permalinks"><input type="checkbox" id="ptx-readability-accessible-permalinks"><span>🔗</span><span>Expose permalinks</span></label>
+</fieldset>
+<div class="ptx-readability-options-group"><button type="button" class="ptx-readability-reset-button button" id="ptx-readability-reset-button"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf053;</span><span class="name">Reset All</span></button></div></dialog></span><span class="treebuttons"><a class="previous-button button" href="sec54-FTCpartI.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch5-Integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec56-NetChange.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" role="complementary" class="ptx-sidebar"><nav id="ptx-toc" tabindex="-1" aria-label="Contents" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch5-Integration.html" class="internal"><span class="codenumber">5</span> <span class="title">Integration</span></a></div>
+<ul class="structural toc-item-list contains-active" id="ptx-toc-group-ch5-Integration">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec51-ApproximatingArea.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Approximating and Computing Area</span></a></div>
+<ul id="ptx-toc-group-sec51-ApproximatingArea" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-511-Approximate_Rectangle" class="internal"><span class="title">Approximating Area by Rectangles</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-512-SummationNotation" class="internal"><span class="title">Summation Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-513-Compute_Limit_Approximation" class="internal"><span class="title">Computing Area as the Limit of Approximation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-514-LimitSummation" class="internal"><span class="title">Limit of the approximation algebraically</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#ws-sec51" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec52-DefiniteIntegral.html" class="internal"><span class="codenumber">5.2</span> <span class="title">The Definite Integral</span></a></div>
+<ul id="ptx-toc-group-sec52-DefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-521-RiemannSum" class="internal"><span class="title">Riemann Sum and Definite Integral</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-522-SignedArea" class="internal"><span class="title">Definite Integral and Signed Area</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-523-Properties_DefiniteIntegral" class="internal"><span class="title">Properties of Definite Integral</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#ws-sec52" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html" class="internal"><span class="codenumber">5.3</span> <span class="title">The Indefinite Integral</span></a></div>
+<ul id="ptx-toc-group-sec53-IndefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-531-AntiderivativesANDIndefiniteIntegrals" class="internal"><span class="title">Antiderivatives and Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-532-IndefiniteIntegralFormulas-Basic" class="internal"><span class="title">Some (basic) Indefinite Integral Formulas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-533-DifferentialEquationsANDIVP" class="internal"><span class="title">Differential Equations and IVP</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#sec53-IndefiniteIntegral-8" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#ws-sec53" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec54-FTCpartI.html" class="internal"><span class="codenumber">5.4</span> <span class="title">The Fundamental Theorem of Calculus, Part I</span></a></div>
+<ul id="ptx-toc-group-sec54-FTCpartI" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-541-FTC-Corollary" class="internal"><span class="title">A Corollary of the Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-542-Importance-FTC-Corollary" class="internal"><span class="title">Why is this corollary important?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-543-Examples-FTC-Corollary" class="internal"><span class="title">Examples on Applying FTC Corollary</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#sec54-FTCpartI-7" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec54-FTCpartI.html#ws-sec54" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec55-FTCpartII.html" class="internal"><span class="codenumber">5.5</span> <span class="title">The Fundamental Theorem of Calculus, Part II</span></a></div>
+<ul class="structural toc-item-list active" id="ptx-toc-group-sec55-FTCpartII">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-551-AccumulationFunction" class="internal"><span class="title">Accumulation Functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-552-FTC" class="internal"><span class="title">THE Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-553-UsingFTC" class="internal"><span class="title">To apply the FTC...</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-554-Graph-AccumulationFunction" class="internal"><span class="title">The Graph of the Accumulation Function</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec55-FTCpartII.html#ws-sec55" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec56-NetChange.html" class="internal"><span class="codenumber">5.6</span> <span class="title">Net Change as the Integral of a Rate of Change</span></a></div>
+<ul id="ptx-toc-group-sec56-NetChange" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-561-DistanceVelocity" class="internal"><span class="title">Relationship between Displacement and Velocity</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-562-DisplacementDistance" class="internal"><span class="title">Displacement vs. Distance Traveled</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-563-NetChange" class="internal"><span class="title">General Net Change</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec56-NetChange.html#ws-sec56" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec57-uSub.html" class="internal"><span class="codenumber">5.7</span> <span class="title">The Substitution Method</span></a></div>
+<ul id="ptx-toc-group-sec57-uSub" class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sec57-uSub.html#subsec-571-Indefinite" class="internal"><span class="title">Substitution Method for Indefinite Integrals</span></a></div>
+<ul id="ptx-toc-group-subsec-571-Indefinite" class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsubsec-5711-sub-usingDifferential" class="internal"><span class="title">Substitution Using Differentials</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-572-limitation" class="internal"><span class="title">Limitation of <span class="process-math">\(\boldsymbol{u}\)</span>-sub</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-573-Definite" class="internal"><span class="title">Substitution Method for Definite Integrals</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec57-uSub.html#ws-sec57" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html" class="internal"><span class="codenumber">5.8</span> <span class="title">Further Integral Formulas</span></a></div>
+<ul id="ptx-toc-group-sec58-FurtherIntegralFormulas" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-581-Integral-InverseTrig" class="internal"><span class="title">Integral formulas involving inverse trigonometric functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-582-IntegralExponential" class="internal"><span class="title">Integrals Involving Exponential Functions</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#ws-sec58" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content">
+<div class="print-preview-header">
+<h2 class="print-preview">Print preview</h2>
+<div class="print-controls">
+<div class="print-controls-toggles">
+<form class="papersize-select" id="papersize-select">
+<span class="name">Paper size</span><label><input type="radio" name="papersize" value="a4">A4
+        </label><label><input type="radio" name="papersize" value="letter">Letter
+        </label>
+</form>
+<details class="print-options"><summary>Additional printing options</summary><div class="hide-solutions-options">
+<div class="hide-option">
+<label for="hide-hint-checkbox">Hide hints</label><input type="checkbox" id="hide-hint-checkbox">
+</div>
+<div class="hide-option">
+<label for="hide-solution-checkbox">Hide solutions</label><input type="checkbox" id="hide-solution-checkbox">
+</div>
+</div>
+<div class="header-footer-options">
+<div class="header-option">
+<span class="title">Print headers</span><label>First page<input type="checkbox" id="print-first-page-header-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-header-checkbox" checked></label>
+</div>
+<div class="footer-option">
+<span class="title">Print footers</span><label>First page<input type="checkbox" id="print-first-page-footer-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-footer-checkbox" checked></label>
+</div>
+</div>
+<div class="highlight-workspace-option">
+<label for="highlight-workspace-checkbox">Highlight workspace</label><input type="checkbox" id="highlight-workspace-checkbox">
+</div></details>
+</div>
+<button class="print-button" title="Print" onClick="window.print()"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span><span class="name">Print</span></button>
+</div>
+</div>
+<section class="section" id="sec55-FTCpartII">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Fundamental Theorem of Calculus, Part II</span>
+</h1>
+<section class="introduction" id="sec55-FTCpartII-2">
+<div class="para" id="sec55-FTCpartII-2-1">In this section, we will learn the Fundamental Theorem of Calculus (FTC), part II, which states that integration and differentiation are inverse process (so they cancel each other).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec55-FTCpartII-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="objectives goal-like" id="sec55-FTCpartII-2-2"><h2 class="heading"><span class="type">Objectives</span></h2>
+<div class="introduction" id="sec55-FTCpartII-2-2-1">
+<div class="para" id="sec55-FTCpartII-2-2-1-1">After this section, students will be able to:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec55-FTCpartII-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<ul class="disc" id="sec55-FTCpartII-2-2-2">
+<li id="sec55-FTCpartII-2-2-2-1">
+<div class="para" id="sec55-FTCpartII-2-2-2-1-1">understand the concept of accumulation function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec55-FTCpartII-2-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec55-FTCpartII-2-2-2-1" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec55-FTCpartII-2-2-2-2">
+<div class="para" id="sec55-FTCpartII-2-2-2-2-1">understand the Fundamental Theorem of Calculus, part II and apply it to relevant problems.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec55-FTCpartII-2-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec55-FTCpartII-2-2-2-2" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec55-FTCpartII-2-2-2-3">
+<div class="para" id="sec55-FTCpartII-2-2-2-3-1">analyze the graph of the accumulation function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec55-FTCpartII-2-2-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec55-FTCpartII-2-2-2-3" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Objectives 5.5"><a tabindex="-1" href="#sec55-FTCpartII-2-2" title="Copy heading and permalink for Objectives 5.5" aria-label="Copy heading and permalink for Objectives 5.5">🔗</a></div>
+</article></section>
+<div class="para" id="sec55-FTCpartII-3">
+<em class="alert">P.S.:</em> We will cover this section before <a href="sec54-FTCpartI.html" class="internal" title="Section 5.4: The Fundamental Theorem of Calculus, Part I">Section 5.4</a>. Some of the results in <a href="sec54-FTCpartI.html" class="internal" title="Section 5.4: The Fundamental Theorem of Calculus, Part I">Section 5.4</a> will be built upon the concepts covered in this section.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec55-FTCpartII-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsection" id="subsec-551-AccumulationFunction">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Accumulation Functions</span>
+</h2>
+<div class="para" id="subsec-551-AccumulationFunction-2">Let’s first define what the accumulation function is!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-AccumulationFunction"><h3 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="def-AccumulationFunction-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a continuous function on an open interval <span class="process-math">\(I\)</span> and let <span class="process-math">\(a\)</span> be in <span class="process-math">\(I\text{.}\)</span> We define the <em class="alert">accumulation function</em> as</div>
+<div class="displaymath process-math" id="eqn-def-AccumulationFunction">
+\begin{equation}
+A(x) = \int_a^x f(t)\, dt\tag{5.5.1}
+\end{equation}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#def-AccumulationFunction-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Definition 5.5.1"><a tabindex="-1" href="#def-AccumulationFunction" title="Copy heading and permalink for Definition 5.5.1" aria-label="Copy heading and permalink for Definition 5.5.1">🔗</a></div>
+</article>
+<div class="para" id="subsec-551-AccumulationFunction-4">Using our knowledge of function notation, we know that the name of the accumulation function is <span class="process-math">\(A\text{,}\)</span> with the input of <span class="process-math">\(x\)</span> and the output of <span class="process-math">\(A(x)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-551-AccumulationFunction-5">This function takes in a complicated formula, so let’s work on an example to see what it does!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-551-AccumulationFunction-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-551-AccumulationFunction-6-1">
+<div class="para">Let <span class="process-math">\(f(t) = 2t - 1\)</span> and <span class="process-math">\(a = 1\text{.}\)</span> Then we can define the accumulation function here to be</div>
+<div class="displaymath process-math" id="subsec-551-AccumulationFunction-6-1-3">
+\begin{equation*}
+A(x) = \int_1^x \left(2t - 1\right)\, dt
+\end{equation*}
+</div>
+<div class="para">Find the value of <span class="process-math">\(A(1)\text{,}\)</span> <span class="process-math">\(A(2)\text{,}\)</span> <span class="process-math">\(A(3)\text{,}\)</span> and <span class="process-math">\(A(4)\text{.}\)</span> Then graph the function <span class="process-math">\(y = f(t)\)</span> and indicate what these values represent on the graph.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-551-AccumulationFunction-6-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-551-AccumulationFunction-6-2-1">Let’s plug in the <span class="process-math">\(x\)</span> values to the function. Then the output is some sort of definite integral.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-551-AccumulationFunction-6-2-2">Recall definite integral represents some sort of signed area of the region under the curve. Can we find the (signed) area of the region under the curve geometrically?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.5.2.1"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-2" title="Copy heading and permalink for Hint 5.5.2.1" aria-label="Copy heading and permalink for Hint 5.5.2.1">🔗</a></div>
+</div></details>
+<details id="subsec-551-AccumulationFunction-6-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-551-AccumulationFunction-6-3-1">Below is the graph of <span class="process-math">\(f(t) = 2t - 1\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-551-AccumulationFunction-6-3-2"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-551-AccumulationFunction-6-3-2-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The Graph of <span class="process-math">\(f(t) = 2t - 1\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.3"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-2" title="Copy heading and permalink for Figure 5.5.3" aria-label="Copy heading and permalink for Figure 5.5.3">🔗</a></div></figcaption>
+</figure>
+<div class="para" id="subsec-551-AccumulationFunction-6-3-3">
+<span class="process-math">\(A(1)\)</span> represents the area under the line <span class="process-math">\(y = f(t)\)</span> from <span class="process-math">\(t = 1\)</span> to <span class="process-math">\(t = 1\text{.}\)</span> Graphically speaking, the area is 0, shown in the diagram below.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-551-AccumulationFunction-6-3-4"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-551-AccumulationFunction-6-3-4-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The Diagram of <span class="process-math">\(A(1)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.4"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-4" title="Copy heading and permalink for Figure 5.5.4" aria-label="Copy heading and permalink for Figure 5.5.4">🔗</a></div></figcaption>
+</figure>
+<div class="para logical" id="subsec-551-AccumulationFunction-6-3-5">
+<div class="para">
+<span class="process-math">\(A(2)\)</span> represents the area under the line <span class="process-math">\(y = f(t)\)</span> from <span class="process-math">\(t = 1\)</span> to <span class="process-math">\(t = 2\text{.}\)</span> Graphically speaking, the enclosed region is a trapezoid, with the area of</div>
+<div class="displaymath process-math" id="subsec-551-AccumulationFunction-6-3-5-5">
+\begin{equation*}
+A(2) = \frac{1(f(1) + f(2))}{2} = \frac{1 + 3}{2} = 2
+\end{equation*}
+</div>
+<div class="para">The diagram is shown below.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-551-AccumulationFunction-6-3-6"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-551-AccumulationFunction-6-3-6-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The Diagram of <span class="process-math">\(A(2)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.5"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-6" title="Copy heading and permalink for Figure 5.5.5" aria-label="Copy heading and permalink for Figure 5.5.5">🔗</a></div></figcaption>
+</figure>
+<div class="para logical" id="subsec-551-AccumulationFunction-6-3-7">
+<div class="para">
+<span class="process-math">\(A(3)\)</span> represents the area under the line <span class="process-math">\(y = f(t)\)</span> from <span class="process-math">\(t = 1\)</span> to <span class="process-math">\(t = 3\text{.}\)</span> Graphically speaking, the enclosed region is a trapezoid, with the area of</div>
+<div class="displaymath process-math" id="subsec-551-AccumulationFunction-6-3-7-5">
+\begin{equation*}
+A(3) = \frac{2(f(1) + f(3))}{2} = \frac{2(1 + 5)}{2} = 6
+\end{equation*}
+</div>
+<div class="para">The diagram is shown below.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-551-AccumulationFunction-6-3-8"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-551-AccumulationFunction-6-3-8-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The Diagram of <span class="process-math">\(A(3)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.6"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-8" title="Copy heading and permalink for Figure 5.5.6" aria-label="Copy heading and permalink for Figure 5.5.6">🔗</a></div></figcaption>
+</figure>
+<div class="para logical" id="subsec-551-AccumulationFunction-6-3-9">
+<div class="para">
+<span class="process-math">\(A(4)\)</span> represents the area under the line <span class="process-math">\(y = f(t)\)</span> from <span class="process-math">\(t = 1\)</span> to <span class="process-math">\(t = 4\text{.}\)</span> Graphically speaking, the enclosed region is a trapezoid, with the area of</div>
+<div class="displaymath process-math" id="subsec-551-AccumulationFunction-6-3-9-5">
+\begin{equation*}
+A(4) = \frac{3(f(1) + f(4))}{2} = \frac{3(1 + 7)}{2} = 12
+\end{equation*}
+</div>
+<div class="para">The diagram is shown below.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-551-AccumulationFunction-6-3-10"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-551-AccumulationFunction-6-3-10-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The Diagram of <span class="process-math">\(A(4)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.7"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3-10" title="Copy heading and permalink for Figure 5.5.7" aria-label="Copy heading and permalink for Figure 5.5.7">🔗</a></div></figcaption>
+</figure><div class="autopermalink" aria-hidden="true" data-description="Solution 5.5.2.1"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6-3" title="Copy heading and permalink for Solution 5.5.2.1" aria-label="Copy heading and permalink for Solution 5.5.2.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.5.2"><a tabindex="-1" href="#subsec-551-AccumulationFunction-6" title="Copy heading and permalink for Example 5.5.2" aria-label="Copy heading and permalink for Example 5.5.2">🔗</a></div>
+</article>
+<div class="para" id="subsec-551-AccumulationFunction-7">Notice that the variable <span class="process-math">\(x\)</span> appears to be in the place of the upper limit of integration in the integral. This implies that the input of the accumulation function, <span class="process-math">\(x\text{,}\)</span> represents the <em class="alert">upper limit of integration</em>. It tells us how "far" we are integrating from the starting point of <span class="process-math">\(t = a\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-551-AccumulationFunction-8">The outout of the accumulation function, <span class="process-math">\(A(x)\text{,}\)</span> represents the <em class="alert">signed area</em> under the curve of <span class="process-math">\(y = f(t)\)</span> from <span class="process-math">\(t = a\)</span> to <span class="process-math">\(t = x\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-551-AccumulationFunction-9">We call <span class="process-math">\(A\)</span> the accumulation function because it <em class="emphasis">accumulates</em> the signed area under the curve as we move from the starting point of <span class="process-math">\(t = a\)</span> to some later point <span class="process-math">\(t = x\text{.}\)</span> Your textbook actually call it the area function but this idea of area can be generalized. The accumulation function <em class="emphasis">accumulates</em> some quantity (and it doesn’t have to be some area) between two points.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-551-AccumulationFunction-10" class="note remark-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">Note</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.8</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Why are there two variables in the function....</span>
+</h3></summary>
+<article class="note remark-like knowl__content">
+<div class="para" id="subsec-551-AccumulationFunction-10-2">Notice that there are two variables in the accumulation function, <span class="process-math">\(x\)</span> and <span class="process-math">\(t\text{.}\)</span> Why do we need both the <span class="process-math">\(x\)</span> and the <span class="process-math">\(t\)</span> to define the accumulation function...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-551-AccumulationFunction-10-3">
+<div class="para">Well long story short, these two variables are doing two <em class="emphasis">different</em> jobs since there are two types of functions here:</div>
+<ul class="disc" id="subsec-551-AccumulationFunction-10-3-2">
+<li id="subsec-551-AccumulationFunction-10-3-2-1">
+<div class="para" id="subsec-551-AccumulationFunction-10-3-2-1-1">
+<span class="process-math">\(x\)</span> is the input variable of the accumulation function, which represents the upper limit of integration of the integral.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-3-2-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-551-AccumulationFunction-10-3-2-2">
+<div class="para" id="subsec-551-AccumulationFunction-10-3-2-2-1">
+<span class="process-math">\(t\)</span> is what we called the <em class="emphasis">dummy variable</em> we use to represent the input of the function <span class="process-math">\(f\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-3-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-3-2-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-551-AccumulationFunction-10-4">Then the next natural question to ask here is <em class="emphasis">why wouldn’t it make sense to use ONLY one variable to do both jobs</em> (like only using <span class="process-math">\(x\)</span> as the variable)? Wouldn’t it make the function easier?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-551-AccumulationFunction-10-5">
+<div class="para">Well we can do a quick experiment to see if it works to use only <span class="process-math">\(x\)</span> as the variable in the accumulation function. Let’s define the accumulation function like this:</div>
+<div class="displaymath process-math" id="subsec-551-AccumulationFunction-10-5-2">
+\begin{equation*}
+A(x) = \int_a^x f(x)\, dx
+\end{equation*}
+</div>
+<div class="para">Let’s say we want to evaluate <span class="process-math">\(A(2)\text{,}\)</span> then we will need to replace <em class="emphasis">ALL</em> the <span class="process-math">\(x\)</span>’s with <span class="process-math">\(2\text{.}\)</span> Then we obtain</div>
+<div class="displaymath process-math" id="subsec-551-AccumulationFunction-10-5-7">
+\begin{equation*}
+A(2) = \int_a^2 f(2)\, d2
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-551-AccumulationFunction-10-6">Wel... <span class="process-math">\(f(2)\)</span> is a constant (the output of the function with an input of <span class="process-math">\(2\)</span>), so we are really integrating a number here (boring). Also, what is <span class="process-math">\(d2\text{...}\)</span> Well we know that the symbol <span class="process-math">\(d\)</span> here represents the infinitesimally small amount of change. But <span class="process-math">\(2\)</span> is a constant and the value of <span class="process-math">\(2\)</span> will never change... So <span class="process-math">\(d2\)</span> doesn’t really make sense mathematically...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-10-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Note 5.5.8: Why are there two variables in the function..."><a tabindex="-1" href="#subsec-551-AccumulationFunction-10" title="Copy heading and permalink for Note 5.5.8: Why are there two variables in the function..." aria-label="Copy heading and permalink for Note 5.5.8: Why are there two variables in the function...">🔗</a></div>
+</article></details>
+<div class="para" id="subsec-551-AccumulationFunction-11">Now that we know what the <em class="emphasis">accumulation function</em> is, we can investigate the <em class="alert">Fundamental Theorem of Calculus</em> in the next section! As the name of the theorem suggested, this theorem is really fundamental in the study of calculus.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-551-AccumulationFunction-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Accumulation Functions"><a tabindex="-1" href="#subsec-551-AccumulationFunction" title="Copy heading and permalink for Subsection: Accumulation Functions" aria-label="Copy heading and permalink for Subsection: Accumulation Functions">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-552-FTC">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">THE Fundamental Theorem of Calculus</span>
+</h2>
+<div class="para" id="subsec-552-FTC-2">It turns out that THE fundamental theorem of calculus says the integration and differentiation are inverse processes. That is, they will cancel each other. This relation (at least half of it) is captured in the Fundamental Theorem of Calculus, Part II, in your textbook page 326. I also included it below:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-FTC"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.9</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Fundamental Theorem of Calculus.</span>
+</h3>
+<div class="para logical" id="thm-FTC-2-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a continuous function on an open interval <span class="process-math">\(I\)</span> and let <span class="process-math">\(a\)</span> be in <span class="process-math">\(I\text{.}\)</span> Then the definite integral of <span class="process-math">\(f\)</span> from <span class="process-math">\(a\)</span> to <span class="process-math">\(x\text{,}\)</span> aka the accumulation function, is an <em class="emphasis">antiderivative</em> of <span class="process-math">\(f\)</span> on <span class="process-math">\(I\text{.}\)</span> That is,</div>
+<div class="displaymath process-math" id="eqn-thm-FTC-A">
+\begin{equation}
+A'(x) = f(x)\tag{5.5.2}
+\end{equation}
+</div>
+<div class="para">Equivalently,</div>
+<div class="displaymath process-math" id="eqn-thm-FTC-I">
+\begin{equation}
+\frac{d}{dx}\int_a^x f(t)\, dt = f(x)\tag{5.5.3}
+\end{equation}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-FTC-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.5.9: The Fundamental Theorem of Calculus"><a tabindex="-1" href="#thm-FTC" title="Copy heading and permalink for Theorem 5.5.9: The Fundamental Theorem of Calculus" aria-label="Copy heading and permalink for Theorem 5.5.9: The Fundamental Theorem of Calculus">🔗</a></div>
+</article>
+<div class="para" id="subsec-552-FTC-4">You may be wondering <em class="alert">why</em> differentiation will cancel the integration. Well your textbook provided a technical proof in this section using the fancy Squeeze Theorem. We will come up with the (same-ish) argument but in a more intuitive sense.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-552-FTC-5">
+<div class="para">Observe that we need to take the derivative of the accumulation function. Then using the <em class="emphasis">definition</em> of derivative (the one with the limits), we obtain</div>
+<div class="displaymath process-math" id="subsec-552-FTC-5-2">
+\begin{equation*}
+A'(x) = \lim_{h\to 0}\frac{A(x + h) - A(x)}{h}
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-552-FTC-6">Hmm let’s simplify the <em class="emphasis">average rate of change</em> of the accumulation function from <span class="process-math">\(x\)</span> to <span class="process-math">\(x + h\)</span> first (the fraction without the limit). I made a pretty picture below to help you visualize the situation.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-Proof-FTC"><div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="generated/latex-image/fig-Proof-FTC-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Average Rate of Change of <span class="process-math">\(A(x)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.10"><a tabindex="-1" href="#fig-Proof-FTC" title="Copy heading and permalink for Figure 5.5.10" aria-label="Copy heading and permalink for Figure 5.5.10">🔗</a></div></figcaption>
+</figure>
+<div class="para logical" id="subsec-552-FTC-8">
+<div class="para">In this pretty picture, observe that</div>
+<ul class="disc" id="subsec-552-FTC-8-1">
+<li id="subsec-552-FTC-8-1-1">
+<div class="para" id="subsec-552-FTC-8-1-1-1">
+<span class="process-math">\(A(x + h)\)</span> represents the area on <span class="process-math">\([a,x + h]\text{,}\)</span> which is the area of the green and the orange regions combined.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-8-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-552-FTC-8-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-552-FTC-8-1-2">
+<div class="para" id="subsec-552-FTC-8-1-2-1">
+<span class="process-math">\(A(x)\)</span> represents the area on <span class="process-math">\([a,x]\text{,}\)</span> which is the area of the green region.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-8-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-552-FTC-8-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">This implies that <span class="process-math">\(A(x + h) - A(x)\)</span> should give us the area on <span class="process-math">\([x,x + h]\text{,}\)</span> which is the area of the orange region. Hence, we know that the <em class="emphasis">average rate of change</em> is the area of the orange region over <span class="process-math">\(h\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-552-FTC-9">To obtain the derivative, aka the <em class="emphasis">instantaneous rate of change</em>, we want <span class="process-math">\(h\)</span> to be a super very really small number, so the orange region should be a super skinny region whose area can be approximated using <em class="alert">one</em> skinny rectangle strip.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-552-FTC-10">We learned about approximating the area using rectangles in <a href="sec51-ApproximatingArea.html" class="internal" title="Section 5.1: Approximating and Computing Area">Section 5.1</a>! The two easier approximation methods are the left-endpoint approximation and the right endpoint approximation. Then which method should we use to approximate the area of the orange region?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-552-FTC-11">
+<div class="para">It turns out that it doesn’t matter (because of the Squeeze theorem... if you want a more rigorous argument, ask Richard or read the proof in the textbook). For demonstration purposes, let’s use the right-endpoint approximation to approximate the area of the orange region. Then the height of the skinny rectangle strip is <span class="process-math">\(f(x + h)\text{.}\)</span> So we know</div>
+<div class="displaymath process-math" id="subsec-552-FTC-11-2">
+\begin{equation*}
+A(x + h) - A(x) \approx h\cdot f(x + h)
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-552-FTC-12">
+<div class="para">Putting all these pieces to the definition of the derivative (the one with the limit), we obtain</div>
+<div class="displaymath process-math" id="subsec-552-FTC-12-1">
+\begin{align*}
+A'(x) \amp= \lim_{h\to 0} \frac{A(x + h) - A(x)}{h} \\
+\amp= \lim_{h\to 0} \frac{h\cdot f(x + h)}{h} \\
+\amp= \lim_{h\to 0} f(x + h) \\
+\amp= f(x) 
+\end{align*}
+</div>
+<div class="para">Ha! We did it! We proved the Fundamental Theorem of Calculus!</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-552-FTC-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: THE Fundamental Theorem of Calculus"><a tabindex="-1" href="#subsec-552-FTC" title="Copy heading and permalink for Subsection: THE Fundamental Theorem of Calculus" aria-label="Copy heading and permalink for Subsection: THE Fundamental Theorem of Calculus">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-553-UsingFTC">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">To apply the FTC...</span>
+</h2>
+<div class="para" id="subsec-553-UsingFTC-2">To apply the Fundamental Theorem of Calculus, make sure the format of the question will match the left-hand side of the equation in the theorem. Let’s start with the easy ones where we can simply apply the Fundamental Theorem of Calculus without any slick tricks!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-553-UsingFTC-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-553-UsingFTC-3-1">Calculate the following derivative <span class="process-math">\(\displaystyle \frac{d}{dx} \int_0^x \left(t^5 - 9t^3\right)\, dt \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-553-UsingFTC-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-553-UsingFTC-3-2-1">Does the expression match up with the left-hand side of the equation <a href="sec55-FTCpartII.html#eqn-thm-FTC-I" class="xref" data-knowl="./knowl/xref/eqn-thm-FTC-I.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 5.5.3">(5.5.3)</a> in the Fundamental Theorem of Calculus? If so, then what does the Fundamental Theorem of Calculus tell us?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.5.11.1"><a tabindex="-1" href="#subsec-553-UsingFTC-3-2" title="Copy heading and permalink for Hint 5.5.11.1" aria-label="Copy heading and permalink for Hint 5.5.11.1">🔗</a></div>
+</div></details>
+<details id="subsec-553-UsingFTC-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-553-UsingFTC-3-3-1">
+<div class="para">Observe that format matches up perfectly! So we are taking the derivative of the accumulation function with <span class="process-math">\(f(t) = t^5 - 9t^3\text{.}\)</span> By the Fundamental Theorem of Calculus, we obtain</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-3-3-1-2">
+\begin{equation*}
+\frac{d}{dx} \int_0^x \left(t^5 - 9t^3\right)\, dt = x^5 - 9x^3
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.5.11.1"><a tabindex="-1" href="#subsec-553-UsingFTC-3-3" title="Copy heading and permalink for Solution 5.5.11.1" aria-label="Copy heading and permalink for Solution 5.5.11.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.5.11"><a tabindex="-1" href="#subsec-553-UsingFTC-3" title="Copy heading and permalink for Example 5.5.11" aria-label="Copy heading and permalink for Example 5.5.11">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-553-UsingFTC-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-553-UsingFTC-4-1">Calculate the following derivative <span class="process-math">\(\displaystyle \frac{d}{ds} \int_s^{-2} \tan\left(\frac{1}{1 + u^2}\right)\, du \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-553-UsingFTC-4-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-553-UsingFTC-4-2-1">Does the expression match up with the left-hand side of the equation <a href="sec55-FTCpartII.html#eqn-thm-FTC-I" class="xref" data-knowl="./knowl/xref/eqn-thm-FTC-I.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 5.5.3">(5.5.3)</a> in the Fundamental Theorem of Calculus? If not, how can we manipulate the definite integral to make it match up with the equation?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.5.12.1"><a tabindex="-1" href="#subsec-553-UsingFTC-4-2" title="Copy heading and permalink for Hint 5.5.12.1" aria-label="Copy heading and permalink for Hint 5.5.12.1">🔗</a></div>
+</div></details>
+<details id="subsec-553-UsingFTC-4-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-553-UsingFTC-4-3-1">Observe that the expression doesn’t quite match up... We want the variable of the accumulation function to be on the upper limit and the number to be on the lower limit. It would be so nice if there is a way for us to reverse the upper and the lower limits...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-553-UsingFTC-4-3-2">There is actually a way to do so! Richard came to our rescue and direct us to the <a href="sec52-DefiniteIntegral.html#thm-Property_DefiniteIntegral" class="xref" data-knowl="./knowl/xref/thm-Property_DefiniteIntegral.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 5.2.17: Properties of Definite Integrals">Theorem 5.2.17</a>!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-4-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-553-UsingFTC-4-3-3">
+<div class="para">By a property of definite integral, we obtain</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-4-3-3-1">
+\begin{equation*}
+\int_s^{-2} \tan\left(\frac{1}{1 + u^2}\right)\, du = - \int_{-2}^s \tan\left(\frac{1}{1 + u^2}\right)\, du
+\end{equation*}
+</div>
+<div class="para">Ha! we can now calculate the derivative using the Fundamental Theorem of Calculus!</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-4-3-3-2">
+\begin{align*}
+\frac{d}{ds} \int_s^{-2} \tan\left(\frac{1}{1 + u^2}\right)\, du \amp= \frac{d}{ds} \left( -\int_{-2}^2 \tan\left(\frac{1}{1 + u^2}\right)\, du\right) \\
+\amp= -\frac{d}{ds} \int_{-2}^s \tan\left(\frac{1}{1 + u^2}\right)\, du \\
+\amp= -\tan\left(\frac{1}{1 + s^2}\right) 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-4-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.5.12.1"><a tabindex="-1" href="#subsec-553-UsingFTC-4-3" title="Copy heading and permalink for Solution 5.5.12.1" aria-label="Copy heading and permalink for Solution 5.5.12.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.5.12"><a tabindex="-1" href="#subsec-553-UsingFTC-4" title="Copy heading and permalink for Example 5.5.12" aria-label="Copy heading and permalink for Example 5.5.12">🔗</a></div>
+</article>
+<div class="para" id="subsec-553-UsingFTC-5">Let’s kick things up a notch and see how the Fundamental Theorem of Theorem can be applied to more tricky problems.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-553-UsingFTC-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-553-UsingFTC-6-1">Calculate the following derivative <span class="process-math">\(\displaystyle \frac{d}{dx} \int_0^{x^2} \frac{t\, dt}{t + 1} \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-553-UsingFTC-6-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-553-UsingFTC-6-2-1">Does the expression match up with the left-hand side of the equation <a href="sec55-FTCpartII.html#eqn-thm-FTC-I" class="xref" data-knowl="./knowl/xref/eqn-thm-FTC-I.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 5.5.3">(5.5.3)</a> in the Fundamental Theorem of Calculus? What seems to be the mismatch?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-553-UsingFTC-6-2-2">A good advice is to find out what the accumulation function is in this case...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.5.13.1"><a tabindex="-1" href="#subsec-553-UsingFTC-6-2" title="Copy heading and permalink for Hint 5.5.13.1" aria-label="Copy heading and permalink for Hint 5.5.13.1">🔗</a></div>
+</div></details>
+<details id="subsec-553-UsingFTC-6-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-553-UsingFTC-6-3-1">
+<div class="para">The integrand is <span class="process-math">\(f(t) = \dfrac{t}{t + 1}\text{.}\)</span> Then we can define its accumulation function to be</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-6-3-1-2">
+\begin{equation*}
+A(x) = \int_0^x \frac{t}{t + 1}\, dt
+\end{equation*}
+</div>
+<div class="para">Well we are not really tasked to take the derivative of <span class="process-math">\(A(x)\text{,}\)</span> but more like <span class="process-math">\(A\left(x^2\right)\text{...}\)</span> This is a composite function with the outside function of <span class="process-math">\(A\)</span> and inside function of <span class="process-math">\(f\text{.}\)</span> Do we know how to take the derivative of a composite function?</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-553-UsingFTC-6-3-2">
+<div class="para">We do! We can take the derivative of a composite function using the chain rule back in calculus 1! By the chain rule, we know that</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-6-3-2-1">
+\begin{align*}
+\frac{d}{dx}\left(A\left(x^2\right)\right) \amp= A'\left(x^2\right)\cdot \frac{d}{dx}\left(x^2\right)\\
+\amp= A'\left(x^2\right)\cdot 2x 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-553-UsingFTC-6-3-3">The last question to resolve here is about the derivative of the accumulation function. By the Fundamental Theorem of Calculus, <span class="process-math">\(A'(x) = f(x)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-553-UsingFTC-6-3-4">
+<div class="para">Putting these two pieces together, we obtain</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-6-3-4-1">
+\begin{align*}
+\frac{d}{dx} \int_0^{x^2} \frac{t\, dt}{t + 1} \amp= A'\left(x^2\right)\cdot \frac{d}{dx}\left(x^2\right) \\
+\amp= A'\left(x^2\right)\cdot 2x \\
+\amp= f\left(x^2\right)\cdot 2x \\
+\amp= \frac{x^2}{x^2 + 1}\cdot 2x \\
+\amp= \frac{2x^3}{x^2 + 1} 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-6-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.5.13.1"><a tabindex="-1" href="#subsec-553-UsingFTC-6-3" title="Copy heading and permalink for Solution 5.5.13.1" aria-label="Copy heading and permalink for Solution 5.5.13.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.5.13"><a tabindex="-1" href="#subsec-553-UsingFTC-6" title="Copy heading and permalink for Example 5.5.13" aria-label="Copy heading and permalink for Example 5.5.13">🔗</a></div>
+</article>
+<div class="para" id="subsec-553-UsingFTC-7">Now we know how to deal with the case where one of the limits of integration contains a variable. What about the case where both the limits of integration contain a variable? Let’s look at an example of this.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-553-UsingFTC-8"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-553-UsingFTC-8-1">Calculate the following derivative <span class="process-math">\(\displaystyle \frac{d}{dx} \int_{x^2}^{x^4} \sqrt{t}\, dt \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-8-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-553-UsingFTC-8-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-553-UsingFTC-8-2-1">Obviously, we can’t use the Fundamental Theorem of Calculus directly since the lower limit of this integral is not a constant.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-8-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-553-UsingFTC-8-2-2">Dealing with non-constant upper and lower limits are kind of a lot at once... It would be so nice if there is a property of definite integral that allows us to split the integral into two pieces, so we can deal with one of the non-constant limit of integration at a time...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-8-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.5.14.1"><a tabindex="-1" href="#subsec-553-UsingFTC-8-2" title="Copy heading and permalink for Hint 5.5.14.1" aria-label="Copy heading and permalink for Hint 5.5.14.1">🔗</a></div>
+</div></details>
+<details id="subsec-553-UsingFTC-8-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-553-UsingFTC-8-3-1">
+<div class="para">We can actually split the integral into two pieces by one of the properties in <a href="sec52-DefiniteIntegral.html#thm-Property_DefiniteIntegral" class="xref" data-knowl="./knowl/xref/thm-Property_DefiniteIntegral.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 5.2.17: Properties of Definite Integrals">Theorem 5.2.17</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-Property_DefiniteIntegral.html" id="subsec-553-UsingFTC-8-3-1-2">
+\begin{align*}
+\int_{x^2}^{x^4} \sqrt{t}\, dt \amp= \int_a^{x^4} \sqrt{t}\, dt + \int_{x^2}^a \sqrt{t}\, dt \\
+\amp= \int_a^{x^4} \sqrt{t}\, dt - \int_a^{x^2} \sqrt{t}\, dt 
+\end{align*}
+</div>
+<div class="para">where <span class="process-math">\(a\)</span> is a constant within the domain of <span class="process-math">\(y = \sqrt{t}\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-8-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-553-UsingFTC-8-3-2">Ha! We know how to deal with the two pieces of the integrals! We will need the chain rule for both pieces of the integrals!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-8-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-553-UsingFTC-8-3-3">
+<div class="para">Let’s again define the accumulation function to be</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-8-3-3-1">
+\begin{equation*}
+A(x) = \int_a^x \sqrt{t}\, dt
+\end{equation*}
+</div>
+<div class="para">Then we obtain</div>
+<div class="displaymath process-math" id="subsec-553-UsingFTC-8-3-3-2">
+\begin{align*}
+\frac{d}{dx}\int_{x^2}^{x^4} \sqrt{t}\, dt \amp= \frac{d}{dx}\left(A\left(x^4\right) - A\left(x^2\right)\right) \\
+\amp= \frac{d}{dx}\left(A\left(x^4\right)\right) - \frac{d}{dx}\left(A\left(x^2\right)\right) \\
+\amp=  A'\left(x^4\right)\cdot \frac{d}{dx}\left(x^4\right) - A'\left(x^2\right)\cdot \frac{d}{dx}\left(x^2\right) \amp\amp \text{by Chain Rule}\\
+\amp=  A'\left(x^4\right)\cdot 4x^3 -  A'\left(x^2\right)\cdot 2x\\
+\amp= \sqrt{x^4}\cdot 4x^3 - \sqrt{x^2}\cdot 2x \amp\amp \text{by FTC} \\
+\amp= 4x^5 - 2x|x| 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-8-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.5.14.1"><a tabindex="-1" href="#subsec-553-UsingFTC-8-3" title="Copy heading and permalink for Solution 5.5.14.1" aria-label="Copy heading and permalink for Solution 5.5.14.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.5.14"><a tabindex="-1" href="#subsec-553-UsingFTC-8" title="Copy heading and permalink for Example 5.5.14" aria-label="Copy heading and permalink for Example 5.5.14">🔗</a></div>
+</article>
+<div class="para logical" id="subsec-553-UsingFTC-9">
+<div class="para">Observe that the two tricks that we are using are:</div>
+<ul class="disc" id="subsec-553-UsingFTC-9-1">
+<li id="subsec-553-UsingFTC-9-1-1">
+<div class="para" id="subsec-553-UsingFTC-9-1-1-1">Properties of definite integral to split up the integral AND put the non-constant part to the upper limit; and<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-9-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-553-UsingFTC-9-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-553-UsingFTC-9-1-2">
+<div class="para" id="subsec-553-UsingFTC-9-1-2-1">Chain rule to find the derivative.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-9-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-553-UsingFTC-9-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">In fact, we can generalize this to obtain a fancy formula we can use to solve similar problems once and for all!</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-553-UsingFTC-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-Generalized-FTC"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="thm-Generalized-FTC-1-1">
+<div class="displaymath process-math" id="thm-Generalized-FTC-1-1-1">
+\begin{equation*}
+\frac{d}{dx}\int_{u(x)}^{v(x)} f(t)\, dt = f\left(v(x)\right)\cdot v'(x) - f\left(u(x)\right)\cdot u'(x)
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-Generalized-FTC-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.5.15"><a tabindex="-1" href="#thm-Generalized-FTC" title="Copy heading and permalink for Theorem 5.5.15" aria-label="Copy heading and permalink for Theorem 5.5.15">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Subsection: To apply the FTC..."><a tabindex="-1" href="#subsec-553-UsingFTC" title="Copy heading and permalink for Subsection: To apply the FTC..." aria-label="Copy heading and permalink for Subsection: To apply the FTC...">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-554-Graph-AccumulationFunction">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Graph of the Accumulation Function</span>
+</h2>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-2">We investigated the accumulation function earlier in this section. Recall the accumulation function takes the input of the upper limit of the definite integral and spits out the output of the area under the curve. We are now investigating the <em class="emphasis">graph</em> of the accumulation function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-3">One characteristics of a graph, as you learned back in calculus 1, are the local extrema (peaks and valleys on the graph). Can we predict where the peaks and valleys of the accumulation function are at given a graph of a function?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-554-Graph-AccumulationFunction-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-554-Graph-AccumulationFunction-4-1">
+<div class="para">Let <span class="process-math">\(A\)</span> be the accumulation function defined as</div>
+<div class="displaymath process-math" id="subsec-554-Graph-AccumulationFunction-4-1-2">
+\begin{equation*}
+A(x) = \int_0^x f(t)\, dt
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(y = f(t)\)</span> is a function whose graph is shown below.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="subsec-554-Graph-AccumulationFunction-4-2"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/subsec-554-Graph-AccumulationFunction-4-2-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.17<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The graph of <span class="process-math">\(y = f(t)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.17"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-2" title="Copy heading and permalink for Figure 5.5.17" aria-label="Copy heading and permalink for Figure 5.5.17">🔗</a></div></figcaption>
+</figure>
+<div class="para logical" id="subsec-554-Graph-AccumulationFunction-4-3">
+<ol class="lower-alpha" style="list-style: ptx-marker-1;" id="subsec-554-Graph-AccumulationFunction-4-3-1">
+<li id="subsec-554-Graph-AccumulationFunction-4-3-1-1">
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-3-1-1-1">Determine the intervals on which the accumulation function, <span class="process-math">\(A\)</span> is increasing (and decreasing)<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-3-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item a"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-3-1-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="subsec-554-Graph-AccumulationFunction-4-3-1-2">
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-3-1-2-1">Determine the value of <span class="process-math">\(x\)</span> where the accumulation function, <span class="process-math">\(A\text{,}\)</span> has a peak (and valley).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-3-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item b"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-3-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-554-Graph-AccumulationFunction-4-4" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-4-1">Recall that the accumulation function <em class="emphasis">accumulates</em> the signed area under the curve starting from <span class="process-math">\(x = 0\text{.}\)</span> The region above the <span class="process-math">\(x\)</span>-axis should have a positive signed area and the region below the <span class="process-math">\(x\)</span>-axis should have a negative signed area.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-4-2">So do we know at which point(s) we starts <em class="emphasis">accumulating</em> positive area (which makes the overall area greater) and negative area (which makes the overall area smaller)?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.5.16.1"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-4" title="Copy heading and permalink for Hint 5.5.16.1" aria-label="Copy heading and permalink for Hint 5.5.16.1">🔗</a></div>
+</div></details>
+<details id="subsec-554-Graph-AccumulationFunction-4-5" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-5-1">Observe that the enclosed region is above the <span class="process-math">\(x\)</span>-axis on <span class="process-math">\((0,4)\)</span> and <span class="process-math">\((8,12)\text{.}\)</span> This implies that we are <em class="emphasis">accumulating</em> positive area in these two regions, making the value of the accumulation function <span class="process-math">\(A\)</span> increasing.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-5-2">Similarly, the region on <span class="process-math">\((4,8)\)</span> is below the <span class="process-math">\(x\)</span>-axis, so we are <em class="emphasis">accumulating</em> negative area in this region, making the value of the accumulation function <span class="process-math">\(A\)</span> decreasing.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-5-3">Hence, <span class="process-math">\(A\)</span> is increasing in the interval <span class="process-math">\((0,4)\cup (8,12)\)</span> and decreasing in the interval <span class="process-math">\((4,8)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-5-4">Now let’s think about the peaks and valleys. At the point of <span class="process-math">\(x = 4\text{,}\)</span> we start to <em class="emphasis">accumulate</em> negative area, which makes the overall area smaller. This implies that there is a peak at <span class="process-math">\(x = 4\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-4-5-5">Similarly, at the point of <span class="process-math">\(x = 8\text{,}\)</span> we start to <em class="emphasis">accumulate</em> positive area, which makes the overall area greater. This implies that there is a valley at <span class="process-math">\(x = 8\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.5.16.1"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4-5" title="Copy heading and permalink for Solution 5.5.16.1" aria-label="Copy heading and permalink for Solution 5.5.16.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.5.16"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-4" title="Copy heading and permalink for Example 5.5.16" aria-label="Copy heading and permalink for Example 5.5.16">🔗</a></div>
+</article>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-5">The above example shows an intuitive sense of reasoning about the graph of the accumulation function by imagining how the overall area is changing.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-554-Graph-AccumulationFunction-6">If you want to be fancier, recall the accumulation function, <span class="process-math">\(A\text{,}\)</span> is an antiderivative of the function <span class="process-math">\(f\text{,}\)</span> guaranteed by FTC. We can reverse-engineer the first derivative test you learned back in calculus 1. That is, the critical points (in this problem, peaks and valley) of the accumulation function will occur at the point where the derivative of the accumulation function, aka <span class="process-math">\(f\)</span> is <span class="process-math">\(0\text{.}\)</span> The accumulation function is increasing if its derivative, aka <span class="process-math">\(f\text{,}\)</span> is positive, and decreasing if its derivative, <span class="process-math">\(f\text{,}\)</span> is negative.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: The Graph of the Accumulation Function"><a tabindex="-1" href="#subsec-554-Graph-AccumulationFunction" title="Copy heading and permalink for Subsection: The Graph of the Accumulation Function" aria-label="Copy heading and permalink for Subsection: The Graph of the Accumulation Function">🔗</a></div>
+</section>
+<section class="worksheet" id="ws-sec55" data-margins="0.75in 0.75in 0.75in 0.75in">
+<h2 class="heading hide-type">
+<span class="type">Worksheet</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Some Exercises for this section</span><div class="print-links"><a href="?printpreview=ws-sec55" class="print-link" title="Print preview"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span></a></div>
+</h2>
+<section class="introduction" id="ws-sec55-2">
+<div class="para" id="ws-sec55-2-1">I included some practice problems that cover some main concepts in this section. You don’t need to turn it in, but I highly encourage you to work on this with your classmates. I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. Reach out to Richard for help if you get stuck or have any questions.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ws-sec55-2-2">I will only include the final answer to some of the problems for you to check your result. If you want to check your work, talk to Richard and he is happy to discuss the process with you.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section>
+<div class="exercisegroup" id="ws-sec55-3">
+<h3 class="heading"><span class="title">Exercise Group.</span></h3>
+<div class="introduction" id="ws-sec55-3-1">
+<div class="para" id="ws-sec55-3-1-1">Calculate the following derivative.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="ws-sec55-3-2"><h4 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec55-3-2-1-1">
+<span class="process-math">\(\displaystyle \frac{d}{dx}\int_4^x e^{3t}\, dt\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 1"><a tabindex="-1" href="#ws-sec55-3-2" title="Copy heading and permalink for Worksheet Exercise 1" aria-label="Copy heading and permalink for Worksheet Exercise 1">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec55-3-3"><h4 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec55-3-3-1-1">
+<span class="process-math">\(\displaystyle \frac{d}{dx}\int_x^{-\frac{\pi}{4}} \sec^2\left(\theta\right)\, d\theta\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-3-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 2"><a tabindex="-1" href="#ws-sec55-3-3" title="Copy heading and permalink for Worksheet Exercise 2" aria-label="Copy heading and permalink for Worksheet Exercise 2">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec55-3-4"><h4 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec55-3-4-1-1">
+<span class="process-math">\(\displaystyle \frac{d}{dx}\int_1^\frac{1}{x} \cos^3(t)\, dt\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-3-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 3"><a tabindex="-1" href="#ws-sec55-3-4" title="Copy heading and permalink for Worksheet Exercise 3" aria-label="Copy heading and permalink for Worksheet Exercise 3">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec55-3-5"><h4 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec55-3-5-1-1">
+<span class="process-math">\(\displaystyle \frac{d}{du}\int_{-u}^{3u} \sqrt{x^2 + 1} \, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 4"><a tabindex="-1" href="#ws-sec55-3-5" title="Copy heading and permalink for Worksheet Exercise 4" aria-label="Copy heading and permalink for Worksheet Exercise 4">🔗</a></div>
+</article>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Exercise Group 1–4"><a tabindex="-1" href="#ws-sec55-3" title="Copy heading and permalink for Exercise Group 1–4" aria-label="Copy heading and permalink for Exercise Group 1–4">🔗</a></div>
+</div>
+<article class="exercise exercise-like" id="ws-sec55-4"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ws-sec55-4-1-1">
+<div class="para">Prove the formula</div>
+<div class="displaymath process-math" id="ws-sec55-4-1-1-1">
+\begin{equation*}
+\frac{d}{dx}\int_{u(x)}^{v(x)} f(t)\, dt = f\left(v(x)\right)\cdot v'(x) - f\left(u(x)\right)\cdot u'(x)
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> 
+<div class="para" id="ws-sec55-4-1-2">
+<em class="emphasis">Note:</em> By saying "prove", Richard means to justify this formula informally. The goal here is to make sure you know how the formula is derived and why each component is necessary. Richard will never look for a technical mathematical proof in this class, but you are certainly more than welcome to try coming up with a proof-y proof and Richard is always happy to chat about it.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-4-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 5"><a tabindex="-1" href="#ws-sec55-4" title="Copy heading and permalink for Worksheet Exercise 5" aria-label="Copy heading and permalink for Worksheet Exercise 5">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec55-5"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ws-sec55-5-1-1">
+<div class="para">Let <span class="process-math">\(A\)</span> be the accumulation function defined as</div>
+<div class="displaymath process-math" id="ws-sec55-5-1-1-2">
+\begin{equation*}
+A(x) = \int_0^x t\sin(t)\, dt
+\end{equation*}
+</div>
+<div class="para">Below is the graph of <span class="process-math">\(f(t) = t\sin(t)\)</span> on <span class="process-math">\([0,3\pi]\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> 
+<figure class="figure figure-like" id="fig-xsin-x-0-3pi"><div class="image-box" style="width: 70%; margin-left: 15%; margin-right: 15%;"><img src="generated/latex-image/fig-xsin-x-0-3pi-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.5.18<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The graph of <span class="process-math">\(f(t) = t\sin(t)\)</span><div class="autopermalink" aria-hidden="true" data-description="Figure 5.5.18"><a tabindex="-1" href="#fig-xsin-x-0-3pi" title="Copy heading and permalink for Figure 5.5.18" aria-label="Copy heading and permalink for Figure 5.5.18">🔗</a></div></figcaption>
+</figure> 
+<div class="para logical" id="ws-sec55-5-1-3">
+<ol class="lower-alpha" style="list-style: ptx-marker-1;" id="ws-sec55-5-1-3-1">
+<li id="ws-sec55-5-1-3-1-1">
+<div class="para" id="ws-sec55-5-1-3-1-1-1">Determine the intervals on which the accumulation function, <span class="process-math">\(A\)</span> is increasing (and decreasing)<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-5-1-3-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 6.a"><a tabindex="-1" href="#ws-sec55-5-1-3-1-1" title="Copy heading and permalink for Item 6.a" aria-label="Copy heading and permalink for Item 6.a">🔗</a></div>
+</li>
+<li id="ws-sec55-5-1-3-1-2">
+<div class="para" id="ws-sec55-5-1-3-1-2-1">Determine the value of <span class="process-math">\(x\)</span> where the accumulation function, <span class="process-math">\(A\text{,}\)</span> has a peak (and valley).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-5-1-3-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 6.b"><a tabindex="-1" href="#ws-sec55-5-1-3-1-2" title="Copy heading and permalink for Item 6.b" aria-label="Copy heading and permalink for Item 6.b">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec55-5-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 6"><a tabindex="-1" href="#ws-sec55-5" title="Copy heading and permalink for Worksheet Exercise 6" aria-label="Copy heading and permalink for Worksheet Exercise 6">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Worksheet: Some Exercises for this section"><a tabindex="-1" href="#ws-sec55" title="Copy heading and permalink for Worksheet: Some Exercises for this section" aria-label="Copy heading and permalink for Worksheet: Some Exercises for this section">🔗</a></div>
+</section><div class="autopermalink" aria-hidden="true" data-description="Section 5.5: The Fundamental Theorem of Calculus, Part II"><a tabindex="-1" href="#sec55-FTCpartII" title="Copy heading and permalink for Section 5.5: The Fundamental Theorem of Calculus, Part II" aria-label="Copy heading and permalink for Section 5.5: The Fundamental Theorem of Calculus, Part II">🔗</a></div>
+</section>
+</div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec54-FTCpartI.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec56-NetChange.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

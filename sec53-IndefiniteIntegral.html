@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: salem                          *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Indefinite Integral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<style>
+@counter-style ptx-marker-1 { system: extends lower-alpha; prefix: '('; suffix: ') '; }
+</style>
+<script type="module">import { startMathJax } from './_static/pretext/js/dist/mathjax_startup.js';
+startMathJax({
+hasWebworkReps: false,
+hasSage: false,
+isReact: false,
+htmlPresentation: false,
+lang: "en-US",
+});
+</script><script defer data-pretext-mathjax="true" onerror="this.dataset.loadFailed = 'true';" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta name="twitter:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="og:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta property="book:title" content="MTH 252Z Integral Calculus: Fall 2026">
+<meta name="twitter:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta property="og:description" content="A simple string (no markup is allowed) to describe your book.">
+<meta name="twitter:card" content="summary">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/dist/pretext-core.js?v=2.54"></script><script src="_static/pretext/js/dist/pretext-read-aloud.js?v=2.54"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.6ad113829064d43a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.02090e9f6a81e70e.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/pretext/js/dist/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/dist/pretext_search.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="changeme" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead" role="banner"><div class="ptx-banner"><div class="title-container">
+<div class="heading ptx-banner-heading"><a href="MTH252Z_Fall26.html"><span class="title">MTH 252Z Integral Calculus</span> <span class="subtitle">Fall 2026</span></a></div>
+<p class="byline">Richard Zhao</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button id="ptx-toc-toggle" type="button" aria-controls="ptx-sidebar" class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="ptx-search-box">
+<div class="ptx-search-widget"><button id="ptx-search-button" type="button" class="ptx-search-button button" title="Search Book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<dialog id="ptx-search-dialog" class="ptx-dialog ptx-search-dialog"><div class="ptx-search-dialog-controls">
+<input aria-label="Search term" id="ptx-search-terms" class="ptx-search-terms" type="text" name="terms" placeholder="Search terms"><button aria-label="Close" id="ptx-search-close" class="ptx-search-close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div id="ptx-search-status" class="ptx-search-status" aria-live="polite" aria-atomic="true"></div>
+<h2 class="heading ptx-search-results-heading">Search Results: </h2>
+<div id="ptx-search-empty" class="ptx-search-empty"><span>No results.</span></div>
+<ol id="ptx-search-results" class="ptx-search-results"></ol></dialog>
+</div>
+<span class="nav-other-controls"><button id="ptx-read-aloud-button" class="ptx-read-aloud-button button" title="Read aloud" aria-expanded="false"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf1bc;</span><span class="name">Read aloud</span></button><div id="ptx-read-aloud-player" class="ptx-read-aloud-player" hidden="hidden" role="group" aria-label="Read aloud">
+<button id="ptx-read-aloud-prev" class="button" title="Previous sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe045;</span></button><button id="ptx-read-aloud-toggle" class="ptx-read-aloud-toggle button" title="Play"><span class="ptx-read-aloud-icon-play"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></span><span class="ptx-read-aloud-icon-pause"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe034;</span></span></button><button id="ptx-read-aloud-next" class="button" title="Next sentence"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe044;</span></button><a id="ptx-read-aloud-continue" class="ptx-read-aloud-continue button" hidden="hidden">Continue<span class="icon material-symbols-outlined" aria-hidden="true">&#xe037;</span></a><button id="ptx-read-aloud-settings-button" class="ptx-read-aloud-settings-button button" title="Reading settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe429;</span></button>
+</div>
+<dialog class="ptx-dialog ptx-read-aloud-settings-popup" id="ptx-read-aloud-settings-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Read aloud settings</h2>
+<button class="ptx-read-aloud-settings-close-button button" id="ptx-read-aloud-settings-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label for="ptx-read-aloud-voice"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe91f;</span><span>Voice</span></label><select id="ptx-read-aloud-voice"></select><label class="ptx-readability-slider-label" for="ptx-read-aloud-rate"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe9e4;</span><span>Reading speed</span><output id="ptx-read-aloud-rate-value" for="ptx-read-aloud-rate">1×</output></label><input type="range" id="ptx-read-aloud-rate" min="0.5" max="2" step="0.1" value="1"><label for="ptx-read-aloud-asides"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d7;</span><span>Collapsed content</span></label><select id="ptx-read-aloud-asides"><option value="skip">Announce, do not read</option>
+<option value="read">Read automatically</option></select><label for="ptx-read-aloud-autoscroll"><input type="checkbox" id="ptx-read-aloud-autoscroll" checked><span>Follow along (auto-scroll)</span></label><label for="ptx-read-aloud-autocontinue"><input type="checkbox" id="ptx-read-aloud-autocontinue"><span>Continue to the next page automatically</span></label>
+</div></dialog><button id="ptx-readability-options-button" class="ptx-readability-options-button button" title="Readability settings"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf6f1;</span><span class="name">Readability settings</span></button><dialog class="ptx-dialog ptx-readability-options-popup" id="ptx-readability-options-popup"><div class="ptx-readability-options-popup-controls">
+<h2 class="heading">Readability settings</h2>
+<button class="ptx-readability-options-close-button button" id="ptx-readability-options-close-button" title="Close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-line-height"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe240;</span><span>Line height</span><output id="ptx-readability-line-height-value" for="ptx-readability-line-height">1.35</output></label><input type="range" id="ptx-readability-line-height" min="1.10" max="3" step="0.05" value="1.35">
+</div>
+<div class="ptx-readability-options-group">
+<label class="ptx-readability-slider-label" for="ptx-readability-font-size"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe245;</span><span>Content font size</span><output id="ptx-readability-font-size-value" for="ptx-readability-font-size">100%</output></label><input type="range" id="ptx-readability-font-size" min="0.8" max="1.5" step="0.05" value="1">
+</div>
+<fieldset class="ptx-readability-options-group ptx-readability-options-group-theme">
+<legend>Theme</legend>
+<label for="ptx-readability-theme-system"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-system" value="system"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe1ab;</span><span>System</span></label><label for="ptx-readability-theme-light"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-light" value="light"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe518;</span><span>Light</span></label><label for="ptx-readability-theme-dark"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-dark" value="dark"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span>Dark</span></label>
+</fieldset>
+<fieldset class="ptx-readability-options-group">
+<legend>Assistive technologies</legend>
+<label for="ptx-readability-accessible-permalinks"><input type="checkbox" id="ptx-readability-accessible-permalinks"><span>🔗</span><span>Expose permalinks</span></label>
+</fieldset>
+<div class="ptx-readability-options-group"><button type="button" class="ptx-readability-reset-button button" id="ptx-readability-reset-button"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf053;</span><span class="name">Reset All</span></button></div></dialog></span><span class="treebuttons"><a class="previous-button button" href="sec52-DefiniteIntegral.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch5-Integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec54-FTCpartI.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" role="complementary" class="ptx-sidebar"><nav id="ptx-toc" tabindex="-1" aria-label="Contents" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch5-Integration.html" class="internal"><span class="codenumber">5</span> <span class="title">Integration</span></a></div>
+<ul class="structural toc-item-list contains-active" id="ptx-toc-group-ch5-Integration">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec51-ApproximatingArea.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Approximating and Computing Area</span></a></div>
+<ul id="ptx-toc-group-sec51-ApproximatingArea" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-511-Approximate_Rectangle" class="internal"><span class="title">Approximating Area by Rectangles</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-512-SummationNotation" class="internal"><span class="title">Summation Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-513-Compute_Limit_Approximation" class="internal"><span class="title">Computing Area as the Limit of Approximation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#subsec-514-LimitSummation" class="internal"><span class="title">Limit of the approximation algebraically</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec51-ApproximatingArea.html#ws-sec51" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec52-DefiniteIntegral.html" class="internal"><span class="codenumber">5.2</span> <span class="title">The Definite Integral</span></a></div>
+<ul id="ptx-toc-group-sec52-DefiniteIntegral" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-521-RiemannSum" class="internal"><span class="title">Riemann Sum and Definite Integral</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-522-SignedArea" class="internal"><span class="title">Definite Integral and Signed Area</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#subsec-523-Properties_DefiniteIntegral" class="internal"><span class="title">Properties of Definite Integral</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec52-DefiniteIntegral.html#ws-sec52" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html" class="internal"><span class="codenumber">5.3</span> <span class="title">The Indefinite Integral</span></a></div>
+<ul class="structural toc-item-list active" id="ptx-toc-group-sec53-IndefiniteIntegral">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-531-AntiderivativesANDIndefiniteIntegrals" class="internal"><span class="title">Antiderivatives and Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-532-IndefiniteIntegralFormulas-Basic" class="internal"><span class="title">Some (basic) Indefinite Integral Formulas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#subsec-533-DifferentialEquationsANDIVP" class="internal"><span class="title">Differential Equations and IVP</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#sec53-IndefiniteIntegral-8" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec53-IndefiniteIntegral.html#ws-sec53" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec54-FTCpartI.html" class="internal"><span class="codenumber">5.4</span> <span class="title">The Fundamental Theorem of Calculus, Part I</span></a></div>
+<ul id="ptx-toc-group-sec54-FTCpartI" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-541-FTC-Corollary" class="internal"><span class="title">A Corollary of the Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-542-Importance-FTC-Corollary" class="internal"><span class="title">Why is this corollary important?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#subsec-543-Examples-FTC-Corollary" class="internal"><span class="title">Examples on Applying FTC Corollary</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec54-FTCpartI.html#sec54-FTCpartI-7" class="internal"><span class="title">Something to ponder on...</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec54-FTCpartI.html#ws-sec54" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec55-FTCpartII.html" class="internal"><span class="codenumber">5.5</span> <span class="title">The Fundamental Theorem of Calculus, Part II</span></a></div>
+<ul id="ptx-toc-group-sec55-FTCpartII" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-551-AccumulationFunction" class="internal"><span class="title">Accumulation Functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-552-FTC" class="internal"><span class="title">THE Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-553-UsingFTC" class="internal"><span class="title">To apply the FTC...</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec55-FTCpartII.html#subsec-554-Graph-AccumulationFunction" class="internal"><span class="title">The Graph of the Accumulation Function</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec55-FTCpartII.html#ws-sec55" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec56-NetChange.html" class="internal"><span class="codenumber">5.6</span> <span class="title">Net Change as the Integral of a Rate of Change</span></a></div>
+<ul id="ptx-toc-group-sec56-NetChange" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-561-DistanceVelocity" class="internal"><span class="title">Relationship between Displacement and Velocity</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-562-DisplacementDistance" class="internal"><span class="title">Displacement vs. Distance Traveled</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec56-NetChange.html#subsec-563-NetChange" class="internal"><span class="title">General Net Change</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec56-NetChange.html#ws-sec56" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec57-uSub.html" class="internal"><span class="codenumber">5.7</span> <span class="title">The Substitution Method</span></a></div>
+<ul id="ptx-toc-group-sec57-uSub" class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sec57-uSub.html#subsec-571-Indefinite" class="internal"><span class="title">Substitution Method for Indefinite Integrals</span></a></div>
+<ul id="ptx-toc-group-subsec-571-Indefinite" class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsubsec-5711-sub-usingDifferential" class="internal"><span class="title">Substitution Using Differentials</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-572-limitation" class="internal"><span class="title">Limitation of <span class="process-math">\(\boldsymbol{u}\)</span>-sub</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec57-uSub.html#subsec-573-Definite" class="internal"><span class="title">Substitution Method for Definite Integrals</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec57-uSub.html#ws-sec57" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html" class="internal"><span class="codenumber">5.8</span> <span class="title">Further Integral Formulas</span></a></div>
+<ul id="ptx-toc-group-sec58-FurtherIntegralFormulas" class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-581-Integral-InverseTrig" class="internal"><span class="title">Integral formulas involving inverse trigonometric functions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#subsec-582-IntegralExponential" class="internal"><span class="title">Integrals Involving Exponential Functions</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="sec58-FurtherIntegralFormulas.html#ws-sec58" class="internal"><span class="title">Some Exercises for this section</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content">
+<div class="print-preview-header">
+<h2 class="print-preview">Print preview</h2>
+<div class="print-controls">
+<div class="print-controls-toggles">
+<form class="papersize-select" id="papersize-select">
+<span class="name">Paper size</span><label><input type="radio" name="papersize" value="a4">A4
+        </label><label><input type="radio" name="papersize" value="letter">Letter
+        </label>
+</form>
+<details class="print-options"><summary>Additional printing options</summary><div class="hide-solutions-options">
+<div class="hide-option">
+<label for="hide-hint-checkbox">Hide hints</label><input type="checkbox" id="hide-hint-checkbox">
+</div>
+<div class="hide-option">
+<label for="hide-solution-checkbox">Hide solutions</label><input type="checkbox" id="hide-solution-checkbox">
+</div>
+</div>
+<div class="header-footer-options">
+<div class="header-option">
+<span class="title">Print headers</span><label>First page<input type="checkbox" id="print-first-page-header-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-header-checkbox" checked></label>
+</div>
+<div class="footer-option">
+<span class="title">Print footers</span><label>First page<input type="checkbox" id="print-first-page-footer-checkbox" checked></label><label>Running<input type="checkbox" id="print-running-footer-checkbox" checked></label>
+</div>
+</div>
+<div class="highlight-workspace-option">
+<label for="highlight-workspace-checkbox">Highlight workspace</label><input type="checkbox" id="highlight-workspace-checkbox">
+</div></details>
+</div>
+<button class="print-button" title="Print" onClick="window.print()"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span><span class="name">Print</span></button>
+</div>
+</div>
+<section class="section" id="sec53-IndefiniteIntegral">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Indefinite Integral</span>
+</h1>
+<section class="introduction" id="sec53-IndefiniteIntegral-2">
+<div class="para" id="sec53-IndefiniteIntegral-2-1">In this section, you will learn a concept called "antiderivative".<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="objectives goal-like" id="sec53-IndefiniteIntegral-2-2"><h2 class="heading"><span class="type">Objectives</span></h2>
+<div class="introduction" id="sec53-IndefiniteIntegral-2-2-1">
+<div class="para" id="sec53-IndefiniteIntegral-2-2-1-1">After this section, students will be able to:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<ul class="disc" id="sec53-IndefiniteIntegral-2-2-2">
+<li id="sec53-IndefiniteIntegral-2-2-2-1">
+<div class="para" id="sec53-IndefiniteIntegral-2-2-2-1-1">understand the concept of indefinite integral as the general antiderivative of a function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-1" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec53-IndefiniteIntegral-2-2-2-2">
+<div class="para" id="sec53-IndefiniteIntegral-2-2-2-2-1">rewrite the derivative formulas from calculus 1 using indefinite integrals.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-2" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec53-IndefiniteIntegral-2-2-2-3">
+<div class="para" id="sec53-IndefiniteIntegral-2-2-2-3-1">evaluate indefinite integrals using algebraic manipulation and formulas.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-3" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="sec53-IndefiniteIntegral-2-2-2-4">
+<div class="para" id="sec53-IndefiniteIntegral-2-2-2-4-1">solve basic differential equations and IVP.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Objective"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2-2-4" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Objectives 5.3"><a tabindex="-1" href="#sec53-IndefiniteIntegral-2-2" title="Copy heading and permalink for Objectives 5.3" aria-label="Copy heading and permalink for Objectives 5.3">🔗</a></div>
+</article></section>
+<article class="investigation project-like" id="sec53-IndefiniteIntegral-3"><h2 class="heading">
+<span class="type">Investigation</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h2>
+<div class="introduction" id="sec53-IndefiniteIntegral-3-1">
+<div class="para" id="sec53-IndefiniteIntegral-3-1-1">Recall we learned a lot of derivative formulas back in calculus 1.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<article class="task exercise-like" id="sec53-IndefiniteIntegral-3-2"><h3 class="heading"><span class="codenumber">(a)</span></h3>
+<div class="para logical" id="sec53-IndefiniteIntegral-3-2-1-1">
+<div class="para">Find the following derivatives with respect to <span class="process-math">\(x\text{.}\)</span>
+</div>
+<div class="displaymath process-math" id="sec53-IndefiniteIntegral-3-2-1-1-2">
+\begin{align*}
+\frac{d}{dx}(c)\amp= \amp \qquad \frac{d}{dx}(kx)\amp= \amp \qquad \frac{d}{dx}(x^n)\amp= \qquad\qquad \\
+\frac{d}{dx}(\sin x)\amp= \amp \qquad \frac{d}{dx}(\cos x) \amp= \amp \qquad \frac{d}{dx}(\tan x)\amp= \qquad\qquad \\
+\frac{d}{dx}(\cot x)\amp= \amp \qquad \frac{d}{dx}(\sec x) \amp= \amp \qquad \frac{d}{dx}(\csc x)\amp= \qquad\qquad \\
+\frac{d}{dx}(e^x)\amp= \amp \qquad \frac{d}{dx}(e^{kx}) \amp= \amp \qquad \frac{d}{dx}(\ln x)\amp= \qquad\qquad 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> 
+<div class="para" id="sec53-IndefiniteIntegral-3-2-1-2">
+<em class="emphasis">You should be able to find all these formulas in your calculus 1 notes.</em><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Task 5.3.1.a"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-2" title="Copy heading and permalink for Task 5.3.1.a" aria-label="Copy heading and permalink for Task 5.3.1.a">🔗</a></div>
+</article>
+<article class="task exercise-like" id="sec53-IndefiniteIntegral-3-3"><h3 class="heading"><span class="codenumber">(b)</span></h3>
+<div class="para" id="sec53-IndefiniteIntegral-3-3-1">What function will give a derivative of <span class="process-math">\(\sin(x)\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="sec53-IndefiniteIntegral-3-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para logical" id="sec53-IndefiniteIntegral-3-3-2-1">
+<div class="para">Recall a derivative formula in part (a) should say</div>
+<div class="displaymath process-math" id="sec53-IndefiniteIntegral-3-3-2-1-1">
+\begin{equation*}
+\frac{d}{dx}\left(\cos(x)\right) = -\sin(x)
+\end{equation*}
+</div>
+<div class="para">But the derivative of <span class="process-math">\(\cos(x)\)</span> is <span class="process-math">\(-\sin(x)\text{,}\)</span> not <span class="process-math">\(\sin(x)\text{...}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.1.b.1"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3-2" title="Copy heading and permalink for Hint 5.3.1.b.1" aria-label="Copy heading and permalink for Hint 5.3.1.b.1">🔗</a></div>
+</div></details>
+<details id="sec53-IndefiniteIntegral-3-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="sec53-IndefiniteIntegral-3-3-3-1">
+<div class="para">We can manipulate the derivative formula by multiplying a <span class="process-math">\(-1\)</span> on both sides of the equation.</div>
+<div class="displaymath process-math" id="sec53-IndefiniteIntegral-3-3-3-1-2">
+\begin{align*}
+\frac{d}{dx}\left(\cos(x)\right) \amp= -\sin(x) \\
+- \frac{d}{dx}\left(\cos(x)\right) \amp= \sin(x) \amp\amp \text{multiplying $-1$ on both sides} \\
+\frac{d}{dx}\left(-\cos(x)\right) \amp= \sin(x) \amp\amp\text{by linearity}
+\end{align*}
+</div>
+<div class="para">See that <span class="process-math">\(-\cos(x)\)</span> will have a derivative of <span class="process-math">\(\sin(x)\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec53-IndefiniteIntegral-3-3-3-2">
+<em class="alert">But...</em> Is this the only answer we can get?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.1.b.1"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3-3" title="Copy heading and permalink for Solution 5.3.1.b.1" aria-label="Copy heading and permalink for Solution 5.3.1.b.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Task 5.3.1.b"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3-3" title="Copy heading and permalink for Task 5.3.1.b" aria-label="Copy heading and permalink for Task 5.3.1.b">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Investigation 5.3.1"><a tabindex="-1" href="#sec53-IndefiniteIntegral-3" title="Copy heading and permalink for Investigation 5.3.1" aria-label="Copy heading and permalink for Investigation 5.3.1">🔗</a></div>
+</article>
+<div class="para" id="sec53-IndefiniteIntegral-4">We can consider <em class="emphasis">taking the derivative</em> as an operation we can perform on a function. A natural question to wonder is whether we can undo this operation (that is, we know the derivative of a function and we want to find the original function by undoing the derivative). We actually can and this is the main concept we will explore in this section.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsection" id="subsec-531-AntiderivativesANDIndefiniteIntegrals">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Antiderivatives and Indefinite Integrals</span>
+</h2>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-2">Let’s define the term <em class="alert">antiderivative</em> first (it might be self-explanatory...).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-Antiderivatives"><h3 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="def-Antiderivatives-1-1">A function <span class="process-math">\(F\)</span> is an <em class="alert">antiderivative</em> of <span class="process-math">\(f\)</span> on an open interval <span class="process-math">\((a,b)\)</span> if <span class="process-math">\(F'(x) = f(x)\)</span> for all <span class="process-math">\(x\)</span> in <span class="process-math">\((a,b)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#def-Antiderivatives-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Definition 5.3.2"><a tabindex="-1" href="#def-Antiderivatives" title="Copy heading and permalink for Definition 5.3.2" aria-label="Copy heading and permalink for Definition 5.3.2">🔗</a></div>
+</article>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-4">In other words, antiderivative "undoes" derivative. Let <span class="process-math">\(f\)</span> be a function and <span class="process-math">\(F\)</span> be its antiderivative, then its relation is captured in the following diagram:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-Derivative-to-Antiderivative"><div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="generated/latex-image/fig-Derivative-to-Antiderivative-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Relationship between Derivative and Anti-derivative.<div class="autopermalink" aria-hidden="true" data-description="Figure 5.3.3"><a tabindex="-1" href="#fig-Derivative-to-Antiderivative" title="Copy heading and permalink for Figure 5.3.3" aria-label="Copy heading and permalink for Figure 5.3.3">🔗</a></div></figcaption>
+</figure>
+<article class="example example-like" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-1">Find an antiderivative of the function <span class="process-math">\(f(x) = e^{kx}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-2-1">
+<div class="para">What we are tasked to find is a mystery function <span class="process-math">\(y = F(x)\)</span> whose derivative is <span class="process-math">\(f(x) = e^{kx}\text{.}\)</span> In other words, what is a function <span class="process-math">\(y = F(x)\)</span> such that</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-2-1-4">
+\begin{equation*}
+F'(x) = e^{kx}
+\end{equation*}
+</div>
+<div class="para">Well a derivative formula looks relevant to this problem, which is</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-2-1-5">
+\begin{equation*}
+\frac{d}{dx}\left(e^{kx}\right) = ke^{kx}
+\end{equation*}
+</div>
+<div class="para">But the derivative of <span class="process-math">\(e^{kx}\)</span> is <span class="process-math">\(ke^{kx}\text{,}\)</span> not <span class="process-math">\(e^{kx}\text{...}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.4.1"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-2" title="Copy heading and permalink for Hint 5.3.4.1" aria-label="Copy heading and permalink for Hint 5.3.4.1">🔗</a></div>
+</div></details>
+<details id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-1">
+<div class="para">We can manipulate the derivative formula by dividing both sides of the equation by <span class="process-math">\(k\)</span> to obtain <span class="process-math">\(e^{kx}\)</span> on the right-hand side of the equation.</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-1-3">
+\begin{align*}
+\frac{d}{dx}\left(e^{kx}\right) \amp ke^{kx}\\
+\frac{1}{k}\cdot \frac{d}{dx}\left(e^{kx}\right) \amp e^{kx} \\
+\frac{d}{dx}\left(\frac{1}{k}e^{kx}\right) \amp= e^{kx} 
+\end{align*}
+</div>
+<div class="para">See that <span class="process-math">\(\dfrac{1}{k}e^{kx}\)</span> will have the derivative of <span class="process-math">\(e^{kx}\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-2">
+<em class="alert">But... is this the only right answer we can get?</em><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-1">
+<div class="para">Not necessarily. Let’s say someone in your class claimed that the answer should be</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-1-1">
+\begin{equation*}
+F(x) = \frac{1}{k}e^{kx} + 5
+\end{equation*}
+</div>
+<div class="para">Well we can verify that this is a right answer since</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-1-2">
+\begin{equation*}
+F'(x) = \frac{d}{dx}\left(\frac{1}{k}e^{kx} + 5\right) = e^{kx}
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-2">
+<div class="para">Later someone else in your class said that the answer should be</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-2-1">
+\begin{equation*}
+F(x) = \frac{1}{k}e^{kx} - 584
+\end{equation*}
+</div>
+<div class="para">Technically this is also a right answer because</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-2-2">
+\begin{equation*}
+F'(x) = \frac{d}{dx}\left(\frac{1}{k}e^{kx} - 584\right) = e^{kx}
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-3">It seems like there are more than one right answer to this problem. That is, there are more than one antiderivative of <span class="process-math">\(f(x) = e^{kx}\text{...}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.4.1.1"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3-3" title="Copy heading and permalink for Solution 5.3.4.1.1" aria-label="Copy heading and permalink for Solution 5.3.4.1.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.4.1"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6-3" title="Copy heading and permalink for Solution 5.3.4.1" aria-label="Copy heading and permalink for Solution 5.3.4.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.4"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-6" title="Copy heading and permalink for Example 5.3.4" aria-label="Copy heading and permalink for Example 5.3.4">🔗</a></div>
+</article>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-7">Observe that the antiderivative of a function is NOT unique. We are free to change the constant term of the antiderivative and the function is still an antiderivative (because the derivative of a constant is zero, so changing the constant term of a function doesn’t affect its derivative).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-8">Symbolically speaking, if <span class="process-math">\(y = F(x)\)</span> is an antiderivative of <span class="process-math">\(y = f(x)\)</span> (which means <span class="process-math">\(F'(x) = f(x)\)</span>), then <span class="process-math">\(y = F(x) + C\)</span> is also an antiderivative of <span class="process-math">\(y = f(x)\text{.}\)</span> Let’s make it a nice theorem.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-GeneralAntiderivative"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="thm-GeneralAntiderivative-1-1">Let <span class="process-math">\(y = F(x)\)</span> be an antiderivative of <span class="process-math">\(y = f(x)\)</span> on <span class="process-math">\((a,b)\text{.}\)</span> Then every antiderivative on <span class="process-math">\((a,b)\)</span> is of the form <span class="process-math">\(y = F(x) + C\)</span> for some constant <span class="process-math">\(\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-GeneralAntiderivative-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> 
+<div class="para" id="thm-GeneralAntiderivative-1-2">We call this <span class="process-math">\(y = F(x) + C\)</span> the <em class="emphasis">general</em> antiderivative of <span class="process-math">\(y = f(x)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-GeneralAntiderivative-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.3.5"><a tabindex="-1" href="#thm-GeneralAntiderivative" title="Copy heading and permalink for Theorem 5.3.5" aria-label="Copy heading and permalink for Theorem 5.3.5">🔗</a></div>
+</article>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-10">What this theorem tells us is that <em class="alert">all the antiderivatives of a function should only differ by a constant</em>. If we can’t determine what this constant is, then we will need to put a <span class="process-math">\(+C\)</span> to suggest the existence of such a constant.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-11">The argument of this theorem relies on the fact that the derivative of a constant is <span class="process-math">\(0\)</span> (so adding a constant to a function doesn’t change its derivative). I also include a formal proof of this theorem below (formal as in the argument is more rigorous) if you wonder about how to prove this theorem.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="title">Proof of Theorem 5.3.5.</span></h3></summary>
+<article class="hiddenproof knowl__content">
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-2">The whole idea of this argument relies on the fact that only constants will give the derivative of 0.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-3">To make the argument more rigorous, we will let <span class="process-math">\(F\)</span> and <span class="process-math">\(G\)</span> be some antiderivative of the same function <span class="process-math">\(f\text{.}\)</span> That is, <span class="process-math">\(F'(x) = f(x)\)</span> and <span class="process-math">\(G'(x) = f(x)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-4">Since we care about the difference of them, let’s define their difference to be <span class="process-math">\(H\)</span> where <span class="process-math">\(H(x) = F(x) - G(x)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-5">
+<div class="para">We can certainly take the derivative of <span class="process-math">\(H\text{!}\)</span> By the linearity, we have</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-5-2">
+\begin{align*}
+H'(x) \amp = \big(F(x) - G(x)\big)' \\
+\amp = F'(x) - G'(x) \\
+\amp = f(x) - f(x) \\
+\amp = 0 
+\end{align*}
+</div>
+<div class="para">So we know the derivative of the difference is 0.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-6">What do we know about the type of function whose derivative is 0... Well from calculus 1, we know that (only) constant functions will have the derivative of 0. That is, <span class="process-math">\(H(x) = C\)</span> for some random constant <span class="process-math">\(C\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-7">Putting everything together, we know that <span class="process-math">\(F(x) - G(x) = C\text{,}\)</span> which implies that <span class="process-math">\(F(x) = G(x) + C\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-12-8">Now you see where the <span class="process-math">\(+ C\)</span> comes from!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Proof 1: Proof of Theorem 5.3.5"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-12" title="Copy heading and permalink for Proof 1: Proof of Theorem 5.3.5" aria-label="Copy heading and permalink for Proof 1: Proof of Theorem 5.3.5">🔗</a></div>
+</article></details>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-13">Recall we have multiple notations back in calculus 1 to denote the concept of derivatives. Of course we will also need a notation to denote the concept of the (general) antiderivatives. We will be using <em class="alert">indefinite integral</em> to denote the general antiderivative of a function as follows:<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-IndefiniteIntegrals"><h3 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="def-IndefiniteIntegrals-1-1">
+<div class="para">The notation</div>
+<div class="displaymath process-math" id="def-IndefiniteIntegrals-1-1-1">
+\begin{equation*}
+\int f(x)\, dx = F(x) + C
+\end{equation*}
+</div>
+<div class="para">means that <span class="process-math">\(F'(x) = f(x)\text{.}\)</span> We say that <span class="process-math">\(y = F(x) + C\)</span> is the general antiderivative or the <em class="alert">indefinite integral</em> of <span class="process-math">\(y = f(x)\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#def-IndefiniteIntegrals-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Definition 5.3.6"><a tabindex="-1" href="#def-IndefiniteIntegrals" title="Copy heading and permalink for Definition 5.3.6" aria-label="Copy heading and permalink for Definition 5.3.6">🔗</a></div>
+</article>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-15">Now we can capture the relationship between derivatives and anti-derivatives using indefinite integrals.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-Derivative-Antiderivative-cycle"><div class="image-box" style="width: 70%; margin-left: 15%; margin-right: 15%;"><img src="generated/latex-image/fig-Derivative-Antiderivative-cycle-2.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Relationship between Derivative and Anti-derivative.<div class="autopermalink" aria-hidden="true" data-description="Figure 5.3.7"><a tabindex="-1" href="#fig-Derivative-Antiderivative-cycle" title="Copy heading and permalink for Figure 5.3.7" aria-label="Copy heading and permalink for Figure 5.3.7">🔗</a></div></figcaption>
+</figure>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-17">
+<em class="alert">But Richard...</em> Isn’t integral some sort of area under the curve? Why on earth are we using the same(ish) notation to represent the general antiderivative?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-18">Well we will not be able to answer this question in this section. What we can do in this section is to forget about the area and interpret indefinite integrals as some general antiderivatives.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-18" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-1">Evaluate the indefinite integral <span class="process-math">\(\displaystyle \int 4x^2\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-2-1">Recall the notation of indefinite integral means that we want to find the general antiderivative of the function in the integrand. So what function will give the derivative of <span class="process-math">\(4x^2\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.8.1"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-2" title="Copy heading and permalink for Hint 5.3.8.1" aria-label="Copy heading and permalink for Hint 5.3.8.1">🔗</a></div>
+</div></details>
+<details id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-1">You are more than welcome to guess-and-check your answer since we don’t yet have any tool to help us find the general antiderivative.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-2">But we can rely on our knowledge of derivatives to make an educated guess.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-3">Let <span class="process-math">\(f(x) = 4x^2\text{,}\)</span> which is a power function. Then an antiderivative of <span class="process-math">\(f\)</span> must also be a power function because only the derivative of power functions will give us back power functions. So <span class="process-math">\(F(x) = kx^n\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-4">We know that the power rule of derivatives will take away one from the exponent. To undo this move, the power of <span class="process-math">\(x\)</span> on an antiderivative must be <span class="process-math">\(2 + 1 = 3\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-5">In addition, the exponent needs to be multiplied to the power function when using the power rule of derivatives. To undo this move, we must divide the <span class="process-math">\(3x^2\)</span> by the power of an antiderivative, which is <span class="process-math">\(3\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-6">
+<div class="para">Now we have an educated guess, which is</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-6-1">
+\begin{equation*}
+F(x) = \dfrac{4x^{2 + 1}}{3} = \frac{4}{3}x^3
+\end{equation*}
+</div>
+<div class="para">To check our answer, we will just need to take the derivative of it and see if it matches with <span class="process-math">\(3x^2\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-7">
+<div class="para">Notice that <span class="process-math">\(\dfrac{d}{dx}\left(\dfrac{4}{3}x^3\right) = 4x^2\text{.}\)</span> This implies that the general antiderivative is <span class="process-math">\(F(x) = \frac{4}{3}x^3 + C\text{,}\)</span> and hence</div>
+<div class="displaymath process-math" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-7-3">
+\begin{equation*}
+\int 4x^2\, dx = \frac{4}{3}x^3 + C
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.8.1"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19-3" title="Copy heading and permalink for Solution 5.3.8.1" aria-label="Copy heading and permalink for Solution 5.3.8.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.8"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-19" title="Copy heading and permalink for Example 5.3.8" aria-label="Copy heading and permalink for Example 5.3.8">🔗</a></div>
+</article>
+<div class="para" id="subsec-531-AntiderivativesANDIndefiniteIntegrals-20">Guess-and-check-ing isn’t the most efficient method. Just like we have a lot of formulas to help us take the derivative of a function, it will be so nice if we have some formulas to help us find the indefinite integral (aka the general antiderivative) of a function.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals-20" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Antiderivatives and Indefinite Integrals"><a tabindex="-1" href="#subsec-531-AntiderivativesANDIndefiniteIntegrals" title="Copy heading and permalink for Subsection: Antiderivatives and Indefinite Integrals" aria-label="Copy heading and permalink for Subsection: Antiderivatives and Indefinite Integrals">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-532-IndefiniteIntegralFormulas-Basic">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Some (basic) Indefinite Integral Formulas</span>
+</h2>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-2">Recall the indefinite integral (aka the general antiderivative) <em class="emphasis">undoes</em> the derivative, which means we can come up with some indefinite integral formulas by rewriting the derivative formulas (along with some basic manipulations).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-3">A famous property you used a lot when taking the derivative is the linearity (meaning you can split up the addition/subtraction and take out the scalar multiple). This property also holds for integrals.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-Linearity-IndefiniteIntegrals"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.9</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Linearity of the Indefinite Integrals.</span>
+</h3>
+<div class="para logical" id="thm-Linearity-IndefiniteIntegrals-2-1">
+<ul class="disc" id="thm-Linearity-IndefiniteIntegrals-2-1-1">
+<li id="thm-Linearity-IndefiniteIntegrals-2-1-1-1">
+<div class="para" id="thm-Linearity-IndefiniteIntegrals-2-1-1-1-1">
+<em class="alert">Sum Rule:</em> <span class="process-math">\(\displaystyle \int \left(f(x) + g(x)\right)\, dx = \int f(x)\, dx + \int g(x)\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-Linearity-IndefiniteIntegrals-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#thm-Linearity-IndefiniteIntegrals-2-1-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="thm-Linearity-IndefiniteIntegrals-2-1-1-2">
+<div class="para" id="thm-Linearity-IndefiniteIntegrals-2-1-1-2-1">
+<em class="alert">Constant Multiple Rule:</em> <span class="process-math">\(\displaystyle \int c f(x)\, dx = c\int f(x)\, dx\)</span> for any constant <span class="process-math">\(c\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-Linearity-IndefiniteIntegrals-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#thm-Linearity-IndefiniteIntegrals-2-1-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-Linearity-IndefiniteIntegrals-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.3.9: Linearity of the Indefinite Integrals"><a tabindex="-1" href="#thm-Linearity-IndefiniteIntegrals" title="Copy heading and permalink for Theorem 5.3.9: Linearity of the Indefinite Integrals" aria-label="Copy heading and permalink for Theorem 5.3.9: Linearity of the Indefinite Integrals">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-5">We will next look at the <em class="alert">power rule</em> since this is the mostly commonly used rule back in calculus 1.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-PowerRule-Integrals"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.10</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Power Rule for Integrals.</span>
+</h3>
+<div class="para" id="thm-PowerRule-Integrals-2-1"><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-PowerRule-Integrals-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div> 
+<div class="para logical" id="thm-PowerRule-Integrals-2-2">
+<div class="displaymath process-math" id="thm-PowerRule-Integrals-2-2-1">
+\begin{equation*}
+\int x^n\, dx = \frac{x^{n+1}}{n + 1} + C
+\end{equation*}
+</div>
+<div class="para">for <span class="process-math">\(n\neq -1\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-PowerRule-Integrals-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.3.10: Power Rule for Integrals"><a tabindex="-1" href="#thm-PowerRule-Integrals" title="Copy heading and permalink for Theorem 5.3.10: Power Rule for Integrals" aria-label="Copy heading and permalink for Theorem 5.3.10: Power Rule for Integrals">🔗</a></div>
+</article>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-7">
+<div class="para">Recall the power rule for derivatives works like this:</div>
+<ol class="decimal" id="subsec-532-IndefiniteIntegralFormulas-Basic-7-1">
+<li id="subsec-532-IndefiniteIntegralFormulas-Basic-7-1-1">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-7-1-1-1">
+<em class="emphasis">Multiply</em> the power function by the exponent, and then<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="subsec-532-IndefiniteIntegralFormulas-Basic-7-1-2">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-7-1-2-1">
+<em class="emphasis">Subtract</em> one from the exponent.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 2"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="para">Since the indefinite integral undoes the derivative, then you can imagine we will need to undo the multiplication (by division) and the subtraction (by addition). But here is a small catch - when undoing the power rule for derivatives, not only we need to undo each of the step, but also <em class="alert">the order of the steps</em>. That is, the power rule for integrals should work like this:</div>
+<ol class="decimal" id="subsec-532-IndefiniteIntegralFormulas-Basic-7-3">
+<li id="subsec-532-IndefiniteIntegralFormulas-Basic-7-3-1">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-7-3-1-1">
+<em class="emphasis">Add</em> one to the exponent, and then<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="subsec-532-IndefiniteIntegralFormulas-Basic-7-3-2">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-7-3-2-1">
+<em class="emphasis">Divide</em> the power function by the exponent.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 2"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-8" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="title">Proof of Theorem 5.3.10.</span></h3></summary>
+<article class="hiddenproof knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-8-2">To make sure our formula is correct, all we need to do is to verify that the derivative of the indefinite integral (aka. the general antiderivative) is indeed the integrand.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-8-3">
+<div class="para">Let <span class="process-math">\(F(x) = \dfrac{x^{n + 1}}{n + 1} + C\)</span> for <span class="process-math">\(n\neq -1\text{.}\)</span> Observe that</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-8-3-3">
+\begin{align*}
+F'(x) \amp= \frac{d}{dx}\left(\frac{x^{n+1}}{n + 1} + C\right) \\
+\amp= \frac{1}{n + 1}\cdot \frac{d}{dx}\left(x^{n+1}\right) \\
+\amp= \frac{1}{n + 1}\cdot (n + 1)x^{(n + 1) - 1} \\
+\amp= x^n 
+\end{align*}
+</div>
+<div class="para">We proved it!</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-8-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Proof 1: Proof of Theorem 5.3.10"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-8" title="Copy heading and permalink for Proof 1: Proof of Theorem 5.3.10" aria-label="Copy heading and permalink for Proof 1: Proof of Theorem 5.3.10">🔗</a></div>
+</article></details>
+<details id="note-findingVSverifying" class="note remark-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">Note</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.11</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Finding/Evaluating versus Verifying.</span>
+</h3></summary>
+<article class="note remark-like knowl__content">
+<div class="para" id="note-findingVSverifying-2">There is a big difference between <em class="alert">finding</em> an answer and <em class="alert">verifying</em> the answer.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#note-findingVSverifying-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="note-findingVSverifying-3">The general method to <em class="emphasis">verify</em> an integral formula is to take the derivative of the answer and see if it matches up with the integrand, whereas <em class="emphasis">finding</em> (or <em class="emphasis">evaluate</em>) an expression means you do all the math work to obtain the answer.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#note-findingVSverifying-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="note-findingVSverifying-4">Be sure you read the prompt of the problem and see which one you are asked to do.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#note-findingVSverifying-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="note-findingVSverifying-5">
+<em class="emphasis">Later in the class, Richard may ask you to <em class="alert">derive</em> a formula. He will address his expectation later when it comes to it</em>.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#note-findingVSverifying-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="note-findingVSverifying-6">A rule of thumb here is that you should always be <em class="alert">finding</em> your answer as your formal work, not <em class="emphasis">verifying</em> (unless Richard asks you to do so specifically). You will do a lot of <em class="emphasis">verifying</em> as your formal work in proof classes but this is an introductory integral calculus class. Being familiar with the concept of integration and various techniques of integration are the important goals in this class.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#note-findingVSverifying-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="note-findingVSverifying-7">The example below includes two solutions in different approaches, with one being an acceptable solution in this class, and the other one being an acceptable solution in a proof class but not in this class. Hopefully this illustrate the difference between these two approaches and you can get an idea of which one Richard expects to see.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#note-findingVSverifying-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Note 5.3.11: Finding/Evaluating versus Verifying"><a tabindex="-1" href="#note-findingVSverifying" title="Copy heading and permalink for Note 5.3.11: Finding/Evaluating versus Verifying" aria-label="Copy heading and permalink for Note 5.3.11: Finding/Evaluating versus Verifying">🔗</a></div>
+</article></details>
+<article class="example example-like" id="subsec-532-IndefiniteIntegralFormulas-Basic-10"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-1">Evaluate the indefinite integral <span class="process-math">\(\displaystyle \int \left(4x - 18x^2\right)\, dx \)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-10-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-2-1">The function <span class="process-math">\(y = 4x - 18x^2\)</span> seems complicated and it is not a power function (so we can’t use the power rule on this function as a whole). Is there any property we can use to break down the integral a bit?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-2-2">Richard is feeling generous today (when I wrote this example) and he will give you the answer so that you can check your answer yourself. The correct final answer is <span class="process-math">\(2x^2 - 6x^3 + C\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.12.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-2" title="Copy heading and permalink for Hint 5.3.12.1" aria-label="Copy heading and permalink for Hint 5.3.12.1">🔗</a></div>
+</div></details>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-10-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">An acceptable solution in an integral calculus class</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-3-2">
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-3-2-1">
+\begin{align*}
+\int \left(4x - 18x^2\right)\, dx \amp = 4\int x\, dx - 18\int x^2\, dx \amp\amp \text{By linearity}\\
+\amp= 4\left(\frac{x^2}{2}\right) - 18\left(\frac{x^3}{3}\right) + C \amp\amp \text{By the power rule} \\
+\amp= 2x^2 - 6x^3 + C 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.12.1: An acceptable solution in an integral calculus class"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-3" title="Copy heading and permalink for Solution 5.3.12.1: An acceptable solution in an integral calculus class" aria-label="Copy heading and permalink for Solution 5.3.12.1: An acceptable solution in an integral calculus class">🔗</a></div>
+</div></details>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-10-4" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">An acceptable solution in a proof class but NOT in an integral calculus class</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-4-2">
+<em class="alert">The solution below is technically correct but Richard will not accept it since he teaches integral calculus, not a proof class</em><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-4-3">
+<div class="para">Let <span class="process-math">\(F(x) = 2x^2 - 6x^3 + C\text{.}\)</span> Observe that</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-4-3-2">
+\begin{align*}
+F'(x) \amp = \frac{d}{dx}\left(2x^2 - 6x^3 + C\right)\\
+\amp= 2\cdot 2x - 6\cdot 3x^2 \\
+\amp= 4x - 18x^3 
+\end{align*}
+</div>
+<div class="para">This shows that <span class="process-math">\(F'(x) = 4x - 18x^3\text{,}\)</span> and hence</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-4-3-4">
+\begin{equation*}
+\int\left(4x - 18x^3\right)\, dx = 2x^2 - 6x^3 + C
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-10-4-4">
+<em class="alert">Richard will only give the credit of presenting the correct answer for this but not the credit to show the work since this line of work didn’t tell him where the <span class="process-math">\(\boldsymbol{F(x) = 2x^2 - 6x^3 + C}\)</span> came from. All it showed here is that the <span class="process-math">\(\boldsymbol{F(x)}\text{,}\)</span> wherever it came from, is indeed the general antiderivative</em>.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.12.2: An acceptable solution in a proof class but NOT in an integral calculus class"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10-4" title="Copy heading and permalink for Solution 5.3.12.2: An acceptable solution in a proof class but NOT in an integral calculus class" aria-label="Copy heading and permalink for Solution 5.3.12.2: An acceptable solution in a proof class but NOT in an integral calculus class">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.12"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-10" title="Copy heading and permalink for Example 5.3.12" aria-label="Copy heading and permalink for Example 5.3.12">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-11">A big assumption in the power rule is that the power itself cannot be <span class="process-math">\(-1\)</span> (this should be clear). The what should we do when the power is <span class="process-math">\(-1\text{?}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-12">
+<div class="para">We have another formula to deal with this special case. Recall we learned the following derivative formula back in calculus 1:</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-12-1">
+\begin{equation*}
+\frac{d}{dx}\left(\ln(x)\right) = \frac{1}{x} \qquad\text{ if } x &gt; 0
+\end{equation*}
+</div>
+<div class="para">If we rewrite this formula (with a bit of an adjustment to take care of a domain issue), then we can obtain a formula to find the indefinite integral of <span class="process-math">\(x^{-1}\text{!}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-Antiderivative-Reciprocal"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.13</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Antiderivative of <span class="process-math">\(\boldsymbol{y = \dfrac{1}{x}}\)</span>.</span>
+</h3>
+<div class="para logical" id="thm-Antiderivative-Reciprocal-2-1">
+<div class="displaymath process-math" id="thm-Antiderivative-Reciprocal-2-1-1">
+\begin{equation*}
+\int \frac{1}{x}\, dx = \ln|x| + C \qquad \text{ if } x\neq 0
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-Antiderivative-Reciprocal-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.3.13: Antiderivative of \boldsymbol{y = \dfrac{1}{x}}"><a tabindex="-1" href="#thm-Antiderivative-Reciprocal" title="Copy heading and permalink for Theorem 5.3.13: Antiderivative of \boldsymbol{y = \dfrac{1}{x}}" aria-label="Copy heading and permalink for Theorem 5.3.13: Antiderivative of \boldsymbol{y = \dfrac{1}{x}}">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-14">Now that we have two formulas to find the indefinite integral of a power function, depending on their power. Make sure you pay extra attention to which formula to use when the power function has a power of <span class="process-math">\(-1\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-532-IndefiniteIntegralFormulas-Basic-15"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-1">Evaluate the indefinite integral <span class="process-math">\(\displaystyle \int \frac{x^3 + 3x - 4}{x^2}\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-15-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-2-1">Observe that the integrand is not a power function, but a fraction. We don’t have any tool to find the indefinite integral of a fraction yet. Can we simplify this fraction to make it not a fraction and maybe make it a couple of power functions?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.14.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-2" title="Copy heading and permalink for Hint 5.3.14.1" aria-label="Copy heading and permalink for Hint 5.3.14.1">🔗</a></div>
+</div></details>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-1">
+<div class="para">We can rewrite the integrand as follows:</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-1-1">
+\begin{equation*}
+\frac{x^3 + 3x - 4}{x^2} = x^{-2}\left(x^3 + 3x - 4\right) = x + 3x^{-1} - 4x^{-2}
+\end{equation*}
+</div>
+<div class="para">Now we have three little power functions that we know how to integrate!</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-1-2">
+\begin{align*}
+\int \frac{x^3 + 3x - 4}{x^2}\, dx\amp= \int\left(x + 3x^{-1} - 4x^{-2} \right)\, dx\\
+\amp= \int x\, dx + 3\int x^{-1}\, dx - 4\int x^{-2}\, dx \amp\amp\text{by linearity} 
+\end{align*}
+</div>
+<div class="para">It seems like we can use the power rule on the first and the last integrals as follows:</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-1-3">
+\begin{align*}
+\int x\, dx \amp= \frac{x^2}{2} + C_1 \\
+-4\int x^{-2} \amp= -4\cdot \frac{x^{-1}}{-1} + C_3 = 4x^{-1} + C_3 
+\end{align*}
+</div>
+<div class="para">But what about the integral in the middle... if we were to use the power rule on it, we would obtain</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-1-4">
+\begin{equation*}
+3\int x^{-1}\, dx = 3\cdot \frac{x^0}{0} + C_2
+\end{equation*}
+</div>
+<div class="para">But this is bad since there is a zero in the denominator.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-2">
+<div class="para">This is why we needed the <a href="sec53-IndefiniteIntegral.html#thm-Antiderivative-Reciprocal" class="xref" data-knowl="./knowl/xref/thm-Antiderivative-Reciprocal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 5.3.13: Antiderivative of \boldsymbol{y = \dfrac{1}{x}}">Theorem 5.3.13</a> to evaluate this integral since the integrand is a reciprocal function. Then</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-Antiderivative-Reciprocal.html" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-2-2">
+\begin{equation*}
+3\int x^{-1}\, dx = 3\ln|x| + C_2
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-3">
+<em class="emphasis">Notice that I used <span class="process-math">\(C_1\text{,}\)</span> <span class="process-math">\(C_2\text{,}\)</span> and <span class="process-math">\(C_3\)</span> to represent three arbitrary constants since we should get one out from each integral. Imagine if we add all these arbitrary constants together, the sum is also an arbitrary(ish) constant. In practice, we will just put a big capital <span class="process-math">\(+C\)</span> to denote the arbitrary constant for the entire integral</em>.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-4">
+<div class="para">To put everything together, the work should go like this:</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-15-3-4-1">
+\begin{align*}
+\int \frac{x^3 + 3x - 4}{x^2}\, dx\amp= \int\left(x + 3x^{-1} - 4x^{-2} \right)\, dx\\
+\amp= \int x\, dx + 3\int x^{-1}\, dx - 4\int x^{-2}\, dx \\
+\amp= \frac{x^2}{2} + 3\ln|x| + 4x^{-2} + C 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.14.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15-3" title="Copy heading and permalink for Solution 5.3.14.1" aria-label="Copy heading and permalink for Solution 5.3.14.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.14"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-15" title="Copy heading and permalink for Example 5.3.14" aria-label="Copy heading and permalink for Example 5.3.14">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-532-IndefiniteIntegralFormulas-Basic-16"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-16-1">Evaluate the indefinite integral <span class="process-math">\(\displaystyle \int \frac{12 - z}{\sqrt{z}}\, dz\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-16-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-16-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-16-2-1">Notice that there is a radical (square root) expression in the denominator. We don’t have a formula to integrate radical expressions... So is there a way to rewrite the radical expression to something we do know how to integrate (like a power function maybe)?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-16-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.15.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-16-2" title="Copy heading and permalink for Hint 5.3.15.1" aria-label="Copy heading and permalink for Hint 5.3.15.1">🔗</a></div>
+</div></details>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-16-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-16-3-1">
+<div class="para">Recall radical expressions are essentially exponential expression (we define radical expressions as fractional exponents). Notice that</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-16-3-1-1">
+\begin{equation*}
+\frac{12 - z}{\sqrt{z}} = z^{-\frac{1}{2}}\left(12 - z\right) = 12z^{-\frac{1}{2}} - z^{\frac{1}{2}}
+\end{equation*}
+</div>
+<div class="para">Now we have power functions that we know how to integrate!</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-16-3-1-2">
+\begin{align*}
+\int \frac{12 - z}{\sqrt{z}}\, dz \amp= \int\left(12z^{-\frac{1}{2}} - z^{\frac{1}{2}}\right)\, dz \\
+\amp= 12\int z^{-\frac{1}{2}}\, dz - \int z^{\frac{1}{2}} \, dz \amp\amp\text{by linearity} \\
+\amp= 12\cdot \frac{z^{-\frac{1}{2} + 1}}{-\frac{1}{2} + 1} - \frac{z^{\frac{1}{2} + 1}}{\frac{1}{2} + 1} + C\amp\amp\text{by power rule} \\
+\amp= 24z^{\frac{1}{2}} - \frac{2}{3}z^{\frac{3}{2}} + C 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-16-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.15.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-16-3" title="Copy heading and permalink for Solution 5.3.15.1" aria-label="Copy heading and permalink for Solution 5.3.15.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.15"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-16" title="Copy heading and permalink for Example 5.3.15" aria-label="Copy heading and permalink for Example 5.3.15">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-17">You may get an idea by now that <em class="alert">simplifying</em> the integrand is a good first step to evaluate an indefinite integral. That is, you want to distribute as much as you can and split up the <em class="emphasis">terms</em> of the integrand, guaranteed by the linearity, and integrate each term separately.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-18">We also learned about the derivative of the six trigonometric functions. Of course we can rewrite them to obtain the following batch of the integral formulas.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-18" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-BasicTrigIntegrals"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.16</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Basic Trigonometric Integrals.</span>
+</h3>
+<div class="para" id="thm-BasicTrigIntegrals-2-1"><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-BasicTrigIntegrals-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div> 
+<div class="para logical" id="thm-BasicTrigIntegrals-2-2">
+<div class="displaymath process-math" id="thm-BasicTrigIntegrals-2-2-1">
+\begin{align*}
+\amp \int \sin(x) dx = -\cos(x) + C \amp\amp \int\cos(x)\, dx = \sin(x) + C \\
+\amp \int \sec^2(x)\, dx = \tan(x) + C \amp\amp \int\csc^2(x)\, dx = -\cot(x) + C \\
+\amp \int \sec(x)\tan(x)\, dx = \sec(x) + C \amp\amp \int \csc(x)\cot(x)\, dx = -\csc(x) + C
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-BasicTrigIntegrals-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.3.16: Basic Trigonometric Integrals"><a tabindex="-1" href="#thm-BasicTrigIntegrals" title="Copy heading and permalink for Theorem 5.3.16: Basic Trigonometric Integrals" aria-label="Copy heading and permalink for Theorem 5.3.16: Basic Trigonometric Integrals">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-20">
+<em class="alert">But Richard...</em> some of the integrands seem complicated in the formulas above. How do I know when I need to use these formula?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-20" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-21">The short answer is that... you don’t really know when you encounter a problem... While the integral formula for sine and cosine are really common and widely used, you will need to pay special attention to when you obtain the integrand in those special forms. So having those formulas handy is a great idea and you can always check in to see if these formulas will be useful for a problem.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-21" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-532-IndefiniteIntegralFormulas-Basic-22"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-1">Evaluate the indefinite integral <span class="process-math">\(\displaystyle \int \sec(\theta)\left(\sec(\theta) + \tan(\theta)\right)\, d\theta\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-22-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-2-1">Recall a good first step is to <em class="alert">simplify</em> the integrand first by doing distribution (so we can split up the terms using linearity). Sure, let’s start with the distribution and see if any of the formula can be applied afterwards.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.17.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-2" title="Copy heading and permalink for Hint 5.3.17.1" aria-label="Copy heading and permalink for Hint 5.3.17.1">🔗</a></div>
+</div></details>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-22-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-3-1">
+<div class="para">By distribution and linearity of integrals, we obtain</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-3-1-1">
+\begin{align*}
+\int \sec(\theta)\left(\sec(\theta) + \tan(\theta)\right)\, d\theta \amp= \int \left(\sec^2(\theta) + \sec(\theta)\tan(\theta)\right)\, d\theta \\
+\amp= \int \sec^2(\theta)\, d\theta + \int \sec(\theta)\tan(\theta)\, d\theta 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-3-2">Okay... the two integrands now are <span class="process-math">\(\sec^2(\theta)\)</span> and <span class="process-math">\(\sec(\theta)\tan(\theta)\text{.}\)</span> They seem complicated to deal with...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-3-3">
+<div class="para">But the good news is that there are some formulas we can use here! By <a href="sec53-IndefiniteIntegral.html#thm-BasicTrigIntegrals" class="xref" data-knowl="./knowl/xref/thm-BasicTrigIntegrals.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 5.3.16: Basic Trigonometric Integrals">Theorem 5.3.16</a>, we obtain</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-BasicTrigIntegrals.html" id="subsec-532-IndefiniteIntegralFormulas-Basic-22-3-3-2">
+\begin{align*}
+\int \sec(\theta)\left(\sec(\theta) + \tan(\theta)\right)\, d\theta \amp= \int \sec^2(\theta)\, d\theta + \int \sec(\theta)\tan(\theta)\, d\theta \\
+\amp= \tan(\theta) + \sec(\theta) + C 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.17.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22-3" title="Copy heading and permalink for Solution 5.3.17.1" aria-label="Copy heading and permalink for Solution 5.3.17.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.17"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-22" title="Copy heading and permalink for Example 5.3.17" aria-label="Copy heading and permalink for Example 5.3.17">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-23">Later in the term, we will develop more strategies to integrate trigonometric integrals (mainly in section 7.2) so stay tuned!<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-23" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-24">There are two more integral formulas in this section, which are the integral formulas involving <span class="process-math">\(e^x\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-24" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-IntegralInvolvingExponential"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.18</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Integrals Involving <span class="process-math">\(\boldsymbol{e^x}\)</span>.</span>
+</h3>
+<div class="para" id="thm-IntegralInvolvingExponential-2-1"><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-IntegralInvolvingExponential-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div> 
+<div class="para logical" id="thm-IntegralInvolvingExponential-2-2">
+<div class="displaymath process-math" id="thm-IntegralInvolvingExponential-2-2-1">
+\begin{equation*}
+\int e^x\, dx = e^x + C
+\qquad\qquad
+\int e^{kx} \, dx = \frac{1}{k}e^{kx} + C
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#thm-IntegralInvolvingExponential-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Theorem 5.3.18: Integrals Involving \boldsymbol{e^x}"><a tabindex="-1" href="#thm-IntegralInvolvingExponential" title="Copy heading and permalink for Theorem 5.3.18: Integrals Involving \boldsymbol{e^x}" aria-label="Copy heading and permalink for Theorem 5.3.18: Integrals Involving \boldsymbol{e^x}">🔗</a></div>
+</article>
+<article class="example example-like" id="subsec-532-IndefiniteIntegralFormulas-Basic-26"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-26-1">Evaluate the indefinite integral <span class="process-math">\(\displaystyle \int \left(3e^{5x} + 3x^5\right) \, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-26-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-26-2-1">
+<div class="para">We of course can split up the terms by the linearity, so we obtain</div>
+<div class="displaymath process-math" id="subsec-532-IndefiniteIntegralFormulas-Basic-26-2-1-1">
+\begin{align*}
+\int \left(3e^{5x} + 3x^5\right) \amp= 3\int e^{5x}\, dx + 3\int x^5\, dx 
+\end{align*}
+</div>
+<div class="para">There are two little integrals we need to evaluate... which formula(s) do we need to use <em class="alert">and why</em>?</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.19.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26-2" title="Copy heading and permalink for Hint 5.3.19.1" aria-label="Copy heading and permalink for Hint 5.3.19.1">🔗</a></div>
+</div></details>
+<details id="subsec-532-IndefiniteIntegralFormulas-Basic-26-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-26-3-1">Observe that <span class="process-math">\(y = x^5\)</span> is a power function so we can apply the power rule to integrate it.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-532-IndefiniteIntegralFormulas-Basic-26-3-2">
+<div class="para">Yet, <span class="process-math">\(y = e^{5x}\)</span> is NOT a power function since the power isn’t a constant (there is an <span class="process-math">\(x\)</span> on the power). We do have a formula in <a href="sec53-IndefiniteIntegral.html#thm-IntegralInvolvingExponential" class="xref" data-knowl="./knowl/xref/thm-IntegralInvolvingExponential.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 5.3.18: Integrals Involving \boldsymbol{e^x}">Theorem 5.3.18</a> to deal with this integral. Hence, we obtain</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-IntegralInvolvingExponential.html" id="subsec-532-IndefiniteIntegralFormulas-Basic-26-3-2-4">
+\begin{align*}
+\int \left(3e^{5x} + 3x^5\right) \amp= 3\int e^{5x}\, dx + 3\int x^5\, dx \\
+\amp= 3\cdot \frac{1}{5}e^{5x} + 3\cdot \frac{x^6}{6} + C\\
+\amp= \frac{3}{5}e^{5x} + \frac{1}{2}x^6 + C 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.19.1"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26-3" title="Copy heading and permalink for Solution 5.3.19.1" aria-label="Copy heading and permalink for Solution 5.3.19.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.19"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-26" title="Copy heading and permalink for Example 5.3.19" aria-label="Copy heading and permalink for Example 5.3.19">🔗</a></div>
+</article>
+<div class="para" id="subsec-532-IndefiniteIntegralFormulas-Basic-27">We will be developing more and more integral formulas throughout the term. It is a good strategy to organize all the formulas in an <em class="alert">integral formula sheet</em> since you will be using some of the formulas again and again and again and again in this class.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic-27" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Some (basic) Indefinite Integral Formulas"><a tabindex="-1" href="#subsec-532-IndefiniteIntegralFormulas-Basic" title="Copy heading and permalink for Subsection: Some (basic) Indefinite Integral Formulas" aria-label="Copy heading and permalink for Subsection: Some (basic) Indefinite Integral Formulas">🔗</a></div>
+</section>
+<section class="subsection" id="subsec-533-DifferentialEquationsANDIVP">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Differential Equations and IVP</span>
+</h2>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-2">We know what an equation is. We dealt with equations where two sides of the equal sign are quantities (or numbers). We will briefly discuss <em class="alert">differential equations</em>, a type of equation that involves an unknown function and its first or higher derivatives. As you can imagine, the solution is, instead of number(s), function(s).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-533-DifferentialEquationsANDIVP-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.20</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-3-1">Solve the differential equation <span class="process-math">\(\dfrac{dy}{dx} = 8x^3 + 3x^2\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-533-DifferentialEquationsANDIVP-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-3-2-1">While there are a lot of the letters in this equation, the true variable is <span class="process-math">\(y\text{,}\)</span> as a function of <span class="process-math">\(x\text{.}\)</span> So what does the <span class="process-math">\(\dfrac{d}{dx}\)</span> stands for and how can we undo it?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.20.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-3-2" title="Copy heading and permalink for Hint 5.3.20.1" aria-label="Copy heading and permalink for Hint 5.3.20.1">🔗</a></div>
+</div></details>
+<details id="subsec-533-DifferentialEquationsANDIVP-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-3-3-1">What this equation tells us here is that a function has a derivative of <span class="process-math">\(8x^3 + 3x^2\)</span> and the goal is to find this function. Hence, we can undo the derivative by finding its indefinite integral.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-3-3-2">
+\begin{align*}
+y \amp= \int\left(8x^3 + 3x^2\right)\, dx \\
+\amp= 8\int x^3\, dx + 3\int x^2\, dx \amp\amp\text{by linearity}\\
+\amp= 8\cdot \frac{x^{3 + 1}}{3 + 1} + 3\cdot \frac{x^{2 + 1}}{2 + 1} + C \amp\amp\text{by the power rule}\\
+\amp= 2x^4 + x^3 + C 
+\end{align*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.20.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-3-3" title="Copy heading and permalink for Solution 5.3.20.1" aria-label="Copy heading and permalink for Solution 5.3.20.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.20"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-3" title="Copy heading and permalink for Example 5.3.20" aria-label="Copy heading and permalink for Example 5.3.20">🔗</a></div>
+</article>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-4">Your solution, if you play your cards right, is not unique. That is, your solution is NOT one single function. This is because we only found the indefinite integral of the right-hand side of the equation, which will result in an arbitrary constant, <span class="process-math">\(C\text{.}\)</span> But there is no way in the above example for us to figure out what this <span class="process-math">\(C\)</span> is... All we knew here is that <span class="process-math">\(C\)</span> is a mysterious constant here...<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-5">It would be great if we were told one more information that we can used to find this mysterious constant <span class="process-math">\(C\text{...}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="subsec-533-DifferentialEquationsANDIVP-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.21</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-6-1">Solve the differential equation <span class="process-math">\(\dfrac{dy}{dx} = 8x^3 + 3x^2\)</span> with <span class="process-math">\(y(2) = 0\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-533-DifferentialEquationsANDIVP-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="subsec-533-DifferentialEquationsANDIVP-6-2-1">
+<div class="para">Recall we "solved" the differential equation in the previous example and obtain the solution of</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-6-2-1-1">
+\begin{equation*}
+y = 2x^4 + x^3 + C
+\end{equation*}
+</div>
+<div class="para">We are given one more piece of information that says <span class="process-math">\(y(2) = 0\text{.}\)</span> That is, with an input of <span class="process-math">\(2\text{,}\)</span> the output of the function is <span class="process-math">\(0\text{.}\)</span> If we plug in <span class="process-math">\(x = 2\)</span> and <span class="process-math">\(y = 0\)</span> to our solution, we obtain</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-6-2-1-7">
+\begin{equation*}
+0 = 2(2)^4 + 2^3 + C
+\end{equation*}
+</div>
+<div class="para">Solving this equation, we obtain <span class="process-math">\(C = -40\text{.}\)</span> We found this mysterious constant with the additional information given!</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-6-2-2">Therefore, the solution to this differential equation is <span class="process-math">\(y = 2x^4 + x^3 - 40\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-6-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.21.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-6-2" title="Copy heading and permalink for Solution 5.3.21.1" aria-label="Copy heading and permalink for Solution 5.3.21.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Example 5.3.21"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-6" title="Copy heading and permalink for Example 5.3.21" aria-label="Copy heading and permalink for Example 5.3.21">🔗</a></div>
+</article>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-7">The above example is called an <em class="alert">Initial Value Problem</em> (or IVP for short). The initial condition, <span class="process-math">\(y\left(x_0\right) = y_0\)</span> for some fixed values of <span class="process-math">\(x_0\)</span> and <span class="process-math">\(y_0\text{,}\)</span> allows us to obtain a particular solution to the equation rather than a general solution.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-8">We will finish this section by deriving the formula of the projectile motion as an investigation.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="investigation project-like" id="subsec-533-DifferentialEquationsANDIVP-9"><h3 class="heading">
+<span class="type">Investigation</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.3.22</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="introduction" id="subsec-533-DifferentialEquationsANDIVP-9-1">
+<div class="para logical" id="subsec-533-DifferentialEquationsANDIVP-9-1-1">
+<div class="para">Recall the formula to model the height of an object over time in a projectile motion you learned in the past is</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-1-1-1">
+\begin{equation*}
+h(t) = -16t^2 + v_0t + h_0
+\end{equation*}
+</div>
+<div class="para">where</div>
+<ul class="disc" id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2">
+<li id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-1">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-1-1">
+<span class="process-math">\(h(t)\)</span> denotes the height of the object (in feet) after <span class="process-math">\(t\)</span> seconds;<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-2">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-2-1">
+<span class="process-math">\(16\)</span> is half of the gravitational acceleration (<span class="process-math">\(g = 32\)</span> in the unit of <span class="process-math">\(\text{ft/sec}^2\)</span>);<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-3">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-3-1">
+<span class="process-math">\(v_0\)</span> denotes the initial velocity (in ft/sec);<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-4">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-1-1-2-4-1">
+<span class="process-math">\(h_0\)</span> denotes the initial height of the object (in feet).<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1-2-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">See that this is a quadratic function. But why on earth can we model the projectile motion using a quadratic function? We will derive this model in this investigation. We will formalize this idea more in section 5.6.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<article class="task exercise-like" id="subsec-533-DifferentialEquationsANDIVP-9-2"><h4 class="heading"><span class="codenumber">(a)</span></h4>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-2-1">Consider the differential equation <span class="process-math">\(h''(t) = -32\text{.}\)</span> Briefly explain what this equation represents in the context of a projectile motion.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-533-DifferentialEquationsANDIVP-9-2-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-2-2-1">Recall <span class="process-math">\(h(t)\)</span> represents the height of the object, which can be thought of as some vertical displacement. Now put on your calculus 1 thinking hat, what physical quantity do you get if you take the second derivative of the displacement?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-2-2-2">Also, notice that there is a negative sign in front of the <span class="process-math">\(32\text{...}\)</span> Why is this <span class="process-math">\(h''(t)\)</span> negative?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.22.a.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-2" title="Copy heading and permalink for Hint 5.3.22.a.1" aria-label="Copy heading and permalink for Hint 5.3.22.a.1">🔗</a></div>
+</div></details>
+<details id="subsec-533-DifferentialEquationsANDIVP-9-2-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-2-3-1">Since <span class="process-math">\(h''(t)\)</span> represents the height of the object, its second derivative represents the <em class="alert">acceleration</em>, which is always <span class="process-math">\(32 \text{ ft/sec}^2\)</span> on earth.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-2-3-2">Also, we consider going downwards the negative direction vertically, so <span class="process-math">\(h''(t) = -32\)</span> tells us that the acceleration of the object is <span class="process-math">\(32 \text{ ft/sec}^2\)</span> going downwards.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.22.a.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2-3" title="Copy heading and permalink for Solution 5.3.22.a.1" aria-label="Copy heading and permalink for Solution 5.3.22.a.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Task 5.3.22.a"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-2" title="Copy heading and permalink for Task 5.3.22.a" aria-label="Copy heading and permalink for Task 5.3.22.a">🔗</a></div>
+</article>
+<article class="task exercise-like" id="subsec-533-DifferentialEquationsANDIVP-9-3"><h4 class="heading"><span class="codenumber">(b)</span></h4>
+<div class="para logical" id="subsec-533-DifferentialEquationsANDIVP-9-3-1">
+<div class="para">Solve this differential equation</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-1-1">
+\begin{equation*}
+h''(t) = -32
+\end{equation*}
+</div>
+<div class="para">using the initial conditions <span class="process-math">\(h'(0) = v_0\)</span> and <span class="process-math">\(h(0) = h_0\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-3-2">Remember that <span class="process-math">\(v_0\)</span> and <span class="process-math">\(h_0\)</span> are two constants denoting the initial velocity and the initial height of the object, respectively.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsec-533-DifferentialEquationsANDIVP-9-3-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="hint solution-like knowl__content">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-3-3-1">Observe that the differential equation contains the second derivative, which is obtained by taking the derivative of a function twice in a row.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-3-3-2">The solution should be the original function before taking the derivative, which is <span class="process-math">\(h(t)\)</span> here. So what operation will undo the derivative and how many times we should apply this operation to cancel the second derivative?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Hint 5.3.22.b.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-3" title="Copy heading and permalink for Hint 5.3.22.b.1" aria-label="Copy heading and permalink for Hint 5.3.22.b.1">🔗</a></div>
+</div></details>
+<details id="subsec-533-DifferentialEquationsANDIVP-9-3-4" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-1">The solution to this equation is the height function. To obtain this function, we will need to undo the second derivative. We can do so by finding the indefinite integral of <span class="process-math">\(h''(t)\text{,}\)</span> which gives us <span class="process-math">\(h'(t)\text{,}\)</span> and then find its indefinite integral again to obtain <span class="process-math">\(h(t)\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-2">
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-2-1">
+\begin{align*}
+h'(t)= \int h''(t)\, dt \amp= \int -32\, dt \\
+\amp= -32t + C_1 
+\end{align*}
+</div>
+<div class="para">We know that <span class="process-math">\(h'(0) = v_0\text{,}\)</span> where <span class="process-math">\(v_0\)</span> denotes the initial velocity of the object. This implies that</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-2-4">
+\begin{equation*}
+v_0 = h'(0) = -32(0) + C_1
+\end{equation*}
+</div>
+<div class="para">and hence <span class="process-math">\(C_1 = v_0\text{.}\)</span> Therefore, we obtain</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-2-6">
+\begin{equation*}
+h'(t) = -32t + v_0
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-3">
+<div class="para">To find <span class="process-math">\(h(t)\text{,}\)</span> we will need to find the indefinite integral of <span class="process-math">\(h'(t)\)</span> we just got earlier.</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-3-3">
+\begin{align*}
+h(t) = \int h'(t)\, dt \amp= \int\left(-32t + v_0\right)\, dt \\
+\amp= -32\int t\, dt + \int v_0\, dt \\
+\amp= -32\cdot \frac{t^2}{2} + v_0t + C_2 \\
+\amp= -16t^2 + v_0t + C_2 
+\end{align*}
+</div>
+<div class="para">We also know that <span class="process-math">\(h(0) = h_0\text{,}\)</span> where <span class="process-math">\(h_0\)</span> denotes the initial height of the object. This implies that</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-3-6">
+\begin{equation*}
+h_0 = h(0) = -16(0)^2 + v_0(0) + C_2
+\end{equation*}
+</div>
+<div class="para">and hence <span class="process-math">\(C_2 = h_0\)</span> Therefore, we can conclude that</div>
+<div class="displaymath process-math" id="subsec-533-DifferentialEquationsANDIVP-9-3-4-3-8">
+\begin{equation*}
+h(t) = -16t^2 + v_0t + h_0
+\end{equation*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 5.3.22.b.1"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3-4" title="Copy heading and permalink for Solution 5.3.22.b.1" aria-label="Copy heading and permalink for Solution 5.3.22.b.1">🔗</a></div>
+</div></details><div class="autopermalink" aria-hidden="true" data-description="Task 5.3.22.b"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9-3" title="Copy heading and permalink for Task 5.3.22.b" aria-label="Copy heading and permalink for Task 5.3.22.b">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Investigation 5.3.22"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP-9" title="Copy heading and permalink for Investigation 5.3.22" aria-label="Copy heading and permalink for Investigation 5.3.22">🔗</a></div>
+</article><div class="autopermalink" aria-hidden="true" data-description="Subsection: Differential Equations and IVP"><a tabindex="-1" href="#subsec-533-DifferentialEquationsANDIVP" title="Copy heading and permalink for Subsection: Differential Equations and IVP" aria-label="Copy heading and permalink for Subsection: Differential Equations and IVP">🔗</a></div>
+</section>
+<section class="subsection" id="sec53-IndefiniteIntegral-8">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Something to ponder on...</span>
+</h2>
+<div class="para logical" id="sec53-IndefiniteIntegral-8-2">
+<div class="para">There are actually two unanswered questions in this section, and they are</div>
+<ol class="decimal" id="sec53-IndefiniteIntegral-8-2-1">
+<li id="sec53-IndefiniteIntegral-8-2-1-1">
+<div class="para" id="sec53-IndefiniteIntegral-8-2-1-1-1">Why can we denote the general antiderivative using indefinite integrals? Isn’t the concept of integral about some sort of area under the curve?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-8-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 1"><a tabindex="-1" href="#sec53-IndefiniteIntegral-8-2-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="sec53-IndefiniteIntegral-8-2-1-2">
+<div class="para" id="sec53-IndefiniteIntegral-8-2-1-2-1">How are indefinite integrals (aka general antiderivative) related to definite integrals (aka signed area). Or are they even related?<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-8-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 2"><a tabindex="-1" href="#sec53-IndefiniteIntegral-8-2-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="para">These are both very good questions to ponder on! This is one of the reasons why calculus symbols are confusing, that the integral notation (<span class="process-math">\(\int\)</span>) is being used to denote two <em class="emphasis">different</em> concepts here. You will find the answer to the first question in Section 5.5 and the answer to the second question in Section 5.4.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec53-IndefiniteIntegral-8-3">
+<em class="alert">P.S.:</em> Yes we will cover Section 5.5 first and then Section 5.4.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#sec53-IndefiniteIntegral-8-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Subsection: Something to ponder on..."><a tabindex="-1" href="#sec53-IndefiniteIntegral-8" title="Copy heading and permalink for Subsection: Something to ponder on..." aria-label="Copy heading and permalink for Subsection: Something to ponder on...">🔗</a></div>
+</section>
+<section class="worksheet" id="ws-sec53" data-margins="0.75in 0.75in 0.75in 0.75in">
+<h2 class="heading hide-type">
+<span class="type">Worksheet</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Some Exercises for this section</span><div class="print-links"><a href="?printpreview=ws-sec53" class="print-link" title="Print preview"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8ad;</span></a></div>
+</h2>
+<section class="introduction" id="ws-sec53-2">
+<div class="para" id="ws-sec53-2-1">I included some practice problems that cover some main concepts in this section. You don’t need to turn it in, but I highly encourage you to work on this with your classmates. I may take problems here to be your in-class practice problems, homework problems, and/or exam problems. Reach out to Richard for help if you get stuck or have any questions.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ws-sec53-2-2">I will only include the final answer to some of the problems for you to check your result. If you want to check your work, talk to Richard and he is happy to discuss the process with you.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section>
+<div class="exercisegroup" id="ws-sec53-3">
+<h3 class="heading"><span class="title">Exercise Group.</span></h3>
+<div class="introduction" id="ws-sec53-3-1">
+<div class="para" id="ws-sec53-3-1-1">
+<em class="emphasis">Verify</em> the following indefinite integrals by differentiation.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ws-sec53-3-1-2">
+<em class="alert">P.S.:</em> You will learn how to evaluate these integrals in later chapters/sections.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-3-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="ws-sec53-3-2"><h4 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-3-2-1-1">
+<span class="process-math">\(\displaystyle \int\frac{\cos\left(\sqrt{x}\right)}{\sqrt{x}}\, dx = 2\sin\left(\sqrt{x}\right) + C\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 1"><a tabindex="-1" href="#ws-sec53-3-2" title="Copy heading and permalink for Worksheet Exercise 1" aria-label="Copy heading and permalink for Worksheet Exercise 1">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-3-3"><h4 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-3-3-1-1">
+<span class="process-math">\(\displaystyle \int\frac{x}{\sqrt{x^2 + 1}}\, dx = \sqrt{x^2 + 1} + C\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-3-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 2"><a tabindex="-1" href="#ws-sec53-3-3" title="Copy heading and permalink for Worksheet Exercise 2" aria-label="Copy heading and permalink for Worksheet Exercise 2">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-3-4"><h4 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-3-4-1-1">
+<span class="process-math">\(\displaystyle \int x^2\cos\left(x^3\right)\, dx = \frac{1}{3}\sin\left(x^3\right) + C\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-3-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 3"><a tabindex="-1" href="#ws-sec53-3-4" title="Copy heading and permalink for Worksheet Exercise 3" aria-label="Copy heading and permalink for Worksheet Exercise 3">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-3-5"><h4 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-3-5-1-1">
+<span class="process-math">\(\displaystyle \int\frac{x}{\left(x^2 - 1\right)^2}\, dx = -\frac{1}{2\left(x^2 - 1\right)} + C\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 4"><a tabindex="-1" href="#ws-sec53-3-5" title="Copy heading and permalink for Worksheet Exercise 4" aria-label="Copy heading and permalink for Worksheet Exercise 4">🔗</a></div>
+</article>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Exercise Group 1–4"><a tabindex="-1" href="#ws-sec53-3" title="Copy heading and permalink for Exercise Group 1–4" aria-label="Copy heading and permalink for Exercise Group 1–4">🔗</a></div>
+</div>
+<div class="exercisegroup" id="ws-sec53-4">
+<h3 class="heading"><span class="title">Exercise Group.</span></h3>
+<div class="introduction" id="ws-sec53-4-1">
+<div class="para" id="ws-sec53-4-1-1">Evaluate the following indefinite integral.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="ws-sec53-4-2"><h4 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-2-1-1">
+<span class="process-math">\(\displaystyle \int \left(1 - t\right)\left(2 + t^2\right)\, dt\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 5"><a tabindex="-1" href="#ws-sec53-4-2" title="Copy heading and permalink for Worksheet Exercise 5" aria-label="Copy heading and permalink for Worksheet Exercise 5">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-3"><h4 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-3-1-1">
+<span class="process-math">\(\displaystyle \int \left(8x - 4e^{-2x}\right)\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 6"><a tabindex="-1" href="#ws-sec53-4-3" title="Copy heading and permalink for Worksheet Exercise 6" aria-label="Copy heading and permalink for Worksheet Exercise 6">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-4"><h4 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-4-1-1">
+<span class="process-math">\(\displaystyle \int \frac{\sin(x)}{1 - \sin^2(x)}\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 7"><a tabindex="-1" href="#ws-sec53-4-4" title="Copy heading and permalink for Worksheet Exercise 7" aria-label="Copy heading and permalink for Worksheet Exercise 7">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-5"><h4 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-5-1-1">
+<span class="process-math">\(\displaystyle \int \frac{\sin(2x)}{\sin(x)}\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 8"><a tabindex="-1" href="#ws-sec53-4-5" title="Copy heading and permalink for Worksheet Exercise 8" aria-label="Copy heading and permalink for Worksheet Exercise 8">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-6"><h4 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-6-1-1">
+<span class="process-math">\(\displaystyle \int \left(1 + \tan^2(\theta)\right)\, d\theta\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 9"><a tabindex="-1" href="#ws-sec53-4-6" title="Copy heading and permalink for Worksheet Exercise 9" aria-label="Copy heading and permalink for Worksheet Exercise 9">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-7"><h4 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-7-1-1">
+<span class="process-math">\(\displaystyle \int \sqrt{\frac{3}{x}}\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 10"><a tabindex="-1" href="#ws-sec53-4-7" title="Copy heading and permalink for Worksheet Exercise 10" aria-label="Copy heading and permalink for Worksheet Exercise 10">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-8"><h4 class="heading"><span class="codenumber">11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-8-1-1">
+<span class="process-math">\(\displaystyle \int \left(\sqrt[3]{x^2} + \sqrt{x^3}\right)\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 11"><a tabindex="-1" href="#ws-sec53-4-8" title="Copy heading and permalink for Worksheet Exercise 11" aria-label="Copy heading and permalink for Worksheet Exercise 11">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-4-9"><h4 class="heading"><span class="codenumber">12<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-4-9-1-1">
+<span class="process-math">\(\displaystyle \int \frac{\sqrt{2x} + \sqrt[3]{8x}}{x}\, dx\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-4-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 12"><a tabindex="-1" href="#ws-sec53-4-9" title="Copy heading and permalink for Worksheet Exercise 12" aria-label="Copy heading and permalink for Worksheet Exercise 12">🔗</a></div>
+</article>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Exercise Group 5–12"><a tabindex="-1" href="#ws-sec53-4" title="Copy heading and permalink for Exercise Group 5–12" aria-label="Copy heading and permalink for Exercise Group 5–12">🔗</a></div>
+</div>
+<div class="exercisegroup" id="ws-sec53-5">
+<h3 class="heading"><span class="title">Exercise Group.</span></h3>
+<div class="introduction" id="ws-sec53-5-1">
+<div class="para" id="ws-sec53-5-1-1">Solve the following IVP.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="ws-sec53-5-2"><h4 class="heading"><span class="codenumber">13<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-5-2-1-1">
+<span class="process-math">\(f''(x) = x^3 - 2x\)</span> given that <span class="process-math">\(f'(1) = 0\)</span> and <span class="process-math">\(f(1) = 2\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-5-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 13"><a tabindex="-1" href="#ws-sec53-5-2" title="Copy heading and permalink for Worksheet Exercise 13" aria-label="Copy heading and permalink for Worksheet Exercise 13">🔗</a></div>
+</article>
+<article class="exercise exercise-like" id="ws-sec53-5-3"><h4 class="heading"><span class="codenumber">14<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="ws-sec53-5-3-1-1">
+<span class="process-math">\(g''(\theta) = \cos(\theta)\)</span> given that <span class="process-math">\(g'\left(\frac{\pi}{2}\right) = 1\)</span> and <span class="process-math">\(g\left(\frac{\pi}{2}\right) = 6\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ws-sec53-5-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet Exercise 14"><a tabindex="-1" href="#ws-sec53-5-3" title="Copy heading and permalink for Worksheet Exercise 14" aria-label="Copy heading and permalink for Worksheet Exercise 14">🔗</a></div>
+</article>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Exercise Group 13–14"><a tabindex="-1" href="#ws-sec53-5" title="Copy heading and permalink for Exercise Group 13–14" aria-label="Copy heading and permalink for Exercise Group 13–14">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Worksheet: Some Exercises for this section"><a tabindex="-1" href="#ws-sec53" title="Copy heading and permalink for Worksheet: Some Exercises for this section" aria-label="Copy heading and permalink for Worksheet: Some Exercises for this section">🔗</a></div>
+</section><div class="autopermalink" aria-hidden="true" data-description="Section 5.3: The Indefinite Integral"><a tabindex="-1" href="#sec53-IndefiniteIntegral" title="Copy heading and permalink for Section 5.3: The Indefinite Integral" aria-label="Copy heading and permalink for Section 5.3: The Indefinite Integral">🔗</a></div>
+</section>
+</div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec52-DefiniteIntegral.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec54-FTCpartI.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
