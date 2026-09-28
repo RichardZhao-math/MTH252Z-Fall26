@@ -993,13 +993,9 @@
 
       <solution>
         <figure>
-          <caption>Desmos Demo</caption>
-          <image source="external/images/desmos_calculation_demo.png" width="60%" />
+          <caption>Approximating Area Using Formulas with Summation Notation</caption>
+          <image source="desmos_calculation_demo.png" width="70%"></image>
         </figure>
-
-        <p>
-          Direct link: <url href="https://drive.google.com/uc?export=view&amp;id=1lJpdp9AEgrROGBeZQ6lIvEkcsWu3fo54">open image</url>
-        </p>
       </solution>
     </example>
     

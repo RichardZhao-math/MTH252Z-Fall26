@@ -278,9 +278,9 @@
       </me>
     </p>
 
-    <figure xml:id="Construction_RiemannSum">
+    <figure>
       <caption>Construction of <m>R(f,P,C)</m></caption>
-      <interactive iframe="pdfs/Construction_Riemann_Sum.pdf" width="120%" aspect="16:4.2" />
+      <image source="Construction_Riemann_Sum.png" width="95%"></image>
     </figure>
 
     <example>
